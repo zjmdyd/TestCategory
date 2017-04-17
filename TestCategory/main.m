@@ -14,3 +14,6 @@ int main(int argc, char * argv[]) {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
+/*
+ sudo find /Users/ZJ/Desktop/TestCategory -name ".svn" -exec rm -r {}\
+ */

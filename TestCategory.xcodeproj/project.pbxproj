@@ -7,9 +7,96 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3852DC0F1EA0C2D600F63B36 /* ZJTestLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852DC0A1EA0C2D600F63B36 /* ZJTestLabelViewController.m */; };
+		3852DC101EA0C2D600F63B36 /* ZJApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852DC0E1EA0C2D600F63B36 /* ZJApplicationViewController.m */; };
+		3852DC171EA0CA6400F63B36 /* ZJNSArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852DC161EA0CA6400F63B36 /* ZJNSArrayViewController.m */; };
+		3852DC1C1EA0CB3B00F63B36 /* ZJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852DC1B1EA0CB3B00F63B36 /* ZJViewController.m */; };
+		3852DC1E1EA0CC7500F63B36 /* ZJViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3852DC1D1EA0CC7500F63B36 /* ZJViewController.xib */; };
+		386151441E9F6AB700341BCB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151411E9F6AB700341BCB /* AppDelegate.m */; };
+		386151451E9F6AB700341BCB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151431E9F6AB700341BCB /* ViewController.m */; };
+		386151D61E9F6BB300341BCB /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151491E9F6BB200341BCB /* UIViewExt.m */; };
+		386151D71E9F6BB300341BCB /* ZJControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861514C1E9F6BB200341BCB /* ZJControllerCategory.m */; };
+		386151D81E9F6BB300341BCB /* ZJFondationCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861514E1E9F6BB200341BCB /* ZJFondationCategory.m */; };
+		386151D91E9F6BB300341BCB /* ZJNSObjectCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151501E9F6BB200341BCB /* ZJNSObjectCategory.m */; };
+		386151DA1E9F6BB300341BCB /* ZJUIViewCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151521E9F6BB200341BCB /* ZJUIViewCategory.m */; };
+		386151DB1E9F6BB300341BCB /* ZJIconSubTitleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151551E9F6BB200341BCB /* ZJIconSubTitleObject.m */; };
+		386151DC1E9F6BB300341BCB /* ZJNameIDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151581E9F6BB200341BCB /* ZJNameIDObject.m */; };
+		386151DD1E9F6BB300341BCB /* ZJPageSizeObjectInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861515A1E9F6BB200341BCB /* ZJPageSizeObjectInfo.m */; };
+		386151DE1E9F6BB300341BCB /* ZJStandarValueObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861515C1E9F6BB200341BCB /* ZJStandarValueObj.m */; };
+		386151DF1E9F6BB300341BCB /* ZJTimeValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861515E1E9F6BB200341BCB /* ZJTimeValueObject.m */; };
+		386151E01E9F6BB300341BCB /* HYHaveLoginHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151631E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.m */; };
+		386151E11E9F6BB300341BCB /* HYHaveLoginHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151641E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.xib */; };
+		386151E21E9F6BB300341BCB /* HYProfileHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151671E9F6BB200341BCB /* HYProfileHeadTableViewCell.m */; };
+		386151E31E9F6BB300341BCB /* HYProfileHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151681E9F6BB200341BCB /* HYProfileHeadTableViewCell.xib */; };
+		386151E41E9F6BB300341BCB /* HYIconCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861516B1E9F6BB200341BCB /* HYIconCollectionTableViewCell.m */; };
+		386151E51E9F6BB300341BCB /* HYIconCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861516C1E9F6BB200341BCB /* HYIconCollectionTableViewCell.xib */; };
+		386151E61E9F6BB300341BCB /* HYIocnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861516E1E9F6BB200341BCB /* HYIocnCollectionViewCell.m */; };
+		386151E71E9F6BB300341BCB /* HYIocnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861516F1E9F6BB200341BCB /* HYIocnCollectionViewCell.xib */; };
+		386151E81E9F6BB300341BCB /* HYSubTitleDetailTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151721E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.m */; };
+		386151E91E9F6BB300341BCB /* HYSubTitleDetailTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151731E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.xib */; };
+		386151EA1E9F6BB300341BCB /* HYSubTitleRectangleIconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151751E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.m */; };
+		386151EB1E9F6BB300341BCB /* HYSubTitleRectangleIconTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151761E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.xib */; };
+		386151EC1E9F6BB300341BCB /* HYSubTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151781E9F6BB200341BCB /* HYSubTitleTableViewCell.m */; };
+		386151ED1E9F6BB300341BCB /* HYSubTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151791E9F6BB200341BCB /* HYSubTitleTableViewCell.xib */; };
+		386151EE1E9F6BB300341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861517C1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m */; };
+		386151EF1E9F6BB300341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861517D1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib */; };
+		386151F01E9F6BB300341BCB /* HYIconTitleCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861517F1E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.m */; };
+		386151F11E9F6BB300341BCB /* HYIconTitleCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151801E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.xib */; };
+		386151F21E9F6BB300341BCB /* HYIconTitleHorizontalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151821E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.m */; };
+		386151F31E9F6BB300341BCB /* HYIconTitleHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151831E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.xib */; };
+		386151F41E9F6BB300341BCB /* HYIconTitleVerticalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151851E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.m */; };
+		386151F51E9F6BB300341BCB /* HYIconTitleVerticalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151861E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.xib */; };
+		386151F61E9F6BB300341BCB /* HYImageTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151891E9F6BB200341BCB /* HYImageTextFieldTableViewCell.m */; };
+		386151F71E9F6BB300341BCB /* HYImageTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861518A1E9F6BB200341BCB /* HYImageTextFieldTableViewCell.xib */; };
+		386151F81E9F6BB300341BCB /* HYPureTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861518D1E9F6BB200341BCB /* HYPureTextTableViewCell.m */; };
+		386151F91E9F6BB300341BCB /* HYPureTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861518E1E9F6BB200341BCB /* HYPureTextTableViewCell.xib */; };
+		386151FA1E9F6BB300341BCB /* HYSelectSexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151911E9F6BB200341BCB /* HYSelectSexTableViewCell.m */; };
+		386151FB1E9F6BB300341BCB /* HYSelectSexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151921E9F6BB200341BCB /* HYSelectSexTableViewCell.xib */; };
+		386151FC1E9F6BB300341BCB /* HYSexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151941E9F6BB200341BCB /* HYSexTableViewCell.m */; };
+		386151FD1E9F6BB300341BCB /* HYSexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151951E9F6BB200341BCB /* HYSexTableViewCell.xib */; };
+		386151FE1E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151981E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m */; };
+		386151FF1E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151991E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib */; };
+		386152001E9F6BB300341BCB /* HYErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861519C1E9F6BB300341BCB /* HYErrorView.m */; };
+		386152011E9F6BB300341BCB /* HYErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861519D1E9F6BB300341BCB /* HYErrorView.xib */; };
+		386152031E9F6BB300341BCB /* HYTextImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A11E9F6BB300341BCB /* HYTextImageView.m */; };
+		386152041E9F6BB300341BCB /* ZJFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A31E9F6BB300341BCB /* ZJFooterView.m */; };
+		386152051E9F6BB300341BCB /* ZJProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A51E9F6BB300341BCB /* ZJProgressView.m */; };
+		386152061E9F6BB300341BCB /* ZJRoundImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A71E9F6BB300341BCB /* ZJRoundImageView.m */; };
+		386152071E9F6BB300341BCB /* ZJScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A91E9F6BB300341BCB /* ZJScrollView.m */; };
+		386152081E9F6BB300341BCB /* ZJStarLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151AB1E9F6BB300341BCB /* ZJStarLevelView.m */; };
+		386152091E9F6BB300341BCB /* ZJDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151AE1E9F6BB300341BCB /* ZJDatePicker.m */; };
+		3861520A1E9F6BB300341BCB /* ZJMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151B01E9F6BB300341BCB /* ZJMaskView.m */; };
+		3861520B1E9F6BB300341BCB /* ZJPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151B31E9F6BB300341BCB /* ZJPickerView.m */; };
+		3861520C1E9F6BB300341BCB /* ZJTopEdgeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151B51E9F6BB300341BCB /* ZJTopEdgeTitleView.m */; };
+		3861520D1E9F6BB300341BCB /* qrcode_scanline_barcode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 386151B71E9F6BB300341BCB /* qrcode_scanline_barcode@2x.png */; };
+		3861520E1E9F6BB300341BCB /* ZJQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151BA1E9F6BB300341BCB /* ZJQRCodeViewController.m */; };
+		3861520F1E9F6BB300341BCB /* ZJQRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151BC1E9F6BB300341BCB /* ZJQRView.m */; };
+		386152101E9F6BB300341BCB /* ZJSearchingContentsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151BF1E9F6BB300341BCB /* ZJSearchingContentsLayer.m */; };
+		386152111E9F6BB300341BCB /* ZJSearchingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151C11E9F6BB300341BCB /* ZJSearchingView.m */; };
+		386152121E9F6BB300341BCB /* ZJSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151C41E9F6BB300341BCB /* ZJSelectButton.m */; };
+		386152151E9F6BB300341BCB /* ZJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151CC1E9F6BB300341BCB /* ZJNavigationController.m */; };
+		386152171E9F6BB300341BCB /* ZJBLEDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151D11E9F6BB300341BCB /* ZJBLEDevice.m */; };
+		386152181E9F6BB300341BCB /* ZJBLEDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151D31E9F6BB300341BCB /* ZJBLEDeviceManager.m */; };
+		386152461E9F7B7A00341BCB /* ZJCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152201E9F7B7A00341BCB /* ZJCollectionTableViewCell.m */; };
+		386152471E9F7B7A00341BCB /* ZJCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386152211E9F7B7A00341BCB /* ZJCollectionTableViewCell.xib */; };
+		386152481E9F7B7A00341BCB /* ZJImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152231E9F7B7A00341BCB /* ZJImageCollectionViewCell.m */; };
+		386152491E9F7B7A00341BCB /* ZJImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386152241E9F7B7A00341BCB /* ZJImageCollectionViewCell.xib */; };
+		3861524A1E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152261E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.m */; };
+		3861524B1E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386152271E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.xib */; };
+		3861524C1E9F7B7A00341BCB /* ZJTestCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152291E9F7B7A00341BCB /* ZJTestCollectionViewController.m */; };
+		3861524D1E9F7B7A00341BCB /* ZJTestPinchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861522B1E9F7B7A00341BCB /* ZJTestPinchTableViewController.m */; };
+		3861524E1E9F7B7A00341BCB /* ZJTestAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861522E1E9F7B7A00341BCB /* ZJTestAlertViewController.m */; };
+		3861524F1E9F7B7A00341BCB /* ZJTestAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861522F1E9F7B7A00341BCB /* ZJTestAlertViewController.xib */; };
+		386152501E9F7B7A00341BCB /* ic_message_gray_160x160.png in Resources */ = {isa = PBXBuildFile; fileRef = 386152311E9F7B7A00341BCB /* ic_message_gray_160x160.png */; };
+		386152511E9F7B7A00341BCB /* ZJMentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152331E9F7B7A00341BCB /* ZJMentionViewController.m */; };
+		386152521E9F7B7A00341BCB /* ZJSystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152361E9F7B7A00341BCB /* ZJSystemViewController.m */; };
+		386152531E9F7B7A00341BCB /* ZJPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152391E9F7B7A00341BCB /* ZJPickerViewController.m */; };
+		386152541E9F7B7A00341BCB /* ZJPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861523A1E9F7B7A00341BCB /* ZJPickerViewController.xib */; };
+		386152551E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861523E1E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.m */; };
+		386152561E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861523F1E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.xib */; };
+		386152571E9F7B7A00341BCB /* ZJPreogressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152421E9F7B7A00341BCB /* ZJPreogressView.m */; };
+		386152581E9F7B7A00341BCB /* ZJProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386152441E9F7B7A00341BCB /* ZJProgressViewController.m */; };
 		387033E91DFAC37900426DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 387033E81DFAC37900426DA3 /* main.m */; };
-		387033EC1DFAC37900426DA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 387033EB1DFAC37900426DA3 /* AppDelegate.m */; };
-		387033EF1DFAC37900426DA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387033EE1DFAC37900426DA3 /* ViewController.m */; };
 		387033F21DFAC37900426DA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387033F01DFAC37900426DA3 /* Main.storyboard */; };
 		387033F51DFAC37900426DA3 /* TestCategory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 387033F31DFAC37900426DA3 /* TestCategory.xcdatamodeld */; };
 		387033F71DFAC37900426DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 387033F61DFAC37900426DA3 /* Assets.xcassets */; };
@@ -36,12 +123,168 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3852DC091EA0C2D600F63B36 /* ZJTestLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestLabelViewController.h; sourceTree = "<group>"; };
+		3852DC0A1EA0C2D600F63B36 /* ZJTestLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestLabelViewController.m; sourceTree = "<group>"; };
+		3852DC0D1EA0C2D600F63B36 /* ZJApplicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJApplicationViewController.h; sourceTree = "<group>"; };
+		3852DC0E1EA0C2D600F63B36 /* ZJApplicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJApplicationViewController.m; sourceTree = "<group>"; };
+		3852DC151EA0CA6400F63B36 /* ZJNSArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNSArrayViewController.h; sourceTree = "<group>"; };
+		3852DC161EA0CA6400F63B36 /* ZJNSArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNSArrayViewController.m; sourceTree = "<group>"; };
+		3852DC1A1EA0CB3B00F63B36 /* ZJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJViewController.h; sourceTree = "<group>"; };
+		3852DC1B1EA0CB3B00F63B36 /* ZJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJViewController.m; sourceTree = "<group>"; };
+		3852DC1D1EA0CC7500F63B36 /* ZJViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJViewController.xib; sourceTree = "<group>"; };
+		386151401E9F6AB700341BCB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		386151411E9F6AB700341BCB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		386151421E9F6AB700341BCB /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		386151431E9F6AB700341BCB /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		386151481E9F6BB200341BCB /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		386151491E9F6BB200341BCB /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		3861514A1E9F6BB200341BCB /* ZJCategoryHeaderFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCategoryHeaderFile.h; sourceTree = "<group>"; };
+		3861514B1E9F6BB200341BCB /* ZJControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJControllerCategory.h; sourceTree = "<group>"; };
+		3861514C1E9F6BB200341BCB /* ZJControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJControllerCategory.m; sourceTree = "<group>"; };
+		3861514D1E9F6BB200341BCB /* ZJFondationCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJFondationCategory.h; sourceTree = "<group>"; };
+		3861514E1E9F6BB200341BCB /* ZJFondationCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJFondationCategory.m; sourceTree = "<group>"; };
+		3861514F1E9F6BB200341BCB /* ZJNSObjectCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNSObjectCategory.h; sourceTree = "<group>"; };
+		386151501E9F6BB200341BCB /* ZJNSObjectCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNSObjectCategory.m; sourceTree = "<group>"; };
+		386151511E9F6BB200341BCB /* ZJUIViewCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUIViewCategory.h; sourceTree = "<group>"; };
+		386151521E9F6BB200341BCB /* ZJUIViewCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUIViewCategory.m; sourceTree = "<group>"; };
+		386151541E9F6BB200341BCB /* ZJIconSubTitleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJIconSubTitleObject.h; sourceTree = "<group>"; };
+		386151551E9F6BB200341BCB /* ZJIconSubTitleObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJIconSubTitleObject.m; sourceTree = "<group>"; };
+		386151561E9F6BB200341BCB /* ZJModelHeaderFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJModelHeaderFile.h; sourceTree = "<group>"; };
+		386151571E9F6BB200341BCB /* ZJNameIDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNameIDObject.h; sourceTree = "<group>"; };
+		386151581E9F6BB200341BCB /* ZJNameIDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNameIDObject.m; sourceTree = "<group>"; };
+		386151591E9F6BB200341BCB /* ZJPageSizeObjectInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPageSizeObjectInfo.h; sourceTree = "<group>"; };
+		3861515A1E9F6BB200341BCB /* ZJPageSizeObjectInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPageSizeObjectInfo.m; sourceTree = "<group>"; };
+		3861515B1E9F6BB200341BCB /* ZJStandarValueObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStandarValueObj.h; sourceTree = "<group>"; };
+		3861515C1E9F6BB200341BCB /* ZJStandarValueObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStandarValueObj.m; sourceTree = "<group>"; };
+		3861515D1E9F6BB200341BCB /* ZJTimeValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTimeValueObject.h; sourceTree = "<group>"; };
+		3861515E1E9F6BB200341BCB /* ZJTimeValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTimeValueObject.m; sourceTree = "<group>"; };
+		386151621E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHaveLoginHeadTableViewCell.h; sourceTree = "<group>"; };
+		386151631E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYHaveLoginHeadTableViewCell.m; sourceTree = "<group>"; };
+		386151641E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYHaveLoginHeadTableViewCell.xib; sourceTree = "<group>"; };
+		386151661E9F6BB200341BCB /* HYProfileHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYProfileHeadTableViewCell.h; sourceTree = "<group>"; };
+		386151671E9F6BB200341BCB /* HYProfileHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYProfileHeadTableViewCell.m; sourceTree = "<group>"; };
+		386151681E9F6BB200341BCB /* HYProfileHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYProfileHeadTableViewCell.xib; sourceTree = "<group>"; };
+		3861516A1E9F6BB200341BCB /* HYIconCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIconCollectionTableViewCell.h; sourceTree = "<group>"; };
+		3861516B1E9F6BB200341BCB /* HYIconCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIconCollectionTableViewCell.m; sourceTree = "<group>"; };
+		3861516C1E9F6BB200341BCB /* HYIconCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIconCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		3861516D1E9F6BB200341BCB /* HYIocnCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIocnCollectionViewCell.h; sourceTree = "<group>"; };
+		3861516E1E9F6BB200341BCB /* HYIocnCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIocnCollectionViewCell.m; sourceTree = "<group>"; };
+		3861516F1E9F6BB200341BCB /* HYIocnCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIocnCollectionViewCell.xib; sourceTree = "<group>"; };
+		386151711E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSubTitleDetailTitleTableViewCell.h; sourceTree = "<group>"; };
+		386151721E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSubTitleDetailTitleTableViewCell.m; sourceTree = "<group>"; };
+		386151731E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSubTitleDetailTitleTableViewCell.xib; sourceTree = "<group>"; };
+		386151741E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSubTitleRectangleIconTableViewCell.h; sourceTree = "<group>"; };
+		386151751E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSubTitleRectangleIconTableViewCell.m; sourceTree = "<group>"; };
+		386151761E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSubTitleRectangleIconTableViewCell.xib; sourceTree = "<group>"; };
+		386151771E9F6BB200341BCB /* HYSubTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSubTitleTableViewCell.h; sourceTree = "<group>"; };
+		386151781E9F6BB200341BCB /* HYSubTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSubTitleTableViewCell.m; sourceTree = "<group>"; };
+		386151791E9F6BB200341BCB /* HYSubTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSubTitleTableViewCell.xib; sourceTree = "<group>"; };
+		3861517B1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIconSubTitleHorizontalCollectionViewCell.h; sourceTree = "<group>"; };
+		3861517C1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIconSubTitleHorizontalCollectionViewCell.m; sourceTree = "<group>"; };
+		3861517D1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIconSubTitleHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
+		3861517E1E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIconTitleCollectionTableViewCell.h; sourceTree = "<group>"; };
+		3861517F1E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIconTitleCollectionTableViewCell.m; sourceTree = "<group>"; };
+		386151801E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIconTitleCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		386151811E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIconTitleHorizontalCollectionViewCell.h; sourceTree = "<group>"; };
+		386151821E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIconTitleHorizontalCollectionViewCell.m; sourceTree = "<group>"; };
+		386151831E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIconTitleHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
+		386151841E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIconTitleVerticalCollectionViewCell.h; sourceTree = "<group>"; };
+		386151851E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIconTitleVerticalCollectionViewCell.m; sourceTree = "<group>"; };
+		386151861E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIconTitleVerticalCollectionViewCell.xib; sourceTree = "<group>"; };
+		386151881E9F6BB200341BCB /* HYImageTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageTextFieldTableViewCell.h; sourceTree = "<group>"; };
+		386151891E9F6BB200341BCB /* HYImageTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageTextFieldTableViewCell.m; sourceTree = "<group>"; };
+		3861518A1E9F6BB200341BCB /* HYImageTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYImageTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		3861518C1E9F6BB200341BCB /* HYPureTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPureTextTableViewCell.h; sourceTree = "<group>"; };
+		3861518D1E9F6BB200341BCB /* HYPureTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPureTextTableViewCell.m; sourceTree = "<group>"; };
+		3861518E1E9F6BB200341BCB /* HYPureTextTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYPureTextTableViewCell.xib; sourceTree = "<group>"; };
+		386151901E9F6BB200341BCB /* HYSelectSexTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSelectSexTableViewCell.h; sourceTree = "<group>"; };
+		386151911E9F6BB200341BCB /* HYSelectSexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSelectSexTableViewCell.m; sourceTree = "<group>"; };
+		386151921E9F6BB200341BCB /* HYSelectSexTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSelectSexTableViewCell.xib; sourceTree = "<group>"; };
+		386151931E9F6BB200341BCB /* HYSexTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSexTableViewCell.h; sourceTree = "<group>"; };
+		386151941E9F6BB200341BCB /* HYSexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSexTableViewCell.m; sourceTree = "<group>"; };
+		386151951E9F6BB200341BCB /* HYSexTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSexTableViewCell.xib; sourceTree = "<group>"; };
+		386151971E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTitleTextFieldTableViewCell.h; sourceTree = "<group>"; };
+		386151981E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTitleTextFieldTableViewCell.m; sourceTree = "<group>"; };
+		386151991E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYTitleTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		3861519B1E9F6BB300341BCB /* HYErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYErrorView.h; sourceTree = "<group>"; };
+		3861519C1E9F6BB300341BCB /* HYErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYErrorView.m; sourceTree = "<group>"; };
+		3861519D1E9F6BB300341BCB /* HYErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYErrorView.xib; sourceTree = "<group>"; };
+		386151A01E9F6BB300341BCB /* HYTextImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTextImageView.h; sourceTree = "<group>"; };
+		386151A11E9F6BB300341BCB /* HYTextImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTextImageView.m; sourceTree = "<group>"; };
+		386151A21E9F6BB300341BCB /* ZJFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJFooterView.h; sourceTree = "<group>"; };
+		386151A31E9F6BB300341BCB /* ZJFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJFooterView.m; sourceTree = "<group>"; };
+		386151A41E9F6BB300341BCB /* ZJProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProgressView.h; sourceTree = "<group>"; };
+		386151A51E9F6BB300341BCB /* ZJProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProgressView.m; sourceTree = "<group>"; };
+		386151A61E9F6BB300341BCB /* ZJRoundImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRoundImageView.h; sourceTree = "<group>"; };
+		386151A71E9F6BB300341BCB /* ZJRoundImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRoundImageView.m; sourceTree = "<group>"; };
+		386151A81E9F6BB300341BCB /* ZJScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollView.h; sourceTree = "<group>"; };
+		386151A91E9F6BB300341BCB /* ZJScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollView.m; sourceTree = "<group>"; };
+		386151AA1E9F6BB300341BCB /* ZJStarLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJStarLevelView.h; sourceTree = "<group>"; };
+		386151AB1E9F6BB300341BCB /* ZJStarLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStarLevelView.m; sourceTree = "<group>"; };
+		386151AD1E9F6BB300341BCB /* ZJDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJDatePicker.h; sourceTree = "<group>"; };
+		386151AE1E9F6BB300341BCB /* ZJDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJDatePicker.m; sourceTree = "<group>"; };
+		386151AF1E9F6BB300341BCB /* ZJMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMaskView.h; sourceTree = "<group>"; };
+		386151B01E9F6BB300341BCB /* ZJMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMaskView.m; sourceTree = "<group>"; };
+		386151B11E9F6BB300341BCB /* ZJPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPicker.h; sourceTree = "<group>"; };
+		386151B21E9F6BB300341BCB /* ZJPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPickerView.h; sourceTree = "<group>"; };
+		386151B31E9F6BB300341BCB /* ZJPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPickerView.m; sourceTree = "<group>"; };
+		386151B41E9F6BB300341BCB /* ZJTopEdgeTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTopEdgeTitleView.h; sourceTree = "<group>"; };
+		386151B51E9F6BB300341BCB /* ZJTopEdgeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTopEdgeTitleView.m; sourceTree = "<group>"; };
+		386151B71E9F6BB300341BCB /* qrcode_scanline_barcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode_scanline_barcode@2x.png"; sourceTree = "<group>"; };
+		386151B81E9F6BB300341BCB /* ZJQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJQRCodeView.h; sourceTree = "<group>"; };
+		386151B91E9F6BB300341BCB /* ZJQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJQRCodeViewController.h; sourceTree = "<group>"; };
+		386151BA1E9F6BB300341BCB /* ZJQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJQRCodeViewController.m; sourceTree = "<group>"; };
+		386151BB1E9F6BB300341BCB /* ZJQRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJQRView.h; sourceTree = "<group>"; };
+		386151BC1E9F6BB300341BCB /* ZJQRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJQRView.m; sourceTree = "<group>"; };
+		386151BE1E9F6BB300341BCB /* ZJSearchingContentsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSearchingContentsLayer.h; sourceTree = "<group>"; };
+		386151BF1E9F6BB300341BCB /* ZJSearchingContentsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSearchingContentsLayer.m; sourceTree = "<group>"; };
+		386151C01E9F6BB300341BCB /* ZJSearchingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSearchingView.h; sourceTree = "<group>"; };
+		386151C11E9F6BB300341BCB /* ZJSearchingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSearchingView.m; sourceTree = "<group>"; };
+		386151C31E9F6BB300341BCB /* ZJSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSelectButton.h; sourceTree = "<group>"; };
+		386151C41E9F6BB300341BCB /* ZJSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSelectButton.m; sourceTree = "<group>"; };
+		386151C51E9F6BB300341BCB /* ZJViewHeaderFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJViewHeaderFile.h; sourceTree = "<group>"; };
+		386151CA1E9F6BB300341BCB /* ZJControllerHeaderFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJControllerHeaderFile.h; sourceTree = "<group>"; };
+		386151CB1E9F6BB300341BCB /* ZJNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNavigationController.h; sourceTree = "<group>"; };
+		386151CC1E9F6BB300341BCB /* ZJNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNavigationController.m; sourceTree = "<group>"; };
+		386151D01E9F6BB300341BCB /* ZJBLEDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBLEDevice.h; sourceTree = "<group>"; };
+		386151D11E9F6BB300341BCB /* ZJBLEDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBLEDevice.m; sourceTree = "<group>"; };
+		386151D21E9F6BB300341BCB /* ZJBLEDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBLEDeviceManager.h; sourceTree = "<group>"; };
+		386151D31E9F6BB300341BCB /* ZJBLEDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBLEDeviceManager.m; sourceTree = "<group>"; };
+		386151D41E9F6BB300341BCB /* ZJBLETool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBLETool.h; sourceTree = "<group>"; };
+		386151D51E9F6BB300341BCB /* ZJHeaderFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHeaderFile.h; sourceTree = "<group>"; };
+		3861521F1E9F7B7A00341BCB /* ZJCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCollectionTableViewCell.h; sourceTree = "<group>"; };
+		386152201E9F7B7A00341BCB /* ZJCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCollectionTableViewCell.m; sourceTree = "<group>"; };
+		386152211E9F7B7A00341BCB /* ZJCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		386152221E9F7B7A00341BCB /* ZJImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJImageCollectionViewCell.h; sourceTree = "<group>"; };
+		386152231E9F7B7A00341BCB /* ZJImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJImageCollectionViewCell.m; sourceTree = "<group>"; };
+		386152241E9F7B7A00341BCB /* ZJImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		386152251E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPinchCollectionTableViewCell.h; sourceTree = "<group>"; };
+		386152261E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPinchCollectionTableViewCell.m; sourceTree = "<group>"; };
+		386152271E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJPinchCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		386152281E9F7B7A00341BCB /* ZJTestCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestCollectionViewController.h; sourceTree = "<group>"; };
+		386152291E9F7B7A00341BCB /* ZJTestCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestCollectionViewController.m; sourceTree = "<group>"; };
+		3861522A1E9F7B7A00341BCB /* ZJTestPinchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestPinchTableViewController.h; sourceTree = "<group>"; };
+		3861522B1E9F7B7A00341BCB /* ZJTestPinchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestPinchTableViewController.m; sourceTree = "<group>"; };
+		3861522D1E9F7B7A00341BCB /* ZJTestAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestAlertViewController.h; sourceTree = "<group>"; };
+		3861522E1E9F7B7A00341BCB /* ZJTestAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestAlertViewController.m; sourceTree = "<group>"; };
+		3861522F1E9F7B7A00341BCB /* ZJTestAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJTestAlertViewController.xib; sourceTree = "<group>"; };
+		386152311E9F7B7A00341BCB /* ic_message_gray_160x160.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_message_gray_160x160.png; sourceTree = "<group>"; };
+		386152321E9F7B7A00341BCB /* ZJMentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMentionViewController.h; sourceTree = "<group>"; };
+		386152331E9F7B7A00341BCB /* ZJMentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMentionViewController.m; sourceTree = "<group>"; };
+		386152351E9F7B7A00341BCB /* ZJSystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSystemViewController.h; sourceTree = "<group>"; };
+		386152361E9F7B7A00341BCB /* ZJSystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSystemViewController.m; sourceTree = "<group>"; };
+		386152381E9F7B7A00341BCB /* ZJPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPickerViewController.h; sourceTree = "<group>"; };
+		386152391E9F7B7A00341BCB /* ZJPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPickerViewController.m; sourceTree = "<group>"; };
+		3861523A1E9F7B7A00341BCB /* ZJPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJPickerViewController.xib; sourceTree = "<group>"; };
+		3861523D1E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCAReplicatorLayerViewController.h; sourceTree = "<group>"; };
+		3861523E1E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCAReplicatorLayerViewController.m; sourceTree = "<group>"; };
+		3861523F1E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJCAReplicatorLayerViewController.xib; sourceTree = "<group>"; };
+		386152411E9F7B7A00341BCB /* ZJPreogressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPreogressView.h; sourceTree = "<group>"; };
+		386152421E9F7B7A00341BCB /* ZJPreogressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPreogressView.m; sourceTree = "<group>"; };
+		386152431E9F7B7A00341BCB /* ZJProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProgressViewController.h; sourceTree = "<group>"; };
+		386152441E9F7B7A00341BCB /* ZJProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJProgressViewController.m; sourceTree = "<group>"; };
 		387033E41DFAC37900426DA3 /* TestCategory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCategory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		387033E81DFAC37900426DA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		387033EA1DFAC37900426DA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		387033EB1DFAC37900426DA3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		387033ED1DFAC37900426DA3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		387033EE1DFAC37900426DA3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		387033F11DFAC37900426DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		387033F41DFAC37900426DA3 /* TestCategory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestCategory.xcdatamodel; sourceTree = "<group>"; };
 		387033F61DFAC37900426DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +323,485 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3852DC061EA0C2D600F63B36 /* 02_Fondation */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC141EA0CA6400F63B36 /* Demo00_NSArray */,
+			);
+			path = 02_Fondation;
+			sourceTree = "<group>";
+		};
+		3852DC071EA0C2D600F63B36 /* 01_UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC081EA0C2D600F63B36 /* Demo00_Label */,
+			);
+			path = 01_UIKit;
+			sourceTree = "<group>";
+		};
+		3852DC081EA0C2D600F63B36 /* Demo00_Label */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC091EA0C2D600F63B36 /* ZJTestLabelViewController.h */,
+				3852DC0A1EA0C2D600F63B36 /* ZJTestLabelViewController.m */,
+			);
+			path = Demo00_Label;
+			sourceTree = "<group>";
+		};
+		3852DC0B1EA0C2D600F63B36 /* 00_NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC0C1EA0C2D600F63B36 /* Demo00_Application */,
+			);
+			path = 00_NSObject;
+			sourceTree = "<group>";
+		};
+		3852DC0C1EA0C2D600F63B36 /* Demo00_Application */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC0D1EA0C2D600F63B36 /* ZJApplicationViewController.h */,
+				3852DC0E1EA0C2D600F63B36 /* ZJApplicationViewController.m */,
+			);
+			path = Demo00_Application;
+			sourceTree = "<group>";
+		};
+		3852DC141EA0CA6400F63B36 /* Demo00_NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC151EA0CA6400F63B36 /* ZJNSArrayViewController.h */,
+				3852DC161EA0CA6400F63B36 /* ZJNSArrayViewController.m */,
+			);
+			path = Demo00_NSArray;
+			sourceTree = "<group>";
+		};
+		3852DC181EA0CAF400F63B36 /* 03_Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC191EA0CB3000F63B36 /* Demo00_UIViewController */,
+			);
+			path = 03_Controller;
+			sourceTree = "<group>";
+		};
+		3852DC191EA0CB3000F63B36 /* Demo00_UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC1A1EA0CB3B00F63B36 /* ZJViewController.h */,
+				3852DC1B1EA0CB3B00F63B36 /* ZJViewController.m */,
+				3852DC1D1EA0CC7500F63B36 /* ZJViewController.xib */,
+			);
+			path = Demo00_UIViewController;
+			sourceTree = "<group>";
+		};
+		386150061E9F6A6500341BCB /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				386152191E9F7B7A00341BCB /* Demo */,
+				3861513F1E9F6AB700341BCB /* Base */,
+				386151461E9F6BB200341BCB /* ZJCustomTools */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		3861513F1E9F6AB700341BCB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				386151401E9F6AB700341BCB /* AppDelegate.h */,
+				386151411E9F6AB700341BCB /* AppDelegate.m */,
+				386151421E9F6AB700341BCB /* ViewController.h */,
+				386151431E9F6AB700341BCB /* ViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		386151461E9F6BB200341BCB /* ZJCustomTools */ = {
+			isa = PBXGroup;
+			children = (
+				386151471E9F6BB200341BCB /* 00_Category */,
+				386151531E9F6BB200341BCB /* 01_Model */,
+				3861515F1E9F6BB200341BCB /* 02_View */,
+				386151C61E9F6BB300341BCB /* 03_Controller */,
+				386151CF1E9F6BB300341BCB /* 04_ZJCoreBluetooth */,
+				386151D51E9F6BB300341BCB /* ZJHeaderFile.h */,
+			);
+			path = ZJCustomTools;
+			sourceTree = "<group>";
+		};
+		386151471E9F6BB200341BCB /* 00_Category */ = {
+			isa = PBXGroup;
+			children = (
+				386151481E9F6BB200341BCB /* UIViewExt.h */,
+				386151491E9F6BB200341BCB /* UIViewExt.m */,
+				3861514A1E9F6BB200341BCB /* ZJCategoryHeaderFile.h */,
+				3861514B1E9F6BB200341BCB /* ZJControllerCategory.h */,
+				3861514C1E9F6BB200341BCB /* ZJControllerCategory.m */,
+				3861514D1E9F6BB200341BCB /* ZJFondationCategory.h */,
+				3861514E1E9F6BB200341BCB /* ZJFondationCategory.m */,
+				3861514F1E9F6BB200341BCB /* ZJNSObjectCategory.h */,
+				386151501E9F6BB200341BCB /* ZJNSObjectCategory.m */,
+				386151511E9F6BB200341BCB /* ZJUIViewCategory.h */,
+				386151521E9F6BB200341BCB /* ZJUIViewCategory.m */,
+			);
+			path = 00_Category;
+			sourceTree = "<group>";
+		};
+		386151531E9F6BB200341BCB /* 01_Model */ = {
+			isa = PBXGroup;
+			children = (
+				386151541E9F6BB200341BCB /* ZJIconSubTitleObject.h */,
+				386151551E9F6BB200341BCB /* ZJIconSubTitleObject.m */,
+				386151561E9F6BB200341BCB /* ZJModelHeaderFile.h */,
+				386151571E9F6BB200341BCB /* ZJNameIDObject.h */,
+				386151581E9F6BB200341BCB /* ZJNameIDObject.m */,
+				386151591E9F6BB200341BCB /* ZJPageSizeObjectInfo.h */,
+				3861515A1E9F6BB200341BCB /* ZJPageSizeObjectInfo.m */,
+				3861515B1E9F6BB200341BCB /* ZJStandarValueObj.h */,
+				3861515C1E9F6BB200341BCB /* ZJStandarValueObj.m */,
+				3861515D1E9F6BB200341BCB /* ZJTimeValueObject.h */,
+				3861515E1E9F6BB200341BCB /* ZJTimeValueObject.m */,
+			);
+			path = 01_Model;
+			sourceTree = "<group>";
+		};
+		3861515F1E9F6BB200341BCB /* 02_View */ = {
+			isa = PBXGroup;
+			children = (
+				386151601E9F6BB200341BCB /* Cell */,
+				3861519A1E9F6BB300341BCB /* Other */,
+				386151AC1E9F6BB300341BCB /* Picker */,
+				386151B61E9F6BB300341BCB /* QRCodeView */,
+				386151BD1E9F6BB300341BCB /* SearechView */,
+				386151C21E9F6BB300341BCB /* ZJButton */,
+				386151C51E9F6BB300341BCB /* ZJViewHeaderFile.h */,
+			);
+			path = 02_View;
+			sourceTree = "<group>";
+		};
+		386151601E9F6BB200341BCB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				386151611E9F6BB200341BCB /* haveLoginCell */,
+				386151651E9F6BB200341BCB /* headIconCell */,
+				386151691E9F6BB200341BCB /* iconCollectionView */,
+				386151701E9F6BB200341BCB /* iconSubtitleCell */,
+				3861517A1E9F6BB200341BCB /* iconTitleCollectionView */,
+				386151871E9F6BB200341BCB /* imageTextFieldCell */,
+				3861518B1E9F6BB200341BCB /* pureTextTableViewCell */,
+				3861518F1E9F6BB200341BCB /* sexCell */,
+				386151961E9F6BB300341BCB /* titleTextTableViewCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		386151611E9F6BB200341BCB /* haveLoginCell */ = {
+			isa = PBXGroup;
+			children = (
+				386151621E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.h */,
+				386151631E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.m */,
+				386151641E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.xib */,
+			);
+			path = haveLoginCell;
+			sourceTree = "<group>";
+		};
+		386151651E9F6BB200341BCB /* headIconCell */ = {
+			isa = PBXGroup;
+			children = (
+				386151661E9F6BB200341BCB /* HYProfileHeadTableViewCell.h */,
+				386151671E9F6BB200341BCB /* HYProfileHeadTableViewCell.m */,
+				386151681E9F6BB200341BCB /* HYProfileHeadTableViewCell.xib */,
+			);
+			path = headIconCell;
+			sourceTree = "<group>";
+		};
+		386151691E9F6BB200341BCB /* iconCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				3861516A1E9F6BB200341BCB /* HYIconCollectionTableViewCell.h */,
+				3861516B1E9F6BB200341BCB /* HYIconCollectionTableViewCell.m */,
+				3861516C1E9F6BB200341BCB /* HYIconCollectionTableViewCell.xib */,
+				3861516D1E9F6BB200341BCB /* HYIocnCollectionViewCell.h */,
+				3861516E1E9F6BB200341BCB /* HYIocnCollectionViewCell.m */,
+				3861516F1E9F6BB200341BCB /* HYIocnCollectionViewCell.xib */,
+			);
+			path = iconCollectionView;
+			sourceTree = "<group>";
+		};
+		386151701E9F6BB200341BCB /* iconSubtitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				386151711E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.h */,
+				386151721E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.m */,
+				386151731E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.xib */,
+				386151741E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.h */,
+				386151751E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.m */,
+				386151761E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.xib */,
+				386151771E9F6BB200341BCB /* HYSubTitleTableViewCell.h */,
+				386151781E9F6BB200341BCB /* HYSubTitleTableViewCell.m */,
+				386151791E9F6BB200341BCB /* HYSubTitleTableViewCell.xib */,
+			);
+			path = iconSubtitleCell;
+			sourceTree = "<group>";
+		};
+		3861517A1E9F6BB200341BCB /* iconTitleCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				3861517B1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.h */,
+				3861517C1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m */,
+				3861517D1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib */,
+				3861517E1E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.h */,
+				3861517F1E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.m */,
+				386151801E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.xib */,
+				386151811E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.h */,
+				386151821E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.m */,
+				386151831E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.xib */,
+				386151841E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.h */,
+				386151851E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.m */,
+				386151861E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.xib */,
+			);
+			path = iconTitleCollectionView;
+			sourceTree = "<group>";
+		};
+		386151871E9F6BB200341BCB /* imageTextFieldCell */ = {
+			isa = PBXGroup;
+			children = (
+				386151881E9F6BB200341BCB /* HYImageTextFieldTableViewCell.h */,
+				386151891E9F6BB200341BCB /* HYImageTextFieldTableViewCell.m */,
+				3861518A1E9F6BB200341BCB /* HYImageTextFieldTableViewCell.xib */,
+			);
+			path = imageTextFieldCell;
+			sourceTree = "<group>";
+		};
+		3861518B1E9F6BB200341BCB /* pureTextTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3861518C1E9F6BB200341BCB /* HYPureTextTableViewCell.h */,
+				3861518D1E9F6BB200341BCB /* HYPureTextTableViewCell.m */,
+				3861518E1E9F6BB200341BCB /* HYPureTextTableViewCell.xib */,
+			);
+			path = pureTextTableViewCell;
+			sourceTree = "<group>";
+		};
+		3861518F1E9F6BB200341BCB /* sexCell */ = {
+			isa = PBXGroup;
+			children = (
+				386151901E9F6BB200341BCB /* HYSelectSexTableViewCell.h */,
+				386151911E9F6BB200341BCB /* HYSelectSexTableViewCell.m */,
+				386151921E9F6BB200341BCB /* HYSelectSexTableViewCell.xib */,
+				386151931E9F6BB200341BCB /* HYSexTableViewCell.h */,
+				386151941E9F6BB200341BCB /* HYSexTableViewCell.m */,
+				386151951E9F6BB200341BCB /* HYSexTableViewCell.xib */,
+			);
+			path = sexCell;
+			sourceTree = "<group>";
+		};
+		386151961E9F6BB300341BCB /* titleTextTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				386151971E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.h */,
+				386151981E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m */,
+				386151991E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib */,
+			);
+			path = titleTextTableViewCell;
+			sourceTree = "<group>";
+		};
+		3861519A1E9F6BB300341BCB /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				3861519B1E9F6BB300341BCB /* HYErrorView.h */,
+				3861519C1E9F6BB300341BCB /* HYErrorView.m */,
+				3861519D1E9F6BB300341BCB /* HYErrorView.xib */,
+				386151A01E9F6BB300341BCB /* HYTextImageView.h */,
+				386151A11E9F6BB300341BCB /* HYTextImageView.m */,
+				386151A21E9F6BB300341BCB /* ZJFooterView.h */,
+				386151A31E9F6BB300341BCB /* ZJFooterView.m */,
+				386151A41E9F6BB300341BCB /* ZJProgressView.h */,
+				386151A51E9F6BB300341BCB /* ZJProgressView.m */,
+				386151A61E9F6BB300341BCB /* ZJRoundImageView.h */,
+				386151A71E9F6BB300341BCB /* ZJRoundImageView.m */,
+				386151A81E9F6BB300341BCB /* ZJScrollView.h */,
+				386151A91E9F6BB300341BCB /* ZJScrollView.m */,
+				386151AA1E9F6BB300341BCB /* ZJStarLevelView.h */,
+				386151AB1E9F6BB300341BCB /* ZJStarLevelView.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		386151AC1E9F6BB300341BCB /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				386151AD1E9F6BB300341BCB /* ZJDatePicker.h */,
+				386151AE1E9F6BB300341BCB /* ZJDatePicker.m */,
+				386151AF1E9F6BB300341BCB /* ZJMaskView.h */,
+				386151B01E9F6BB300341BCB /* ZJMaskView.m */,
+				386151B11E9F6BB300341BCB /* ZJPicker.h */,
+				386151B21E9F6BB300341BCB /* ZJPickerView.h */,
+				386151B31E9F6BB300341BCB /* ZJPickerView.m */,
+				386151B41E9F6BB300341BCB /* ZJTopEdgeTitleView.h */,
+				386151B51E9F6BB300341BCB /* ZJTopEdgeTitleView.m */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		386151B61E9F6BB300341BCB /* QRCodeView */ = {
+			isa = PBXGroup;
+			children = (
+				386151B71E9F6BB300341BCB /* qrcode_scanline_barcode@2x.png */,
+				386151B81E9F6BB300341BCB /* ZJQRCodeView.h */,
+				386151B91E9F6BB300341BCB /* ZJQRCodeViewController.h */,
+				386151BA1E9F6BB300341BCB /* ZJQRCodeViewController.m */,
+				386151BB1E9F6BB300341BCB /* ZJQRView.h */,
+				386151BC1E9F6BB300341BCB /* ZJQRView.m */,
+			);
+			path = QRCodeView;
+			sourceTree = "<group>";
+		};
+		386151BD1E9F6BB300341BCB /* SearechView */ = {
+			isa = PBXGroup;
+			children = (
+				386151BE1E9F6BB300341BCB /* ZJSearchingContentsLayer.h */,
+				386151BF1E9F6BB300341BCB /* ZJSearchingContentsLayer.m */,
+				386151C01E9F6BB300341BCB /* ZJSearchingView.h */,
+				386151C11E9F6BB300341BCB /* ZJSearchingView.m */,
+			);
+			path = SearechView;
+			sourceTree = "<group>";
+		};
+		386151C21E9F6BB300341BCB /* ZJButton */ = {
+			isa = PBXGroup;
+			children = (
+				386151C31E9F6BB300341BCB /* ZJSelectButton.h */,
+				386151C41E9F6BB300341BCB /* ZJSelectButton.m */,
+			);
+			path = ZJButton;
+			sourceTree = "<group>";
+		};
+		386151C61E9F6BB300341BCB /* 03_Controller */ = {
+			isa = PBXGroup;
+			children = (
+				386151CA1E9F6BB300341BCB /* ZJControllerHeaderFile.h */,
+				386151CB1E9F6BB300341BCB /* ZJNavigationController.h */,
+				386151CC1E9F6BB300341BCB /* ZJNavigationController.m */,
+			);
+			path = 03_Controller;
+			sourceTree = "<group>";
+		};
+		386151CF1E9F6BB300341BCB /* 04_ZJCoreBluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				386151D01E9F6BB300341BCB /* ZJBLEDevice.h */,
+				386151D11E9F6BB300341BCB /* ZJBLEDevice.m */,
+				386151D21E9F6BB300341BCB /* ZJBLEDeviceManager.h */,
+				386151D31E9F6BB300341BCB /* ZJBLEDeviceManager.m */,
+				386151D41E9F6BB300341BCB /* ZJBLETool.h */,
+			);
+			path = 04_ZJCoreBluetooth;
+			sourceTree = "<group>";
+		};
+		386152191E9F7B7A00341BCB /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				3852DC0B1EA0C2D600F63B36 /* 00_NSObject */,
+				3852DC071EA0C2D600F63B36 /* 01_UIKit */,
+				3852DC061EA0C2D600F63B36 /* 02_Fondation */,
+				3852DC181EA0CAF400F63B36 /* 03_Controller */,
+				3861521E1E9F7B7A00341BCB /* CollectionView */,
+				3861522C1E9F7B7A00341BCB /* Demo01_AlertViewController */,
+				386152301E9F7B7A00341BCB /* Demo03_MentionView */,
+				386152341E9F7B7A00341BCB /* Demo04_System */,
+				386152371E9F7B7A00341BCB /* Demo05_Picker */,
+				3861523B1E9F7B7A00341BCB /* Demo06_CollectionViewLayout */,
+				3861523C1E9F7B7A00341BCB /* Demo07_CAReplicatorLayer */,
+				386152401E9F7B7A00341BCB /* Demo08_ProgressView */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		3861521E1E9F7B7A00341BCB /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				3861521F1E9F7B7A00341BCB /* ZJCollectionTableViewCell.h */,
+				386152201E9F7B7A00341BCB /* ZJCollectionTableViewCell.m */,
+				386152211E9F7B7A00341BCB /* ZJCollectionTableViewCell.xib */,
+				386152221E9F7B7A00341BCB /* ZJImageCollectionViewCell.h */,
+				386152231E9F7B7A00341BCB /* ZJImageCollectionViewCell.m */,
+				386152241E9F7B7A00341BCB /* ZJImageCollectionViewCell.xib */,
+				386152251E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.h */,
+				386152261E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.m */,
+				386152271E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.xib */,
+				386152281E9F7B7A00341BCB /* ZJTestCollectionViewController.h */,
+				386152291E9F7B7A00341BCB /* ZJTestCollectionViewController.m */,
+				3861522A1E9F7B7A00341BCB /* ZJTestPinchTableViewController.h */,
+				3861522B1E9F7B7A00341BCB /* ZJTestPinchTableViewController.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		3861522C1E9F7B7A00341BCB /* Demo01_AlertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3861522D1E9F7B7A00341BCB /* ZJTestAlertViewController.h */,
+				3861522E1E9F7B7A00341BCB /* ZJTestAlertViewController.m */,
+				3861522F1E9F7B7A00341BCB /* ZJTestAlertViewController.xib */,
+			);
+			path = Demo01_AlertViewController;
+			sourceTree = "<group>";
+		};
+		386152301E9F7B7A00341BCB /* Demo03_MentionView */ = {
+			isa = PBXGroup;
+			children = (
+				386152311E9F7B7A00341BCB /* ic_message_gray_160x160.png */,
+				386152321E9F7B7A00341BCB /* ZJMentionViewController.h */,
+				386152331E9F7B7A00341BCB /* ZJMentionViewController.m */,
+			);
+			path = Demo03_MentionView;
+			sourceTree = "<group>";
+		};
+		386152341E9F7B7A00341BCB /* Demo04_System */ = {
+			isa = PBXGroup;
+			children = (
+				386152351E9F7B7A00341BCB /* ZJSystemViewController.h */,
+				386152361E9F7B7A00341BCB /* ZJSystemViewController.m */,
+			);
+			path = Demo04_System;
+			sourceTree = "<group>";
+		};
+		386152371E9F7B7A00341BCB /* Demo05_Picker */ = {
+			isa = PBXGroup;
+			children = (
+				386152381E9F7B7A00341BCB /* ZJPickerViewController.h */,
+				386152391E9F7B7A00341BCB /* ZJPickerViewController.m */,
+				3861523A1E9F7B7A00341BCB /* ZJPickerViewController.xib */,
+			);
+			path = Demo05_Picker;
+			sourceTree = "<group>";
+		};
+		3861523B1E9F7B7A00341BCB /* Demo06_CollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Demo06_CollectionViewLayout;
+			sourceTree = "<group>";
+		};
+		3861523C1E9F7B7A00341BCB /* Demo07_CAReplicatorLayer */ = {
+			isa = PBXGroup;
+			children = (
+				3861523D1E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.h */,
+				3861523E1E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.m */,
+				3861523F1E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.xib */,
+			);
+			path = Demo07_CAReplicatorLayer;
+			sourceTree = "<group>";
+		};
+		386152401E9F7B7A00341BCB /* Demo08_ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				386152411E9F7B7A00341BCB /* ZJPreogressView.h */,
+				386152421E9F7B7A00341BCB /* ZJPreogressView.m */,
+				386152431E9F7B7A00341BCB /* ZJProgressViewController.h */,
+				386152441E9F7B7A00341BCB /* ZJProgressViewController.m */,
+			);
+			path = Demo08_ProgressView;
+			sourceTree = "<group>";
+		};
 		387033DB1DFAC37900426DA3 = {
 			isa = PBXGroup;
 			children = (
@@ -103,15 +825,7 @@
 		387033E61DFAC37900426DA3 /* TestCategory */ = {
 			isa = PBXGroup;
 			children = (
-				387033EA1DFAC37900426DA3 /* AppDelegate.h */,
-				387033EB1DFAC37900426DA3 /* AppDelegate.m */,
-				387033ED1DFAC37900426DA3 /* ViewController.h */,
-				387033EE1DFAC37900426DA3 /* ViewController.m */,
-				387033F01DFAC37900426DA3 /* Main.storyboard */,
-				387033F61DFAC37900426DA3 /* Assets.xcassets */,
-				387033F81DFAC37900426DA3 /* LaunchScreen.storyboard */,
-				387033FB1DFAC37900426DA3 /* Info.plist */,
-				387033F31DFAC37900426DA3 /* TestCategory.xcdatamodeld */,
+				386150061E9F6A6500341BCB /* Class */,
 				387033E71DFAC37900426DA3 /* Supporting Files */,
 			);
 			path = TestCategory;
@@ -120,6 +834,11 @@
 		387033E71DFAC37900426DA3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				387033F01DFAC37900426DA3 /* Main.storyboard */,
+				387033F61DFAC37900426DA3 /* Assets.xcassets */,
+				387033F81DFAC37900426DA3 /* LaunchScreen.storyboard */,
+				387033FB1DFAC37900426DA3 /* Info.plist */,
+				387033F31DFAC37900426DA3 /* TestCategory.xcdatamodeld */,
 				387033E81DFAC37900426DA3 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -205,11 +924,13 @@
 		387033DC1DFAC37900426DA3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				CLASSPREFIX = ZJ;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = ZJ;
 				TargetAttributes = {
 					387033E31DFAC37900426DA3 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = X69A28X2L6;
 						ProvisioningStyle = Automatic;
 					};
 					387033FF1DFAC37900426DA3 = {
@@ -249,8 +970,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3861520D1E9F6BB300341BCB /* qrcode_scanline_barcode@2x.png in Resources */,
+				386151FB1E9F6BB300341BCB /* HYSelectSexTableViewCell.xib in Resources */,
+				386151FD1E9F6BB300341BCB /* HYSexTableViewCell.xib in Resources */,
 				387033FA1DFAC37900426DA3 /* LaunchScreen.storyboard in Resources */,
+				386152491E9F7B7A00341BCB /* ZJImageCollectionViewCell.xib in Resources */,
+				386151FF1E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib in Resources */,
+				386151EB1E9F6BB300341BCB /* HYSubTitleRectangleIconTableViewCell.xib in Resources */,
+				386151E11E9F6BB300341BCB /* HYHaveLoginHeadTableViewCell.xib in Resources */,
+				3861524B1E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.xib in Resources */,
+				386151F51E9F6BB300341BCB /* HYIconTitleVerticalCollectionViewCell.xib in Resources */,
 				387033F71DFAC37900426DA3 /* Assets.xcassets in Resources */,
+				386151F71E9F6BB300341BCB /* HYImageTextFieldTableViewCell.xib in Resources */,
+				386151F91E9F6BB300341BCB /* HYPureTextTableViewCell.xib in Resources */,
+				386151ED1E9F6BB300341BCB /* HYSubTitleTableViewCell.xib in Resources */,
+				386151EF1E9F6BB300341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib in Resources */,
+				386152561E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.xib in Resources */,
+				386151F31E9F6BB300341BCB /* HYIconTitleHorizontalCollectionViewCell.xib in Resources */,
+				386151E71E9F6BB300341BCB /* HYIocnCollectionViewCell.xib in Resources */,
+				3852DC1E1EA0CC7500F63B36 /* ZJViewController.xib in Resources */,
+				386152471E9F7B7A00341BCB /* ZJCollectionTableViewCell.xib in Resources */,
+				386151E91E9F6BB300341BCB /* HYSubTitleDetailTitleTableViewCell.xib in Resources */,
+				386151F11E9F6BB300341BCB /* HYIconTitleCollectionTableViewCell.xib in Resources */,
+				3861524F1E9F7B7A00341BCB /* ZJTestAlertViewController.xib in Resources */,
+				386152501E9F7B7A00341BCB /* ic_message_gray_160x160.png in Resources */,
+				386151E51E9F6BB300341BCB /* HYIconCollectionTableViewCell.xib in Resources */,
+				386152541E9F7B7A00341BCB /* ZJPickerViewController.xib in Resources */,
+				386151E31E9F6BB300341BCB /* HYProfileHeadTableViewCell.xib in Resources */,
+				386152011E9F6BB300341BCB /* HYErrorView.xib in Resources */,
 				387033F21DFAC37900426DA3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,10 +1023,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				387033EF1DFAC37900426DA3 /* ViewController.m in Sources */,
-				387033EC1DFAC37900426DA3 /* AppDelegate.m in Sources */,
+				386152481E9F7B7A00341BCB /* ZJImageCollectionViewCell.m in Sources */,
+				386151FA1E9F6BB300341BCB /* HYSelectSexTableViewCell.m in Sources */,
+				386152151E9F6BB300341BCB /* ZJNavigationController.m in Sources */,
+				386152531E9F7B7A00341BCB /* ZJPickerViewController.m in Sources */,
+				386151F81E9F6BB300341BCB /* HYPureTextTableViewCell.m in Sources */,
 				387033E91DFAC37900426DA3 /* main.m in Sources */,
+				3861524D1E9F7B7A00341BCB /* ZJTestPinchTableViewController.m in Sources */,
+				386152001E9F6BB300341BCB /* HYErrorView.m in Sources */,
+				386151E81E9F6BB300341BCB /* HYSubTitleDetailTitleTableViewCell.m in Sources */,
+				386152461E9F7B7A00341BCB /* ZJCollectionTableViewCell.m in Sources */,
+				386152041E9F6BB300341BCB /* ZJFooterView.m in Sources */,
+				386151D61E9F6BB300341BCB /* UIViewExt.m in Sources */,
+				386151E61E9F6BB300341BCB /* HYIocnCollectionViewCell.m in Sources */,
 				387033F51DFAC37900426DA3 /* TestCategory.xcdatamodeld in Sources */,
+				386151DA1E9F6BB300341BCB /* ZJUIViewCategory.m in Sources */,
+				386151E41E9F6BB300341BCB /* HYIconCollectionTableViewCell.m in Sources */,
+				386151F61E9F6BB300341BCB /* HYImageTextFieldTableViewCell.m in Sources */,
+				3861520C1E9F6BB300341BCB /* ZJTopEdgeTitleView.m in Sources */,
+				386152101E9F6BB300341BCB /* ZJSearchingContentsLayer.m in Sources */,
+				3852DC1C1EA0CB3B00F63B36 /* ZJViewController.m in Sources */,
+				386152511E9F7B7A00341BCB /* ZJMentionViewController.m in Sources */,
+				386152071E9F6BB300341BCB /* ZJScrollView.m in Sources */,
+				386152051E9F6BB300341BCB /* ZJProgressView.m in Sources */,
+				386151F01E9F6BB300341BCB /* HYIconTitleCollectionTableViewCell.m in Sources */,
+				386151D71E9F6BB300341BCB /* ZJControllerCategory.m in Sources */,
+				386151441E9F6AB700341BCB /* AppDelegate.m in Sources */,
+				386152111E9F6BB300341BCB /* ZJSearchingView.m in Sources */,
+				3852DC101EA0C2D600F63B36 /* ZJApplicationViewController.m in Sources */,
+				3861524E1E9F7B7A00341BCB /* ZJTestAlertViewController.m in Sources */,
+				386152091E9F6BB300341BCB /* ZJDatePicker.m in Sources */,
+				386151F41E9F6BB300341BCB /* HYIconTitleVerticalCollectionViewCell.m in Sources */,
+				386152181E9F6BB300341BCB /* ZJBLEDeviceManager.m in Sources */,
+				386151EA1E9F6BB300341BCB /* HYSubTitleRectangleIconTableViewCell.m in Sources */,
+				3861524C1E9F7B7A00341BCB /* ZJTestCollectionViewController.m in Sources */,
+				3861520B1E9F6BB300341BCB /* ZJPickerView.m in Sources */,
+				386151DE1E9F6BB300341BCB /* ZJStandarValueObj.m in Sources */,
+				386152581E9F7B7A00341BCB /* ZJProgressViewController.m in Sources */,
+				3852DC0F1EA0C2D600F63B36 /* ZJTestLabelViewController.m in Sources */,
+				386151FE1E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m in Sources */,
+				3861520A1E9F6BB300341BCB /* ZJMaskView.m in Sources */,
+				386151451E9F6AB700341BCB /* ViewController.m in Sources */,
+				386151E21E9F6BB300341BCB /* HYProfileHeadTableViewCell.m in Sources */,
+				386152551E9F7B7A00341BCB /* ZJCAReplicatorLayerViewController.m in Sources */,
+				386151EC1E9F6BB300341BCB /* HYSubTitleTableViewCell.m in Sources */,
+				386152061E9F6BB300341BCB /* ZJRoundImageView.m in Sources */,
+				3861520F1E9F6BB300341BCB /* ZJQRView.m in Sources */,
+				3861520E1E9F6BB300341BCB /* ZJQRCodeViewController.m in Sources */,
+				386151DB1E9F6BB300341BCB /* ZJIconSubTitleObject.m in Sources */,
+				386151D81E9F6BB300341BCB /* ZJFondationCategory.m in Sources */,
+				386151E01E9F6BB300341BCB /* HYHaveLoginHeadTableViewCell.m in Sources */,
+				386152521E9F7B7A00341BCB /* ZJSystemViewController.m in Sources */,
+				3861524A1E9F7B7A00341BCB /* ZJPinchCollectionTableViewCell.m in Sources */,
+				386152121E9F6BB300341BCB /* ZJSelectButton.m in Sources */,
+				386151DD1E9F6BB300341BCB /* ZJPageSizeObjectInfo.m in Sources */,
+				386152571E9F7B7A00341BCB /* ZJPreogressView.m in Sources */,
+				386152081E9F6BB300341BCB /* ZJStarLevelView.m in Sources */,
+				3852DC171EA0CA6400F63B36 /* ZJNSArrayViewController.m in Sources */,
+				386152171E9F6BB300341BCB /* ZJBLEDevice.m in Sources */,
+				386151DF1E9F6BB300341BCB /* ZJTimeValueObject.m in Sources */,
+				386151FC1E9F6BB300341BCB /* HYSexTableViewCell.m in Sources */,
+				386151F21E9F6BB300341BCB /* HYIconTitleHorizontalCollectionViewCell.m in Sources */,
+				386151EE1E9F6BB300341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m in Sources */,
+				386151D91E9F6BB300341BCB /* ZJNSObjectCategory.m in Sources */,
+				386151DC1E9F6BB300341BCB /* ZJNameIDObject.m in Sources */,
+				386152031E9F6BB300341BCB /* HYTextImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +1160,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -399,6 +1208,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -426,7 +1236,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = X69A28X2L6;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = TestCategory/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanyouapp.com.TestCategory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,7 +1250,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = X69A28X2L6;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = TestCategory/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanyouapp.com.TestCategory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -509,6 +1325,7 @@
 				387034161DFAC37900426DA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		387034171DFAC37900426DA3 /* Build configuration list for PBXNativeTarget "TestCategoryTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +1334,7 @@
 				387034191DFAC37900426DA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3870341A1DFAC37900426DA3 /* Build configuration list for PBXNativeTarget "TestCategoryUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +1343,7 @@
 				3870341C1DFAC37900426DA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

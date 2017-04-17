@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HYSubTitleDetailTitleTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8TO-23-ghp">
+                        <rect key="frame" x="8" y="17" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="8TO-23-ghp" secondAttribute="height" multiplier="1:1" id="gYa-KF-si3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="深圳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiD-a3-x53">
+                        <rect key="frame" x="60" y="17" width="35" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="深圳市体育中心" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWy-MX-vCP">
+                        <rect key="frame" x="60" y="41" width="108" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.34859775641025637" green="0.34859775641025637" blue="0.34859775641025637" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4A-T0-823">
+                        <rect key="frame" x="60" y="39" width="252" height="1"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="GVD-5c-lat"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1970-01-01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D4-oz-qPg">
+                        <rect key="frame" x="233" y="21" width="79" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥199" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6W-rG-OW1">
+                        <rect key="frame" x="271" y="44" width="41" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="1" green="0.11827956990000001" blue="0.11827956990000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="8TO-23-ghp" secondAttribute="bottom" constant="10" id="J8b-tM-mYc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="i6W-rG-OW1" secondAttribute="trailing" id="RtV-Df-n8F"/>
+                    <constraint firstItem="P4A-T0-823" firstAttribute="top" secondItem="BiD-a3-x53" secondAttribute="bottom" constant="1" id="SOg-hS-QgH"/>
+                    <constraint firstItem="8TO-23-ghp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Smb-QY-2q6"/>
+                    <constraint firstItem="i6W-rG-OW1" firstAttribute="top" secondItem="P4A-T0-823" secondAttribute="bottom" constant="4" id="U6U-5i-KRh"/>
+                    <constraint firstItem="BiD-a3-x53" firstAttribute="leading" secondItem="8TO-23-ghp" secondAttribute="trailing" constant="8" id="anM-2z-7jN"/>
+                    <constraint firstItem="P4A-T0-823" firstAttribute="centerY" secondItem="8TO-23-ghp" secondAttribute="centerY" id="bUA-yj-POo"/>
+                    <constraint firstItem="8TO-23-ghp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="kE9-yP-AyY"/>
+                    <constraint firstItem="UWy-MX-vCP" firstAttribute="leading" secondItem="BiD-a3-x53" secondAttribute="leading" id="kwp-3D-9ai"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="8D4-oz-qPg" secondAttribute="trailing" id="tFM-5H-ADm"/>
+                    <constraint firstItem="P4A-T0-823" firstAttribute="top" secondItem="8D4-oz-qPg" secondAttribute="bottom" id="vUl-w8-6yP"/>
+                    <constraint firstItem="UWy-MX-vCP" firstAttribute="top" secondItem="P4A-T0-823" secondAttribute="bottom" constant="1" id="yGf-Vz-xFH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="P4A-T0-823" secondAttribute="trailing" id="yMB-GA-iWH"/>
+                    <constraint firstItem="P4A-T0-823" firstAttribute="leading" secondItem="8TO-23-ghp" secondAttribute="trailing" constant="8" id="zJa-fx-unM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconIV" destination="8TO-23-ghp" id="yyp-s4-Sl4"/>
+                <outlet property="rightDetailSubTextLabel" destination="i6W-rG-OW1" id="wQY-3S-86m"/>
+                <outlet property="rightDetailTextLabel" destination="8D4-oz-qPg" id="rvr-m3-dQ2"/>
+                <outlet property="subTitleLabel" destination="UWy-MX-vCP" id="pIA-71-APZ"/>
+                <outlet property="titleLabel" destination="BiD-a3-x53" id="iFS-QQ-i64"/>
+            </connections>
+            <point key="canvasLocation" x="66" y="-430"/>
+        </tableViewCell>
+    </objects>
+</document>
