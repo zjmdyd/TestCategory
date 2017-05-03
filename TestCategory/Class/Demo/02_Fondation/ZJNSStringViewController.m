@@ -1,34 +1,37 @@
 //
-//  ZJApplicationViewController.m
+//  ZJNSStringViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 4/14/17.
+//  Created by ZJ on 5/3/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJApplicationViewController.h"
-#import "ZJNSObjectCategory.h"
+#import "ZJNSStringViewController.h"
 
-@interface ZJApplicationViewController ()
+@interface ZJNSStringViewController ()
 
 @end
 
-@implementation ZJApplicationViewController
+@implementation ZJNSStringViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [UIApplication openSystemSettingWithType:SystemSettingTypeOfWiFi];
-    NSLog(@"currentVC = %@", [UIApplication currentVC]);
-    NSLog(@"currentVC = %@", [self nameWithInstance:self]);
+    
+    [self test];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-//    NSLog(@"currentVC = %@", [UIApplication currentVC]);
+/**
+ 两个地址不一样
+ */
+- (void)test {
+    NSString *obj1 = @"呵呵";
+    NSString *obj2 = [NSString stringWithFormat:@"%@", @"呵呵"];
+    NSLog(@"obj1 = %p, obj2 = %p", obj1, obj2);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*

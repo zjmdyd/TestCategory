@@ -1,34 +1,38 @@
 //
-//  ZJApplicationViewController.m
+//  ZJNSNumberViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 4/14/17.
+//  Created by ZJ on 5/3/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJApplicationViewController.h"
-#import "ZJNSObjectCategory.h"
+#import "ZJNSNumberViewController.h"
 
-@interface ZJApplicationViewController ()
+@interface ZJNSNumberViewController ()
 
 @end
 
-@implementation ZJApplicationViewController
+@implementation ZJNSNumberViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [UIApplication openSystemSettingWithType:SystemSettingTypeOfWiFi];
-    NSLog(@"currentVC = %@", [UIApplication currentVC]);
-    NSLog(@"currentVC = %@", [self nameWithInstance:self]);
+    
+    [self test];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-//    NSLog(@"currentVC = %@", [UIApplication currentVC]);
+/**
+ 三个内存地址一样
+ */
+- (void)test {
+    NSNumber *obj1 = @1;
+    NSNumber *obj2 = [NSNumber numberWithInt:1];
+    NSNumber *obj3 = [[NSNumber alloc] initWithInt:1];
+    NSLog(@"obj1 = %p, obj2 = %p, obj3 = %p", obj1, obj2, obj3);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ZJBaseTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,8 +17,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    //
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.window makeKeyAndVisible];
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    ZJBaseTabBarViewController *vc = [ZJBaseTabBarViewController new];
+    self.window.rootViewController = vc;
+    
     return YES;
 }
 

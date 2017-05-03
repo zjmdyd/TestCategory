@@ -121,49 +121,6 @@
     return [array copy];
 }
 
-- (UIView *)barButtonCustomViewWithImageNames:(NSArray *)images {
-    SEL s = NSSelectorFromString(barItemAction);
-    
-    CGFloat width = 30;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width*images.count+DefaultMargin, width)];
-    NSInteger count = images.count;
-    if (count > 2) count = 2;
-    for (int i = 0; i < count; i++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-        btn.tag = i;
-        btn.frame = CGRectMake(i*(view.frame.size.width-width), 0, width, width);
-        [btn setImage:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-        [btn addTarget:self action:s forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:btn];
-    }
-    
-    return view;
-}
-
-#pragma mark - 未完成
-
-- (UIView *)barButtonCustomViewWithUnSelectImgNames:(NSArray *)imageNames1 selectImgNames:(NSArray *)imageNames2 {
-    SEL s = NSSelectorFromString(barItemAction);
-    
-    CGFloat width = 40;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width*imageNames1.count+DefaultMargin/2, width)];
-    NSInteger count = imageNames1.count;
-    if (count > 2) count = 2;
-    for (int i = 0; i < count; i++) {
-//        ZJSelectButton *btn = [ZJSelectButton buttonWithType:UIButtonTypeSystem];
-//        btn.tag = i;
-//        btn.frame = CGRectMake(i*(view.frame.size.width-width), 0, width, width);
-//        btn.unSelectImgName = imageNames1[i];
-//        btn.selectImgName = imageNames2[i];
-//        btn.select = NO;
-//        [btn addTarget:self action:s forControlEvents:UIControlEventTouchUpInside];
-//        [view addSubview:btn];
-    }
-    
-    return view;
-}
-
-
 - (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images {
     SEL s = NSSelectorFromString(barItemAction);
     

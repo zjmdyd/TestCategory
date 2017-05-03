@@ -19,16 +19,17 @@
     
     NSMutableArray *ary = [NSMutableArray array];
     for (int i = 0; i < 10; i++) {
-        [ary addObject:@(i).stringValue];
+        [ary addObject:@(i)];
     }
     
     NSLog(@"%@", [ary componentsJoinedByString:@", "]);
     NSLog(@"%zd", [ary containsObject:@"1"]);
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

@@ -1,30 +1,25 @@
 //
-//  ZJApplicationViewController.m
+//  ZJTestAlertViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 4/14/17.
-//  Copyright © 2017 ZJ. All rights reserved.
+//  Created by ZJ on 12/13/16.
+//  Copyright © 2016 ZJ. All rights reserved.
 //
 
-#import "ZJApplicationViewController.h"
+#import "ZJTestAlertViewController.h"
 #import "ZJNSObjectCategory.h"
 
-@interface ZJApplicationViewController ()
-
+@interface ZJTestAlertViewController ()
 @end
 
-@implementation ZJApplicationViewController
+@implementation ZJTestAlertViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [UIApplication openSystemSettingWithType:SystemSettingTypeOfWiFi];
-    NSLog(@"currentVC = %@", [UIApplication currentVC]);
-    NSLog(@"currentVC = %@", [self nameWithInstance:self]);
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-//    NSLog(@"currentVC = %@", [UIApplication currentVC]);
+- (IBAction)click:(UIButton *)sender {
+    [UIApplication showAlertViewWithTitle:@"哈哈" msg:@"" ctrl:self];
 }
 
 - (void)didReceiveMemoryWarning {

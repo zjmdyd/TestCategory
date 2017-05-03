@@ -1,34 +1,34 @@
 //
-//  ZJApplicationViewController.m
+//  ZJNaviNextViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 4/14/17.
+//  Created by ZJ on 5/3/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJApplicationViewController.h"
-#import "ZJNSObjectCategory.h"
+#import "ZJNaviNextViewController.h"
+#import "ZJControllerHeaderFile.h"
 
-@interface ZJApplicationViewController ()
+@interface ZJNaviNextViewController ()
 
 @end
 
-@implementation ZJApplicationViewController
+@implementation ZJNaviNextViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [UIApplication openSystemSettingWithType:SystemSettingTypeOfWiFi];
-    NSLog(@"currentVC = %@", [UIApplication currentVC]);
-    NSLog(@"currentVC = %@", [self nameWithInstance:self]);
+    // Do any additional setup after loading the view.
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-//    NSLog(@"currentVC = %@", [UIApplication currentVC]);
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSLog(@"%@", self.navigationController);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*

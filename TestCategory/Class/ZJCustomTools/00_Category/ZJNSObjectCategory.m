@@ -138,12 +138,36 @@
     UIView *frontView = [[window subviews] objectAtIndex:0];
     id nextResponder = [frontView nextResponder];
     
-    if ([nextResponder isKindOfClass:[UIViewController class]])
+    if ([nextResponder isKindOfClass:[UIViewController class]]) {
         result = nextResponder;
+        
+        UIView *view = [self subViews:[frontView subviews][0]];
+        if ([[view nextResponder] isKindOfClass:[UIViewController class]]) {
+            result = (UIViewController *)[view nextResponder];
+        }
+    }
+
     else
         result = window.rootViewController;
     
     return result;
+}
+
++ (UIView *)subViews:(UIView *)view {
+    if (view.subviews.count) {
+        for (UIView *subView in view.subviews) {
+            if (![[view nextResponder] isKindOfClass:[UINavigationController class]] && [[view nextResponder] isKindOfClass:[UIViewController class]]) {
+                return view;
+            }
+            NSLog(@"view = %@\nnextResponder = %@", subView, [subView nextResponder]);
+        }
+        
+        for (UIView *subView in view.subviews) {
+            return [self subViews:subView];
+        }
+    }
+    
+    return view;
 }
 
 #pragma mark - 系统声音
