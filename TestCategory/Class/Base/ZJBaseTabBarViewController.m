@@ -8,6 +8,7 @@
 
 #import "ZJBaseTabBarViewController.h"
 #import "ZJControllerHeaderFile.h"
+#import "ZJUIViewCategory.h"
 
 @interface ZJBaseTabBarViewController ()
 
@@ -22,10 +23,10 @@
 }
 
 - (void)initSetting {
-    NSArray *titles = @[@"NSObject", @"UIKit", @"Fondation", @"Controller"];
-    NSArray *image = @[@"ic_shouye_72x72", @"ic_xiaoxi_72x72", @"ic_wode_72x72", @"ic_wode_72x72"];
-    NSArray *selectImage = @[@"ic_shouye_blue_72x72", @"ic_xiaoxi_blue_72x72", @"ic_wode_blue_72x72", @"ic_wode_blue_72x72"];
-    NSArray *nibNames = @[@"ZJNSObjectTableViewController", @"ZJUIKitTableViewController", @"ZJFondationTableViewController", @"ZJControllerTableViewController"];
+    NSArray *titles = @[@"NSObject", @"UIKit", @"Fondation", @"Controller", @"Other"];
+    NSArray *image = @[@"ic_shouye_72x72", @"ic_dangan_72x72", @"ic_faxian_72x72", @"ic_wode_72x72", @"ic_faxian_72x72"];
+    NSArray *selectImage = @[@"ic_shouye_blue_72x72", @"ic_dangan_blue_72x72", @"ic_faxian_blue_72x72", @"ic_wode_blue_72x72", @"ic_faxian_blue_72x72"];
+    NSArray *nibNames = @[@"ZJNSObjectTableViewController", @"ZJUIKitTableViewController", @"ZJFondationTableViewController", @"ZJControllerTableViewController", @"ZJOtherTableViewController"];
     
     NSMutableArray *ary = [NSMutableArray array];
     for (int i = 0; i < nibNames.count; i++) {
@@ -37,12 +38,12 @@
         }
         
         ZJNavigationController *navi = [[ZJNavigationController alloc] initWithRootViewController:vc];
-        navi.navigationBarBgColor = [UIColor whiteColor];
-        navi.navigationBarTintColor = [UIColor blackColor];
+        navi.navigationBarBgColor = UIColorFromHex(0x64ebeb);
+        navi.navigationBarTintColor = UIColorFromHex(0xfffffa);//[UIColor whiteColor];
         ((UIViewController *)navi.viewControllers[0]).navigationItem.title = navi.tabBarItem.title = titles[i];
         navi.tabBarItem.image = [[UIImage imageNamed:image[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         navi.tabBarItem.selectedImage = [[UIImage imageNamed:selectImage[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]} forState:UIControlStateSelected];
+        [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromHex(0x0EC6DC)} forState:UIControlStateSelected];
         [ary addObject:navi];
     }
     

@@ -1,34 +1,27 @@
 //
-//  ZJApplicationViewController.m
+//  ZJTestWebViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 4/14/17.
+//  Created by ZJ on 5/4/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJApplicationViewController.h"
-#import "ZJNSObjectCategory.h"
+#import "ZJTestWebViewController.h"
 
-@interface ZJApplicationViewController ()
+@interface ZJTestWebViewController ()
 
 @end
 
-@implementation ZJApplicationViewController
+@implementation ZJTestWebViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [UIApplication openSystemSettingWithType:SystemSettingTypeOfWiFi];
-    NSLog(@"currentVC = %@", [UIApplication currentVC]);
-    NSLog(@"currentVC = %@", [self nameWithInstance:self]);
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-//    NSLog(@"currentVC = %@", [UIApplication currentVC]);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*

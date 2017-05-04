@@ -1,0 +1,29 @@
+//
+//  ZJWebViewController.h
+//  DiabetesGuard
+//
+//  Created by ZJ on 7/20/16.
+//  Copyright © 2016 YCLZONE. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@protocol ZJWebViewControllerDelegate <NSObject>
+@optional
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+- (void)webViewDidStartLoad:(UIWebView *)webView;
+- (void)webViewDidFinishLoad:(UIWebView *)webView;
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
+
+@end
+
+@interface ZJWebViewController : UIViewController
+
+/**
+ @param address 本地html文件或者url
+ */
+- (instancetype)initWithAddress:(NSString *)address title:(NSString *)title;
+@property (nonatomic, copy, readonly) NSString *address;
+@property (nonatomic, weak) id <ZJWebViewControllerDelegate>delegate;
+
+@end

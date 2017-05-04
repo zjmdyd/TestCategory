@@ -36,7 +36,7 @@
 - (void)setNavigationBarTranslucent:(BOOL)navigationBarTranslucent {
     _navigationBarTranslucent = navigationBarTranslucent;
     
-    self.navigationBar.translucent = _navigationBarTranslucent;    // 为了防止与状态栏颜色出现不同
+    self.navigationBar.translucent = _navigationBarTranslucent;
 }
 
 - (void)setNavigationBarShadowColor:(UIColor *)navigationBarShadowColor {
@@ -49,6 +49,12 @@
     _navigationBarTintColor = navigationBarTintColor;
     self.navigationBar.tintColor = _navigationBarTintColor;    // 对返回按钮颜色起作用
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:_navigationBarTintColor}];
+}
+
+- (void)setNavigationBarBgImage:(UIImage *)navigationBarBgImage {
+    _navigationBarBgImage = navigationBarBgImage;
+    
+    [self.navigationBar setBackgroundImage:_navigationBarBgImage forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {

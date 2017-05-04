@@ -9,6 +9,8 @@
 #import "ZJControllerTableViewController.h"
 #import "ZJControllerCategory.h"
 
+#import "ZJTestWebViewController.h"
+
 @interface ZJControllerTableViewController () {
     NSArray *_vcNames;
 }
@@ -24,7 +26,7 @@
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJViewController", @"ZJNaviController",];
+    _vcNames = @[@"ZJViewController", @"ZJNaviController", @"ZJTestWebViewController"];
 }
 
 #pragma mark - UITableViewDataSource
@@ -48,9 +50,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *name = _vcNames[indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (indexPath.row == 2) {
+        ZJTestWebViewController *vc = [[ZJTestWebViewController alloc] initWithAddress:@"http://www.mycodes.net/105/9281.htm" title:@"TEST"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else {
+        NSString *name = _vcNames[indexPath.row];
+        UIViewController *vc = [self createVCWithName:name title:name];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

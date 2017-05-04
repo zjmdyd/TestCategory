@@ -13,5 +13,6 @@
 #endif /* ZJControllerHeaderFile_h */
 
 #import "ZJNavigationController.h"
-#import "HYWebViewController.h"
+#import "ZJWebViewController.h"
+#import "ZJTextViewController.h"
 #import "ZJTabBarViewController.h"
