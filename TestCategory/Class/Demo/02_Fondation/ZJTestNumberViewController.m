@@ -1,27 +1,33 @@
 //
-//  ZJViewController.m
+//  ZJTestNumberViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 4/14/17.
+//  Created by ZJ on 5/3/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJViewController.h"
-#import "ZJControllerCategory.h"
+#import "ZJTestNumberViewController.h"
 
-@interface ZJViewController ()
+@interface ZJTestNumberViewController ()
 
 @end
 
-@implementation ZJViewController
+@implementation ZJTestNumberViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    [self test];
 }
 
-- (IBAction)popEvent:(UIButton *)sender {
-    [self.navigationController popViewControllerFromDirection:TransitionDerectionOfBottom];
+/**
+ 三个内存地址一样
+ */
+- (void)test {
+    NSNumber *obj1 = @1;
+    NSNumber *obj2 = [NSNumber numberWithInt:1];
+    NSNumber *obj3 = [[NSNumber alloc] initWithInt:1];
+    NSLog(@"obj1 = %p, obj2 = %p, obj3 = %p", obj1, obj2, obj3);
 }
 
 - (void)didReceiveMemoryWarning {

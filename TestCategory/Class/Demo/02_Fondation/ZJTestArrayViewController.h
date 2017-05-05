@@ -1,5 +1,5 @@
 //
-//  ZJNSArrayViewController.h
+//  ZJTestArrayViewController.h
 //  TestCategory
 //
 //  Created by ZJ on 4/14/17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZJNSArrayViewController : UIViewController
+@interface ZJTestArrayViewController : UIViewController
 
 @end

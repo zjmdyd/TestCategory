@@ -7,12 +7,14 @@
 //
 
 #import "ZJOtherTableViewController.h"
+#import "ZJTextViewController.h"
 #import "ZJControllerCategory.h"
+#import "ZJFondationCategory.h"
 
-#import "ZJProtocolViewController.h"
-
-@interface ZJOtherTableViewController () {
-    NSArray *_vcNames;
+@interface ZJOtherTableViewController ()<ZJTextViewControllerDelegate> {
+    NSString *_path;
+    NSMutableArray *_files;
+    NSMutableDictionary *_selectDic;
 }
 
 @end
@@ -26,21 +28,30 @@
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJProtocolViewController",];
+    _path = [[NSBundle mainBundle] pathForResource:@"note" ofType:@"plist"];
+    _files = [[NSArray arrayWithContentsOfFile:_path] mutableCopy];
+    for (int i = 0; i < _files.count; i++) {
+        _files[i] = [_files[i] mutableCopy];
+    }
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _vcNames.count;
+    return _files.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = _vcNames[indexPath.row];
+    NSDictionary *dic = _files[indexPath.row];
+    cell.textLabel.text = dic[@"title"];
+    NSDate *date = dic[@"time"];
+    NSDateFormatter *format = [NSDateFormatter new];
+    format.dateFormat = @"yyyy/MM/dd HH:mm";
+    cell.detailTextLabel.text = [format stringFromDate:date];
     
     return cell;
 }
@@ -50,9 +61,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *name = _vcNames[indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name];
+    _selectDic = _files[indexPath.row];
+
+    NSString *text = _selectDic[@"value"];
+    ZJTextViewController *vc = [[ZJTextViewController alloc] initWithText:text];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - ZJTextViewControllerDelegate
+
+- (void)textViewController:(ZJTextViewController *)viewController didEndEditText:(NSString *)text {
+    [_selectDic setObject:text forKey:@"value"];
+    [_selectDic setObject:[NSDate date] forKey:@"time"];
+    [_files writeToFile:_path atomically:YES];
 }
 
 - (void)didReceiveMemoryWarning {

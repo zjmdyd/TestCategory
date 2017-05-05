@@ -8,13 +8,26 @@
 
 #import "ZJTextViewController.h"
 
-@interface ZJTextViewController ()<UITextViewDelegate>
+@interface ZJTextViewController ()<UITextViewDelegate> {
+    NSString *_originText;
+}
 
 @property (nonatomic, strong) UITextView *textView;
 
 @end
 
 @implementation ZJTextViewController
+
+- (instancetype)initWithText:(NSString *)text {
+    self = [super init];
+    if (self) {
+        self.text = text;
+        
+        _originText = self.text;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,40 +45,23 @@
         _textView = [[UITextView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _textView.delegate = self;
         _textView.alwaysBounceVertical = YES;
+        _textView.font = [UIFont systemFontOfSize:16];
         _textView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
         [self.view addSubview:_textView];
     }
     return _textView;
 }
 
-/**
- [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
- [self.timer invalidate];
- if (response && !connectionError) {
- [self.webView loadRequest:request];
- }else {
- NSString *text;
- if (!response) {
- text = @"暂无响应";
- HiddenProgressView(YES, text, YES);
- }else {
- text = @"连接失败";
- HiddenProgressView(YES, text, YES);
- }
- [self.errorView showErrorViewWithMsg:text type:HYErrorViewTypeOfError];
- }
- }];
- 
- 
- @property (nonatomic, assign, readwrite) id delegate;
- 声明一个delegate，那么即便delegate指向的对象销毁了，delegate中依然会保存之前对象的地址
- 即，delegate成为了一个野指针...
- 而使用weak，则不会有上述问题，当delegate指向的对象销毁后，delegate = nil
- 
- 
- 在Info.plist中添加NSAppTransportSecurity类型Dictionary。
- 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
- */
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (![_originText isEqualToString:self.textView.text]) {
+        if ([self.delegate respondsToSelector:@selector(textViewController:didEndEditText:)]) {
+            [self.delegate textViewController:self didEndEditText:self.textView.text];
+        }
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

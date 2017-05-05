@@ -27,6 +27,8 @@
 
 @interface NSString (ZJString)
 
++ (NSString *)stringWithFileName:(NSString *)name;
+
 + (NSArray *)sexStrings;
 
 #pragma mark - 属性字符串

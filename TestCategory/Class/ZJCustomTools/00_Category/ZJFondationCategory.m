@@ -52,6 +52,16 @@
 
 @implementation NSString (ZJString)
 
++ (NSString *)stringWithFileName:(NSString *)name {
+    NSError *error;
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:name];
+    NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        NSLog(@"error = %@", error);
+    }
+    return string;
+}
+
 + (NSArray *)sexStrings {
     return @[@"男", @"女"];
 }

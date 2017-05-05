@@ -1,18 +1,18 @@
 //
-//  ZJNSArrayViewController.m
+//  ZJTestArrayViewController.m
 //  TestCategory
 //
 //  Created by ZJ on 4/14/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJNSArrayViewController.h"
+#import "ZJTestArrayViewController.h"
 
-@interface ZJNSArrayViewController ()
+@interface ZJTestArrayViewController ()
 
 @end
 
-@implementation ZJNSArrayViewController
+@implementation ZJTestArrayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

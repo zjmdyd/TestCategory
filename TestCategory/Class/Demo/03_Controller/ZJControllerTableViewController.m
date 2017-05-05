@@ -26,7 +26,7 @@
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJViewController", @"ZJNaviController", @"ZJTestWebViewController"];
+    _vcNames = @[@"ZJTestViewController", @"ZJTestNaviController", @"ZJTestWebViewController"];
 }
 
 #pragma mark - UITableViewDataSource

@@ -1,20 +1,20 @@
 //
-//  ZJNaviController.m
+//  ZJTestNaviController.m
 //  TestCategory
 //
 //  Created by ZJ on 5/3/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJNaviController.h"
+#import "ZJTestNaviController.h"
 #import "ZJControllerCategory.h"
 #import "ZJControllerHeaderFile.h"
 
-@interface ZJNaviController ()
+@interface ZJTestNaviController ()
 
 @end
 
-@implementation ZJNaviController
+@implementation ZJTestNaviController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

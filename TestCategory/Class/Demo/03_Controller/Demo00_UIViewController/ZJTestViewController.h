@@ -1,5 +1,5 @@
 //
-//  ZJViewController.h
+//  ZJTestViewController.h
 //  TestCategory
 //
 //  Created by ZJ on 4/14/17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZJViewController : UIViewController
+@interface ZJTestViewController : UIViewController
 
 @end

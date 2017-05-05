@@ -24,7 +24,7 @@
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJNSArrayViewController", @"ZJNSNumberViewController", @"ZJNSStringViewController", ];
+    _vcNames = @[@"ZJTestArrayViewController", @"ZJTestNumberViewController", @"ZJTestStringViewController", ];
 }
 
 #pragma mark - UITableViewDataSource

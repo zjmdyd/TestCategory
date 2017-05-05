@@ -1,18 +1,18 @@
 //
-//  ZJNSStringViewController.m
+//  ZJTestStringViewController.m
 //  TestCategory
 //
 //  Created by ZJ on 5/3/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJNSStringViewController.h"
+#import "ZJTestStringViewController.h"
 
-@interface ZJNSStringViewController ()
+@interface ZJTestStringViewController ()
 
 @end
 
-@implementation ZJNSStringViewController
+@implementation ZJTestStringViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,0 +1,6 @@
+1. http访问限制设置:
+在Info.plist中添加NSAppTransportSecurity类型Dictionary。
+在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
+
+2.状态栏设置:
+View controller-based status bar appearance = NO

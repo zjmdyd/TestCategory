@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>InfoPlist</string>
+		<key>time</key>
+		<date>2017-05-05T07:25:25Z</date>
+		<key>value</key>
+		<string>1. http访问限制设置:
+在Info.plist中添加NSAppTransportSecurity类型Dictionary。
+在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
+
+2.状态栏设置:
+View controller-based status bar appearance = NO</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Protocol</string>
+		<key>time</key>
+		<date>2017-05-05T07:28:36Z</date>
+		<key>value</key>
+		<string>@property (nonatomic, assign, readwrite) id delegate;
+声明一个delegate为strong类型，那么即便delegate指向的对象销毁了，delegate中依然会保存之前对象的地址,即delegate成为了一个野指针，
+而使用weak，则不会有上述问题，当delegate指向的对象销毁后，delegate = nil</string>
+	</dict>
+</array>
+</plist>

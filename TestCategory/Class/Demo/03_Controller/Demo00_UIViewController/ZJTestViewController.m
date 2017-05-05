@@ -1,27 +1,32 @@
 //
-//  ZJProtocolViewController.m
+//  ZJTestViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 5/4/17.
+//  Created by ZJ on 4/14/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJProtocolViewController.h"
+#import "ZJTestViewController.h"
+#import "ZJControllerCategory.h"
 
-@interface ZJProtocolViewController ()
+@interface ZJTestViewController ()
 
 @end
 
-@implementation ZJProtocolViewController
+@implementation ZJTestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.text = @"@property (nonatomic, assign, readwrite) id delegate;\n声明一个delegate，那么即便delegate指向的对象销毁了，delegate中依然会保存之前对象的地址\n即，delegate成为了一个野指针...\n而使用weak，则不会有上述问题，当delegate指向的对象销毁后，delegate = nil";
+
+}
+
+- (IBAction)popEvent:(UIButton *)sender {
+    [self.navigationController popViewControllerFromDirection:TransitionDerectionOfBottom];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*

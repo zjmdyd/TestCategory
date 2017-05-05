@@ -1,5 +1,5 @@
 //
-//  ZJNSStringViewController.h
+//  ZJTestNumberViewController.h
 //  TestCategory
 //
 //  Created by ZJ on 5/3/17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZJNSStringViewController : UIViewController
+@interface ZJTestNumberViewController : UIViewController
 
 @end

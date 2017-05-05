@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class ZJTextViewController;
+
+@protocol ZJTextViewControllerDelegate <NSObject>
+
+- (void)textViewController:(ZJTextViewController *)viewController didEndEditText:(NSString *)text;
+
+@end
+
 @interface ZJTextViewController : UIViewController
 
+- (instancetype)initWithText:(NSString *)text;
+
 @property (nonatomic, copy) NSString *text;
+@property (nonatomic, weak) id <ZJTextViewControllerDelegate> delegate;
 
 @end
