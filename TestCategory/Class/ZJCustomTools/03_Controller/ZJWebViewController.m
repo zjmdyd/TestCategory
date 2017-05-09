@@ -11,12 +11,13 @@
 
 @interface ZJWebViewController ()<UIWebViewDelegate>
 
-@property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSTimer *timer;
 
 @end
 
 @implementation ZJWebViewController
+
+@synthesize webView = _webView;
 
 - (instancetype)initWithAddress:(NSString *)address title:(NSString *)title {
     if (self = [super init]) {

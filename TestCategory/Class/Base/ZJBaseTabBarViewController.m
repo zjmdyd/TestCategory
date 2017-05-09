@@ -7,7 +7,7 @@
 //
 
 #import "ZJBaseTabBarViewController.h"
-#import "ZJControllerHeaderFile.h"
+//#import "ZJControllerHeaderFile.h"
 #import "ZJUIViewCategory.h"
 
 @interface ZJBaseTabBarViewController ()
@@ -37,10 +37,9 @@
             vc = [vc init];
         }
         
-        ZJNavigationController *navi = [[ZJNavigationController alloc] initWithRootViewController:vc];
-        navi.navigationBarBgColor = UIColorFromHex(0x64ebeb);
-        navi.navigationBarTintColor = UIColorFromHex(0xfffffa);//[UIColor whiteColor];
-        ((UIViewController *)navi.viewControllers[0]).navigationItem.title = navi.tabBarItem.title = titles[i];
+        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+        ((UIViewController *)navi.viewControllers[0]).title = titles[i];
+        navi.navigationBar.translucent = NO;
         navi.tabBarItem.image = [[UIImage imageNamed:image[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         navi.tabBarItem.selectedImage = [[UIImage imageNamed:selectImage[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromHex(0x0EC6DC)} forState:UIControlStateSelected];
@@ -53,7 +52,8 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
+//        navi.navigationBarBgColor = UIColorFromHex(0x64ebeb);
+//        navi.navigationBarTintColor = UIColorFromHex(0xfffffa);//[UIColor whiteColor];
 /*
 #pragma mark - Navigation
 

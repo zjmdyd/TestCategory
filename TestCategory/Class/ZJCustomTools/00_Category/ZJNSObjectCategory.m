@@ -71,6 +71,7 @@
     NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSData *data = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:nil];
     NSError *error;
+    NSLog(@"wpath = %@", [documentsPath stringByAppendingPathComponent:name]);
     [data writeToFile:[documentsPath stringByAppendingPathComponent:name] options:NSDataWritingAtomic error:&error];
     
     if (error) {
@@ -83,8 +84,11 @@
 - (id)readFileWithPathComponent:(NSString *)name {
     NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSData *data = [NSData dataWithContentsOfFile:[documentsPath stringByAppendingPathComponent:name]];
+    NSLog(@"rpath = %@", [documentsPath stringByAppendingPathComponent:name]);
+
     id value;
     if (data) {
+
         NSError *error;
         value =  [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         if (error) {

@@ -50,6 +50,7 @@
     
     NSString *name = _vcNames[indexPath.row];
     UIViewController *vc = [self createVCWithName:name title:name];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

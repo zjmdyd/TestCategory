@@ -24,6 +24,7 @@
  */
 - (instancetype)initWithAddress:(NSString *)address title:(NSString *)title;
 @property (nonatomic, copy, readonly) NSString *address;
+@property (strong, nonatomic, readonly) UIWebView *webView;
 @property (nonatomic, weak) id <ZJWebViewControllerDelegate>delegate;
 
 @end

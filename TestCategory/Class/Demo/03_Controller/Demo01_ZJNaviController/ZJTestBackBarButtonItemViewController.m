@@ -1,0 +1,64 @@
+//
+//  ZJTestBackBarButtonItemViewController.m
+//  TestCategory
+//
+//  Created by ZJ on 09/05/2017.
+//  Copyright © 2017 ZJ. All rights reserved.
+//
+
+#import "ZJTestBackBarButtonItemViewController.h"
+
+@interface ZJTestBackBarButtonItemViewController ()
+
+@end
+
+@implementation ZJTestBackBarButtonItemViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSLog(@"%s", __func__);
+
+    NSLog(@"navigationController = %@", self.navigationController);
+    NSLog(@"backBarButtonItem1 = %@", self.navigationItem.backBarButtonItem);
+    NSLog(@"backBarButtonItem2 = %@", self.navigationController.navigationBar.backItem);
+    NSLog(@"\n");
+}
+
+/**
+ 默认情况下，在当前视图控制器调用self.navigationItem.backBarButtonItem=nil ，除非你手动实例化它。（请记住它代表的是下一个视图的返回按钮，而不是当前的）
+ 系统不允许开发者获取当前视图控制器所显示的返回按钮UIBackBarButtonItem
+ */
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSLog(@"%s", __func__);
+
+    NSLog(@"backBarButtonItem1 = %@", self.navigationItem.backBarButtonItem);
+    NSLog(@"backBarButtonItem2 = %@, title = %@", self.navigationController.navigationBar.backItem, self.navigationController.navigationBar.backItem.title);
+    NSLog(@"\n");
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSLog(@"backBarButtonItem1 = %@", self.navigationItem.backBarButtonItem);
+    NSLog(@"backBarButtonItem2 = %@, title = %@", self.navigationController.navigationBar.backItem, self.navigationController.navigationBar.backItem.title);
+    NSLog(@"\n");
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

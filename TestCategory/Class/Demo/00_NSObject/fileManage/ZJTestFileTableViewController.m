@@ -1,32 +1,30 @@
 //
-//  ZJControllerTableViewController.m
+//  ZJTestFileTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 5/3/17.
+//  Created by ZJ on 08/05/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJControllerTableViewController.h"
+#import "ZJTestFileTableViewController.h"
 #import "ZJControllerCategory.h"
 
-#import "ZJTestWebViewController.h"
-
-@interface ZJControllerTableViewController () {
+@interface ZJTestFileTableViewController () {
     NSArray *_vcNames;
 }
 
 @end
 
-@implementation ZJControllerTableViewController
+@implementation ZJTestFileTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self initAry];
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJTestViewController", @"ZJTestWebViewController", @"ZJTestTranslucentViewController", @"ZJTestNavigationItemViewController", @"ZJTestBackBarButtonItemViewController"];
+    _vcNames = @[@"ZJTestBundleViewController", @"ZJTestSysDirViewController", ];
 }
 
 #pragma mark - UITableViewDataSource
@@ -50,16 +48,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 1) {
-        ZJTestWebViewController *vc = [[ZJTestWebViewController alloc] initWithAddress:@"http://www.mycodes.net/105/9281.htm" title:@"TEST"];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    }else {
-        NSString *name = _vcNames[indexPath.row];
-        UIViewController *vc = [self createVCWithName:name title:name];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+    NSString *name = _vcNames[indexPath.row];
+    UIViewController *vc = [self createVCWithName:name title:name];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

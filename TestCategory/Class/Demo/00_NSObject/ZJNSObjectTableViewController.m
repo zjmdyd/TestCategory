@@ -19,12 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self initAry];
 }
 
+/**
+ self.navigationItem.title > self.title, 所以这种优先级可以完成tabBarItem.title和navigationItem.tiltle不一样的显示
+ */
 - (void)initAry {
-    _vcNames = @[@"ZJApplicationViewController",];
+    _vcNames = @[@"ZJTestApplicationViewController", @"ZJTestFileTableViewController"];
 }
 
 #pragma mark - UITableViewDataSource
@@ -49,7 +52,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSString *name = _vcNames[indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name];
+    UIViewController *vc = [self createVCWithName:name title:name  isGroupTableVC:indexPath.row == 1];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

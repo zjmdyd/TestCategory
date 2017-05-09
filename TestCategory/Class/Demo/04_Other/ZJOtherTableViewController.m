@@ -8,8 +8,9 @@
 
 #import "ZJOtherTableViewController.h"
 #import "ZJTextViewController.h"
-#import "ZJControllerCategory.h"
-#import "ZJFondationCategory.h"
+#import "ZJNSObjectCategory.h"
+//#import "ZJControllerCategory.h"
+//#import "ZJFondationCategory.h"
 
 @interface ZJOtherTableViewController ()<ZJTextViewControllerDelegate> {
     NSString *_path;
@@ -30,9 +31,6 @@
 - (void)initAry {
     _path = [[NSBundle mainBundle] pathForResource:@"note" ofType:@"plist"];
     _files = [[NSArray arrayWithContentsOfFile:_path] mutableCopy];
-    for (int i = 0; i < _files.count; i++) {
-        _files[i] = [_files[i] mutableCopy];
-    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -48,7 +46,15 @@
     }
     NSDictionary *dic = _files[indexPath.row];
     cell.textLabel.text = dic[@"title"];
-    NSDate *date = dic[@"time"];
+    
+    NSDictionary *value = [self readFileWithPathComponent:dic[@"title"]];
+    NSDate *date;
+    if (!value) {
+        date = dic[@"time"];
+    }else {
+        date = dic[@"time"];
+    }
+    date = dic[@"time"];
     NSDateFormatter *format = [NSDateFormatter new];
     format.dateFormat = @"yyyy/MM/dd HH:mm";
     cell.detailTextLabel.text = [format stringFromDate:date];
@@ -66,6 +72,7 @@
     NSString *text = _selectDic[@"value"];
     ZJTextViewController *vc = [[ZJTextViewController alloc] initWithText:text];
     vc.delegate = self;
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

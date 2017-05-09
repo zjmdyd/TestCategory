@@ -38,7 +38,10 @@ typedef NS_ENUM(NSInteger, TransitionDerection) {
 /**
  *  根据控制器名字创建控制器
  */
+- (UIViewController *)createVCWithName:(NSString *)name;
+- (UIViewController *)createVCWithName:(NSString *)name isGroupTableVC:(BOOL)isGroup;
 - (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title;
+- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title isGroupTableVC:(BOOL)isGroup;
 
 #pragma mark - UIBarButtonItem
 

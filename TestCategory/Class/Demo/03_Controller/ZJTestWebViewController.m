@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.webView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {

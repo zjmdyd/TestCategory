@@ -1,5 +1,5 @@
 //
-//  ZJTestNaviController.h
+//  ZJTestTranslucentViewController.h
 //  TestCategory
 //
 //  Created by ZJ on 5/3/17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZJTestNaviController : UIViewController
+@interface ZJTestTranslucentViewController : UIViewController
 
 @end

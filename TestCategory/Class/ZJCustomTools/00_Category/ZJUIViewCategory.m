@@ -522,7 +522,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     CGFloat dy = startPoint.y - endPoint.y;    // 因为y值是向下增长的
     CGFloat dx = endPoint.x - startPoint.x;
     
-    Direction result;
+    Direction result = DirectionOfNoMove;
     if (fabs(dy) < 2 || fabs(dy) < 2) {
         return DirectionOfNoMove;
     }
