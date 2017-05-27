@@ -24,7 +24,7 @@
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJTestLabelViewController", @"ZJTestScrollViewController"];
+    _vcNames = @[@"ZJTestLabelViewController", @"ZJTestScrollViewController", @"ZJSearchingViewController"];
 }
 
 #pragma mark - UITableViewDataSource

@@ -12,18 +12,19 @@
 @interface ZJSearchingView ()
 
 @property (nonatomic, strong) UIBezierPath *layerPath;
-@property (nonatomic, strong) CAShapeLayer *shapeLayer;
-@property (nonatomic, strong) CAShapeLayer *bottomShapeLineLayer;
-@property (nonatomic, strong) ZJSearchingContentsLayer *bottomLayer;
+@property (nonatomic, strong) CAShapeLayer *frontLineLayer;
+@property (nonatomic, strong) CAShapeLayer *bottomLineLayer;
+@property (nonatomic, strong) ZJSearchingContentsLayer *bottomContentLayer;
+
 @end
 
 @implementation ZJSearchingView
 
-@synthesize contents = _contents;
-@synthesize lineColor = _lineColor;
+@synthesize frontLineColor = _frontLineColor;
 @synthesize font = _font;
 @synthesize fontSize = _fontSize;
-@synthesize bottomLineLayerColor = _bottomLineLayerColor;
+@synthesize bottomLineColor = _bottomLineColor;
+@synthesize angleSpan = _angleSpan;
 
 - (nullable instancetype)initWithFrame:(CGRect)frame content:(nullable id)content {
     self = [super initWithFrame:frame];
@@ -53,38 +54,46 @@
 }
 
 - (void)initSetting {
-    self.backgroundColor = [UIColor orangeColor];
-    
     // 默认顺时针
     _clockwise = YES;
     _angleSpan = M_PI*0.75;
     _lineWidth = 1.0;
     _duration = 1.0;
-    _hiddenBottomLineLayer = YES;
-
-    // 底部layer显示内容
-    self.bottomLayer = [ZJSearchingContentsLayer layerWithSuperLayer:self.layer];
-    self.bottomLayer.frame = self.bounds;
-    self.bottomLayer.contents = self.contents;
-    self.bottomLayer.contentsGravity = kCAGravityResizeAspectFill;
-    self.bottomLayer.backgroundColor = self.backgroundColor.CGColor;
-    
-    // 旋转layer
-    self.shapeLayer = [CAShapeLayer layer];
-    self.shapeLayer.frame = self.layer.bounds;  // 设置frame,不能设置bounds,设置bounds位置会不正确
-    self.shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
-    self.shapeLayer.fillColor = nil;
-    self.shapeLayer.strokeColor = self.lineColor.CGColor;
-    [self.layer addSublayer:self.shapeLayer];
-    
-    self.bottomShapeLineLayer.hidden = _hiddenBottomLineLayer;
 }
 
 #pragma mark - setter
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor {
-    [super setBackgroundColor:backgroundColor];
-    self.bottomLayer.backgroundColor = backgroundColor.CGColor;
+- (void)setLineWidth:(CGFloat)lineWidth {
+    _lineWidth = lineWidth;
+    self.bottomLineLayer.lineWidth = _lineWidth;
+    self.frontLineLayer.lineWidth = _lineWidth;
+    
+    // 需要重绘界面, 因为lineWidth改变, path的radius会改变
+    [self setNeedsDisplay];
+}
+
+- (void)setFrontLineColor:(UIColor *)lineColor {
+    _frontLineColor = lineColor;
+    
+    self.frontLineLayer.strokeColor = _frontLineColor.CGColor;
+}
+
+- (void)setBottomLineColor:(UIColor *)bottomLineColor {
+    _bottomLineColor = bottomLineColor;
+    
+    self.bottomLineLayer.strokeColor = _bottomLineColor.CGColor;
+}
+
+- (void)setHiddenFrontLineLayer:(BOOL)hiddenFrontLineLayer {
+    _hiddenFrontLineLayer = hiddenFrontLineLayer;
+    
+    self.frontLineLayer.hidden = _hiddenFrontLineLayer;
+}
+
+- (void)setHiddenBottomLineLayer:(BOOL)hiddenBottomLineLayer {
+    _hiddenBottomLineLayer = hiddenBottomLineLayer;
+    
+    self.bottomLineLayer.hidden = _hiddenBottomLineLayer;
 }
 
 - (void)setSearching:(BOOL)searching {
@@ -93,62 +102,71 @@
     }else {
         [self stopAnimation];
     }
-    
-    _searching = searching;
 }
 
-- (void)setContents:(id)contents {
-    _contents = contents;
-    self.bottomLayer.contents = _contents;
-}
-
-- (void)setLineWidth:(CGFloat)lineWidth {
-    _lineWidth = lineWidth;
-    self.shapeLayer.lineWidth = _lineWidth;
-    self.bottomShapeLineLayer.lineWidth = _lineWidth;
+- (void)setClockwise:(BOOL)clockwise {
+    _clockwise = clockwise;
     
-    // 需要重绘界面, 因为lineWidth改变, path的radius会改变
     [self setNeedsDisplay];
+    [self updateLayer];
 }
 
-- (void)setLineColor:(UIColor *)lineColor {
-    _lineColor = lineColor;
+- (void)setDuration:(CGFloat)duration {
+    _duration = duration;
     
-    self.shapeLayer.strokeColor = _lineColor.CGColor;
+    [self updateLayer];
 }
 
-- (void)setHiddenLineLayer:(BOOL)hiddenLineLayer {
-    _hiddenLineLayer = hiddenLineLayer;
-
-    self.shapeLayer.hidden = _hiddenLineLayer;
-}
-
-- (void)setBottomLineLayerColor:(UIColor *)bottomLineLayerColor {
-    _bottomLineLayerColor = bottomLineLayerColor;
+- (void)setAngleSpan:(CGFloat)angleSpan {
+    _angleSpan = angleSpan;
     
-    self.bottomShapeLineLayer.strokeColor = _bottomLineLayerColor.CGColor;
-}
-
-- (void)setHiddenBottomLineLayer:(BOOL)hiddenBottomLineLayer {
-    _hiddenBottomLineLayer = hiddenBottomLineLayer;
-    
-    self.bottomShapeLineLayer.hidden = _hiddenBottomLineLayer;
     [self setNeedsDisplay];
-}
-
-- (void)setFont:(UIFont *)font {
-    _font = font;
-    
-    self.bottomLayer.font = _font;
-}
-
-- (void)setFontSize:(CGFloat)fontSize {
-    _fontSize = fontSize;
-    
-    self.bottomLayer.fontSize = _fontSize;
 }
 
 #pragma mark - getter
+
+- (CAShapeLayer *)bottomLineLayer {
+    if (!_bottomLineLayer) {
+        // 旋转layer底部的lineLayer
+        _bottomLineLayer = [CAShapeLayer layer];
+        _bottomLineLayer.frame = self.layer.bounds;  // 设置frame,不能设置bounds,设置bounds位置会不正确
+        _bottomLineLayer.backgroundColor = [UIColor clearColor].CGColor;
+        _bottomLineLayer.fillColor = nil;
+        _bottomLineLayer.strokeColor = self.bottomLineColor.CGColor;
+        [self.layer addSublayer:_bottomLineLayer];
+    }
+    return _bottomLineLayer;
+}
+
+- (CAShapeLayer *)frontLineLayer {
+    if (!_frontLineLayer) {
+        // 旋转layer
+        _frontLineLayer = [CAShapeLayer layer];
+        _frontLineLayer.frame = self.layer.bounds;  // 设置frame,不能设置bounds,设置bounds位置会不正确
+        _frontLineLayer.backgroundColor = [UIColor clearColor].CGColor;
+        _frontLineLayer.fillColor = nil;
+        _frontLineLayer.strokeColor = self.frontLineColor.CGColor;
+        [self.layer addSublayer:_frontLineLayer];
+    }
+    
+    return _frontLineLayer;
+}
+
+- (UIColor *)bottomLineColor {
+    if (!_bottomLineColor) {
+        _bottomLineColor = [UIColor groupTableViewBackgroundColor];
+    }
+    
+    return _bottomLineColor;
+}
+
+- (UIColor *)frontLineColor {
+    if (!_frontLineColor) {
+        _frontLineColor = [UIColor redColor];
+    }
+    
+    return _frontLineColor;
+}
 
 - (CGFloat)angleSpan {
     if (self.isClosewise) {
@@ -158,49 +176,54 @@
     }
 }
 
-- (id)contents {
-    return _contents;
+#pragma mark - contentLayer
+
+- (void)setContents:(id)contents {
+    _contents = contents;
+    self.bottomContentLayer.contents = _contents;
 }
 
-- (UIColor *)lineColor {
-    if (!_lineColor) {
-        _lineColor = [UIColor redColor];
-    }
+- (void)setFont:(UIFont *)font {
+    _font = font;
     
-    return _lineColor;
+    self.bottomContentLayer.font = _font;
+}
+
+- (void)setFontSize:(CGFloat)fontSize {
+    _fontSize = fontSize;
+    
+    self.bottomContentLayer.fontSize = _fontSize;
+}
+
+- (void)setContentViewBackgroundColor:(UIColor *)contentViewBackgroundColor {
+    _contentViewBackgroundColor = contentViewBackgroundColor;
+    
+    self.bottomContentLayer.backgroundColor = _contentViewBackgroundColor.CGColor;
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    
+    self.bottomContentLayer.textColor = _textColor;
+}
+
+- (ZJSearchingContentsLayer *)bottomContentLayer {
+    if (!_bottomContentLayer) {
+        // 底部layer显示内容
+        _bottomContentLayer = [ZJSearchingContentsLayer layerWithSuperLayer:self.layer];
+        _bottomContentLayer.frame = self.bounds;
+        _bottomContentLayer.contents = self.contents;
+        _bottomContentLayer.contentsGravity = kCAGravityResizeAspectFill;
+    }
+    return _bottomContentLayer;
 }
 
 - (UIFont *)font {
-    return self.bottomLayer.font;
+    return self.bottomContentLayer.font;
 }
 
 - (CGFloat)fontSize {
-    return self.bottomLayer.fontSize;
-}
-
-- (UIColor *)backgroundColor {
-    return [UIColor colorWithCGColor:self.bottomLayer.backgroundColor];
-}
-
-- (CAShapeLayer *)bottomShapeLineLayer {
-    if (!_bottomShapeLineLayer) {
-        // 旋转layer底部line
-        _bottomShapeLineLayer = [CAShapeLayer layer];
-        _bottomShapeLineLayer.frame = self.layer.bounds;  // 设置frame,不能设置bounds,设置bounds位置会不正确
-        _bottomShapeLineLayer.backgroundColor = [UIColor clearColor].CGColor;
-        _bottomShapeLineLayer.fillColor = nil;
-        _bottomShapeLineLayer.strokeColor = self.bottomLineLayerColor.CGColor;
-        [self.layer insertSublayer:_bottomShapeLineLayer below:self.shapeLayer];
-    }
-    return _bottomShapeLineLayer;
-}
-
-- (UIColor *)bottomLineLayerColor {
-    if (!_bottomLineLayerColor) {
-        _bottomLineLayerColor = [UIColor groupTableViewBackgroundColor];
-    }
-    
-    return _bottomLineLayerColor;
+    return self.bottomContentLayer.fontSize;
 }
 
 #pragma mark - public
@@ -229,7 +252,7 @@
 
 - (void)stopAnimation {
     if (self.isSearching) {
-        [self.shapeLayer removeAnimationForKey:@"rotationAnimation"];
+        [self.frontLineLayer removeAnimationForKey:@"rotationAnimation"];
     }
 }
 
@@ -244,23 +267,24 @@
     rotationAnimation.duration = self.duration;
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = MAXFLOAT;
-    [self.shapeLayer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    [self.frontLineLayer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    
 }
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
-    // x轴0度角, 顺时针向下为正,逆时针向下为负
-    UIBezierPath *layerPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)) radius:(self.bounds.size.width - _lineWidth) / 2 startAngle:0 endAngle:self.angleSpan clockwise:self.clockwise];
-    layerPath.lineWidth = self.lineWidth;
-    self.shapeLayer.path = layerPath.CGPath;
-    
     if (self.hiddenBottomLineLayer == NO) {
         UIBezierPath *layerPath2 = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)) radius:(self.bounds.size.width - _lineWidth) / 2 startAngle:0 endAngle:2*M_PI clockwise:self.clockwise];
         layerPath2.lineWidth = self.lineWidth;
-        self.bottomShapeLineLayer.path = layerPath2.CGPath;
+        self.bottomLineLayer.path = layerPath2.CGPath;
     }
+    
+    // x轴0度角, 顺时针向下为正,逆时针向下为负
+    UIBezierPath *layerPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)) radius:(self.bounds.size.width - _lineWidth) / 2 startAngle:0 endAngle:self.angleSpan clockwise:self.clockwise];
+    layerPath.lineWidth = self.lineWidth;
+    self.frontLineLayer.path = layerPath.CGPath;
     
     CGContextRestoreGState(context);
 }

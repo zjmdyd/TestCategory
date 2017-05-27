@@ -1,0 +1,124 @@
+OC Category 分类
+分类就是类的补充和扩展部分
+补充和扩展的每个部分就是分类
+分类本质上是类的一部分
+分类是给特定类添加能力
+
+分类的定义
+分类也是以代码的形式保存在文件中
+分类文件命名 主类类名+分类类名
+分类文件也分为*.h文件和*.m文件
+*.h文件存放分类的声明部分内容
+@interface 主类类名(分类类名)
+//添加方法声明
+@end
+.m文件存放分类的实现部分内容
+@implementation 主类类名(分类类名)
+//添加方法实现
+@end
+分类中是不可以创建实例变量的，自然也不可以创建属性。
+在分类中是可以访问主类的属性，但不可以访问主类的实例变量。
+分类的实现步骤：
+1.创建分类
+2.调用分类中的方法
+3.#import 分类
+
+分类的使用
+分类可以给一个自定义类添加功能
+分类还可以给一个系统类或第三方类添加功能
+
+二、扩展(延展)
+1.概念
+扩展其实就是分类的一种特殊形式，扩展是没有名字的。
+2.使用方式
+a.扩展中可以声明实例变量，所以可以声明属性
+b.扩展通常定义在文件的.m中，不能分开。
+c.扩展是用来声明私有的属性和方法
+区别：
+分类：是不可以声明实例变量，通常是公开的，文件名通常为:"主类类名+分类类名.h"
+扩展：是可以声明实例变量，是私有的，文件名通常为:"主类类名_扩展标识.h"，注意扩展没有名的。
+
+三、协议
+1.概念
+协议就是规则，定义一个协议就相当于制定规则。
+OC中类可以遵守协议，遵守了一个协议的类相当于拥有了一种能力。
+2.语法
+@protocal 协议名
+@required 声明必须遵守的属性和方法
+@optional 声明可选(可以)遵守的属性和方法
+默认 @required
+@end
+3.一个类遵守一个协议
+a.@interface 类名(分类类名):父类名<协议名>
+b.实现协议中声明的方法
+4.使用协议类型的引用指向实现了协议或者遵守了协议的对象
+id<TRProtocol> p = [[MyClass]init];
+[p …];可以向协议的引用发送消息，只能发送协议要求的消息。
+5.协议的继承
+协议的继承相当于协议的合并。
+子协议      父协议
+@protocol TRTarena2 <TRTarena>
+-(void)learn;
+@end
+6.一个类可以同时遵守多个协议，协议之间使用","分隔符分开。
+@interface TRStudent : 				NSObject<TRTarena,TRTarena3>
+
+7.协议的使用和多态相类似，可以用于数组、参数、返回值类型，只不过多态返回的对象，一定要有继承关系，协议类型返回的对象，一定要有遵守协议或实现协议。
+
+四、内存管理ARC自动引用计数器管理
+1.ARC IOS5.0以后才支持，IOS7.0以后，强制使用ARC。
+2.ARC "Automatic" Refercences Counting
+3.原理
+依然使用引用计数器来管理内存，只是引用计数器的操作方式不同，由程序员发送消息转换为“编译器”帮我们自动发送消息，会在合适的位置自动加入retain、release、autorelease消息来进行计数管理，ARC是一种编译期语法。
+4.使用ARC
+a.在ARC中，程序中不能出现retain、release、autorelease…
+b.在ARC中，程序不能在dealloc方法中显示调用父类的dealloc方法，一切在MRC中和内存相关的操作，ARC中都不能使用。
+5.强引用
+a.在程序中定义的引用，默认为强引用，所谓的强引用指向一个对象时，对象的引用计数器会自动加1，当引用超出作用域"{}"，对象的引用计数器就会减1.
+b.定义强引用
+__strong TRStudent* student = [TRStudent alloc]init];
+c.当一个对象被引用指向时，此对象会隐式的retain一次，当强引用超出作用域时，指向的对象会隐式的发送release消息一次。
+d.引用在使用的时候，会根据作用域的范围，自动做加1或减1的操作。
+6.弱引用
+a.定义弱引用
+__weak TRStudent* student;
+b.仅仅就是指向对象，但不会隐式的发送retain消息，出了作用域也不会发送realse消息。
+c.XXX当一个弱引用指向的对象，未销毁时，向对象发送消息，此弱引用会自动的变为强引用。(xcode4.x)版本
+d.当一个弱引用指向的对象被销毁时，弱引用本身会自动的赋值为空。(nil)
+zeroing weak reference
+四、内存管理ARC自动引用计数器管理
+7.定义属性的时候，内存管理的描述
+@property(nonatomic,strong)…;
+@property(nonatomic,weak)…;
+
+重构ARC Student与Book的故事。
+
+8.其它修饰关键字
+@property(nonatomic,unsafe_unretained)int age;
+a. unsafe_unretained等同于"assgin"，功能和__weak几乎一样，唯一不同，没有"zeroing weak reference"，通常使用在基本数据类型。
+b.__autoreleaseing 用在方法的返回值，将返回值的对象放入到自动释放池中。
++(id)student{
+__autoreleaseing TRStudent* student = [[TRStudent alloc]init];
+return student;
+}
+9.dealloc方法
+a.在ARC下，dealloc方法不允许调用父类的dealloc方法，当然也不允许向任何对象发送release消息，所以说dealloc方法几乎无用。
+b.在一些特殊情况下需要重写dealloc方法。
+1)在类中使用了C语言中的函数malloc分配内存。
+2)在类中使用了C++语言中的函数new等方式创建内存空间。
+此时需要在dealloc中对这些特殊的空间进行释放。
+10.声明引用自动置空
+a.在ARC下，如果定了一个引用没有赋值，编译会自动的初始化设置引用为空值。TRStudent* student;
+b.为了尊重C语言的规范，基本数据类型没有初始化值，依然是垃圾值。
+11.MRC和ARC混用
+a.把MRC的代码转换成ARC的代码(手动)
+retain=>strong
+release、autorelease、[super dealloc]删除掉。
+b.xcode提供了自动将MRC转换成ARC的功能。
+菜单栏(Edit)->Refacotor(重构)->Convert to Objective-C ARC
+c.在ARC项目中继续使用MRC编译的类
+在编译选项中标识MRC文件即可
+"-fno-objc-arc"
+d.在MRC项目中继续使用ARC编译的类
+在编译选项中标识MRC文件即可
+"-fobjc-arc"

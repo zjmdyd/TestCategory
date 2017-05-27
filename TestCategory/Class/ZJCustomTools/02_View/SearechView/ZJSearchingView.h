@@ -12,11 +12,6 @@
 
 - (nullable instancetype)initWithFrame:(CGRect)frame content:(nullable id)content;
 
-/**
- *  显示在图层中间的内容  typically a CGImageRef ro a string/mutableString
- */
-@property (nullable, strong) id contents;
-
 @property (nonatomic, getter=isSearching) BOOL searching;
 
 /**
@@ -39,28 +34,34 @@
 /**
  *  弧线的颜色
  */
-@property (nullable, nonatomic, strong) UIColor *lineColor;
-
-/**
- *  是否显示底部lineLayer,默认为NO
- */
-@property (nonatomic, assign) BOOL hiddenLineLayer;
+@property (nullable, nonatomic, strong) UIColor *frontLineColor;
 
 /**
  *  底部弧线的颜色
  */
-@property (nullable, nonatomic, strong) UIColor *bottomLineLayerColor;
-
+@property (nullable, nonatomic, strong) UIColor *bottomLineColor;
 
 /**
- *  是否显示底部lineLayer,默认为NO
+ *  是否隐藏frontLineLayer,默认为NO
+ */
+@property (nonatomic, assign) BOOL hiddenFrontLineLayer;
+
+/**
+ *  是否隐藏bottomLineLayer,默认为NO
  */
 @property (nonatomic, assign) BOOL hiddenBottomLineLayer;
+
+/**
+ *  显示在图层中间的内容  typically a CGImageRef ro a string/mutableString
+ */
+@property (nullable, nonatomic, strong) id contents;
+@property (nullable, nonatomic, strong) UIColor *contentViewBackgroundColor;
 
 /**
  *  如果内容是文本的话, 可以设置文本的字体
  */
 @property (nullable, nonatomic, strong) UIFont *font;
+@property (nullable, nonatomic, strong) UIColor *textColor;
 
 /**
  *  默认的字体大小为36

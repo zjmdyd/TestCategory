@@ -21,7 +21,7 @@
 }
 
 /**
- *  此种方法只能临时修改文件
+ *  此种方法只能临时修改文件，主要用于取本地文件
  */
 - (void)test {
     NSBundle *bund = [NSBundle mainBundle];
