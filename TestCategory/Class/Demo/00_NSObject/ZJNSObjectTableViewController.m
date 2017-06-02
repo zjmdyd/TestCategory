@@ -23,6 +23,20 @@
     [self initAry];
 }
 
+- (void)test {
+    for (int i = 1; i < 36; i++) {
+        for (int j = 1; j < 36; j++) {
+            for (int k = 1; k < 36; k++) {
+                if (k % 3 == 0) {
+                    if (i + j + k == 36 && 3*i + 2*j + k/3 == 36) {
+                        NSLog(@"i = %zd, j = %zd, j = %zd\n", i, j, k);
+                    }
+                }
+            }
+        }
+    }
+}
+
 /**
  self.navigationItem.title > self.title, 所以这种优先级可以完成tabBarItem.title和navigationItem.tiltle不一样的显示
  */
