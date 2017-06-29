@@ -18,11 +18,12 @@
     [super viewDidLoad];
 
     self.webView.backgroundColor = [UIColor whiteColor];
+    
+    self.address = @"http://www.mycodes.net/105/9281.htm";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

@@ -51,6 +51,45 @@
     NSLog(@"%@", NSStringFromCGSize(size));
 }
 
+- (IBAction)btnEvent:(UIButton *)sender {
+    NSLog(@"%s", __func__);
+}
+
+
+/**
+ cancel/down
+ */
+- (IBAction)btnEvent1:(UIButton *)sender {
+    NSLog(@"Event--> Cancel");
+}
+
+- (IBAction)btnEvent2:(UIButton *)sender {
+    NSLog(@"Event--> Down");
+}
+
+/**
+ drag enter/ exit
+ */
+- (IBAction)btnEvent3:(UIButton *)sender {
+    NSLog(@"Event--> drag enter");
+}
+
+- (IBAction)btnEvent4:(UIButton *)sender {
+    NSLog(@"Event--> drag exit");
+}
+
+/**
+ drag inside/outside
+ */
+- (IBAction)btnEvent5:(UIButton *)sender {
+    
+    NSLog(@"Event--> drag inside");
+}
+
+- (IBAction)btnEvent6:(UIButton *)sender {
+    NSLog(@"Event--> drag outside");
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

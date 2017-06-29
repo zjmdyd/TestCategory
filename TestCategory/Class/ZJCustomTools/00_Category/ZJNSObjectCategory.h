@@ -41,6 +41,9 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 - (void)writeToFileWithPathComponent:(NSString *)name;
 - (id)readFileWithPathComponent:(NSString *)name;
 - (void)removeFileWithPathComponent:(NSString *)name;
+
+- (NSString *)jsonString;
+
 /**
  ********************************************************
  *********************   系统    *************************
@@ -124,6 +127,13 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 + (id)fetchCurrentWiFiInfo;
 
 + (NSString *)ipAddress;
+
+
+#pragma mark - 判断是否安装某APP
+
++ (BOOL)installedQQ;
++ (BOOL)installedWeiXin;
++ (BOOL)installedAlipay;
 
 @end
 

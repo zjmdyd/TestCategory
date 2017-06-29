@@ -49,6 +49,24 @@
 
 @implementation UIImage (ZJImage)
 
++ (UIImage *)imageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName size:(CGSize)size opaque:(BOOL)opaque {
+    UIImage *icon;
+    if ([path hasPrefix:@"http:"]) {
+        icon = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
+    }else {
+        icon = [UIImage imageNamed:path];
+    }
+    if (!icon) {
+        icon = [UIImage imageNamed:placeholdName];
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0); // 获得用来处理图片的图形上下文。利用该上下文，你就可以在其上进行绘图，并生成图片 ,三个参数含义是设置大小、透明度 （NO为不透明）、缩放（0代表不缩放）
+    CGRect frame = CGRectMake(0.0, 0.0, size.width, size.height);
+    [icon drawInRect:frame];
+    
+    return UIGraphicsGetImageFromCurrentImageContext();
+}
+
 + (UIImage *)imageWithColor:(UIColor *)color {
     return [self createImageWithColor:color frame:CGRectMake(0.0f, 0.0f, 1.0f, 1.0f)];
 }
@@ -241,6 +259,22 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     return resized;
 }
 
+- (void)setImageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName {
+    if (path.length == 0) {
+        path = placeholdName;
+    }
+    if ([path hasPrefix:@"http:"]) {
+
+#ifdef SDWebImage
+        [self sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:placeholdName] options:SDWebImageRefreshCached];
+#else
+        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
+#endif
+    }else {
+        self.image = [UIImage imageNamed:path]?:[UIImage imageNamed:placeholdName];
+    }
+}
+
 @end
 
 
@@ -400,6 +434,20 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     return sw;
 }
 
+- (UIButton *)accessoryButtonWithTarget:(id)target title:(NSString *)title {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    btn.frame = CGRectMake(0, 0, 60, 30);
+    btn.layer.cornerRadius = 8;
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    SEL s = NSSelectorFromString(@"buttonAction:");
+    if (target) {
+        [btn addTarget:target action:s forControlEvents:UIControlEventValueChanged];
+    }
+    
+    return btn;
+}
+
 @end
 
 
@@ -500,6 +548,27 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     label.layer.cornerRadius = width / 2;
     label.layer.masksToBounds = YES;
     [self addSubview:label];
+}
+
+- (void)addIconBadgeWithImage:(UIImage *)image {
+    [self createImageViewWithImage:image bgColor:nil];
+}
+
+- (void)addIconBadgeWithImage:(UIImage *)image bgColor:(UIColor *)color {
+    [self createImageViewWithImage:image bgColor:color];
+}
+
+- (void)createImageViewWithImage:(UIImage *)image bgColor:(UIColor *)color {
+    CGFloat width = 15;
+    UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-10, 0, width, width)];
+    iv.image = image;
+    if (color) {
+        iv.backgroundColor = color;
+    }
+    iv.layer.cornerRadius = width / 2;
+    iv.layer.masksToBounds = YES;
+    
+    [self addSubview:iv];
 }
 
 @end

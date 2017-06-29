@@ -30,6 +30,16 @@
     return style;
 }
 
++ (NSParagraphStyle *)styleWithIndentSpacing:(CGFloat)indentSpacing lineSpace:(CGFloat)lineSpacing {
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = lineSpacing;
+    style.headIndent = indentSpacing;
+    style.firstLineHeadIndent = indentSpacing;
+    style.tailIndent = -indentSpacing;
+    
+    return style;
+}
+
 + (NSParagraphStyle *)styleWithTextAlignment:(NSTextAlignment)alignment {
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.alignment = alignment;
@@ -64,6 +74,14 @@
 
 + (NSArray *)sexStrings {
     return @[@"男", @"女"];
+}
+
+- (NSString *)pinYin {
+    NSMutableString *mutableString = [NSMutableString stringWithString:self];
+    CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, false);
+    CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformStripDiacritics, false);
+    
+    return mutableString;
 }
 
 #pragma mark - 属性字符串 1
@@ -526,6 +544,16 @@
     return NO;
 }
 
+- (BOOL)containsKeyCaseInsensitive:(NSString *)key {
+    for (NSString *str in self.allKeys) {
+        if ([str caseInsensitiveCompare:key] == NSOrderedSame) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 + (NSDictionary *)HexDictionary {
     NSMutableDictionary *hexDic = [[NSMutableDictionary alloc] init];
     hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
@@ -556,6 +584,10 @@
     NSDateComponents *componentsA = self.components;
     NSDateComponents *componentsB = date.components;
     return componentsA.year == componentsB.year && componentsA.month == componentsB.month && componentsA.day == componentsB.day;
+}
+
+- (NSString *)timestampString {
+    return @((NSInteger)[[NSDate date] timeIntervalSince1970]).stringValue;
 }
 
 #pragma mark - 年龄

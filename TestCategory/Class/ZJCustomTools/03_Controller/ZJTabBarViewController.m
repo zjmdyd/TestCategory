@@ -7,16 +7,19 @@
 //
 
 #import "ZJTabBarViewController.h"
-//#import "HYPullDownSelectView.h"
+#import "UIViewExt.h"
+#import "ZJUIViewCategory.h"
 
 @interface ZJTabBarViewController ()<UIScrollViewDelegate> {
     NSMutableArray *_titles;
-    UIScrollView *_topScrollView, *_mainScrollerView;
+    UIScrollView *_mainScrollerView;
     UIView *_lineView;
     CGFloat _height;
-    UIButton *_pullButton;
-    HYPullDownSelectView *_pullDownView;
 }
+
+@property (nonatomic, strong) UIView *statusView;
+@property (nonatomic, strong) UIScrollView *topScrollView;
+@property (nonatomic, strong) UIView *lineView;
 
 @end
 
@@ -27,14 +30,12 @@
 #define kNaviBarBottom 64
 #define kNaviBarHeight 44
 
-
 @implementation ZJTabBarViewController
 
 + (instancetype)barViewControllerWithViewControllers:(NSArray *)viewControllers {
     ZJTabBarViewController *vc = [ZJTabBarViewController new];
     vc->_viewControllers = viewControllers;
     vc->_height = kScreenH;
-    vc.hiddenPullView = YES;
     
     return vc;
 }
@@ -57,9 +58,7 @@
     _selectEnable = YES;
     
     if (self.offsetX > 0) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 20)];
-        view.backgroundColor = [UIColor mainColor];
-        [self.view addSubview:view];
+        [self.view addSubview:self.statusView];
     }
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -71,24 +70,14 @@
 }
 
 - (void)createScrollView {
-    _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.offsetX, kScreenW, kToolBarH)];
-    _topScrollView.showsHorizontalScrollIndicator = NO;
-    _topScrollView.backgroundColor = self.topViewBgColor;
-    [self.view addSubview:_topScrollView];
+    [self.view addSubview:self.topScrollView];
+    [self.topScrollView addSubview:self.lineView];
     
-    _lineView = [[UIView alloc] initWithFrame:CGRectZero];
-    if (self.titleColor) {
-        _lineView.backgroundColor = self.titleColor;
-    }else {
-        _lineView.backgroundColor = [UIColor mainColor];
-    }
-    
-    [_topScrollView addSubview:_lineView];
-    CGFloat height = self.view.height-kNaviBarBottom-_topScrollView.height;
+    CGFloat height = self.view.height - kNaviBarBottom - self.topScrollView.height;
     if (self.hidesBottomBarWhenPushed == NO) {
         height -= kTabBarHeight;
     }
-    if (self.offsetX > 0) {
+    if (self.offsetX < FLT_EPSILON) {
         height += kNaviBarHeight;
     }
     
@@ -114,7 +103,7 @@
         if (i == 0) {
             _lineView.frame = CGRectMake(btn.left+kLineOffsetX, _topScrollView.height - 3.0f, btn.width  - kLineOffsetX*2, 2);
             _currentVC = vc;
-            [btn setTitleColor:[UIColor mainColor] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         }else {
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
@@ -141,27 +130,6 @@
     _topScrollView.contentSize = CGSizeMake(offsetX, 0);
     _topScrollView.directionalLockEnabled = YES;
     _mainScrollerView.contentSize = CGSizeMake(_viewControllers.count*kScreenW, 0);
-    
-    
-    if (self.hiddenPullView == NO) {
-        [self createPullDownView];
-    }
-}
-
-- (void)createPullDownView {
-    _pullButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    _pullButton.frame = CGRectMake(kScreenW-kPullButtonWidth, 5, kPullButtonWidth, kToolBarH-10);
-    _pullButton.tintColor = [UIColor lightGrayColor];
-    [_pullButton setImage:[UIImage imageNamed:@"ic_arrow_down_gray_32x18"] forState:UIControlStateNormal];
-    [_pullButton addTarget:self action:@selector(showSelectView:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_pullButton];
-    _topScrollView.width -= kPullButtonWidth;
-    
-    //
-    _pullDownView = [[HYPullDownSelectView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, self.view.height)];
-    _pullDownView.titles = _titles;
-    _pullDownView.topTitle = @"  点击选择您喜欢的频道";
-    [self.view addSubview:_pullDownView];
 }
 
 #pragma mark - buttonEvent
@@ -210,7 +178,7 @@
                 [btn setTitleColor:self.titleColor forState:UIControlStateNormal];
             }else {
                 if (btn.tag == _selectIndex) {
-                    [btn setTitleColor:[UIColor mainColor] forState:UIControlStateNormal];
+                    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
                 }else {
                     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 }
@@ -248,32 +216,6 @@
     return nil;
 }
 
-- (void)showSelectView:(UIButton *)sender {
-    _pullDownView.hidden = !_pullDownView.isHidden;
-}
-
-- (void)selectPullDownView:(ZJSelectButton *)sender {
-    sender.select = !sender.isSelect;
-    
-    if (sender.isSelect) {
-        sender.backgroundColor = [UIColor mainColor];
-    }else {
-        sender.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    }
-}
-
-- (void)setHiddenPullView:(BOOL)hiddenPullView {
-    _hiddenPullView = hiddenPullView;
-    
-    if (_topScrollView) {
-        _pullButton.hidden = _hiddenPullView;
-        
-        if (_topScrollView.width < kScreenW && _hiddenPullView) {
-            _topScrollView.width += kPullButtonWidth;
-        }
-    }
-}
-
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -293,6 +235,32 @@
 
 #pragma mark - getter
 
+- (UIView *)statusView {
+    if (!_statusView) {
+        _statusView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 20)];
+        _statusView.backgroundColor = self.statusViewColor;
+    }
+    
+    return _statusView;
+}
+
+- (UIScrollView *)topScrollView {
+    if (!_topScrollView) {
+        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.offsetX, kScreenW, kToolBarH)];
+        _topScrollView.showsHorizontalScrollIndicator = NO;
+        _topScrollView.backgroundColor = self.topViewBgColor;
+    }
+    return _topScrollView;
+}
+
+- (UIView *)lineView {
+    if (!_lineView) {
+        _lineView = [[UIView alloc] initWithFrame:CGRectZero];
+        _lineView.backgroundColor = self.titleColor ?: [UIColor redColor];
+    }
+    return _lineView;
+}
+
 - (UIColor *)topViewBgColor {
     if (!_topViewBgColor) {
         _topViewBgColor = [UIColor whiteColor];
@@ -301,6 +269,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     self.view.height = _height;
 }
 
@@ -322,7 +292,6 @@
     if (self = [super init]) {
         _viewControllers = viewControllers;
         _height = kScreenH;
-        _hiddenPullView = YES;
     }
     
     return self;
@@ -332,7 +301,6 @@
     if (self = [super init]) {
         _viewControllers = viewControllers;
         _height = height;
-        _hiddenPullView = YES;
     }
     
     return self;

@@ -17,6 +17,7 @@
 
 + (NSParagraphStyle *)styleWithHeadIndent:(CGFloat)headIndent;
 + (NSParagraphStyle *)styleWithLineSpacing:(CGFloat)lineSpacing;
++ (NSParagraphStyle *)styleWithIndentSpacing:(CGFloat)indentSpacing lineSpace:(CGFloat)lineSpacing;
 + (NSParagraphStyle *)styleWithTextAlignment:(NSTextAlignment)alignment;
 + (NSParagraphStyle *)styleWithTextAlignment:(NSTextAlignment)alignment lineSpacing:(CGFloat)lineSpacing;
 
@@ -30,6 +31,11 @@
 + (NSString *)stringWithFileName:(NSString *)name;
 
 + (NSArray *)sexStrings;
+
+/**
+ 汉字转拼音
+ */
+- (NSString *)pinYin;
 
 #pragma mark - 属性字符串
 
@@ -215,6 +221,7 @@
 @interface NSDictionary (ZJDictionary)
 
 - (BOOL)containsKey:(NSString *)key;
+- (BOOL)containsKeyCaseInsensitive:(NSString *)key;
 
 /**
  十六进制字典
@@ -238,6 +245,8 @@
  *  判断两日期是否相等   精确到年月日
  */
 - (BOOL)isEqualToDate:(NSDate *)date;
+
+- (NSString *)timestampString;
 
 #pragma mark - 年龄
 

@@ -112,6 +112,13 @@
     }
 }
 
+- (NSString *)jsonString {
+    NSData *data = [NSJSONSerialization dataWithJSONObject:self options:0 error:nil];
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    return str;
+}
+
 @end
 
 
@@ -386,6 +393,20 @@ NSString *AudioPath = @"/System/Library/Audio/UISounds/";
     // Free memory
     freeifaddrs(interfaces);
     return address;
+}
+
+#pragma mark - 判断是否安装某APP
+
++ (BOOL)installedQQ {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]];
+}
+
++ (BOOL)installedWeiXin {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]];
+}
+
++ (BOOL)installedAlipay {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"alipay://"]];
 }
 
 @end

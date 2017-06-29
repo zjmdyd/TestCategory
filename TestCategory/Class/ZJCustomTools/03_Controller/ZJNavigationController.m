@@ -23,7 +23,8 @@
     self.navigationBarTranslucent = NO;
     self.hiddenBottomBarWhenPushed = YES;
     self.hiddenBackBarButtonItemTitle = YES;
-    
+    self.navigationBar.shadowImage = [UIImage new];
+
     self.delegate = self;
 }
 

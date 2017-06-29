@@ -15,6 +15,9 @@
 
 #endif
 
+#define kNaviH    44
+#define kNaviBottoom    64
+
 #ifndef DefaultMargin
 
 #define DefaultMargin 8     // 默认边距
@@ -65,6 +68,8 @@
 
 @interface UIImage (ZJImage)
 
++ (UIImage *)imageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName size:(CGSize)size opaque:(BOOL)opaque;
+
 /**
  *  根据颜色获取UIImage
  */
@@ -102,6 +107,8 @@
 
 - (void)setupQRCodeWithContent:(NSString *)content;
 
+- (void)setImageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName;
+
 @end
 
 #pragma mark - UILabel
@@ -126,7 +133,6 @@
  *  @param descend font是否是递减
  */
 - (void)fitFontWithPointSize:(CGFloat)pSize width:(CGFloat)width height:(CGFloat)height descend:(BOOL)descend;
-
 
 /**
  斜体
@@ -166,8 +172,8 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
  */
 - (void)setNeedLayoutMargin:(BOOL)needMargin;
 
-
 - (UISwitch *)accessorySwitchWithTarget:(id)target;
+- (UIButton *)accessoryButtonWithTarget:(id)target title:(NSString *)title;
 
 @end
 
@@ -211,6 +217,9 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 - (void)addIconBadgeWithAttributeText:(NSAttributedString *)text;
 - (void)addIconBadgeWithAttributeText:(NSAttributedString *)text bgColor:(UIColor *)color;
 
+- (void)addIconBadgeWithImage:(UIImage *)image;
+- (void)addIconBadgeWithImage:(UIImage *)image bgColor:(UIColor *)color;
+
 @end
 
 
@@ -229,4 +238,3 @@ typedef NS_ENUM(NSInteger, Direction) {
 + (Direction)direction:(CGPoint)startPoint endPoint:(CGPoint)endPoint;
 
 @end
-

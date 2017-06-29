@@ -19,8 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self initAry];
+    [self test];
 }
 
 - (void)test {
@@ -29,7 +30,7 @@
             for (int k = 1; k < 36; k++) {
                 if (k % 3 == 0) {
                     if (i + j + k == 36 && 3*i + 2*j + k/3 == 36) {
-                        NSLog(@"i = %zd, j = %zd, j = %zd\n", i, j, k);
+                        NSLog(@"i = %zd, j = %zd, k = %zd\n", i, j, k);
                     }
                 }
             }

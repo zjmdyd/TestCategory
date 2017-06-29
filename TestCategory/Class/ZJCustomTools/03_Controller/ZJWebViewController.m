@@ -17,6 +17,8 @@
 
 @implementation ZJWebViewController
 
+#define DefaultTimeoutInterval 10
+
 @synthesize webView = _webView;
 
 - (instancetype)initWithAddress:(NSString *)address title:(NSString *)title {
@@ -47,9 +49,11 @@
 }
 
 - (void)requestData {
+    if (self.address.length == 0) return;
+    
     if ([self.address hasPrefix:@"http:"] || [self.address hasPrefix:@"https:"]) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(stopLoad) userInfo:nil repeats:NO];
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.address] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timeoutInterval target:self selector:@selector(stopLoad) userInfo:nil repeats:NO];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.address] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:self.timeoutInterval];
         [self.webView loadRequest:request];
     }else {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:self.address ofType:@"html"];
@@ -58,24 +62,44 @@
     }
 }
 
+#pragma mark - setter
+
+- (void)setAddress:(NSString *)address {
+    _address = address;
+    
+    [self requestData];
+}
+
 #pragma mark - UIWebViewDelegate
 
 //当网页视图已经开始加载一个请求后，得到通知。
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     NSLog(@"%s", __func__);
+    if ([self.delegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
+//        [self.delegate webViewDidStartLoad:webView];
+    }
 }
 
 //当网页视图结束加载一个请求之后，得到通知。
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"%s", __func__);
+    if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
+        [self.delegate webViewDidFinishLoad:webView];
+    }
 }
 
 //当在请求加载中发生错误时，得到通知。会提供一个NSSError对象，以标识所发生错误类型。
 - (void)webView:(UIWebView *)webView DidFailLoadWithError:(NSError*)error {
     NSLog(@"%s", __func__);
+    if ([self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)]) {
+        [self.delegate webView:webView didFailLoadWithError:error];
+    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if ([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
+        return [self.delegate webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+    }
     NSString *requestString = [[request URL] absoluteString];                   // 获取请求的绝对路径.
     NSLog(@"requestString-->%@", requestString);
     
@@ -93,6 +117,18 @@
     return _webView;
 }
 
+- (NSTimeInterval)timeoutInterval {
+    if (_timeoutInterval < FLT_EPSILON) {
+        _timeoutInterval = DefaultTimeoutInterval;
+    }
+    
+    return _timeoutInterval;
+}
+
+- (void)dealloc
+{
+    NSLog(@"%s", __func__);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
