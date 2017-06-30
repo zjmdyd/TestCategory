@@ -11,6 +11,8 @@
 		382C4F9B1F0500F000AE3576 /* ZJTestTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382C4F9A1F0500F000AE3576 /* ZJTestTabBarViewController.m */; };
 		3850846B1EBC211C00DEE8F6 /* InfoPlist in Resources */ = {isa = PBXBuildFile; fileRef = 3850846A1EBC211C00DEE8F6 /* InfoPlist */; };
 		385084711EBC5FE100DEE8F6 /* note.plist in Resources */ = {isa = PBXBuildFile; fileRef = 385084701EBC5FE100DEE8F6 /* note.plist */; };
+		385D3EFD1F063C9600F0C1FD /* ZJTestPureTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385D3EFC1F063C9600F0C1FD /* ZJTestPureTextTableViewController.m */; };
+		385D3F001F063F4600F0C1FD /* ZJTestSubTitleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385D3EFF1F063F4600F0C1FD /* ZJTestSubTitleTableViewController.m */; };
 		385DBED81EB9CF3E00174ACE /* ZJBaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385DBED61EB9CF3E00174ACE /* ZJBaseTabBarViewController.m */; };
 		385DBEEC1EB9D11E00174ACE /* ZJNSObjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385DBEEB1EB9D11E00174ACE /* ZJNSObjectTableViewController.m */; };
 		385DBEEF1EB9D40800174ACE /* ZJUIKitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385DBEEE1EB9D40800174ACE /* ZJUIKitTableViewController.m */; };
@@ -27,20 +29,6 @@
 		386151DD1E9F6BB300341BCB /* ZJPageSizeObjectInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861515A1E9F6BB200341BCB /* ZJPageSizeObjectInfo.m */; };
 		386151DE1E9F6BB300341BCB /* ZJStandarValueObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861515C1E9F6BB200341BCB /* ZJStandarValueObj.m */; };
 		386151DF1E9F6BB300341BCB /* ZJTimeValueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861515E1E9F6BB200341BCB /* ZJTimeValueObject.m */; };
-		386151E01E9F6BB300341BCB /* HYHaveLoginHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151631E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.m */; };
-		386151E11E9F6BB300341BCB /* HYHaveLoginHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151641E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.xib */; };
-		386151E21E9F6BB300341BCB /* HYProfileHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151671E9F6BB200341BCB /* HYProfileHeadTableViewCell.m */; };
-		386151E31E9F6BB300341BCB /* HYProfileHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151681E9F6BB200341BCB /* HYProfileHeadTableViewCell.xib */; };
-		386151E41E9F6BB300341BCB /* HYIconCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861516B1E9F6BB200341BCB /* HYIconCollectionTableViewCell.m */; };
-		386151E51E9F6BB300341BCB /* HYIconCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861516C1E9F6BB200341BCB /* HYIconCollectionTableViewCell.xib */; };
-		386151E61E9F6BB300341BCB /* HYIocnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861516E1E9F6BB200341BCB /* HYIocnCollectionViewCell.m */; };
-		386151E71E9F6BB300341BCB /* HYIocnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861516F1E9F6BB200341BCB /* HYIocnCollectionViewCell.xib */; };
-		386151E81E9F6BB300341BCB /* HYSubTitleDetailTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151721E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.m */; };
-		386151E91E9F6BB300341BCB /* HYSubTitleDetailTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151731E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.xib */; };
-		386151EA1E9F6BB300341BCB /* HYSubTitleRectangleIconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151751E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.m */; };
-		386151EB1E9F6BB300341BCB /* HYSubTitleRectangleIconTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151761E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.xib */; };
-		386151EC1E9F6BB300341BCB /* HYSubTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151781E9F6BB200341BCB /* HYSubTitleTableViewCell.m */; };
-		386151ED1E9F6BB300341BCB /* HYSubTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151791E9F6BB200341BCB /* HYSubTitleTableViewCell.xib */; };
 		386151EE1E9F6BB300341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861517C1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m */; };
 		386151EF1E9F6BB300341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861517D1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib */; };
 		386151F01E9F6BB300341BCB /* HYIconTitleCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861517F1E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.m */; };
@@ -51,17 +39,12 @@
 		386151F51E9F6BB300341BCB /* HYIconTitleVerticalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151861E9F6BB200341BCB /* HYIconTitleVerticalCollectionViewCell.xib */; };
 		386151F61E9F6BB300341BCB /* HYImageTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151891E9F6BB200341BCB /* HYImageTextFieldTableViewCell.m */; };
 		386151F71E9F6BB300341BCB /* HYImageTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861518A1E9F6BB200341BCB /* HYImageTextFieldTableViewCell.xib */; };
-		386151F81E9F6BB300341BCB /* HYPureTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861518D1E9F6BB200341BCB /* HYPureTextTableViewCell.m */; };
-		386151F91E9F6BB300341BCB /* HYPureTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861518E1E9F6BB200341BCB /* HYPureTextTableViewCell.xib */; };
 		386151FA1E9F6BB300341BCB /* HYSelectSexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151911E9F6BB200341BCB /* HYSelectSexTableViewCell.m */; };
 		386151FB1E9F6BB300341BCB /* HYSelectSexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151921E9F6BB200341BCB /* HYSelectSexTableViewCell.xib */; };
-		386151FC1E9F6BB300341BCB /* HYSexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151941E9F6BB200341BCB /* HYSexTableViewCell.m */; };
-		386151FD1E9F6BB300341BCB /* HYSexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151951E9F6BB200341BCB /* HYSexTableViewCell.xib */; };
 		386151FE1E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151981E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m */; };
 		386151FF1E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386151991E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib */; };
 		386152001E9F6BB300341BCB /* HYErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3861519C1E9F6BB300341BCB /* HYErrorView.m */; };
 		386152011E9F6BB300341BCB /* HYErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3861519D1E9F6BB300341BCB /* HYErrorView.xib */; };
-		386152031E9F6BB300341BCB /* HYTextImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A11E9F6BB300341BCB /* HYTextImageView.m */; };
 		386152041E9F6BB300341BCB /* ZJFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A31E9F6BB300341BCB /* ZJFooterView.m */; };
 		386152051E9F6BB300341BCB /* ZJProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A51E9F6BB300341BCB /* ZJProgressView.m */; };
 		386152061E9F6BB300341BCB /* ZJRoundImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 386151A71E9F6BB300341BCB /* ZJRoundImageView.m */; };
@@ -157,6 +140,10 @@
 		382C4F9A1F0500F000AE3576 /* ZJTestTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestTabBarViewController.m; sourceTree = "<group>"; };
 		3850846A1EBC211C00DEE8F6 /* InfoPlist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InfoPlist; sourceTree = "<group>"; };
 		385084701EBC5FE100DEE8F6 /* note.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = note.plist; sourceTree = "<group>"; };
+		385D3EFB1F063C9600F0C1FD /* ZJTestPureTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestPureTextTableViewController.h; sourceTree = "<group>"; };
+		385D3EFC1F063C9600F0C1FD /* ZJTestPureTextTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestPureTextTableViewController.m; sourceTree = "<group>"; };
+		385D3EFE1F063F4600F0C1FD /* ZJTestSubTitleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestSubTitleTableViewController.h; sourceTree = "<group>"; };
+		385D3EFF1F063F4600F0C1FD /* ZJTestSubTitleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestSubTitleTableViewController.m; sourceTree = "<group>"; };
 		385DBED61EB9CF3E00174ACE /* ZJBaseTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBaseTabBarViewController.m; sourceTree = "<group>"; };
 		385DBED71EB9CF3E00174ACE /* ZJBaseTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBaseTabBarViewController.h; sourceTree = "<group>"; };
 		385DBEEA1EB9D11E00174ACE /* ZJNSObjectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNSObjectTableViewController.h; sourceTree = "<group>"; };
@@ -191,27 +178,6 @@
 		3861515C1E9F6BB200341BCB /* ZJStandarValueObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJStandarValueObj.m; sourceTree = "<group>"; };
 		3861515D1E9F6BB200341BCB /* ZJTimeValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTimeValueObject.h; sourceTree = "<group>"; };
 		3861515E1E9F6BB200341BCB /* ZJTimeValueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTimeValueObject.m; sourceTree = "<group>"; };
-		386151621E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHaveLoginHeadTableViewCell.h; sourceTree = "<group>"; };
-		386151631E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYHaveLoginHeadTableViewCell.m; sourceTree = "<group>"; };
-		386151641E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYHaveLoginHeadTableViewCell.xib; sourceTree = "<group>"; };
-		386151661E9F6BB200341BCB /* HYProfileHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYProfileHeadTableViewCell.h; sourceTree = "<group>"; };
-		386151671E9F6BB200341BCB /* HYProfileHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYProfileHeadTableViewCell.m; sourceTree = "<group>"; };
-		386151681E9F6BB200341BCB /* HYProfileHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYProfileHeadTableViewCell.xib; sourceTree = "<group>"; };
-		3861516A1E9F6BB200341BCB /* HYIconCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIconCollectionTableViewCell.h; sourceTree = "<group>"; };
-		3861516B1E9F6BB200341BCB /* HYIconCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIconCollectionTableViewCell.m; sourceTree = "<group>"; };
-		3861516C1E9F6BB200341BCB /* HYIconCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIconCollectionTableViewCell.xib; sourceTree = "<group>"; };
-		3861516D1E9F6BB200341BCB /* HYIocnCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIocnCollectionViewCell.h; sourceTree = "<group>"; };
-		3861516E1E9F6BB200341BCB /* HYIocnCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIocnCollectionViewCell.m; sourceTree = "<group>"; };
-		3861516F1E9F6BB200341BCB /* HYIocnCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIocnCollectionViewCell.xib; sourceTree = "<group>"; };
-		386151711E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSubTitleDetailTitleTableViewCell.h; sourceTree = "<group>"; };
-		386151721E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSubTitleDetailTitleTableViewCell.m; sourceTree = "<group>"; };
-		386151731E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSubTitleDetailTitleTableViewCell.xib; sourceTree = "<group>"; };
-		386151741E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSubTitleRectangleIconTableViewCell.h; sourceTree = "<group>"; };
-		386151751E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSubTitleRectangleIconTableViewCell.m; sourceTree = "<group>"; };
-		386151761E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSubTitleRectangleIconTableViewCell.xib; sourceTree = "<group>"; };
-		386151771E9F6BB200341BCB /* HYSubTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSubTitleTableViewCell.h; sourceTree = "<group>"; };
-		386151781E9F6BB200341BCB /* HYSubTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSubTitleTableViewCell.m; sourceTree = "<group>"; };
-		386151791E9F6BB200341BCB /* HYSubTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSubTitleTableViewCell.xib; sourceTree = "<group>"; };
 		3861517B1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYIconSubTitleHorizontalCollectionViewCell.h; sourceTree = "<group>"; };
 		3861517C1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYIconSubTitleHorizontalCollectionViewCell.m; sourceTree = "<group>"; };
 		3861517D1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYIconSubTitleHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -227,23 +193,15 @@
 		386151881E9F6BB200341BCB /* HYImageTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		386151891E9F6BB200341BCB /* HYImageTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		3861518A1E9F6BB200341BCB /* HYImageTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYImageTextFieldTableViewCell.xib; sourceTree = "<group>"; };
-		3861518C1E9F6BB200341BCB /* HYPureTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPureTextTableViewCell.h; sourceTree = "<group>"; };
-		3861518D1E9F6BB200341BCB /* HYPureTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPureTextTableViewCell.m; sourceTree = "<group>"; };
-		3861518E1E9F6BB200341BCB /* HYPureTextTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYPureTextTableViewCell.xib; sourceTree = "<group>"; };
 		386151901E9F6BB200341BCB /* HYSelectSexTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSelectSexTableViewCell.h; sourceTree = "<group>"; };
 		386151911E9F6BB200341BCB /* HYSelectSexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSelectSexTableViewCell.m; sourceTree = "<group>"; };
 		386151921E9F6BB200341BCB /* HYSelectSexTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSelectSexTableViewCell.xib; sourceTree = "<group>"; };
-		386151931E9F6BB200341BCB /* HYSexTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSexTableViewCell.h; sourceTree = "<group>"; };
-		386151941E9F6BB200341BCB /* HYSexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSexTableViewCell.m; sourceTree = "<group>"; };
-		386151951E9F6BB200341BCB /* HYSexTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSexTableViewCell.xib; sourceTree = "<group>"; };
 		386151971E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTitleTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		386151981E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTitleTextFieldTableViewCell.m; sourceTree = "<group>"; };
 		386151991E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYTitleTextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		3861519B1E9F6BB300341BCB /* HYErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYErrorView.h; sourceTree = "<group>"; };
 		3861519C1E9F6BB300341BCB /* HYErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYErrorView.m; sourceTree = "<group>"; };
 		3861519D1E9F6BB300341BCB /* HYErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYErrorView.xib; sourceTree = "<group>"; };
-		386151A01E9F6BB300341BCB /* HYTextImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTextImageView.h; sourceTree = "<group>"; };
-		386151A11E9F6BB300341BCB /* HYTextImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTextImageView.m; sourceTree = "<group>"; };
 		386151A21E9F6BB300341BCB /* ZJFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJFooterView.h; sourceTree = "<group>"; };
 		386151A31E9F6BB300341BCB /* ZJFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJFooterView.m; sourceTree = "<group>"; };
 		386151A41E9F6BB300341BCB /* ZJProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJProgressView.h; sourceTree = "<group>"; };
@@ -430,6 +388,10 @@
 				386593DA1EBB32810041601D /* ZJTestScrollViewController.m */,
 				387FA57E1ED2E5C70038D93B /* ZJSearchingViewController.h */,
 				387FA57F1ED2E5C70038D93B /* ZJSearchingViewController.m */,
+				385D3EFB1F063C9600F0C1FD /* ZJTestPureTextTableViewController.h */,
+				385D3EFC1F063C9600F0C1FD /* ZJTestPureTextTableViewController.m */,
+				385D3EFE1F063F4600F0C1FD /* ZJTestSubTitleTableViewController.h */,
+				385D3EFF1F063F4600F0C1FD /* ZJTestSubTitleTableViewController.m */,
 			);
 			path = 01_UIKit;
 			sourceTree = "<group>";
@@ -551,77 +513,23 @@
 			isa = PBXGroup;
 			children = (
 				3878B3641ED92B7F0027222C /* swipeCell */,
-				386151611E9F6BB200341BCB /* haveLoginCell */,
-				386151651E9F6BB200341BCB /* headIconCell */,
-				386151691E9F6BB200341BCB /* iconCollectionView */,
-				386151701E9F6BB200341BCB /* iconSubtitleCell */,
 				3861517A1E9F6BB200341BCB /* iconTitleCollectionView */,
 				386151871E9F6BB200341BCB /* imageTextFieldCell */,
-				3861518B1E9F6BB200341BCB /* pureTextTableViewCell */,
 				3861518F1E9F6BB200341BCB /* sexCell */,
 				386151961E9F6BB300341BCB /* titleTextTableViewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		386151611E9F6BB200341BCB /* haveLoginCell */ = {
-			isa = PBXGroup;
-			children = (
-				386151621E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.h */,
-				386151631E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.m */,
-				386151641E9F6BB200341BCB /* HYHaveLoginHeadTableViewCell.xib */,
-			);
-			path = haveLoginCell;
-			sourceTree = "<group>";
-		};
-		386151651E9F6BB200341BCB /* headIconCell */ = {
-			isa = PBXGroup;
-			children = (
-				386151661E9F6BB200341BCB /* HYProfileHeadTableViewCell.h */,
-				386151671E9F6BB200341BCB /* HYProfileHeadTableViewCell.m */,
-				386151681E9F6BB200341BCB /* HYProfileHeadTableViewCell.xib */,
-			);
-			path = headIconCell;
-			sourceTree = "<group>";
-		};
-		386151691E9F6BB200341BCB /* iconCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				3861516A1E9F6BB200341BCB /* HYIconCollectionTableViewCell.h */,
-				3861516B1E9F6BB200341BCB /* HYIconCollectionTableViewCell.m */,
-				3861516C1E9F6BB200341BCB /* HYIconCollectionTableViewCell.xib */,
-				3861516D1E9F6BB200341BCB /* HYIocnCollectionViewCell.h */,
-				3861516E1E9F6BB200341BCB /* HYIocnCollectionViewCell.m */,
-				3861516F1E9F6BB200341BCB /* HYIocnCollectionViewCell.xib */,
-			);
-			path = iconCollectionView;
-			sourceTree = "<group>";
-		};
-		386151701E9F6BB200341BCB /* iconSubtitleCell */ = {
-			isa = PBXGroup;
-			children = (
-				386151711E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.h */,
-				386151721E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.m */,
-				386151731E9F6BB200341BCB /* HYSubTitleDetailTitleTableViewCell.xib */,
-				386151741E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.h */,
-				386151751E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.m */,
-				386151761E9F6BB200341BCB /* HYSubTitleRectangleIconTableViewCell.xib */,
-				386151771E9F6BB200341BCB /* HYSubTitleTableViewCell.h */,
-				386151781E9F6BB200341BCB /* HYSubTitleTableViewCell.m */,
-				386151791E9F6BB200341BCB /* HYSubTitleTableViewCell.xib */,
-			);
-			path = iconSubtitleCell;
-			sourceTree = "<group>";
-		};
 		3861517A1E9F6BB200341BCB /* iconTitleCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				3861517B1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.h */,
-				3861517C1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m */,
-				3861517D1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib */,
 				3861517E1E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.h */,
 				3861517F1E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.m */,
 				386151801E9F6BB200341BCB /* HYIconTitleCollectionTableViewCell.xib */,
+				3861517B1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.h */,
+				3861517C1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m */,
+				3861517D1E9F6BB200341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib */,
 				386151811E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.h */,
 				386151821E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.m */,
 				386151831E9F6BB200341BCB /* HYIconTitleHorizontalCollectionViewCell.xib */,
@@ -642,25 +550,12 @@
 			path = imageTextFieldCell;
 			sourceTree = "<group>";
 		};
-		3861518B1E9F6BB200341BCB /* pureTextTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				3861518C1E9F6BB200341BCB /* HYPureTextTableViewCell.h */,
-				3861518D1E9F6BB200341BCB /* HYPureTextTableViewCell.m */,
-				3861518E1E9F6BB200341BCB /* HYPureTextTableViewCell.xib */,
-			);
-			path = pureTextTableViewCell;
-			sourceTree = "<group>";
-		};
 		3861518F1E9F6BB200341BCB /* sexCell */ = {
 			isa = PBXGroup;
 			children = (
 				386151901E9F6BB200341BCB /* HYSelectSexTableViewCell.h */,
 				386151911E9F6BB200341BCB /* HYSelectSexTableViewCell.m */,
 				386151921E9F6BB200341BCB /* HYSelectSexTableViewCell.xib */,
-				386151931E9F6BB200341BCB /* HYSexTableViewCell.h */,
-				386151941E9F6BB200341BCB /* HYSexTableViewCell.m */,
-				386151951E9F6BB200341BCB /* HYSexTableViewCell.xib */,
 			);
 			path = sexCell;
 			sourceTree = "<group>";
@@ -681,8 +576,6 @@
 				3861519B1E9F6BB300341BCB /* HYErrorView.h */,
 				3861519C1E9F6BB300341BCB /* HYErrorView.m */,
 				3861519D1E9F6BB300341BCB /* HYErrorView.xib */,
-				386151A01E9F6BB300341BCB /* HYTextImageView.h */,
-				386151A11E9F6BB300341BCB /* HYTextImageView.m */,
 				386151A21E9F6BB300341BCB /* ZJFooterView.h */,
 				386151A31E9F6BB300341BCB /* ZJFooterView.m */,
 				386151A41E9F6BB300341BCB /* ZJProgressView.h */,
@@ -1112,26 +1005,20 @@
 			files = (
 				3861520D1E9F6BB300341BCB /* qrcode_scanline_barcode@2x.png in Resources */,
 				386151FB1E9F6BB300341BCB /* HYSelectSexTableViewCell.xib in Resources */,
-				386151FD1E9F6BB300341BCB /* HYSexTableViewCell.xib in Resources */,
 				387033FA1DFAC37900426DA3 /* LaunchScreen.storyboard in Resources */,
 				386151FF1E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.xib in Resources */,
-				386151EB1E9F6BB300341BCB /* HYSubTitleRectangleIconTableViewCell.xib in Resources */,
-				386151E11E9F6BB300341BCB /* HYHaveLoginHeadTableViewCell.xib in Resources */,
 				386151F51E9F6BB300341BCB /* HYIconTitleVerticalCollectionViewCell.xib in Resources */,
 				389530591EC5AA14004511C8 /* note in Resources */,
 				38E58DFA1EB9E58B0072EB0D /* ZJCollectionTableViewCell.xib in Resources */,
 				387033F71DFAC37900426DA3 /* Assets.xcassets in Resources */,
 				386151F71E9F6BB300341BCB /* HYImageTextFieldTableViewCell.xib in Resources */,
-				386151F91E9F6BB300341BCB /* HYPureTextTableViewCell.xib in Resources */,
 				389530431EC5A351004511C8 /* ZJTestViewController.xib in Resources */,
 				38E58DFE1EB9E58B0072EB0D /* ZJPinchCollectionTableViewCell.xib in Resources */,
 				38E58DFC1EB9E58B0072EB0D /* ZJImageCollectionViewCell.xib in Resources */,
 				389530501EC5A37F004511C8 /* ZJTestTranslucentViewController.xib in Resources */,
-				386151ED1E9F6BB300341BCB /* HYSubTitleTableViewCell.xib in Resources */,
 				386151EF1E9F6BB300341BCB /* HYIconSubTitleHorizontalCollectionViewCell.xib in Resources */,
 				38E58E091EB9E58B0072EB0D /* ZJCAReplicatorLayerViewController.xib in Resources */,
 				386151F31E9F6BB300341BCB /* HYIconTitleHorizontalCollectionViewCell.xib in Resources */,
-				386151E71E9F6BB300341BCB /* HYIocnCollectionViewCell.xib in Resources */,
 				38E032081EC01FD900401CBE /* TestWrite.txt in Resources */,
 				38E58E031EB9E58B0072EB0D /* ic_message_gray_160x160.png in Resources */,
 				3878B3691ED92B7F0027222C /* ZJSwipeTableViewCell.xib in Resources */,
@@ -1139,10 +1026,7 @@
 				38E58E071EB9E58B0072EB0D /* ZJPickerViewController.xib in Resources */,
 				38E58E021EB9E58B0072EB0D /* ZJTestAlertViewController.xib in Resources */,
 				385084711EBC5FE100DEE8F6 /* note.plist in Resources */,
-				386151E91E9F6BB300341BCB /* HYSubTitleDetailTitleTableViewCell.xib in Resources */,
 				386151F11E9F6BB300341BCB /* HYIconTitleCollectionTableViewCell.xib in Resources */,
-				386151E51E9F6BB300341BCB /* HYIconCollectionTableViewCell.xib in Resources */,
-				386151E31E9F6BB300341BCB /* HYProfileHeadTableViewCell.xib in Resources */,
 				386152011E9F6BB300341BCB /* HYErrorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1172,7 +1056,6 @@
 				38E58DFF1EB9E58B0072EB0D /* ZJTestCollectionViewController.m in Sources */,
 				386152151E9F6BB300341BCB /* ZJNavigationController.m in Sources */,
 				387FA5801ED2E5C70038D93B /* ZJSearchingViewController.m in Sources */,
-				386151F81E9F6BB300341BCB /* HYPureTextTableViewCell.m in Sources */,
 				38E58E061EB9E58B0072EB0D /* ZJPickerViewController.m in Sources */,
 				38E58E011EB9E58B0072EB0D /* ZJTestAlertViewController.m in Sources */,
 				38E58E081EB9E58B0072EB0D /* ZJCAReplicatorLayerViewController.m in Sources */,
@@ -1180,19 +1063,16 @@
 				385DBEF21EB9D43B00174ACE /* ZJFondationTableViewController.m in Sources */,
 				386152001E9F6BB300341BCB /* HYErrorView.m in Sources */,
 				386593C61EBAB87C0041601D /* ZJTestLabelViewController.m in Sources */,
-				386151E81E9F6BB300341BCB /* HYSubTitleDetailTitleTableViewCell.m in Sources */,
 				385DBEEC1EB9D11E00174ACE /* ZJNSObjectTableViewController.m in Sources */,
 				389530571EC5A427004511C8 /* UIViewController+ZJVCCategory.m in Sources */,
 				386593DB1EBB32810041601D /* ZJTestScrollViewController.m in Sources */,
 				386152041E9F6BB300341BCB /* ZJFooterView.m in Sources */,
 				386151D61E9F6BB300341BCB /* UIViewExt.m in Sources */,
-				386151E61E9F6BB300341BCB /* HYIocnCollectionViewCell.m in Sources */,
 				386593C31EBAB85C0041601D /* ZJTestApplicationViewController.m in Sources */,
 				386593D51EBB245E0041601D /* ZJTextViewController.m in Sources */,
 				387033F51DFAC37900426DA3 /* TestCategory.xcdatamodeld in Sources */,
 				386151DA1E9F6BB300341BCB /* ZJUIViewCategory.m in Sources */,
 				387BD9B81EC16EFD00746691 /* ZJTestSysDirViewController.m in Sources */,
-				386151E41E9F6BB300341BCB /* HYIconCollectionTableViewCell.m in Sources */,
 				386151F61E9F6BB300341BCB /* HYImageTextFieldTableViewCell.m in Sources */,
 				3861520C1E9F6BB300341BCB /* ZJTopEdgeTitleView.m in Sources */,
 				386152101E9F6BB300341BCB /* ZJSearchingContentsLayer.m in Sources */,
@@ -1200,6 +1080,7 @@
 				386152051E9F6BB300341BCB /* ZJProgressView.m in Sources */,
 				382C4F9B1F0500F000AE3576 /* ZJTestTabBarViewController.m in Sources */,
 				3895304E1EC5A37F004511C8 /* ZJTestNavigationItemViewController.m in Sources */,
+				385D3EFD1F063C9600F0C1FD /* ZJTestPureTextTableViewController.m in Sources */,
 				386151F01E9F6BB300341BCB /* HYIconTitleCollectionTableViewCell.m in Sources */,
 				38E58E161EB9EC3C0072EB0D /* ZJTestNumberViewController.m in Sources */,
 				38E58E0B1EB9E58B0072EB0D /* ZJProgressViewController.m in Sources */,
@@ -1213,7 +1094,6 @@
 				386152091E9F6BB300341BCB /* ZJDatePicker.m in Sources */,
 				386151F41E9F6BB300341BCB /* HYIconTitleVerticalCollectionViewCell.m in Sources */,
 				386152181E9F6BB300341BCB /* ZJBLEDeviceManager.m in Sources */,
-				386151EA1E9F6BB300341BCB /* HYSubTitleRectangleIconTableViewCell.m in Sources */,
 				3861520B1E9F6BB300341BCB /* ZJPickerView.m in Sources */,
 				38E58E051EB9E58B0072EB0D /* ZJSystemViewController.m in Sources */,
 				386151DE1E9F6BB300341BCB /* ZJStandarValueObj.m in Sources */,
@@ -1221,9 +1101,7 @@
 				386151FE1E9F6BB300341BCB /* HYTitleTextFieldTableViewCell.m in Sources */,
 				3861520A1E9F6BB300341BCB /* ZJMaskView.m in Sources */,
 				38E58E0A1EB9E58B0072EB0D /* ZJPreogressView.m in Sources */,
-				386151E21E9F6BB300341BCB /* HYProfileHeadTableViewCell.m in Sources */,
 				389530441EC5A351004511C8 /* ZJTestViewController.m in Sources */,
-				386151EC1E9F6BB300341BCB /* HYSubTitleTableViewCell.m in Sources */,
 				38E58DFD1EB9E58B0072EB0D /* ZJPinchCollectionTableViewCell.m in Sources */,
 				386152061E9F6BB300341BCB /* ZJRoundImageView.m in Sources */,
 				387BD9B71EC16EFD00746691 /* ZJTestFileTableViewController.m in Sources */,
@@ -1237,7 +1115,6 @@
 				38E58E041EB9E58B0072EB0D /* ZJMentionViewController.m in Sources */,
 				38E58E001EB9E58B0072EB0D /* ZJTestPinchTableViewController.m in Sources */,
 				38E58DF91EB9E58B0072EB0D /* ZJCollectionTableViewCell.m in Sources */,
-				386151E01E9F6BB300341BCB /* HYHaveLoginHeadTableViewCell.m in Sources */,
 				386152121E9F6BB300341BCB /* ZJSelectButton.m in Sources */,
 				386151DD1E9F6BB300341BCB /* ZJPageSizeObjectInfo.m in Sources */,
 				386152081E9F6BB300341BCB /* ZJStarLevelView.m in Sources */,
@@ -1247,15 +1124,14 @@
 				386593D21EBB24260041601D /* ZJOtherTableViewController.m in Sources */,
 				3878B3681ED92B7F0027222C /* ZJSwipeTableViewCell.m in Sources */,
 				386151DF1E9F6BB300341BCB /* ZJTimeValueObject.m in Sources */,
+				385D3F001F063F4600F0C1FD /* ZJTestSubTitleTableViewController.m in Sources */,
 				38E58E171EB9EC3C0072EB0D /* ZJTestArrayViewController.m in Sources */,
-				386151FC1E9F6BB300341BCB /* HYSexTableViewCell.m in Sources */,
 				386151F21E9F6BB300341BCB /* HYIconTitleHorizontalCollectionViewCell.m in Sources */,
 				3895304D1EC5A37F004511C8 /* ZJTestBackBarButtonItemViewController.m in Sources */,
 				386151EE1E9F6BB300341BCB /* HYIconSubTitleHorizontalCollectionViewCell.m in Sources */,
 				386151D91E9F6BB300341BCB /* ZJNSObjectCategory.m in Sources */,
 				382C4F951F04FA2B00AE3576 /* ZJTabBarViewController.m in Sources */,
 				386151DC1E9F6BB300341BCB /* ZJNameIDObject.m in Sources */,
-				386152031E9F6BB300341BCB /* HYTextImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

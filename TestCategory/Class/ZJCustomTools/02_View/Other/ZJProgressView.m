@@ -148,9 +148,8 @@
     _valueDash = 1.0;
     
     _bottomLayerColor = [UIColor groupTableViewBackgroundColor];
-    _frontLayerColor = [UIColor redColor];
     
-    _textColor = _unitColor = _frontLayerColor;
+    _textColor = _unitColor = _frontLayerColor = [UIColor redColor];
     _titleColor = [UIColor lightGrayColor];
     
     CGFloat height = 42;
@@ -278,7 +277,6 @@
     self.tailLabel.text = _tailValue;
 }
 
-
 /**
  头尾Label
  */
@@ -292,7 +290,15 @@
         _headLabel.font = [UIFont systemFontOfSize:15];
         _headLabel.textColor = [UIColor whiteColor];
         [self addSubview:_headLabel];
-        
+    }
+    
+    return _headLabel;
+}
+
+- (UILabel *)tailLabel {
+    if (!_tailLabel) {
+        CGSize size = self.frame.size;
+
         _tailLabel = [[UILabel alloc] initWithFrame:CGRectMake(size.width/2+3, _headLabel.frame.origin.y, _headLabel.frame.size.width, _headLabel.frame.size.height)];
         _tailLabel.font = [UIFont systemFontOfSize:15];
         _tailLabel.textColor = _headLabel.textColor;
@@ -300,7 +306,7 @@
         [self addSubview:_tailLabel];
     }
     
-    return _headLabel;
+    return _tailLabel;
 }
 
 #pragma mark - getter

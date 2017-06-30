@@ -29,11 +29,7 @@
 - (void)setSelect:(BOOL)select {
     _select = select;
     
-    if (select) {
-        [self setImage:[self.selectImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-    }else {
-        [self setImage:[self.unSelectImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-    }
+    [self setImage:[_select ? self.selectImg : self.unSelectImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
 }
 
 - (void)setSelectImgName:(NSString *)selectImgName {

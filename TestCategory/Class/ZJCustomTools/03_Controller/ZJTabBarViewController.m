@@ -14,6 +14,7 @@
     NSMutableArray *_titles, *_scrButtons;
     UIView *_lineView;
     CGFloat _height, _mainViewH;
+    NSInteger _firstSelectIdx;
 }
 
 @property (nonatomic, strong) UIView *statusView;
@@ -82,8 +83,8 @@
     if (self.hidesBottomBarWhenPushed == NO) {
         _mainViewH -= kTabBarHeight;
     }
-    
-    if (self.offsetX < FLT_EPSILON) {
+        
+    if (!self.hiddenNavigationBar) {
         _mainViewH -= (kNaviBarHeight + kStatusBarH);
     }
     
@@ -125,6 +126,10 @@
     }
     self.topScrollView.contentSize = CGSizeMake(totalWidth, 0);
     self.mainScrollView.contentSize = CGSizeMake(_viewControllers.count*kScreenW, 0);
+    
+    if (_firstSelectIdx != 0) {
+        [self btnEvent:[self buttonWithIndex:_firstSelectIdx]];
+    }
 }
 
 #pragma mark - buttonEvent
@@ -183,13 +188,11 @@
     }
     
     if (_selectIndex != selectIndex) {
-        _selectIndex = selectIndex;
-        
-        if (_topScrollView) {
-            UIButton *btn = [self buttonWithIndex:_selectIndex];
-            if (btn) {
-                [self btnEvent:btn];
-            }
+        UIButton *btn = [self buttonWithIndex:selectIndex];
+        if (btn) {
+            [self btnEvent:btn];
+        }else {
+            _firstSelectIdx = selectIndex;
         }
     }
 }
@@ -228,7 +231,7 @@
 - (UIView *)statusView {
     if (!_statusView) {
         _statusView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, self.offsetX)];
-        _statusView.backgroundColor = self.statusViewColor;
+        _statusView.backgroundColor = self.statusBgViewColor;
     }
     
     return _statusView;
@@ -236,7 +239,8 @@
 
 - (UIScrollView *)topScrollView {
     if (!_topScrollView) {
-        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.offsetX, kScreenW, kToolBarH)];
+        
+        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.hiddenNavigationBar ? self.offsetX : 0, kScreenW, kToolBarH)];
         _topScrollView.directionalLockEnabled = YES;
         _topScrollView.showsHorizontalScrollIndicator = NO;
         _topScrollView.backgroundColor = self.topViewBgColor;
@@ -245,11 +249,20 @@
     return _topScrollView;
 }
 
+- (void)setHiddenNavigationBar:(BOOL)hiddenNavigationBar {
+    _hiddenNavigationBar = hiddenNavigationBar;
+    
+    if (_hiddenNavigationBar) {
+        self.offsetX = kStatusBarH;
+    }
+}
+
 - (UIView *)lineView {
     if (!_lineView) {
         _lineView = [[UIView alloc] initWithFrame:CGRectZero];
         _lineView.backgroundColor = self.currentTitleColor;
     }
+    
     return _lineView;
 }
 

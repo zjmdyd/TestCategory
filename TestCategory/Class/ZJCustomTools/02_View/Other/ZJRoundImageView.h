@@ -13,4 +13,6 @@
  */
 @interface ZJRoundImageView : UIImageView
 
+@property (nonatomic, assign) BOOL needCorneradius;
+
 @end

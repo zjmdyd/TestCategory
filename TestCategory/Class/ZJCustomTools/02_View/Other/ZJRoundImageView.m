@@ -16,6 +16,14 @@
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = self.frame.size.width / 2;
     self.contentMode = UIViewContentModeScaleAspectFill;
+    
+    self.layer.cornerRadius = self.needCorneradius ? self.frame.size.width/2 : 0;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.needCorneradius = YES;
 }
 
 /*

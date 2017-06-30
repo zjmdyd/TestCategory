@@ -34,10 +34,7 @@
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers;
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers height:(CGFloat)height;
 
-/**
- *  当隐藏导航栏的时候需要用到此属性,默认的值为白色
- */
-@property (nonatomic, strong) UIColor *statusViewColor;
+@property (nonatomic, strong) UIColor *statusBgViewColor;
 
 /**
  *  当隐藏导航栏的时候需要用到此属性,默认的值为白色
@@ -50,6 +47,7 @@
  *  当隐藏导航栏的时候需要用到此属性,值为20,默认的值为0
  */
 @property (nonatomic, assign) CGFloat offsetX;
+@property (nonatomic, assign) BOOL hiddenNavigationBar;
 
 @property (nonatomic, assign) BOOL selectEnable;
 

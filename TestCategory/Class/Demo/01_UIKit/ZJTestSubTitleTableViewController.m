@@ -1,44 +1,54 @@
 //
-//  ZJUIKitTableViewController.m
+//  ZJTestSubTitleTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 5/3/17.
+//  Created by ZJ on 30/06/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJUIKitTableViewController.h"
-#import "ZJControllerCategory.h"
+#import "ZJTestSubTitleTableViewController.h"
+#import "ZJCategoryHeaderFile.h"
 
-@interface ZJUIKitTableViewController () {
-    NSArray *_vcNames;
-}
+@interface ZJTestSubTitleTableViewController ()
 
 @end
 
-@implementation ZJUIKitTableViewController
+@implementation ZJTestSubTitleTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self initAry];
+    [self initSettiing];
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJTestLabelViewController", @"ZJTestScrollViewController", @"ZJSearchingViewController", @"ZJTestPureTextTableViewController", @"ZJTestSubTitleTableViewController"];
+    
+}
+
+- (void)initSettiing {
+    
 }
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _vcNames.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = _vcNames[indexPath.row];
+
+    cell.textLabel.attributedText = [@"呵呵" attrWithLineSpace:5];
+    cell.detailTextLabel.text = @"哈哈哈";
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
     
     return cell;
 }
@@ -48,10 +58,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *name = _vcNames[indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name isGroupTableVC:YES];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return FLT_EPSILON;
 }
 
 - (void)didReceiveMemoryWarning {

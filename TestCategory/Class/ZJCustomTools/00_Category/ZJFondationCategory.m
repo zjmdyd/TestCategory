@@ -129,6 +129,33 @@
 }
 
 /**
+ 行间距
+ */
+- (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSParagraphStyle *style = [NSParagraphStyle styleWithLineSpacing:lineSpace];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, str.length)];
+    
+    return str;
+}
+
+/**
+ 行间距 对齐
+ */
+- (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace textAlignment:(NSTextAlignment)alignment {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSRange range = NSMakeRange(0, str.length);
+    
+    NSParagraphStyle *style = [NSParagraphStyle styleWithLineSpacing:lineSpace];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    
+    NSParagraphStyle *style2 = [NSParagraphStyle styleWithTextAlignment:alignment];
+    [str addAttribute:NSParagraphStyleAttributeName value:style2 range:range];
+    
+    return str;
+}
+
+/**
  文字颜色、字体
  */
 - (NSAttributedString *)attrWithForegroundColor:(UIColor *)color font:(UIFont *)font {

@@ -60,6 +60,16 @@
 - (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent;
 
 /**
+ 行间距
+ */
+- (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace;
+
+/**
+ 行间距 对齐
+ */
+- (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace textAlignment:(NSTextAlignment)alignment;
+
+/**
  文字颜色、字体
  */
 - (NSAttributedString *)attrWithForegroundColor:(UIColor *)color font:(UIFont *)font;
