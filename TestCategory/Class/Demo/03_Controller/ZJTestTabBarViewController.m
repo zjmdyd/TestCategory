@@ -16,7 +16,6 @@
 
 @implementation ZJTestTabBarViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -29,7 +28,7 @@
 }
 
 - (void)initSettiing {
-    NSArray *titles = @[@"俱乐部", @"场馆"];
+    NSArray *titles = @[@"ViewContr1", @"ViewContr2"];
     NSArray *vcs = @[@"ZJTestViewController", @"ZJTestViewController"];
     
     NSMutableArray *ary = [NSMutableArray array];
@@ -43,6 +42,7 @@
 //    barVC.offsetX = 20;
     barVC.hidesBottomBarWhenPushed = YES;
     barVC.topViewBgColor = [UIColor greenColor];
+//    barVC.titleColor = [UIColor redColor];
     [self addChildViewController:barVC];
     [self.view addSubview:barVC.view];
 }

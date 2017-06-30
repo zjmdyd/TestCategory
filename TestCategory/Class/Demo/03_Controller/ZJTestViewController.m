@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.view.layer.borderWidth = 10.0;
+    self.view.layer.borderColor = [UIColor redColor].CGColor;
 }
 
 - (IBAction)popEvent:(UIButton *)sender {

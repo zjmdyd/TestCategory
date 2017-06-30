@@ -11,24 +11,23 @@
 #import "ZJUIViewCategory.h"
 
 @interface ZJTabBarViewController ()<UIScrollViewDelegate> {
-    NSMutableArray *_titles;
-    UIScrollView *_mainScrollerView;
+    NSMutableArray *_titles, *_scrButtons;
     UIView *_lineView;
-    CGFloat _height;
+    CGFloat _height, _mainViewH;
 }
 
 @property (nonatomic, strong) UIView *statusView;
 @property (nonatomic, strong) UIScrollView *topScrollView;
+@property (nonatomic, strong) UIScrollView *mainScrollView;
 @property (nonatomic, strong) UIView *lineView;
 
 @end
 
 #define kToolBarH 44
-#define kLineOffsetX 15
-#define kPullButtonWidth 50
+#define kLineOffsetX 8
 #define kTabBarHeight 49
-#define kNaviBarBottom 64
 #define kNaviBarHeight 44
+#define kStatusBarH 20
 
 @implementation ZJTabBarViewController
 
@@ -50,20 +49,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initAry];
     [self initSetting];
 }
 
-- (void)initSetting {
+- (void)initAry {
     _titles = [NSMutableArray array];
+    _scrButtons = [NSMutableArray array];
+}
+
+- (void)initSetting {
+    self.view.height = _height;
+    self.view.backgroundColor = [UIColor whiteColor];
     _selectEnable = YES;
     
     if (self.offsetX > 0) {
         [self.view addSubview:self.statusView];
     }
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.view.height = _height;
     [self createScrollView];
+    
     if (self.selectIndex != 0) {
         [self btnEvent:[self buttonWithIndex:self.selectIndex]];
     }
@@ -73,21 +78,17 @@
     [self.view addSubview:self.topScrollView];
     [self.topScrollView addSubview:self.lineView];
     
-    CGFloat height = self.view.height - kNaviBarBottom - self.topScrollView.height;
+    _mainViewH = self.view.height - self.offsetX - self.topScrollView.height;
     if (self.hidesBottomBarWhenPushed == NO) {
-        height -= kTabBarHeight;
+        _mainViewH -= kTabBarHeight;
     }
+    
     if (self.offsetX < FLT_EPSILON) {
-        height += kNaviBarHeight;
+        _mainViewH -= (kNaviBarHeight + kStatusBarH);
     }
     
-    _mainScrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, _topScrollView.bottom, kScreenW, height)];
-    _mainScrollerView.pagingEnabled = YES;
-    _mainScrollerView.delegate = self;
-    _mainScrollerView.showsHorizontalScrollIndicator = NO;
-    [self.view addSubview:_mainScrollerView];
+    [self.view addSubview:self.mainScrollView];
     
-    CGFloat offsetX = 0.0;
     CGFloat totalWidth = 0.0;
     for (int i = 0; i < _viewControllers.count; i++) {
         UIViewController *vc = _viewControllers[i];
@@ -96,93 +97,82 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
         btn.tag = i;
         [btn setTitle:vc.title forState:UIControlStateNormal];
+        [_scrButtons addObject:btn];
+        
         CGFloat width = [UILabel fitSizeWithMargin:0 text:vc.title font:[UIFont systemFontOfSize:14]].width+kLineOffsetX*2;
-        btn.frame = CGRectMake(offsetX, 0, width, _topScrollView.height);
-        totalWidth += btn.width;
-
+        btn.frame = CGRectMake(totalWidth, 0, width, self.topScrollView.height);
+        totalWidth += width;
+        
         if (i == 0) {
-            _lineView.frame = CGRectMake(btn.left+kLineOffsetX, _topScrollView.height - 3.0f, btn.width  - kLineOffsetX*2, 2);
             _currentVC = vc;
-            [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            self.lineView.frame = CGRectMake(btn.left+kLineOffsetX, self.topScrollView.height - 3.0f, btn.width  - kLineOffsetX*2, 2);
+            [btn setTitleColor:self.currentTitleColor forState:UIControlStateNormal];
         }else {
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        }
-        if (self.titleColor) {
             [btn setTitleColor:self.titleColor forState:UIControlStateNormal];
         }
         [btn addTarget:self action:@selector(btnEvent:) forControlEvents:UIControlEventTouchUpInside];
-        [_topScrollView addSubview:btn];
-        offsetX += width;
+        [self.topScrollView addSubview:btn];
         
-        vc.view.frame = CGRectMake(i*kScreenW, 0, kScreenW, _mainScrollerView.height);
-        [_mainScrollerView addSubview:vc.view];
+        vc.view.frame = CGRectMake(i*kScreenW, 0, kScreenW, self.mainScrollView.height);
+        [self.mainScrollView addSubview:vc.view];
     }
     if (totalWidth < kScreenW) {
-        CGFloat offset = (kScreenW - totalWidth)/(_viewControllers.count+1);
-        for (int i = 0; i < _topScrollView.subviews.count; i++) {
-            UIButton *btn = _topScrollView.subviews[i];
-            if ([btn isKindOfClass:[UIButton class]]) {
-                btn.left += offset*(btn.tag+1);// - 5*(btn.tag-1);
-                if (btn.tag == 0) _lineView.left = btn.left+kLineOffsetX;
-            }
+        CGFloat offset = (kScreenW - totalWidth) / (_viewControllers.count+1);
+        for (UIButton *btn in _scrButtons) {
+            btn.left += offset*(btn.tag+1);
+            if (btn.tag == 0) _lineView.left = btn.left+kLineOffsetX;
         }
     }
-    _topScrollView.contentSize = CGSizeMake(offsetX, 0);
-    _topScrollView.directionalLockEnabled = YES;
-    _mainScrollerView.contentSize = CGSizeMake(_viewControllers.count*kScreenW, 0);
+    self.topScrollView.contentSize = CGSizeMake(totalWidth, 0);
+    self.mainScrollView.contentSize = CGSizeMake(_viewControllers.count*kScreenW, 0);
 }
 
 #pragma mark - buttonEvent
 
 - (void)btnEvent:(UIButton *)sender {
-//    if (!self.selectEnable) return;
+    if (_selectIndex == sender.tag) return;
     
     _selectIndex = sender.tag;
     _currentVC = _viewControllers[_selectIndex];
-
-    [self adjustTopScrollerViewContentOffset:sender];
-
-    [_mainScrollerView setContentOffset:CGPointMake(kScreenW*sender.tag, 0) animated:YES];
+    
+    [self adjustTopScrollViewContentOffset:sender];
+    
     [self selectButtonItem:sender];
+    [self.mainScrollView setContentOffset:CGPointMake(kScreenW*sender.tag, 0) animated:YES];
     
     if ([self.delegate respondsToSelector:@selector(tabBarViewController:didSelectedIndex:)]) {
         [self.delegate tabBarViewController:self didSelectedIndex:sender.tag];
     }
+    
     if ([self.delegate respondsToSelector:@selector(tabBarViewController:didSelectedViewController:)]) {
         [self.delegate tabBarViewController:self didSelectedViewController:_viewControllers[sender.tag]];
     }
 }
 
-- (void)adjustTopScrollerViewContentOffset:(UIButton *)sender {
-    if (sender.left+sender.width > _topScrollView.width) {
-        CGFloat offsetX = sender.left+sender.width - _topScrollView.width;
+- (void)adjustTopScrollViewContentOffset:(UIButton *)sender {
+    if (sender.left + sender.width > self.topScrollView.width) {
+        CGFloat offsetX = sender.left + sender.width - self.topScrollView.width;
         if (sender.tag < _viewControllers.count - 1) offsetX += 40;
-        [_topScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+        [self.topScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
     }else {
-        [_topScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        [self.topScrollView setContentOffset:CGPointZero animated:YES];
     }
 }
 
 - (void)selectButtonItem:(UIButton *)sender {
     [UIView animateWithDuration:.2 animations:^{
-        _lineView.frame = CGRectMake(sender.left + kLineOffsetX, _lineView.top, sender.width  - kLineOffsetX*2, _lineView.height);
+        self.lineView.frame = CGRectMake(sender.left + kLineOffsetX, self.lineView.top, sender.width - kLineOffsetX*2, self.lineView.height);
     } completion:^(BOOL finished) {
         [self changeButtonTitleColor:sender];
     }];
 }
 
 - (void)changeButtonTitleColor:(UIButton *)sender {
-    for (UIButton *btn in _topScrollView.subviews) {
-        if ([btn isKindOfClass:[UIButton class]]) {
-            if (self.titleColor) {
-                [btn setTitleColor:self.titleColor forState:UIControlStateNormal];
-            }else {
-                if (btn.tag == _selectIndex) {
-                    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-                }else {
-                    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                }
-            }
+    for (UIButton *btn in _scrButtons) {
+        if (btn.tag == _selectIndex) {
+            [btn setTitleColor:self.currentTitleColor forState:UIControlStateNormal];
+        }else {
+            [btn setTitleColor:self.titleColor forState:UIControlStateNormal];
         }
     }
 }
@@ -194,7 +184,7 @@
     
     if (_selectIndex != selectIndex) {
         _selectIndex = selectIndex;
-    
+        
         if (_topScrollView) {
             UIButton *btn = [self buttonWithIndex:_selectIndex];
             if (btn) {
@@ -205,11 +195,9 @@
 }
 
 - (UIButton *)buttonWithIndex:(NSUInteger)index {
-    for (UIButton *btn in _topScrollView.subviews) {
-        if ([btn isKindOfClass:[UIButton class]]) {
-            if (btn.tag == index) {
-                return btn;
-            }
+    for (UIButton *btn in _scrButtons) {
+        if (btn.tag == index) {
+            return btn;
         }
     }
     
@@ -227,17 +215,19 @@
     }
 }
 
+#pragma mark - setter
+
 - (void)setSelectEnable:(BOOL)selectEnable {
     _selectEnable = selectEnable;
     
-    _topScrollView.userInteractionEnabled = _mainScrollerView.scrollEnabled = _selectEnable;
+    self.topScrollView.userInteractionEnabled = self.mainScrollView.scrollEnabled = _selectEnable;
 }
 
 #pragma mark - getter
 
 - (UIView *)statusView {
     if (!_statusView) {
-        _statusView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 20)];
+        _statusView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, self.offsetX)];
         _statusView.backgroundColor = self.statusViewColor;
     }
     
@@ -247,25 +237,55 @@
 - (UIScrollView *)topScrollView {
     if (!_topScrollView) {
         _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.offsetX, kScreenW, kToolBarH)];
+        _topScrollView.directionalLockEnabled = YES;
         _topScrollView.showsHorizontalScrollIndicator = NO;
         _topScrollView.backgroundColor = self.topViewBgColor;
     }
+    
     return _topScrollView;
 }
 
 - (UIView *)lineView {
     if (!_lineView) {
         _lineView = [[UIView alloc] initWithFrame:CGRectZero];
-        _lineView.backgroundColor = self.titleColor ?: [UIColor redColor];
+        _lineView.backgroundColor = self.currentTitleColor;
     }
     return _lineView;
+}
+
+- (UIScrollView *)mainScrollView {
+    if (!_mainScrollView) {
+        _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, _topScrollView.bottom, kScreenW, _mainViewH)];
+        _mainScrollView.pagingEnabled = YES;
+        _mainScrollView.delegate = self;
+        _mainScrollView.showsHorizontalScrollIndicator = NO;
+    }
+    
+    return _mainScrollView;
 }
 
 - (UIColor *)topViewBgColor {
     if (!_topViewBgColor) {
         _topViewBgColor = [UIColor whiteColor];
     }
+    
     return _topViewBgColor;
+}
+
+- (UIColor *)currentTitleColor {
+    if (!_currentTitleColor) {
+        _currentTitleColor = [UIColor redColor];
+    }
+    
+    return _currentTitleColor;
+}
+
+- (UIColor *)titleColor {
+    if (!_titleColor) {
+        _titleColor = [UIColor blackColor];
+    }
+    
+    return _titleColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -279,14 +299,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers {
     if (self = [super init]) {
