@@ -11,25 +11,40 @@
 @interface HYIconTitleVerticalCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 @end
 
 @implementation HYIconTitleVerticalCollectionViewCell
 
-- (void)setTitle:(NSString *)title {
-    _title = title;
+@synthesize text = _text;
+@synthesize textColor = _textColor;
+@synthesize iconPath = _iconPath;
+@synthesize placeholder = _placeholder;
+
+- (void)setText:(NSString *)text {
+    _text = text;
     
-    self.titleLabel.text = _title;
+    self.textLabel.text = _text?:@"";
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    
+    self.textLabel.textColor = _textColor;
 }
 
 - (void)setIconPath:(NSString *)iconPath {
     _iconPath = iconPath;
     
     if ([_iconPath hasPrefix:@"http:"]) {
-        
+#ifdef SDWebImage
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:_iconPath] placeholderImage:[UIImage imageNamed:self.placeholder] options:SDWebImageRefreshCached];
+#else
+        self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_iconPath]]];
+#endif
     }else {
-        self.imageView.image = [UIImage imageNamed:_iconPath];
+        self.imageView.image = [UIImage imageNamed:_iconPath] ?: [UIImage imageNamed:self.placeholder];
     }
 }
 

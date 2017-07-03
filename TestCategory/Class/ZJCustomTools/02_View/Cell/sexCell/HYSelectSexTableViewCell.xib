@@ -101,7 +101,7 @@
                 <outletCollection property="titleLabels" destination="s0P-lJ-dFO" id="Z79-6e-N7i"/>
                 <outletCollection property="titleLabels" destination="XEe-45-nb3" id="7rV-qV-ECk"/>
             </connections>
-            <point key="canvasLocation" x="-137" y="-12"/>
+            <point key="canvasLocation" x="-182" y="-22"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -1,22 +1,23 @@
 //
-//  HYIconTitleCollectionTableViewCell.m
+//  HYCollectionTableViewCell.m
 //  PEPlatform
 //
 //  Created by ZJ on 12/14/16.
 //  Copyright © 2016 ZJ. All rights reserved.
 //
 
-#import "HYIconTitleCollectionTableViewCell.h"
+#import "HYCollectionTableViewCell.h"
 #import "HYIconTitleVerticalCollectionViewCell.h"
+#import "ZJViewHeaderFile.h"
 
-@interface HYIconTitleCollectionTableViewCell ()
+@interface HYCollectionTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, assign) NSUInteger itemCount;
+
+@property (nonatomic, strong) NSArray *cellIDs;
+@property (nonatomic, copy  ) NSString *cellID;
 
 @end
-
-static NSString *IconTitleCollectionViewCell = @"HYIconTitleVerticalCollectionViewCell";
 
 #ifndef kScreenW
 
@@ -25,13 +26,15 @@ static NSString *IconTitleCollectionViewCell = @"HYIconTitleVerticalCollectionVi
 
 #endif
 
-@implementation HYIconTitleCollectionTableViewCell
+@implementation HYCollectionTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self.collectionView registerNib:[UINib nibWithNibName:IconTitleCollectionViewCell bundle:nil] forCellWithReuseIdentifier:IconTitleCollectionViewCell];
+    [self.collectionView registerNib:[UINib nibWithNibName:self.cellID bundle:nil] forCellWithReuseIdentifier:self.cellID];
 }
+
+#pragma mark - setter
 
 - (void)setTitles:(NSArray<NSString *> *)titles {
     _titles = titles;
@@ -39,10 +42,13 @@ static NSString *IconTitleCollectionViewCell = @"HYIconTitleVerticalCollectionVi
     [self.collectionView reloadData];
 }
 
-- (void)seticonPaths:(NSArray<NSString *> *)iconPaths {
+- (void)setIconPaths:(NSArray<NSString *> *)iconPaths {
     _iconPaths = iconPaths;
     
     [self.collectionView reloadData];
+    
+    
+    
 }
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled {
@@ -54,12 +60,12 @@ static NSString *IconTitleCollectionViewCell = @"HYIconTitleVerticalCollectionVi
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.itemCount;
+    return self.titles.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    HYIconTitleVerticalCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:IconTitleCollectionViewCell forIndexPath:indexPath];
-    cell.title = self.titles[indexPath.row];
+    ZJIconTitleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellID forIndexPath:indexPath];
+    cell.text = self.titles[indexPath.row];
     cell.iconPath = self.iconPaths[indexPath.row];
     
     return cell;
@@ -68,27 +74,43 @@ static NSString *IconTitleCollectionViewCell = @"HYIconTitleVerticalCollectionVi
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.delegate respondsToSelector:@selector(iconTitleCollectionTableViewCell:didSelectAtIndexPath:)]) {
-        [self.delegate iconTitleCollectionTableViewCell:self didSelectAtIndexPath:indexPath];
+    if ([self.delegate respondsToSelector:@selector(collectionTableViewCell:didSelectAtIndexPath:)]) {
+        [self.delegate collectionTableViewCell:self didSelectAtIndexPath:indexPath];
     }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat width = kScreenW/self.itemCount-1;
+    if (!CGSizeEqualToSize(self.itemSize, CGSizeZero)) return self.itemSize;
+    
+    CGFloat width = kScreenW/self.numberItemOfColum-1;
     
     return CGSizeMake(width, width);
 }
 
-- (NSUInteger)itemCount {
-    _itemCount = self.titles.count;
-    
-    if (_itemCount <= 0) {
-        _itemCount = 1;
+- (NSArray *)cellIDs {
+    if (!_cellIDs) {
+        _cellIDs = @[IconTitleCollectionViewCell, IconTitleHorizontalCollectionCell, IconTitleVerticalCollectionCell];
     }
     
-    return _itemCount;
+    return _cellIDs;
+}
+
+- (NSString *)cellID {
+    if (!_cellIDs) {
+        _cellID = self.cellIDs[self.cellType];
+    }
+    
+    return _cellID;
+}
+
+- (NSInteger)numberItemOfColum {
+    if (_numberItemOfColum == 0) {
+        _numberItemOfColum = 1;
+    }
+    
+    return _numberItemOfColum;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

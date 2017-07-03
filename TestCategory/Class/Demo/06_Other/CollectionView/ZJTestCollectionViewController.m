@@ -12,6 +12,8 @@
 
 @interface ZJTestCollectionViewController ()
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @end
 
 static NSString *CollectionTableViewCell = @"ZJCollectionTableViewCell";

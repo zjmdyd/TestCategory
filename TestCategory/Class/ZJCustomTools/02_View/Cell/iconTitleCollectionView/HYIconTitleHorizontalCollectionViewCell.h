@@ -6,11 +6,8 @@
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ZJIconTitleCollectionViewCell.h"
 
-@interface HYIconTitleHorizontalCollectionViewCell : UICollectionViewCell
-
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *iconPath;
+@interface HYIconTitleHorizontalCollectionViewCell : ZJIconTitleCollectionViewCell
 
 @end
