@@ -33,7 +33,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    HYIconTitleVerticalCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:IconTitleVerticalCollectionCell forIndexPath:indexPath];
+    ZJIconTitleVerticalCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:IconTitleVerticalCollectionCell forIndexPath:indexPath];
     cell.placeholder = @"ic_shebei_212x212";
     cell.iconPath = @"ic_shebei_212x212";
     cell.text = [NSString stringWithFormat:@"item%zd", indexPath.row];
@@ -49,7 +49,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HYCollectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CollectionTableViewCell];
+    ZJCollectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CollectionTableViewCell];
     cell.titles = @[@"item1", @"item2"];
     cell.iconPaths = @[@"ic_shebei_212x212", @"ic_shebei_212x212"];
     cell.numberItemOfColum = 2;

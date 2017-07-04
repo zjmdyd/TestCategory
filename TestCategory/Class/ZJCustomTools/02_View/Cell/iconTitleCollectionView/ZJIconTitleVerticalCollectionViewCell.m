@@ -1,21 +1,21 @@
 //
-//  HYIconTitleHorizontalCollectionViewCell.m
-//  XAHealthDoctor
+//  ZJIconTitleVerticalCollectionViewCell.m
+//  PEPlatform
 //
-//  Created by ZJ on 1/3/17.
-//  Copyright © 2017 ZJ. All rights reserved.
+//  Created by ZJ on 12/14/16.
+//  Copyright © 2016 ZJ. All rights reserved.
 //
 
-#import "HYIconTitleHorizontalCollectionViewCell.h"
+#import "ZJIconTitleVerticalCollectionViewCell.h"
 
-@interface HYIconTitleHorizontalCollectionViewCell ()
+@interface ZJIconTitleVerticalCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 @end
 
-@implementation HYIconTitleHorizontalCollectionViewCell
+@implementation ZJIconTitleVerticalCollectionViewCell
 
 @synthesize text = _text;
 @synthesize textColor = _textColor;

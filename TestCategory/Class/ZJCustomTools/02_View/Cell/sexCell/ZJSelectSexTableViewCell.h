@@ -1,5 +1,5 @@
 //
-//  HYSelectSexTableViewCell.h
+//  ZJSelectSexTableViewCell.h
 //  ButlerSugar
 //
 //  Created by ZJ on 2/26/16.
@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class HYSelectSexTableViewCell;
+@class ZJSelectSexTableViewCell;
 
 @protocol HYSelectSexDelegate <NSObject>
 
-- (void)hySelectSexTableViewCell:(HYSelectSexTableViewCell *)cell didClickButtonAtIndex:(NSInteger)buttonIndex;
+- (void)ZJSelectSexTableViewCell:(ZJSelectSexTableViewCell *)cell didClickButtonAtIndex:(NSInteger)buttonIndex;
 
 @end
 
-@interface HYSelectSexTableViewCell : UITableViewCell
+@interface ZJSelectSexTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) NSArray *selectImgNames;
 @property (nonatomic, strong) NSArray *unselectImgNames;

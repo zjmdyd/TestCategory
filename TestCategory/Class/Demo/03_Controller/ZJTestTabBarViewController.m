@@ -38,8 +38,7 @@
     }
     
     ZJTabBarViewController *barVC = [[ZJTabBarViewController alloc] initWithViewControllers:ary];
-//    barVC.delegate = self;
-    barVC.hiddenNavigationBar = YES;
+//    barVC.hiddenNavigationBar = NO;
     barVC.hidesBottomBarWhenPushed = YES;
     barVC.statusBgViewColor = barVC.topViewBgColor = [UIColor greenColor];
     barVC.selectIndex = 1;
@@ -54,7 +53,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.hidden = YES;
+//    self.navigationController.navigationBar.hidden = YES;
 }
 
 /*

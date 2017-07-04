@@ -35,23 +35,23 @@
 
 
 ///* TableViewCell */
-#import "HYImageTextFieldTableViewCell.h"
-#import "HYSelectSexTableViewCell.h"
-#import "HYTitleTextFieldTableViewCell.h"
-#import "HYCollectionTableViewCell.h"
+#import "ZJCollectionTableViewCell.h"
+#import "ZJImageTextFieldTableViewCell.h"
+#import "ZJSelectSexTableViewCell.h"
+#import "ZJTitleTextFieldTableViewCell.h"
 
-static NSString *const CollectionTableViewCell = @"HYCollectionTableViewCell";
-static NSString *const ImageTextFieldTabViewCell = @"HYImageTextFieldTableViewCell";
-static NSString *const SelectSexTableViewCell = @"HYSelectSexTableViewCell";
-static NSString *const TitleTextFieldTableViewCell = @"HYTitleTextFieldTableViewCell";
+static NSString *const CollectionTableViewCell = @"ZJCollectionTableViewCell";
+static NSString *const ImageTextFieldTabViewCell = @"ZJImageTextFieldTableViewCell";
+static NSString *const SelectSexTableViewCell = @"ZJSelectSexTableViewCell";
+static NSString *const TitleTextFieldTableViewCell = @"ZJTitleTextFieldTableViewCell";
 
 
 ///* CollectionViewCell */
-#import "HYIconTitleCollectionViewCell.h"
-#import "HYIconTitleHorizontalCollectionViewCell.h"
-#import "HYIconTitleVerticalCollectionViewCell.h"
+#import "ZJIconTitleNormalCollectionViewCell.h"
+#import "ZJIconTitleHorizontalCollectionViewCell.h"
+#import "ZJIconTitleVerticalCollectionViewCell.h"
 
-static NSString *const IconTitleCollectionViewCell = @"HYIconTitleCollectionViewCell";
-static NSString *const IconTitleVerticalCollectionCell = @"HYIconTitleVerticalCollectionViewCell";
-static NSString *const IconTitleHorizontalCollectionCell = @"HYIconTitleHorizontalCollectionViewCell";
+static NSString *const IconTitleCollectionViewCell = @"ZJIconTitleNormalCollectionViewCell";
+static NSString *const IconTitleVerticalCollectionCell = @"ZJIconTitleVerticalCollectionViewCell";
+static NSString *const IconTitleHorizontalCollectionCell = @"ZJIconTitleHorizontalCollectionViewCell";
 

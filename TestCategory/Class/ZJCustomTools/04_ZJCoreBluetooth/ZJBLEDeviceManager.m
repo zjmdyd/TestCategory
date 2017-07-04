@@ -9,13 +9,28 @@
 #import "ZJBLEDeviceManager.h"
 #import "ZJBLEDevice.h"
 
+@interface CBPeripheral (ZJPeripheral)
+
+- (BOOL)isEqual:(CBPeripheral *)peripheral;
+
+@end
+
+@implementation CBPeripheral (ZJPeripheral)
+
+- (BOOL)isEqual:(CBPeripheral *)peripheral {
+    return [self.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString];
+}
+
+@end
+
 @interface ZJBLEDeviceManager ()<CBCentralManagerDelegate> {
-    NSArray *_searchUUIDs;
+    NSArray *_searchServiceUUIDs;
+    NSString *_prefix;
 }
 
 @property (nonatomic, strong) CBCentralManager *centralManager;
-@property (nonatomic, strong) BleRefreshCompletionHandle scanCompletion;
-@property (nonatomic, strong) BleRefreshCompletionHandle stateCompletion;
+@property (nonatomic, strong) BLERefreshCompletionHandle stateCompletion;
+@property (nonatomic, strong) BLERefreshCompletionHandle scanCompletion;
 @property (nonatomic, strong) BLEConnectCompletionHandle connectCompletion;
 @property (nonatomic, strong) BLEConnectCompletionHandle disConnectCompletion;
 
@@ -53,19 +68,19 @@ static ZJBLEDeviceManager *_manager = nil;
     return _manager;
 }
 
-+ (instancetype)shareManagerDidUpdateStateHandle:(BleRefreshCompletionHandle)completion {
-    if (_manager) {         // 手动刷新状态
-        [_manager centralManagerDidUpdateState:_manager.centralManager];
-    }else {
++ (instancetype)shareManagerDidUpdateStateHandle:(BLERefreshCompletionHandle)completion {
+    if (!_manager) {
         _manager = [ZJBLEDeviceManager shareManager];
         _manager.stateCompletion = completion;
+    }else {         // 手动刷新状态
+        [_manager centralManagerDidUpdateState:_manager.centralManager];
     }
     
     return _manager;
 }
 
-- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BleRefreshCompletionHandle)completion {
-    _searchUUIDs = uuids;
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BLERefreshCompletionHandle)completion {
+    _searchServiceUUIDs = uuids;
     /**
      *  本类自动scan传过来的回调都是nil,当不为nil时(在外部类中调用scan方法),应该更新扫描的回调
      */
@@ -75,25 +90,33 @@ static ZJBLEDeviceManager *_manager = nil;
     if (_discoveredBLEDevices.count) {
         _discoveredBLEDevices = @[];
         if (self.scanCompletion) {
-            self.scanCompletion(nil, YES);
+            self.scanCompletion(nil);
         }
     }
+    
     [self.centralManager scanForPeripheralsWithServices:uuids options:nil];
 }
 
-- (void)connectBLEDevices:(NSArray *)devices completion:(BLEConnectCompletionHandle)completion {
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids prefix:(NSString *)prefix completion:(BLERefreshCompletionHandle)completion {
+    _prefix = prefix;
+    [self scanDeviceWithServiceUUIDs:uuids completion:completion];
+}
+
+- (void)connectBLEDevices:(NSArray<ZJBLEDevice *> *)devices completion:(BLEConnectCompletionHandle)completion {
     for (ZJBLEDevice *device in devices) {
         if (device.peripheral.state == CBPeripheralStateDisconnected) {
             [self.centralManager connectPeripheral:device.peripheral options:nil];
         }
     }
+    
     self.connectCompletion = completion;
 }
 
-- (void)cancelBLEDevicesConnection:(NSArray *)devices completion:(BLEConnectCompletionHandle)completion {
+- (void)cancelBLEDevicesConnection:(NSArray<ZJBLEDevice *> *)devices completion:(BLEConnectCompletionHandle)completion {
     for (ZJBLEDevice *device in devices) {
         [self.centralManager cancelPeripheralConnection:device.peripheral];
     }
+    
     self.disConnectCompletion = completion;
 }
 
@@ -101,11 +124,11 @@ static ZJBLEDeviceManager *_manager = nil;
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     if (self.stateCompletion) {
-        self.stateCompletion(@(central.state), YES);
+        self.stateCompletion(@(central.state));
     }
     
     if (self.automScan) {
-        [central scanForPeripheralsWithServices:_searchUUIDs options:nil];
+        [central scanForPeripheralsWithServices:_searchServiceUUIDs options:nil];
     }
 }
 
@@ -113,14 +136,14 @@ static ZJBLEDeviceManager *_manager = nil;
  *  发现设备
  */
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI {
-    if ([peripheral.name hasPrefix:@"BAND"] == NO) {
+    if (_prefix && [peripheral.name hasPrefix:_prefix] == NO) {
         return;
     }
     NSLog(@"发现设备--->%@, %@", advertisementData, peripheral.identifier.UUIDString);
     NSMutableArray *ary = [NSMutableArray arrayWithArray:self.discoveredBLEDevices];
     for (int i = 0; i < ary.count; i++) {
         ZJBLEDevice *device = ary[i];
-        if ([device.peripheral.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString]) {
+        if ([device.peripheral isEqual:peripheral]) {
             [ary removeObject:device];
             break;
         }
@@ -134,7 +157,7 @@ static ZJBLEDeviceManager *_manager = nil;
      *  不管是用户手动扫描还是automScan,都用scanCompletion回调
      */
     if (self.scanCompletion) {
-        self.scanCompletion(_discoveredBLEDevices, YES);
+        self.scanCompletion(_discoveredBLEDevices);
     }
 }
 
@@ -149,25 +172,18 @@ static ZJBLEDeviceManager *_manager = nil;
     ZJBLEDevice *device;
     for (int i = 0; i < discoverAry.count; i++) {
         device = discoverAry[i];
-        if ([device.peripheral.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString]) {
+        if ([device.peripheral isEqual:peripheral]) {
             [connAry addObject:device];
             [discoverAry removeObject:device];
+            
             break;
         }
     }
     _discoveredBLEDevices = [discoverAry copy];
     _connectedBLEDevices = [connAry copy];
 
-//    if (device) {
-//        self.connectCompletion(device, YES, nil);
-//    }
-    
     if (device) {
-        [device discoverServices:^(BOOL success, id obj, NSError *error) {
-            if (success && self.connectCompletion) {
-                self.connectCompletion(device, YES, error);
-            }
-        }];
+        self.connectCompletion(device, YES, nil);
     }
 }
 
@@ -181,7 +197,7 @@ static ZJBLEDeviceManager *_manager = nil;
     ZJBLEDevice *device;
     for (int i = 0; i < connAry.count; i++) {
         device = connAry[i];
-        if ([device.peripheral.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString]) {
+        if ([device.peripheral isEqual:peripheral]) {
             [connAry removeObject:device];
             break;
         }
@@ -198,23 +214,23 @@ static ZJBLEDeviceManager *_manager = nil;
     }
     
     if (self.isAutomScan) {
-        [self scanDeviceWithServiceUUIDs:_searchUUIDs completion:nil];
+        [self scanDeviceWithServiceUUIDs:_searchServiceUUIDs completion:nil];
     }
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    NSLog(@"连接失败:%@", error);
+    NSLog(@"%s, error = %@", __func__, error);
     ZJBLEDevice *device = [[ZJBLEDevice alloc] initWithPeripheral:peripheral];
     if (self.connectCompletion) {
-        self.connectCompletion(device, YES, error);
+        self.connectCompletion(device, NO, error);
     }
 }
 
-#pragma mark -
+#pragma mark - public
 
 - (void)rescan {
     self.automScan = YES;
-    [self scanDeviceWithServiceUUIDs:_searchUUIDs completion:nil];
+    [self scanDeviceWithServiceUUIDs:_searchServiceUUIDs completion:nil];
 }
 
 - (void)stopScan {

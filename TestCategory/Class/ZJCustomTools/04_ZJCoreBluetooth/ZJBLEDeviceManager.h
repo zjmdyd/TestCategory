@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, ZJDeviceManagerState) {
 /**
  *  回调方法里面主要执行刷新界面的代码
  */
-typedef void(^BleRefreshCompletionHandle)(id obj, BOOL needRefresh);
+typedef void(^BLERefreshCompletionHandle)(id obj);
 
 /**
  *  连接操作回调
@@ -60,14 +60,16 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, BOOL connected, N
 /**
  *  更新centralManager状态, 在回调方法里面对不同的状态进行处理
  */
-+ (instancetype)shareManagerDidUpdateStateHandle:(BleRefreshCompletionHandle)completion;
++ (instancetype)shareManagerDidUpdateStateHandle:(BLERefreshCompletionHandle)completion;
 
 /**
  *  **
  *  @param uuids      搜索包含服务特定服务uuid的设备
  *  @param completion 搜索结果的回调
  */
-- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BleRefreshCompletionHandle)completion;
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BLERefreshCompletionHandle)completion;
+
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids prefix:(NSString *)prefix completion:(BLERefreshCompletionHandle)completion;
 
 /**
  *  连接设备
@@ -75,7 +77,7 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, BOOL connected, N
  *  @param devices    需要连接的设备, 数组的元素是ZJBLEDevice对象类型
  *  @param completion 连接成功后的回调
  */
-- (void)connectBLEDevices:(NSArray *)devices completion:(BLEConnectCompletionHandle)completion;
+- (void)connectBLEDevices:(NSArray<ZJBLEDevice *> *)devices completion:(BLEConnectCompletionHandle)completion;
 
 /**
  *  手动断开连接
@@ -83,7 +85,7 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, BOOL connected, N
  *  @param devices    需要断开的设备, 数组的元素是ZJBLEDevice对象类型
  *  @param completion 断开连接后的回调
  */
-- (void)cancelBLEDevicesConnection:(NSArray *)devices completion:(BLEConnectCompletionHandle)completion;
+- (void)cancelBLEDevicesConnection:(NSArray<ZJBLEDevice *> *)devices completion:(BLEConnectCompletionHandle)completion;
 
 /**
  *  重新扫描

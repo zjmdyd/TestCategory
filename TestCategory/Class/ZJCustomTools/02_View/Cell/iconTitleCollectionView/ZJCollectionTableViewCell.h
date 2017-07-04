@@ -1,5 +1,5 @@
 //
-//  HYCollectionTableViewCell.h
+//  ZJCollectionTableViewCell.h
 //  PEPlatform
 //
 //  Created by ZJ on 12/14/16.
@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class HYCollectionTableViewCell;
+@class ZJCollectionTableViewCell;
 
-@protocol HYCollectionTableViewCellDelegate <NSObject>
+@protocol ZJCollectionTableViewCellDelegate <NSObject>
 
-- (void)collectionTableViewCell:(HYCollectionTableViewCell *)cell didSelectAtIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionTableViewCell:(ZJCollectionTableViewCell *)cell didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -22,12 +22,12 @@ typedef NS_ENUM(NSInteger, ZJCollectionCellType) {
     ZJCollectionCellTypeOfIconTitleHorizontal
 };
 
-@interface HYCollectionTableViewCell : UITableViewCell
+@interface ZJCollectionTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) NSArray<NSString *> *titles;
 @property (nonatomic, strong) NSArray<NSString *> *iconPaths;
 @property (nonatomic, assign) ZJCollectionCellType cellType;
-@property (nonatomic, weak) id<HYCollectionTableViewCellDelegate> delegate;
+@property (nonatomic, weak) id<ZJCollectionTableViewCellDelegate> delegate;
 @property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, assign) NSInteger numberItemOfColum;
 @property (nonatomic, assign) CGSize itemSize;

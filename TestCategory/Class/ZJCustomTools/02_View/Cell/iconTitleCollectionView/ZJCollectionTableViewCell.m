@@ -1,16 +1,15 @@
 //
-//  HYCollectionTableViewCell.m
+//  ZJCollectionTableViewCell.m
 //  PEPlatform
 //
 //  Created by ZJ on 12/14/16.
 //  Copyright © 2016 ZJ. All rights reserved.
 //
 
-#import "HYCollectionTableViewCell.h"
-#import "HYIconTitleVerticalCollectionViewCell.h"
+#import "ZJCollectionTableViewCell.h"
 #import "ZJViewHeaderFile.h"
 
-@interface HYCollectionTableViewCell ()
+@interface ZJCollectionTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -26,7 +25,7 @@
 
 #endif
 
-@implementation HYCollectionTableViewCell
+@implementation ZJCollectionTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -46,9 +45,6 @@
     _iconPaths = iconPaths;
     
     [self.collectionView reloadData];
-    
-    
-    
 }
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled {
@@ -64,7 +60,7 @@
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ZJIconTitleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellID forIndexPath:indexPath];
+    ZJIconTitleNormalCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellID forIndexPath:indexPath];
     cell.text = self.titles[indexPath.row];
     cell.iconPath = self.iconPaths[indexPath.row];
     
@@ -74,14 +70,14 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.delegate respondsToSelector:@selector(collectionTableViewCell:didSelectAtIndexPath:)]) {
-        [self.delegate collectionTableViewCell:self didSelectAtIndexPath:indexPath];
+    if ([self.delegate respondsToSelector:@selector(collectionTableViewCell:didSelectItemAtIndexPath:)]) {
+        [self.delegate collectionTableViewCell:self didSelectItemAtIndexPath:indexPath];
     }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (!CGSizeEqualToSize(self.itemSize, CGSizeZero)) return self.itemSize;
     
     CGFloat width = kScreenW/self.numberItemOfColum-1;

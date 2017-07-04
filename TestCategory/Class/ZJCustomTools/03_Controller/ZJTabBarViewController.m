@@ -301,6 +301,12 @@
     return _titleColor;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSLog(@"%zd", self.parentViewController.navigationController.isNavigationBarHidden);
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     

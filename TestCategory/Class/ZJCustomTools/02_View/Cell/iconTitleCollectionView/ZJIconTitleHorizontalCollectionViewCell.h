@@ -1,5 +1,5 @@
 //
-//  HYIconTitleHorizontalCollectionViewCell.h
+//  ZJIconTitleHorizontalCollectionViewCell.h
 //  XAHealthDoctor
 //
 //  Created by ZJ on 1/3/17.
@@ -8,6 +8,6 @@
 
 #import "ZJIconTitleCollectionViewCell.h"
 
-@interface HYIconTitleHorizontalCollectionViewCell : ZJIconTitleCollectionViewCell
+@interface ZJIconTitleHorizontalCollectionViewCell : ZJIconTitleCollectionViewCell
 
 @end

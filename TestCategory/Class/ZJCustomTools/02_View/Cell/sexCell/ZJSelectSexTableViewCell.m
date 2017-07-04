@@ -1,15 +1,15 @@
 //
-//  HYSelectSexTableViewCell.m
+//  ZJSelectSexTableViewCell.m
 //  ButlerSugar
 //
 //  Created by ZJ on 2/26/16.
 //  Copyright © 2016 csj. All rights reserved.
 //
 
-#import "HYSelectSexTableViewCell.h"
+#import "ZJSelectSexTableViewCell.h"
 #import "ZJSelectButton.h"
 
-@interface HYSelectSexTableViewCell () {
+@interface ZJSelectSexTableViewCell () {
     BOOL _isFirstLoad;
 }
 
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation HYSelectSexTableViewCell
+@implementation ZJSelectSexTableViewCell
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -40,8 +40,8 @@
         }
     }
     
-    if ([self.delegate respondsToSelector:@selector(hySelectSexTableViewCell:didClickButtonAtIndex:)]) {
-        [self.delegate hySelectSexTableViewCell:self didClickButtonAtIndex:sender.tag];
+    if ([self.delegate respondsToSelector:@selector(ZJSelectSexTableViewCell:didClickButtonAtIndex:)]) {
+        [self.delegate ZJSelectSexTableViewCell:self didClickButtonAtIndex:sender.tag];
     }
 }
 

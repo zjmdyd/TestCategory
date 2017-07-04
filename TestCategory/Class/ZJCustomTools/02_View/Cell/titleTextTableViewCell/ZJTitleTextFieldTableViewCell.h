@@ -1,5 +1,5 @@
 //
-//  HYTitleTextFieldTableViewCell.h
+//  ZJTitleTextFieldTableViewCell.h
 //  SportWatch
 //
 //  Created by ZJ on 3/14/17.
@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class HYTitleTextFieldTableViewCell;
+@class ZJTitleTextFieldTableViewCell;
 
-@protocol HYTitleTextFieldTableViewCellDelegate <NSObject>
+@protocol ZJTitleTextFieldTableViewCellDelegate <NSObject>
 
-- (void)titleTextFieldTableViewCell:(HYTitleTextFieldTableViewCell *)cell didEndEditWithText:(NSString *)text;
+- (void)titleTextFieldTableViewCell:(ZJTitleTextFieldTableViewCell *)cell didEndEditWithText:(NSString *)text;
 
 @end
 
-@interface HYTitleTextFieldTableViewCell : UITableViewCell
+@interface ZJTitleTextFieldTableViewCell : UITableViewCell
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *placehold;
@@ -26,6 +26,6 @@
 @property (nonatomic, strong) UIColor *textColor;
 
 
-@property (nonatomic, weak) id<HYTitleTextFieldTableViewCellDelegate> delegate;
+@property (nonatomic, weak) id<ZJTitleTextFieldTableViewCellDelegate> delegate;
 
 @end

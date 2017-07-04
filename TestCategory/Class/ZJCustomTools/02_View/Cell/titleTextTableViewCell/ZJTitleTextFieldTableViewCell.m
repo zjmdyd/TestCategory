@@ -1,21 +1,21 @@
 //
-//  HYTitleTextFieldTableViewCell.m
+//  ZJTitleTextFieldTableViewCell.m
 //  SportWatch
 //
 //  Created by ZJ on 3/14/17.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "HYTitleTextFieldTableViewCell.h"
+#import "ZJTitleTextFieldTableViewCell.h"
 
-@interface HYTitleTextFieldTableViewCell ()<UITextFieldDelegate>
+@interface ZJTitleTextFieldTableViewCell ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @end
 
-@implementation HYTitleTextFieldTableViewCell
+@implementation ZJTitleTextFieldTableViewCell
 
 - (void)setTitle:(NSString *)title {
     _title = title;

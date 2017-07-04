@@ -1,14 +1,14 @@
 //
-//  HYImageTextFieldTableViewCell.m
+//  ZJImageTextFieldTableViewCell.m
 //  SuperGymV4
 //
 //  Created by ZJ on 4/22/16.
 //  Copyright © 2016 ZJ. All rights reserved.
 //
 
-#import "HYImageTextFieldTableViewCell.h"
+#import "ZJImageTextFieldTableViewCell.h"
 
-@interface HYImageTextFieldTableViewCell ()<UITextFieldDelegate> {
+@interface ZJImageTextFieldTableViewCell ()<UITextFieldDelegate> {
     NSInteger _countDown;
 }
 
@@ -29,7 +29,7 @@
 
 #endif
 
-@implementation HYImageTextFieldTableViewCell
+@implementation ZJImageTextFieldTableViewCell
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -54,7 +54,6 @@
     
     self.iconWidthConstraint.constant = FLT_EPSILON;
     
-//    self.verifyButton.backgroundColor = [UIColor mainColor];
     self.verifyButton.layer.cornerRadius = 4.0;
     [self.verifyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     

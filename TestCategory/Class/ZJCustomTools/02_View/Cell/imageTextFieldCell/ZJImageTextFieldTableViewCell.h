@@ -1,5 +1,5 @@
 //
-//  HYImageTextFieldTableViewCell.h
+//  ZJImageTextFieldTableViewCell.h
 //  SuperGymV4
 //
 //  Created by ZJ on 4/22/16.
@@ -8,23 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@class HYImageTextFieldTableViewCell;
+@class ZJImageTextFieldTableViewCell;
 
-@protocol HYImageTextFieldTableViewCellDelegate  <NSObject>
-
-@optional
-- (void)imageTextFieldTabeViewCell:(HYImageTextFieldTableViewCell *)cell didBeganEditWithText:(NSString *)text;
+@protocol ZJImageTextFieldTableViewCellDelegate  <NSObject>
 
 @required
-- (void)imageTextFieldTabeViewCell:(HYImageTextFieldTableViewCell *)cell didEndEditWithText:(NSString *)text;
+- (void)imageTextFieldTabeViewCell:(ZJImageTextFieldTableViewCell *)cell didEndEditWithText:(NSString *)text;
 
 @optional
+- (void)imageTextFieldTabeViewCell:(ZJImageTextFieldTableViewCell *)cell didBeganEditWithText:(NSString *)text;
 
-- (void)imageTextFieldTabeViewCellRequestVerify:(HYImageTextFieldTableViewCell *)cell;
+- (void)imageTextFieldTabeViewCellRequestVerify:(ZJImageTextFieldTableViewCell *)cell;
 
 @end
 
-@interface HYImageTextFieldTableViewCell : UITableViewCell
+@interface ZJImageTextFieldTableViewCell : UITableViewCell
 
 /**
  是否是验证码,默认为NO
@@ -65,7 +63,7 @@
  */
 @property (nonatomic, assign) BOOL isKeyboardTypeNumberPad;
 
-@property (nonatomic, weak) id <HYImageTextFieldTableViewCellDelegate>delegate;
+@property (nonatomic, weak) id <ZJImageTextFieldTableViewCellDelegate>delegate;
 
 - (void)beganCountDown;
 

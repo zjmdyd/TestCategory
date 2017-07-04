@@ -1,21 +1,21 @@
 //
-//  HYIconTitleCollectionViewCell.m
+//  ZJIconTitleNormalCollectionViewCell.m
 //  PEPlatform
 //
 //  Created by ZJ on 12/14/16.
 //  Copyright © 2016 ZJ. All rights reserved.
 //
 
-#import "HYIconTitleCollectionViewCell.h"
+#import "ZJIconTitleNormalCollectionViewCell.h"
 
-@interface HYIconTitleCollectionViewCell ()
+@interface ZJIconTitleNormalCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 @end
 
-@implementation HYIconTitleCollectionViewCell
+@implementation ZJIconTitleNormalCollectionViewCell
 
 @synthesize text = _text;
 @synthesize textColor = _textColor;

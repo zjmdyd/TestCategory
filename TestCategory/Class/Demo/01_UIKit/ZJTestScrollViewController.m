@@ -7,7 +7,6 @@
 //
 
 #import "ZJTestScrollViewController.h"
-#import "ZJUIViewCategory.h"
 
 @interface ZJTestScrollViewController ()<UIScrollViewDelegate>
 
@@ -20,9 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    self.scrollView.backgroundColor = [UIColor clearColor];
     UIView *view = [[UIView alloc] initWithFrame:self.scrollView.bounds];
-    view.backgroundColor = [UIColor pinkColor];
+    view.backgroundColor = [UIColor orangeColor];
     [self.scrollView addSubview:view];
 }
 

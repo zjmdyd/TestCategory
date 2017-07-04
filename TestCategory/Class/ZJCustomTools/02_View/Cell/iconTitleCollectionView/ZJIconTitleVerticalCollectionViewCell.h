@@ -1,5 +1,5 @@
 //
-//  HYIconTitleVerticalCollectionViewCell.h
+//  ZJIconTitleVerticalCollectionViewCell.h
 //  PEPlatform
 //
 //  Created by ZJ on 12/14/16.
@@ -8,6 +8,6 @@
 
 #import "ZJIconTitleCollectionViewCell.h"
 
-@interface HYIconTitleVerticalCollectionViewCell : ZJIconTitleCollectionViewCell
+@interface ZJIconTitleVerticalCollectionViewCell : ZJIconTitleCollectionViewCell
 
 @end
