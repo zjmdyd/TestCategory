@@ -7,9 +7,12 @@
 //
 
 #import "ZJBaseTabBarViewController.h"
-#import "ZJUIViewCategory.h"
+#import "ZJViewHeaderFile.h"
+#import "ZJCategoryHeaderFile.h"
 
-@interface ZJBaseTabBarViewController ()
+@interface ZJBaseTabBarViewController () <UINavigationControllerDelegate>
+
+@property (nonatomic, strong) UIButton *foregroundBtn;
 
 @end
 
@@ -43,16 +46,49 @@
         navi.tabBarItem.selectedImage = [[UIImage imageNamed:selectImage[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromHex(0x0EC6DC)} forState:UIControlStateSelected];
         [ary addObject:navi];
+        navi.delegate = self;
+    }
+
+    self.viewControllers = [ary copy];    
+}
+
+- (UIButton *)foregroundBtn {
+    if (!_foregroundBtn) {
+        _foregroundBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        _foregroundBtn.frame = CGRectMake(kScreenW-100, kScreenH-160, 70, 70);
+        [_foregroundBtn setTitle:@"专题" forState:UIControlStateNormal];
+        [_foregroundBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_foregroundBtn setBackgroundImage:[UIImage imageNamed:@"ic_asu_142x142"] forState:UIControlStateNormal];
+        [_foregroundBtn addTarget:self action:@selector(btnEvent:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    self.viewControllers = [ary copy];
+    return _foregroundBtn;
+}
+
+- (void)btnEvent:(UIButton *)sender {
+    UIViewController *vc = [self createVCWithName:@"ZJTopicTableViewController" title:sender.currentTitle isGroupTableVC:YES];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.selectedViewController pushViewController:vc animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (!_foregroundBtn) {
+        [KeyWindow addSubview:self.foregroundBtn];
+    }
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    _foregroundBtn.hidden = navigationController.viewControllers.count > 1;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-//        navi.navigationBarBgColor = UIColorFromHex(0x64ebeb);
-//        navi.navigationBarTintColor = UIColorFromHex(0xfffffa);//[UIColor whiteColor];
+
 /*
 #pragma mark - Navigation
 

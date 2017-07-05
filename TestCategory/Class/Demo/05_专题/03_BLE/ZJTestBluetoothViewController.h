@@ -1,5 +1,5 @@
 //
-//  ZJTestBluetoothTableViewController.h
+//  ZJTestBluetoothViewController.h
 //  TestCategory
 //
 //  Created by ZJ on 04/07/2017.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZJTestBluetoothTableViewController : UITableViewController
+@interface ZJTestBluetoothViewController : UIViewController
 
 @end

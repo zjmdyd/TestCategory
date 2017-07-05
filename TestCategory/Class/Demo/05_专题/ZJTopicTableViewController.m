@@ -1,55 +1,81 @@
 //
-//  ZJTestBluetoothTableViewController.m
+//  ZJTopicTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 04/07/2017.
+//  Created by ZJ on 05/07/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJTestBluetoothTableViewController.h"
+#import "ZJTopicTableViewController.h"
+#import "ZJCategoryHeaderFile.h"
 
-@interface ZJTestBluetoothTableViewController ()
+@interface ZJTopicTableViewController () {
+    NSArray *_titles, *_vcNames;
+}
 
 @end
 
-@implementation ZJTestBluetoothTableViewController
+@implementation ZJTopicTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self initAry];
+    [self initSettiing];
+}
+
+- (void)initAry {
+    _titles = @[@"fileManage", @"Category", @"Navigation", @"BLE", @"CAAnimation"];
+    _vcNames = @[
+                 @[@"ZJTestBundleViewController", @"ZJTestFileTableViewController", @"ZJTestSysDirViewController"],
+                 @[@"ZJTestCategoryViewController"],
+                 @[@"ZJTestBackBarButtonItemViewController", @"ZJTestNavigationItemViewController", @"ZJTestTranslucentViewController"],
+                 @[@"ZJSearchDeviceTableViewController", @"ZJTestBluetoothViewController"],
+                 @[@"ZJCAReplicatorLayerViewController"],
+                 ];
+}
+
+- (void)initSettiing {
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _titles.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_vcNames[section] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
+    }
+    cell.textLabel.text = _vcNames[indexPath.section][indexPath.row];
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return _titles[section];
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSString *vcName = _vcNames[indexPath.section][indexPath.row];
+    UIViewController *vc = [self createVCWithName:vcName title:vcName isGroupTableVC:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.

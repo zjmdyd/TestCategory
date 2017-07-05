@@ -24,6 +24,11 @@ typedef NS_ENUM(NSUInteger, ZJDeviceManagerState) {
 @class ZJBLEDevice;
 
 /**
+ *  状态
+ */
+typedef void(^BLERefreshStateCompletionHandle)(ZJDeviceManagerState state);
+
+/**
  *  回调方法里面主要执行刷新界面的代码
  */
 typedef void(^BLERefreshCompletionHandle)(id obj);
@@ -60,7 +65,7 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, BOOL connected, N
 /**
  *  更新centralManager状态, 在回调方法里面对不同的状态进行处理
  */
-+ (instancetype)shareManagerDidUpdateStateHandle:(BLERefreshCompletionHandle)completion;
++ (instancetype)shareManagerDidUpdateStateHandle:(BLERefreshStateCompletionHandle)completion;
 
 /**
  *  **

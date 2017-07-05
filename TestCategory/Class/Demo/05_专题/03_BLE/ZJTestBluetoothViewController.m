@@ -1,63 +1,39 @@
 //
-//  ZJTestPinchTableViewController.m
+//  ZJTestBluetoothViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 12/28/16.
-//  Copyright © 2016 ZJ. All rights reserved.
+//  Created by ZJ on 04/07/2017.
+//  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJTestPinchTableViewController.h"
-#import "ZJPinchCollectionTableViewCell.h"
-#import "ZJUIViewCategory.h"
+#import "ZJTestBluetoothViewController.h"
+#import "ZJSearchDeviceTableViewController.h"
 
-@interface ZJTestPinchTableViewController ()
+@interface ZJTestBluetoothViewController () {
+    ZJSearchDeviceTableViewController *_searchVC;
+}
 
 @end
 
-static NSString *CollectionTableViewCell = @"ZJPinchCollectionTableViewCell";
-
-@implementation ZJTestPinchTableViewController
+@implementation ZJTestBluetoothViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initAry];
     [self initSettiing];
 }
 
+- (void)initAry {
+    
+}
+
 - (void)initSettiing {
-//    [self.tableView registerCellWithIDs:@[CollectionTableViewCell]];
+    _searchVC = [[ZJSearchDeviceTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 }
 
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZJPinchCollectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CollectionTableViewCell];
-    cell.objs = @[@"img1", @"img2", @"img3"];
-    
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kScreenH-64;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return FLT_EPSILON;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return FLT_EPSILON;
+- (IBAction)btnEvent:(UIButton *)sender {
+    [self.navigationController pushViewController:_searchVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

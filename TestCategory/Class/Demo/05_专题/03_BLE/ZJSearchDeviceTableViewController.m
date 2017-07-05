@@ -1,21 +1,21 @@
 //
-//  ZJNSObjectTableViewController.m
+//  ZJSearchDeviceTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 5/3/17.
+//  Created by ZJ on 05/07/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJNSObjectTableViewController.h"
-#import "ZJControllerCategory.h"
+#import "ZJSearchDeviceTableViewController.h"
+#import "ZJViewHeaderFile.h"
+#import "ZJCategoryHeaderFile.h"
+#import "ZJBLETool.h"
 
-@interface ZJNSObjectTableViewController () {
-    NSArray *_vcNames;
-}
+@interface ZJSearchDeviceTableViewController ()
 
 @end
 
-@implementation ZJNSObjectTableViewController
+@implementation ZJSearchDeviceTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,45 +24,64 @@
     [self initSettiing];
 }
 
-- (void)test {
-    for (int i = 1; i < 36; i++) {
-        for (int j = 1; j < 36; j++) {
-            for (int k = 1; k < 36; k++) {
-                if (k % 3 == 0) {
-                    if (i + j + k == 36 && 3*i + 2*j + k/3 == 36) {
-                        NSLog(@"i = %zd, j = %zd, k = %zd\n", i, j, k);
-                    }
-                }
-            }
-        }
-    }
-}
-
-/**
- self.navigationItem.title > self.title, 所以这种优先级可以完成tabBarItem.title和navigationItem.tiltle不一样的显示
- */
 - (void)initAry {
-    _vcNames = @[@"ZJTestApplicationViewController", @"ZJTestFileTableViewController", @"ZJTestBluetoothViewController"];
+    
 }
-
 
 - (void)initSettiing {
+    self.title = @"设备列表";
+    
+    [ZJBLEDeviceManager shareManagerDidUpdateStateHandle:^(ZJDeviceManagerState state) {
+        
+    }];
+}
+
+- (void)searchDevice {
+    [[ZJBLEDeviceManager shareManager] scanDeviceWithServiceUUIDs:nil prefix:nil completion:^(id obj) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _vcNames.count;
+//    NSLog(@"%s", __func__);
+    if (section == 0) {
+        return [ZJBLEDeviceManager shareManager].discoveredBLEDevices.count;
+    }else {
+        return [ZJBLEDeviceManager shareManager].connectedBLEDevices.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    NSLog(@"%s", __func__);
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
     }
-    cell.textLabel.text = _vcNames[indexPath.row];
+    
+    ZJBLEDevice *device;
+    
+    if (indexPath.section == 0) {
+        device = [ZJBLEDeviceManager shareManager].discoveredBLEDevices[indexPath.row];
+    }else {
+        device = [ZJBLEDeviceManager shareManager].connectedBLEDevices[indexPath.row];
+    }
+    
+    cell.textLabel.text = device.name;
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @[@"已发现", @"已连接"][section];
 }
 
 #pragma mark - UITableViewDelegate
@@ -70,10 +89,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *name = _vcNames[indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name  isGroupTableVC:YES];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    ZJBLEDevice *device = [ZJBLEDeviceManager shareManager].discoveredBLEDevices[indexPath.row];
+    [[ZJBLEDeviceManager shareManager] connectBLEDevices:@[device] completion:^(ZJBLEDevice *device, BOOL connected, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+        if (connected) {
+            [device discoverServices:nil completion:^(CBCharacteristic *obj, NSError *error) {
+                
+            }];
+        }
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+ 
+    [self searchDevice];
 }
 
 - (void)didReceiveMemoryWarning {

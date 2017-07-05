@@ -9,8 +9,6 @@
 #import "ZJOtherTableViewController.h"
 #import "ZJTextViewController.h"
 #import "ZJNSObjectCategory.h"
-//#import "ZJControllerCategory.h"
-//#import "ZJFondationCategory.h"
 
 @interface ZJOtherTableViewController ()<ZJTextViewControllerDelegate> {
     NSString *_path;

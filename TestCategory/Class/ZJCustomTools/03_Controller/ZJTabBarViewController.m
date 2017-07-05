@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIScrollView *topScrollView;
 @property (nonatomic, strong) UIScrollView *mainScrollView;
 @property (nonatomic, strong) UIView *lineView;
+@property (nonatomic, assign) BOOL hiddenNavigationBar;
 
 @end
 
@@ -51,7 +52,6 @@
     [super viewDidLoad];
     
     [self initAry];
-    [self initSetting];
 }
 
 - (void)initAry {
@@ -78,16 +78,15 @@
 - (void)createScrollView {
     [self.view addSubview:self.topScrollView];
     [self.topScrollView addSubview:self.lineView];
-    
+    self.offsetX = kStatusBarH;
+
     _mainViewH = self.view.height - self.offsetX - self.topScrollView.height;
     if (self.hidesBottomBarWhenPushed == NO) {
         _mainViewH -= kTabBarHeight;
     }
-        
     if (!self.hiddenNavigationBar) {
         _mainViewH -= (kNaviBarHeight + kStatusBarH);
     }
-    
     [self.view addSubview:self.mainScrollView];
     
     CGFloat totalWidth = 0.0;
@@ -249,14 +248,6 @@
     return _topScrollView;
 }
 
-- (void)setHiddenNavigationBar:(BOOL)hiddenNavigationBar {
-    _hiddenNavigationBar = hiddenNavigationBar;
-    
-    if (_hiddenNavigationBar) {
-        self.offsetX = kStatusBarH;
-    }
-}
-
 - (UIView *)lineView {
     if (!_lineView) {
         _lineView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -301,10 +292,24 @@
     return _titleColor;
 }
 
+- (BOOL)hiddenNavigationBar {
+    return self.parentViewController.navigationController.isNavigationBarHidden || self.parentViewController.navigationController.navigationBar.isHidden;
+}
+
+- (CGFloat)offsetX {
+    if (self.hiddenNavigationBar) {
+        return kStatusBarH;
+    }
+    
+    return 0;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSLog(@"%zd", self.parentViewController.navigationController.isNavigationBarHidden);
+    if (!_topScrollView) {
+        [self initSetting];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -312,20 +317,6 @@
     
     self.view.height = _height;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers {
     if (self = [super init]) {
@@ -344,5 +335,21 @@
     
     return self;
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+
 
 @end

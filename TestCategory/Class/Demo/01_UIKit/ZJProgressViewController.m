@@ -7,10 +7,10 @@
 //
 
 #import "ZJProgressViewController.h"
-#import "ZJPreogressView.h"
+#import "ZJViewHeaderFile.h"
 
 @interface ZJProgressViewController () {
-    ZJPreogressView *_huView;
+    ZJProgressView *_huView;
 }
 
 @end
@@ -23,17 +23,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     //    创建自定义的仪表盘
-    _huView = [[ZJPreogressView alloc] initWithFrame:CGRectMake(0, 0, kScreenW*2/3, kScreenW*2/3)];
-    _huView.originValue = 80;
+    _huView = [[ZJProgressView alloc] initWithFrame:CGRectMake(0, 0, kScreenW*2/3, kScreenW*2/3)];
     _huView.center = CGPointMake(kScreenW/2, kScreenH/2-64);
-    
+    _huView.valueRatio = 0.5;
     [self.view addSubview:_huView];
-    [_huView showContentWithAnimate:NO];
+    [_huView showContent:@"ahhh" withAnimate:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

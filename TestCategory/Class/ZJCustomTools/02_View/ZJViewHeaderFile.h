@@ -22,6 +22,13 @@
 
 #define DefaultCellHeight 44
 
+#ifndef kScreenW
+
+#define kScreenW    ([UIScreen mainScreen].bounds.size.width)
+#define kScreenH    ([UIScreen mainScreen].bounds.size.height)
+
+#endif
+
 #import "HYErrorView.h"
 #import "ZJFooterView.h"
 #import "ZJPicker.h"

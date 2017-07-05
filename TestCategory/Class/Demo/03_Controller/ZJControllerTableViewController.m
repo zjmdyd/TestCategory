@@ -24,7 +24,7 @@
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJTestViewController", @"ZJTestWebViewController", @"ZJTestTranslucentViewController", @"ZJTestNavigationItemViewController", @"ZJTestBackBarButtonItemViewController", @"ZJTestTabBarViewController"];
+    _vcNames = @[@"ZJTestViewController", @"ZJTestWebViewController", @"ZJTestTranslucentViewController", @"ZJTestNavigationItemViewController", @"ZJTestBackBarButtonItemViewController", @"ZJTestTabBarViewController", @"ZJTestAlertViewController"];
 }
 
 #pragma mark - UITableViewDataSource

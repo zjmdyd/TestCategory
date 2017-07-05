@@ -29,7 +29,7 @@
 }
 
 @property (nonatomic, strong) CBCentralManager *centralManager;
-@property (nonatomic, strong) BLERefreshCompletionHandle stateCompletion;
+@property (nonatomic, strong) BLERefreshStateCompletionHandle stateCompletion;
 @property (nonatomic, strong) BLERefreshCompletionHandle scanCompletion;
 @property (nonatomic, strong) BLEConnectCompletionHandle connectCompletion;
 @property (nonatomic, strong) BLEConnectCompletionHandle disConnectCompletion;
@@ -68,7 +68,7 @@ static ZJBLEDeviceManager *_manager = nil;
     return _manager;
 }
 
-+ (instancetype)shareManagerDidUpdateStateHandle:(BLERefreshCompletionHandle)completion {
++ (instancetype)shareManagerDidUpdateStateHandle:(BLERefreshStateCompletionHandle)completion {
     if (!_manager) {
         _manager = [ZJBLEDeviceManager shareManager];
         _manager.stateCompletion = completion;
@@ -87,6 +87,7 @@ static ZJBLEDeviceManager *_manager = nil;
     if (completion) {
         self.scanCompletion = completion;
     }
+
     if (_discoveredBLEDevices.count) {
         _discoveredBLEDevices = @[];
         if (self.scanCompletion) {
@@ -124,7 +125,7 @@ static ZJBLEDeviceManager *_manager = nil;
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     if (self.stateCompletion) {
-        self.stateCompletion(@(central.state));
+        self.stateCompletion((ZJDeviceManagerState)central.state);
     }
     
     if (self.automScan) {
@@ -204,6 +205,10 @@ static ZJBLEDeviceManager *_manager = nil;
     }
     _connectedBLEDevices = [connAry copy];
     
+    if (self.isAutomScan) {
+        [self scanDeviceWithServiceUUIDs:_searchServiceUUIDs completion:nil];
+    }
+    
     /**
      *  当有disconnectCompletion就用disconnectCompletion回调, 否则用connectionCompletion回调
      */
@@ -211,10 +216,6 @@ static ZJBLEDeviceManager *_manager = nil;
         self.disConnectCompletion(device, NO, error);
     }else if (self.connectCompletion) {
         self.connectCompletion(device, NO, error);
-    }
-    
-    if (self.isAutomScan) {
-        [self scanDeviceWithServiceUUIDs:_searchServiceUUIDs completion:nil];
     }
 }
 

@@ -47,7 +47,6 @@
  *  当隐藏导航栏的时候需要用到此属性,值为20,默认的值为0
  */
 @property (nonatomic, assign) CGFloat offsetX;
-@property (nonatomic, assign) BOOL hiddenNavigationBar;
 
 @property (nonatomic, assign) BOOL selectEnable;
 
