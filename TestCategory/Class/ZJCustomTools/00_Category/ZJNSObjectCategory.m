@@ -235,7 +235,9 @@ NSString *AudioPath = @"/System/Library/Audio/UISounds/";
         [self showAlert:title msg:msg ctrl:ctrl];
     }
 }
-
+/* 改标题颜色
+    [[alert valueForKey:@"alertController"] setValue:[@"aa" attrWithForegroundColor:[UIColor redColor]] forKey:@"attributedTitle"];
+ */
 + (void)showAlert:(NSString *)title msg:(NSString *)msg ctrl:(UIViewController *)ctrl {
     if (ctrl) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];

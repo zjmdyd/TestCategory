@@ -1,0 +1,7 @@
+#ifdef DEBUG
+UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"debug" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+[alert show];
+#else
+UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"release" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+[alert show];
+#endif
