@@ -25,7 +25,7 @@
 }
 
 - (void)initAry {
-    _titles = @[@"fileManage", @"Category", @"Navigation", @"BLE", @"CAAnimation", @"Thread"];
+    _titles = @[@"fileManage", @"Category", @"Navigation", @"BLE", @"CAAnimation", @"Thread", @"Audio"];
     _vcNames = @[
                  @[@"ZJTestBundleViewController", @"ZJTestFileTableViewController", @"ZJTestSysDirViewController"],
                  @[@"ZJTestCategoryViewController"],
@@ -33,6 +33,7 @@
                  @[@"ZJSearchDeviceTableViewController", @"ZJTestBluetoothViewController"],
                  @[@"ZJCAReplicatorLayerViewController"],
                  @[@"ZJThreadTableViewController"],
+                 @[@"ZJAVAudioPlayerViewController"],
                  ];
 }
 

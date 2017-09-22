@@ -113,6 +113,9 @@
 		38A8E67B1F594056006E6C5C /* ZJGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8E6741F594056006E6C5C /* ZJGCDViewController.m */; };
 		38A8E67E1F594264006E6C5C /* ZJThreadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8E67D1F594264006E6C5C /* ZJThreadTableViewController.m */; };
 		38E032081EC01FD900401CBE /* TestWrite.txt in Resources */ = {isa = PBXBuildFile; fileRef = 38E032071EC01FD900401CBE /* TestWrite.txt */; };
+		38E2EDF51F6BCF220058923B /* ZJAVAudioPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E2EDF21F6BCF220058923B /* ZJAVAudioPlayerViewController.xib */; };
+		38E2EDF61F6BCF220058923B /* ZJAVAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E2EDF31F6BCF220058923B /* ZJAVAudioPlayerViewController.m */; };
+		38E2EDF81F6BCF9A0058923B /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 38E2EDF71F6BCF9A0058923B /* song.mp3 */; };
 		38E58E111EB9EB870072EB0D /* ZJTestStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E58E101EB9EB870072EB0D /* ZJTestStringViewController.m */; };
 		38E58E161EB9EC3C0072EB0D /* ZJTestNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E58E121EB9EC3C0072EB0D /* ZJTestNumberViewController.m */; };
 		38E58E171EB9EC3C0072EB0D /* ZJTestArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E58E141EB9EC3C0072EB0D /* ZJTestArrayViewController.m */; };
@@ -335,6 +338,10 @@
 		38A8E67C1F594264006E6C5C /* ZJThreadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJThreadTableViewController.h; sourceTree = "<group>"; };
 		38A8E67D1F594264006E6C5C /* ZJThreadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJThreadTableViewController.m; sourceTree = "<group>"; };
 		38E032071EC01FD900401CBE /* TestWrite.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestWrite.txt; sourceTree = "<group>"; };
+		38E2EDF21F6BCF220058923B /* ZJAVAudioPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJAVAudioPlayerViewController.xib; sourceTree = "<group>"; };
+		38E2EDF31F6BCF220058923B /* ZJAVAudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAVAudioPlayerViewController.m; sourceTree = "<group>"; };
+		38E2EDF41F6BCF220058923B /* ZJAVAudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAVAudioPlayerViewController.h; sourceTree = "<group>"; };
+		38E2EDF71F6BCF9A0058923B /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
 		38E58E0F1EB9EB870072EB0D /* ZJTestStringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestStringViewController.h; sourceTree = "<group>"; };
 		38E58E101EB9EB870072EB0D /* ZJTestStringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestStringViewController.m; sourceTree = "<group>"; };
 		38E58E121EB9EC3C0072EB0D /* ZJTestNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestNumberViewController.m; sourceTree = "<group>"; };
@@ -368,6 +375,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		383C0B101F6BCE24005D0C39 /* 06_Audio */ = {
+			isa = PBXGroup;
+			children = (
+				38E2EDF41F6BCF220058923B /* ZJAVAudioPlayerViewController.h */,
+				38E2EDF31F6BCF220058923B /* ZJAVAudioPlayerViewController.m */,
+				38E2EDF21F6BCF220058923B /* ZJAVAudioPlayerViewController.xib */,
+				38E2EDF71F6BCF9A0058923B /* song.mp3 */,
+			);
+			path = 06_Audio;
+			sourceTree = "<group>";
+		};
 		3852DC061EA0C2D600F63B36 /* 02_Fondation */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,6 +806,7 @@
 				388119571F0CDE1500C24A89 /* 03_BLE */,
 				3881195D1F0CDE1500C24A89 /* 04_CAAnimation */,
 				38A8E6631F593FFF006E6C5C /* 05_Thread */,
+				383C0B101F6BCE24005D0C39 /* 06_Audio */,
 			);
 			path = "05_专题";
 			sourceTree = "<group>";
@@ -1038,7 +1057,9 @@
 				389C5FA01F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.xib in Resources */,
 				385084711EBC5FE100DEE8F6 /* note.plist in Resources */,
 				386151F11E9F6BB300341BCB /* ZJCollectionTableViewCell.xib in Resources */,
+				38E2EDF81F6BCF9A0058923B /* song.mp3 in Resources */,
 				386152011E9F6BB300341BCB /* HYErrorView.xib in Resources */,
+				38E2EDF51F6BCF220058923B /* ZJAVAudioPlayerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1086,6 +1107,7 @@
 				386151D61E9F6BB300341BCB /* UIViewExt.m in Sources */,
 				388119411F0CDD6E00C24A89 /* ZJProgressViewController.m in Sources */,
 				386593C31EBAB85C0041601D /* ZJTestApplicationViewController.m in Sources */,
+				38E2EDF61F6BCF220058923B /* ZJAVAudioPlayerViewController.m in Sources */,
 				386593D51EBB245E0041601D /* ZJTextViewController.m in Sources */,
 				387033F51DFAC37900426DA3 /* TestCategory.xcdatamodeld in Sources */,
 				3881196B1F0CDE1500C24A89 /* ZJTestBluetoothViewController.m in Sources */,
