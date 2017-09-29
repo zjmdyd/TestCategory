@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,20 +32,31 @@
                         <action selector="click:" destination="-1" eventType="touchUpInside" id="rwK-hd-6jc"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHH-fu-Xsx">
-                    <rect key="frame" x="146" y="220" width="97" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWk-pN-b6y">
+                    <rect key="frame" x="121" y="318" width="33" height="30"/>
+                    <state key="normal" title="Alert"/>
+                    <connections>
+                        <action selector="btnEvent:" destination="-1" eventType="touchUpInside" id="ET3-Gn-Zcw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsW-AR-Q80">
+                    <rect key="frame" x="217.5" y="318" width="40" height="30"/>
+                    <state key="normal" title="Sheet"/>
+                    <connections>
+                        <action selector="btnEvent:" destination="-1" eventType="touchUpInside" id="Sa3-zW-k8a"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="eWk-pN-b6y" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-50" id="FRK-eS-6KE"/>
+                <constraint firstItem="eWk-pN-b6y" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Unc-5Q-HJ3"/>
                 <constraint firstItem="LeR-3i-CaW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="chq-J1-pGM"/>
+                <constraint firstItem="UsW-AR-Q80" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="50" id="dZB-v3-MMz"/>
+                <constraint firstItem="UsW-AR-Q80" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="obP-qz-fsy"/>
                 <constraint firstAttribute="bottom" secondItem="LeR-3i-CaW" secondAttribute="bottom" constant="20" id="sFj-59-oZD"/>
             </constraints>
-            <point key="canvasLocation" x="-88.5" y="51.5"/>
+            <point key="canvasLocation" x="-81" y="25"/>
         </view>
     </objects>
 </document>

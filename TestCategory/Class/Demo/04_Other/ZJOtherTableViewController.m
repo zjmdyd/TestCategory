@@ -71,7 +71,7 @@
     ZJTextViewController *vc = [[ZJTextViewController alloc] initWithText:text];
     vc.delegate = self;
     vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self showViewController:vc sender:nil];
 }
 
 #pragma mark - ZJTextViewControllerDelegate

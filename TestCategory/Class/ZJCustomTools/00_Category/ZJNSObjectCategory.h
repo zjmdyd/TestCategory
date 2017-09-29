@@ -86,12 +86,12 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 
 #pragma mark - Alertiew
 
-+ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg;
++ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle;
 
 /**
  iOS 9.0之后
  */
-+ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg ctrl:(UIViewController *)ctrl;
++ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle ctrl:(UIViewController *)ctrl;
 
 #pragma mark - 系统设置、Message
 
@@ -149,6 +149,7 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
  */
 + (NSString *)deviceType;
 
++ (CGFloat)systemVersion;
 
 /**
  检测设备是否越狱

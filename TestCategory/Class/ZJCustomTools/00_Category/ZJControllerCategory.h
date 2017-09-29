@@ -30,7 +30,6 @@ typedef NS_ENUM(NSInteger, TransitionDerection) {
 
 @end
 
-
 #pragma mark - UIViewController
 
 @interface UIViewController (ZJViewController)

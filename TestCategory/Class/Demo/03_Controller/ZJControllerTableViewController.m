@@ -21,10 +21,17 @@
     [super viewDidLoad];
     
     [self initAry];
+    [self initSettiing];
+}
+
+- (void)initSettiing {
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"滚滚滚";
+    self.navigationItem.backBarButtonItem = backItem;
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJTestViewController", @"ZJTestWebViewController", @"ZJTestTranslucentViewController", @"ZJTestNavigationItemViewController", @"ZJTestBackBarButtonItemViewController", @"ZJTestTabBarViewController", @"ZJTestAlertViewController"];
+    _vcNames = @[@"ZJTestViewController", @"ZJTestWebViewController", @"ZJTestTabBarViewController", @"ZJTestAlertViewController", @"HYTestManualViewController", @"HYTestAutoRotationViewController"];
 }
 
 #pragma mark - UITableViewDataSource
@@ -51,8 +58,12 @@
     
     NSString *name = _vcNames[indexPath.row];
     UIViewController *vc = [self createVCWithName:name title:name];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    if (indexPath.row < _vcNames.count-2) {
+        vc.hidesBottomBarWhenPushed = YES;
+        [self showViewController:vc sender:nil];
+    }else {
+        [self showDetailViewController:vc sender:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

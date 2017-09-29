@@ -29,7 +29,8 @@
     _vcNames = @[
                  @[@"ZJTestBundleViewController", @"ZJTestFileTableViewController", @"ZJTestSysDirViewController"],
                  @[@"ZJTestCategoryViewController"],
-                 @[@"ZJTestBackBarButtonItemViewController", @"ZJTestNavigationItemViewController", @"ZJTestTranslucentViewController"],
+                 
+                 @[@"ZJTestBackBarButtonItemViewController", @"ZJTestNavigationBarViewController", @"ZJTestNavigationItemViewController", @"ZJTestTranslucentViewController"],
                  @[@"ZJSearchDeviceTableViewController", @"ZJTestBluetoothViewController"],
                  @[@"ZJCAReplicatorLayerViewController"],
                  @[@"ZJThreadTableViewController"],
@@ -72,7 +73,7 @@
     
     NSString *vcName = _vcNames[indexPath.section][indexPath.row];
     UIViewController *vc = [self createVCWithName:vcName title:vcName isGroupTableVC:YES];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self showViewController:vc sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -62,7 +62,7 @@
     if (self.hiddenBottomBarWhenPushed) {
         viewController.hidesBottomBarWhenPushed = YES;
     }
-    [super pushViewController:viewController animated:YES];
+    [super pushViewController:viewController animated:animated];
 }
 
 /**

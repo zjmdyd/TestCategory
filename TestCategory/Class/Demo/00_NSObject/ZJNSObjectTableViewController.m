@@ -24,29 +24,12 @@
     [self initSettiing];
 }
 
-- (void)test {
-    for (int i = 1; i < 36; i++) {
-        for (int j = 1; j < 36; j++) {
-            for (int k = 1; k < 36; k++) {
-                if (k % 3 == 0) {
-                    if (i + j + k == 36 && 3*i + 2*j + k/3 == 36) {
-                        NSLog(@"i = %zd, j = %zd, k = %zd\n", i, j, k);
-                    }
-                }
-            }
-        }
-    }
-}
-
-/**
- self.navigationItem.title > self.title, 所以这种优先级可以完成tabBarItem.title和navigationItem.tiltle不一样的显示
- */
 - (void)initAry {
-    _vcNames = @[@"ZJTestApplicationViewController", @"ZJTestFileTableViewController", @"ZJTestBluetoothViewController"];
+    _vcNames = @[@"ZJTestApplicationViewController"];
 }
 
 - (void)initSettiing {
-
+    self.navigationItem.title = @"哈哈";  /// 实现tabBarItem.title和navigationItem.tiltle不一样的显示
 }
 
 #pragma mark - UITableViewDataSource
@@ -72,12 +55,25 @@
     
     NSString *name = _vcNames[indexPath.row];
     UIViewController *vc = [self createVCWithName:name title:name  isGroupTableVC:YES];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self showViewController:vc sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)test {
+    for (int i = 1; i < 36; i++) {
+        for (int j = 1; j < 36; j++) {
+            for (int k = 1; k < 36; k++) {
+                if (k % 3 == 0) {
+                    if (i + j + k == 36 && 3*i + 2*j + k/3 == 36) {
+                        NSLog(@"i = %zd, j = %zd, k = %zd\n", i, j, k);
+                    }
+                }
+            }
+        }
+    }
 }
 
 /*

@@ -50,7 +50,7 @@
     
     NSString *name = _vcNames[indexPath.row];
     UIViewController *vc = [self createVCWithName:name title:name];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self showViewController:vc sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

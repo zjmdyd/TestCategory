@@ -146,8 +146,8 @@
         }
     }
     
-    UIView *frontView = [[window subviews] objectAtIndex:0];
-    id nextResponder = [frontView nextResponder];
+    UIView *frontView = [[window subviews] objectAtIndex:0];    // UILayoutContainerView
+    id nextResponder = [frontView nextResponder];               // ZJBaseTabBarViewController
     
     if ([nextResponder isKindOfClass:[UIViewController class]]) {
         result = nextResponder;
@@ -169,12 +169,9 @@
         for (UIView *subView in view.subviews) {
             if (![[view nextResponder] isKindOfClass:[UINavigationController class]] && [[view nextResponder] isKindOfClass:[UIViewController class]]) {
                 return view;
+            }else {
+                return [self subViews:subView];
             }
-            NSLog(@"view = %@\nnextResponder = %@", subView, [subView nextResponder]);
-        }
-        
-        for (UIView *subView in view.subviews) {
-            return [self subViews:subView];
         }
     }
     
@@ -216,36 +213,30 @@ NSString *AudioPath = @"/System/Library/Audio/UISounds/";
 
 #pragma mark - AlertView
 
-+ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg {
-    if (![NSThread currentThread].isMainThread) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self showAlert:title msg:msg ctrl:nil];
-        });
-    }else {
-        [self showAlert:title msg:msg ctrl:nil];
-    }
++ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle {
+    [self showAlert:title msg:msg buttonTitle:buttonTitle ctrl:nil];
 }
 
-+ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg ctrl:(UIViewController *)ctrl {
++ (void)showAlertViewWithTitle:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle ctrl:(UIViewController *)ctrl {
     if (![NSThread currentThread].isMainThread) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self showAlert:title msg:msg ctrl:ctrl];
+            [self showAlert:title msg:msg buttonTitle:buttonTitle ctrl:ctrl];
         });
     }else {
-        [self showAlert:title msg:msg ctrl:ctrl];
+        [self showAlert:title msg:msg buttonTitle:buttonTitle ctrl:ctrl];
     }
 }
 /* 改标题颜色
     [[alert valueForKey:@"alertController"] setValue:[@"aa" attrWithForegroundColor:[UIColor redColor]] forKey:@"attributedTitle"];
  */
-+ (void)showAlert:(NSString *)title msg:(NSString *)msg ctrl:(UIViewController *)ctrl {
++ (void)showAlert:(NSString *)title msg:(NSString *)msg buttonTitle:(NSString *)buttonTitle ctrl:(UIViewController *)ctrl {
     if (ctrl) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *act = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *act = [UIAlertAction actionWithTitle:buttonTitle ?: @"知道了" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:act];
         [ctrl presentViewController:alert animated:YES completion:nil];
     }else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert show];
     }
 }
@@ -258,9 +249,17 @@ NSString *AudioPath = @"/System/Library/Audio/UISounds/";
         return;
     }
     
-    NSString *accessoryStr = [UIDevice currentDevice].systemVersion.doubleValue >= 10.0 ? @"APP-Prefs" : @"prefs";
+    NSString *accessoryStr;
+    CGFloat sysVersion = [UIDevice currentDevice].systemVersion.floatValue;
+    if (sysVersion < 10.0) {
+        accessoryStr = @"prefs";
+    }else if (sysVersion < 11.0) {
+        accessoryStr = @"APP-Prefs";
+    }else {
+        
+    }
+
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:root=%@", accessoryStr, ary[type]]];
-    
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url];
     }
@@ -276,7 +275,7 @@ NSString *AudioPath = @"/System/Library/Audio/UISounds/";
         }
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     }else {
-        [self showAlertViewWithTitle:@"电话号码为空!" msg:@""];
+        [self showAlertViewWithTitle:@"电话号码为空!" msg:@"" buttonTitle:nil];
     }
 }
 
@@ -417,6 +416,10 @@ NSString *AudioPath = @"/System/Library/Audio/UISounds/";
 #pragma mark - Device info
 
 @implementation UIDevice (ZJDevice)
+
++ (CGFloat)systemVersion {
+    return [UIDevice currentDevice].systemVersion.floatValue;
+}
 
 + (NSString *)deviceType {
     struct utsname systemInfo;

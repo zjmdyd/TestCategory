@@ -41,12 +41,10 @@
         
         UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
         ((UIViewController *)navi.viewControllers[0]).title = titles[i];
-        navi.navigationBar.translucent = NO;
-        navi.tabBarItem.image = [[UIImage imageNamed:image[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        navi.tabBarItem.selectedImage = [[UIImage imageNamed:selectImage[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromHex(0x0EC6DC)} forState:UIControlStateSelected];
+        vc.tabBarItem.image = [[UIImage imageNamed:image[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        vc.tabBarItem.selectedImage = [[UIImage imageNamed:selectImage[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromHex(0x0EC6DC)} forState:UIControlStateSelected];
         [ary addObject:navi];
-        navi.delegate = self;
     }
 
     self.viewControllers = [ary copy];    

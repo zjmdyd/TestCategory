@@ -1,21 +1,18 @@
 //
-//  ZJFondationTableViewController.m
-//  TestCategory
+//  HYTestContentTableViewController.m
+//  Test
 //
-//  Created by ZJ on 5/3/17.
-//  Copyright © 2017 ZJ. All rights reserved.
+//  Created by ZJ on 28/09/2017.
+//  Copyright © 2017 HY. All rights reserved.
 //
 
-#import "ZJFondationTableViewController.h"
-#import "ZJControllerCategory.h"
+#import "HYTestContentTableViewController.h"
 
-@interface ZJFondationTableViewController () {
-    NSArray *_vcNames;
-}
+@interface HYTestContentTableViewController ()
 
 @end
 
-@implementation ZJFondationTableViewController
+@implementation HYTestContentTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,18 +21,18 @@
     [self initSettiing];
 }
 
-- (void)initSettiing {
-    self.navigationItem.title = @"Foundaton";
+- (void)initAry {
+    
 }
 
-- (void)initAry {
-    _vcNames = @[@"ZJTestArrayViewController", @"ZJTestNumberViewController", @"ZJTestStringViewController", @"ZJTestCategoryViewController"];
+- (void)initSettiing {
+    
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _vcNames.count;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -43,7 +40,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = _vcNames[indexPath.row];
+    cell.textLabel.text = @"呵呵";
     
     return cell;
 }
@@ -53,10 +50,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *name = _vcNames[indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self showViewController:vc sender:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return FLT_EPSILON;
 }
 
 - (void)didReceiveMemoryWarning {

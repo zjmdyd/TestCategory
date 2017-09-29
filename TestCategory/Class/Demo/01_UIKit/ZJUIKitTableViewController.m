@@ -51,7 +51,7 @@
     NSString *name = _vcNames[indexPath.row];
     UIViewController *vc = [self createVCWithName:name title:name isGroupTableVC:YES];
     vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self showViewController:vc sender:nil];
 }
 
 //先要设Cell可编辑

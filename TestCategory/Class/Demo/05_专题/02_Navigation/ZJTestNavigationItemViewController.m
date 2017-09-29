@@ -18,9 +18,9 @@
     [super viewDidLoad];
     
     NSLog(@"%s", __func__);
-    NSLog(@"navigationController = %@", self.navigationController);
-    NSLog(@"navigationItem1 = %@", self.navigationItem);
-    NSLog(@"navigationItem2 = %@", self.navigationController.navigationItem);
+    NSLog(@"self.navigationController = %@", self.navigationController);
+    NSLog(@"self.navigationItem = %@", self.navigationItem);
+    NSLog(@"self.navigationController.navigationItem = %@", self.navigationController.navigationItem);
     NSLog(@"\n");
 }
 
@@ -33,8 +33,9 @@
     [super viewWillAppear:animated];
     
     NSLog(@"%s", __func__);
-    NSLog(@"navigationItem1 = %@", self.navigationItem);
-    NSLog(@"navigationItem2 = %@", self.navigationController.navigationItem);
+    NSLog(@"self.navigationController = %@", self.navigationController);
+    NSLog(@"self.navigationItem = %@", self.navigationItem);
+    NSLog(@"self.navigationController.navigationItem = %@", self.navigationController.navigationItem);
     NSLog(@"\n");
 }
 
@@ -42,8 +43,9 @@
     [super viewDidAppear:animated];
     
     NSLog(@"%s", __func__);
-    NSLog(@"navigationItem1 = %@", self.navigationItem);
-    NSLog(@"navigationItem2 = %@", self.navigationController.navigationItem);
+    NSLog(@"self.navigationController = %@", self.navigationController);
+    NSLog(@"self.navigationItem = %@", self.navigationItem);
+    NSLog(@"self.navigationController.navigationItem = %@", self.navigationController.navigationItem);
     NSLog(@"\n");
 }
 

@@ -55,7 +55,7 @@
     
     NSString *vcName = _vcNames[indexPath.row];
     UIViewController *vc = [self createVCWithName:vcName title:vcName isGroupTableVC:YES];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self showViewController:vc sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

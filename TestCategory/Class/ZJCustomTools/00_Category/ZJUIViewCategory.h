@@ -192,6 +192,7 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 
 + (UIView *)maskViewWithFrame:(CGRect)frame;
 - (UIView *)subViewWithTag:(NSInteger)tag;
+- (UIView *)fetchSubViewWithClassName:(NSString *)className;
 
 #pragma mark - supplementView
 
@@ -219,6 +220,13 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 
 - (void)addIconBadgeWithImage:(UIImage *)image;
 - (void)addIconBadgeWithImage:(UIImage *)image bgColor:(UIColor *)color;
+
+@end
+
+
+@interface UINavigationBar (ZJNavigationBar)
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor;
 
 @end
 

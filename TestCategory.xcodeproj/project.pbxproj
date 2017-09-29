@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		382C4F951F04FA2B00AE3576 /* ZJTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382C4F931F04FA2B00AE3576 /* ZJTabBarViewController.m */; };
 		382C4F9B1F0500F000AE3576 /* ZJTestTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382C4F9A1F0500F000AE3576 /* ZJTestTabBarViewController.m */; };
+		38424CE91F7E3EF600F2B616 /* HYTestContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38424CE71F7E3EF600F2B616 /* HYTestContentTableViewController.m */; };
+		38424CEC1F7E4B1D00F2B616 /* HYTestManualViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38424CEB1F7E4B1D00F2B616 /* HYTestManualViewController.m */; };
+		38424CF01F7E4B8300F2B616 /* HYTestManualViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38424CEF1F7E4B8300F2B616 /* HYTestManualViewController.xib */; };
+		38424CF61F7E4D4500F2B616 /* HYTestAutoRotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38424CF41F7E4D4400F2B616 /* HYTestAutoRotationViewController.m */; };
+		38424CF81F7E4D8400F2B616 /* HYTestAutoRotationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38424CF71F7E4D8400F2B616 /* HYTestAutoRotationViewController.xib */; };
 		3850846B1EBC211C00DEE8F6 /* InfoPlist in Resources */ = {isa = PBXBuildFile; fileRef = 3850846A1EBC211C00DEE8F6 /* InfoPlist */; };
 		385084711EBC5FE100DEE8F6 /* note.plist in Resources */ = {isa = PBXBuildFile; fileRef = 385084701EBC5FE100DEE8F6 /* note.plist */; };
 		385D3EFD1F063C9600F0C1FD /* ZJTestPureTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385D3EFC1F063C9600F0C1FD /* ZJTestPureTextTableViewController.m */; };
@@ -104,6 +109,7 @@
 		389C5FA11F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 389C5F9E1F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.m */; };
 		389C5FB71F0A1D6E00921EA8 /* ZJTestCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 389C5FB51F0A1D6E00921EA8 /* ZJTestCollectionViewController.m */; };
 		389C5FB81F0A1D6E00921EA8 /* ZJTestCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 389C5FB61F0A1D6E00921EA8 /* ZJTestCollectionViewController.xib */; };
+		38A5601E1F7E51A8006097CE /* ZJTestNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A5601D1F7E51A8006097CE /* ZJTestNavigationBarViewController.m */; };
 		38A8E6751F594056006E6C5C /* ZJNSThreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8E6661F594056006E6C5C /* ZJNSThreadViewController.m */; };
 		38A8E6761F594056006E6C5C /* ZJNSThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38A8E6671F594056006E6C5C /* ZJNSThreadViewController.xib */; };
 		38A8E6771F594056006E6C5C /* ZJNSOperationDownLoaderDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8E66A1F594056006E6C5C /* ZJNSOperationDownLoaderDemoVC.m */; };
@@ -143,6 +149,14 @@
 		382C4F941F04FA2B00AE3576 /* ZJTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTabBarViewController.h; sourceTree = "<group>"; };
 		382C4F991F0500F000AE3576 /* ZJTestTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestTabBarViewController.h; sourceTree = "<group>"; };
 		382C4F9A1F0500F000AE3576 /* ZJTestTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestTabBarViewController.m; sourceTree = "<group>"; };
+		38424CE71F7E3EF600F2B616 /* HYTestContentTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTestContentTableViewController.m; sourceTree = "<group>"; };
+		38424CE81F7E3EF600F2B616 /* HYTestContentTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTestContentTableViewController.h; sourceTree = "<group>"; };
+		38424CEA1F7E4B1D00F2B616 /* HYTestManualViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTestManualViewController.h; sourceTree = "<group>"; };
+		38424CEB1F7E4B1D00F2B616 /* HYTestManualViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTestManualViewController.m; sourceTree = "<group>"; };
+		38424CEF1F7E4B8300F2B616 /* HYTestManualViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYTestManualViewController.xib; sourceTree = "<group>"; };
+		38424CF41F7E4D4400F2B616 /* HYTestAutoRotationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTestAutoRotationViewController.m; sourceTree = "<group>"; };
+		38424CF51F7E4D4400F2B616 /* HYTestAutoRotationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTestAutoRotationViewController.h; sourceTree = "<group>"; };
+		38424CF71F7E4D8400F2B616 /* HYTestAutoRotationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYTestAutoRotationViewController.xib; sourceTree = "<group>"; };
 		3850846A1EBC211C00DEE8F6 /* InfoPlist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InfoPlist; sourceTree = "<group>"; };
 		385084701EBC5FE100DEE8F6 /* note.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = note.plist; sourceTree = "<group>"; };
 		385D3EFB1F063C9600F0C1FD /* ZJTestPureTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestPureTextTableViewController.h; sourceTree = "<group>"; };
@@ -322,6 +336,8 @@
 		389C5FB41F0A1D6E00921EA8 /* ZJTestCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestCollectionViewController.h; sourceTree = "<group>"; };
 		389C5FB51F0A1D6E00921EA8 /* ZJTestCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestCollectionViewController.m; sourceTree = "<group>"; };
 		389C5FB61F0A1D6E00921EA8 /* ZJTestCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJTestCollectionViewController.xib; sourceTree = "<group>"; };
+		38A5601C1F7E51A8006097CE /* ZJTestNavigationBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJTestNavigationBarViewController.h; sourceTree = "<group>"; };
+		38A5601D1F7E51A8006097CE /* ZJTestNavigationBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJTestNavigationBarViewController.m; sourceTree = "<group>"; };
 		38A8E6651F594056006E6C5C /* ZJNSThreadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNSThreadViewController.h; sourceTree = "<group>"; };
 		38A8E6661F594056006E6C5C /* ZJNSThreadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNSThreadViewController.m; sourceTree = "<group>"; };
 		38A8E6671F594056006E6C5C /* ZJNSThreadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJNSThreadViewController.xib; sourceTree = "<group>"; };
@@ -452,6 +468,14 @@
 				3881193B1F0CD9C200C24A89 /* ZJTestAlertViewController.h */,
 				3881193A1F0CD9C200C24A89 /* ZJTestAlertViewController.m */,
 				388119391F0CD9C200C24A89 /* ZJTestAlertViewController.xib */,
+				38424CE81F7E3EF600F2B616 /* HYTestContentTableViewController.h */,
+				38424CE71F7E3EF600F2B616 /* HYTestContentTableViewController.m */,
+				38424CEA1F7E4B1D00F2B616 /* HYTestManualViewController.h */,
+				38424CEB1F7E4B1D00F2B616 /* HYTestManualViewController.m */,
+				38424CEF1F7E4B8300F2B616 /* HYTestManualViewController.xib */,
+				38424CF51F7E4D4400F2B616 /* HYTestAutoRotationViewController.h */,
+				38424CF41F7E4D4400F2B616 /* HYTestAutoRotationViewController.m */,
+				38424CF71F7E4D8400F2B616 /* HYTestAutoRotationViewController.xib */,
 			);
 			path = 03_Controller;
 			sourceTree = "<group>";
@@ -841,6 +865,8 @@
 			children = (
 				388119501F0CDE1500C24A89 /* ZJTestBackBarButtonItemViewController.h */,
 				388119511F0CDE1500C24A89 /* ZJTestBackBarButtonItemViewController.m */,
+				38A5601C1F7E51A8006097CE /* ZJTestNavigationBarViewController.h */,
+				38A5601D1F7E51A8006097CE /* ZJTestNavigationBarViewController.m */,
 				388119521F0CDE1500C24A89 /* ZJTestNavigationItemViewController.h */,
 				388119531F0CDE1500C24A89 /* ZJTestNavigationItemViewController.m */,
 				388119541F0CDE1500C24A89 /* ZJTestTranslucentViewController.h */,
@@ -989,7 +1015,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ZJ;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = ZJ;
 				TargetAttributes = {
 					387033E31DFAC37900426DA3 = {
@@ -1036,6 +1062,7 @@
 			files = (
 				3861520D1E9F6BB300341BCB /* qrcode_scanline_barcode@2x.png in Resources */,
 				386151FB1E9F6BB300341BCB /* ZJSelectSexTableViewCell.xib in Resources */,
+				38424CF01F7E4B8300F2B616 /* HYTestManualViewController.xib in Resources */,
 				387033FA1DFAC37900426DA3 /* LaunchScreen.storyboard in Resources */,
 				386151FF1E9F6BB300341BCB /* ZJTitleTextFieldTableViewCell.xib in Resources */,
 				388119691F0CDE1500C24A89 /* ZJTestTranslucentViewController.xib in Resources */,
@@ -1047,6 +1074,7 @@
 				3899E6921F32BC5000964E72 /* File in Resources */,
 				3881196C1F0CDE1500C24A89 /* ZJTestBluetoothViewController.xib in Resources */,
 				386151F71E9F6BB300341BCB /* ZJImageTextFieldTableViewCell.xib in Resources */,
+				38424CF81F7E4D8400F2B616 /* HYTestAutoRotationViewController.xib in Resources */,
 				389530431EC5A351004511C8 /* ZJTestViewController.xib in Resources */,
 				3881193C1F0CD9C200C24A89 /* ZJTestAlertViewController.xib in Resources */,
 				3881196E1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.xib in Resources */,
@@ -1086,6 +1114,7 @@
 			files = (
 				3864E9931F0B30FF0045C374 /* ZJIconTitleCollectionViewCell.m in Sources */,
 				386151FA1E9F6BB300341BCB /* ZJSelectSexTableViewCell.m in Sources */,
+				38424CEC1F7E4B1D00F2B616 /* HYTestManualViewController.m in Sources */,
 				386152151E9F6BB300341BCB /* ZJNavigationController.m in Sources */,
 				388119621F0CDE1500C24A89 /* ZJTestFileTableViewController.m in Sources */,
 				387FA5801ED2E5C70038D93B /* ZJSearchingViewController.m in Sources */,
@@ -1097,6 +1126,7 @@
 				386593C61EBAB87C0041601D /* ZJTestLabelViewController.m in Sources */,
 				3881196A1F0CDE1500C24A89 /* ZJSearchDeviceTableViewController.m in Sources */,
 				385DBEEC1EB9D11E00174ACE /* ZJNSObjectTableViewController.m in Sources */,
+				38A5601E1F7E51A8006097CE /* ZJTestNavigationBarViewController.m in Sources */,
 				38A8E6751F594056006E6C5C /* ZJNSThreadViewController.m in Sources */,
 				3881193D1F0CD9C200C24A89 /* ZJTestAlertViewController.m in Sources */,
 				38A8E67B1F594056006E6C5C /* ZJGCDViewController.m in Sources */,
@@ -1105,6 +1135,7 @@
 				388119641F0CDE1500C24A89 /* UIViewController+ZJVCCategory.m in Sources */,
 				386152041E9F6BB300341BCB /* ZJFooterView.m in Sources */,
 				386151D61E9F6BB300341BCB /* UIViewExt.m in Sources */,
+				38424CF61F7E4D4500F2B616 /* HYTestAutoRotationViewController.m in Sources */,
 				388119411F0CDD6E00C24A89 /* ZJProgressViewController.m in Sources */,
 				386593C31EBAB85C0041601D /* ZJTestApplicationViewController.m in Sources */,
 				38E2EDF61F6BCF220058923B /* ZJAVAudioPlayerViewController.m in Sources */,
@@ -1139,6 +1170,7 @@
 				386151DE1E9F6BB300341BCB /* ZJStandarValueObj.m in Sources */,
 				385DBEF51EB9D49700174ACE /* ZJControllerTableViewController.m in Sources */,
 				38A8E6781F594056006E6C5C /* ZJNSOperationViewController.m in Sources */,
+				38424CE91F7E3EF600F2B616 /* HYTestContentTableViewController.m in Sources */,
 				388119711F0CE03400C24A89 /* ZJTopicTableViewController.m in Sources */,
 				38A8E67A1F594056006E6C5C /* ZJNSLockViewController.m in Sources */,
 				386151FE1E9F6BB300341BCB /* ZJTitleTextFieldTableViewCell.m in Sources */,
@@ -1223,7 +1255,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1231,7 +1265,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1271,7 +1309,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1279,7 +1319,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;

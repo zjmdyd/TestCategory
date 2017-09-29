@@ -18,9 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [UIApplication openSystemSettingWithType:SystemSettingTypeOfWiFi];
+    [UIApplication openSystemSettingWithType:SystemSettingTypeOfWiFi];  // iOS 11失效
+
+//    NSLog(@"currentVC = %@", [self nameWithInstance:self]);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     NSLog(@"currentVC = %@", [UIApplication currentVC]);
-    NSLog(@"currentVC = %@", [self nameWithInstance:self]);
+    
+    NSLog(@"%@", self.navigationItem.title);
+    NSLog(@"%@", self.title);
+
 }
 
 - (void)didReceiveMemoryWarning {

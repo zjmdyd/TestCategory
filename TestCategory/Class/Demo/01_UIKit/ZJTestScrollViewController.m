@@ -22,6 +22,12 @@
     UIView *view = [[UIView alloc] initWithFrame:self.scrollView.bounds];
     view.backgroundColor = [UIColor orangeColor];
     [self.scrollView addSubview:view];
+    
+    if (@available(iOS 11.0, *)) {
+        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;  // 不向下偏移64
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -43,11 +49,13 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     NSLog(@"%s", __func__);
 }
+
 // called on finger up if the user dragged. velocity is in points/millisecond. targetContentOffset may be changed to adjust where the scroll view comes to rest
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0) {
     NSLog(@"%s", __func__);
     NSLog(@"velocity = %@, %@", NSStringFromCGPoint(velocity), NSStringFromCGPoint(*targetContentOffset));
 }
+
 // called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     NSLog(@"%s", __func__);
@@ -69,6 +77,7 @@
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view NS_AVAILABLE_IOS(3_2) {
     NSLog(@"%s", __func__);
 }
+
 // called before the scroll view begins zooming its content
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale {
     NSLog(@"%s", __func__);
@@ -101,6 +110,33 @@
         [self.view addSubview:_scrollView];
     }
     return _scrollView;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSLog(@"%s", __func__);
+    NSLog(@"contentOffset = %@", NSStringFromCGPoint(self.scrollView.contentOffset));
+    NSLog(@"contentInset = %@", NSStringFromUIEdgeInsets(self.scrollView.contentInset));
+    if (@available(iOS 11.0, *)) {
+        NSLog(@"contentInset = %@", NSStringFromUIEdgeInsets(self.scrollView.adjustedContentInset));
+    } else {
+        // Fallback on earlier versions
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSLog(@"%s", __func__);
+    NSLog(@"contentOffset = %@", NSStringFromCGPoint(self.scrollView.contentOffset));
+    NSLog(@"contentInset = %@", NSStringFromUIEdgeInsets(self.scrollView.contentInset));
+    if (@available(iOS 11.0, *)) {
+        NSLog(@"contentInset = %@", NSStringFromUIEdgeInsets(self.scrollView.adjustedContentInset));
+    } else {
+        // Fallback on earlier versions
+    }
+//    self.scrollView.contentOffset = CGPointZero;
 }
 
 - (void)didReceiveMemoryWarning {

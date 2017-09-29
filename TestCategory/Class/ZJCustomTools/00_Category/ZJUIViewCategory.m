@@ -264,7 +264,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
         path = placeholdName;
     }
     if ([path hasPrefix:@"http:"]) {
-
+        
 #ifdef SDWebImage
         [self sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:placeholdName] options:SDWebImageRefreshCached];
 #else
@@ -482,6 +482,18 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     return nil;
 }
 
+- (UIView *)fetchSubViewWithClassName:(NSString *)className {
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:NSClassFromString(className)]) {
+            return view;
+        }else {
+            return [view fetchSubViewWithClassName:className];
+        }
+    }
+    
+    return nil;
+}
+
 #pragma mark - supplementView
 
 + (UIView *)supplementViewWithText:(NSString *)text {
@@ -573,6 +585,32 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 @end
 
+
+@implementation UINavigationBar (ZJNavigationBar)
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    for (UIView *view in self.subviews) {
+        if ([view isMemberOfClass:NSClassFromString(@"_UIBarBackground")]) {
+            for (UIView *sView in view.subviews) {
+                if ([sView isMemberOfClass:NSClassFromString(@"UIVisualEffectView")]) {
+                    for (UIView *ssView in sView.subviews) {
+                        if ([ssView isMemberOfClass:NSClassFromString(@"_UIVisualEffectSubview")]) {
+                            ssView.hidden = YES;
+                            // [ssView removeFromSuperview];    移除不了, 只能隐藏
+                        }else {
+                            ssView.backgroundColor = backgroundColor;
+                        }
+                    }
+                }
+            }
+        }else {
+            // _UINavigationBarContentView
+        }
+    }
+}
+
+
+@end
 
 #pragma mark - UIGestureRecognizer
 
