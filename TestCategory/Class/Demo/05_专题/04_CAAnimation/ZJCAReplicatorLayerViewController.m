@@ -38,8 +38,8 @@ static NSString *FADEANIMATION = @"fadeAnimation";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self createVolumBars];
-    [self activityIndicator];
+    [self createVolumBars];
+//    [self activityIndicator];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification) name:@"enterForeground" object:nil];
 }
 

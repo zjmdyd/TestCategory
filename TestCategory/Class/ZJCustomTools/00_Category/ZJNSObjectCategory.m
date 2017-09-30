@@ -180,7 +180,9 @@
 
 #pragma mark - 系统声音
 
-NSString *AudioPath = @"/System/Library/Audio/UISounds/";
+#ifndef AudioPath
+#define AudioPath @"/System/Library/Audio/UISounds/"
+#endif
 
 + (void)playSystemVibrate {
     AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
@@ -192,13 +194,6 @@ NSString *AudioPath = @"/System/Library/Audio/UISounds/";
     [self playWithUrl:url];
 }
 
-+ (void)playSoundWithSrcName:(NSString *)srcName type:(NSString *)type {
-    NSString *path = [[NSBundle mainBundle] pathForResource:srcName ofType:type];
-    if (path) {
-        [self playWithUrl:[NSURL fileURLWithPath:path]];
-    }
-}
-
 + (void)playWithUrl:(NSURL *)url {
     if (url) {
         SystemSoundID soundID;
@@ -208,6 +203,13 @@ NSString *AudioPath = @"/System/Library/Audio/UISounds/";
         }else {
             NSLog(@"******Failed to create sound********");
         }
+    }
+}
+
++ (void)playSoundWithSrcName:(NSString *)srcName type:(NSString *)type {
+    NSString *path = [[NSBundle mainBundle] pathForResource:srcName ofType:type];
+    if (path) {
+        [self playWithUrl:[NSURL fileURLWithPath:path]];
     }
 }
 

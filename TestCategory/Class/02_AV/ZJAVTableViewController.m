@@ -1,21 +1,22 @@
 //
-//  ZJTopicTableViewController.m
+//  ZJAVTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 05/07/2017.
+//  Created by ZJ on 30/09/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJTopicTableViewController.h"
-#import "ZJCategoryHeaderFile.h"
+#import "ZJAVTableViewController.h"
+#import "ZJControllerCategory.h"
 
-@interface ZJTopicTableViewController () {
-    NSArray *_titles, *_vcNames;
+@interface ZJAVTableViewController () {
+    NSArray *_vcNames;
 }
 
 @end
 
-@implementation ZJTopicTableViewController
+@implementation ZJAVTableViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,46 +25,30 @@
     [self initSettiing];
 }
 
-- (void)initAry {
-    _titles = @[@"fileManage", @"Category", @"Navigation", @"BLE", @"CAAnimation", @"Thread", @"Audio"];
-    _vcNames = @[
-                 @[@"ZJTestBundleViewController", @"ZJTestFileTableViewController", @"ZJTestSysDirViewController"],
-                 @[@"ZJTestCategoryViewController"],
-                 
-                 @[@"ZJTestBackBarButtonItemViewController", @"ZJTestNavigationBarViewController", @"ZJTestNavigationItemViewController", @"ZJTestTranslucentViewController"],
-                 @[@"ZJSearchDeviceTableViewController", @"ZJTestBluetoothViewController"],
-                 @[@"ZJCAReplicatorLayerViewController"],
-                 @[@"ZJThreadTableViewController"],
-                 @[@"ZJAVAudioPlayerViewController"],
-                 ];
+- (void)initSettiing {
+    self.navigationItem.title = @"Foundaton";
 }
 
-- (void)initSettiing {
-    
+- (void)initAry {
+    _vcNames = @[
+                 @"ZJAudioToolboxTableViewController", @"ZJAVAudioPlayerViewController", @"ZJAVPlayerViewController", @"ZJRecorderViewController", @"ZJAVCaptureSessionTableViewController"
+                 ];
 }
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _titles.count;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_vcNames[section] count];
+    return _vcNames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = _vcNames[indexPath.section][indexPath.row];
+    cell.textLabel.text = _vcNames[indexPath.row];
     
     return cell;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return _titles[section];
 }
 
 #pragma mark - UITableViewDelegate
@@ -71,20 +56,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *vcName = _vcNames[indexPath.section][indexPath.row];
-    UIViewController *vc = [self createVCWithName:vcName title:vcName isGroupTableVC:YES];
+    NSString *name = _vcNames[indexPath.row];
+    UIViewController *vc = [self createVCWithName:name title:name isGroupTableVC:YES];
+    vc.hidesBottomBarWhenPushed = YES;
     [self showViewController:vc sender:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
- 
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 
 /*
 // Override to support conditional editing of the table view.

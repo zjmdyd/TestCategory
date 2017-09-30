@@ -227,6 +227,7 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 @interface UINavigationBar (ZJNavigationBar)
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor;
+- (void)setHiddenSeparateLine:(BOOL)hidden;
 
 @end
 

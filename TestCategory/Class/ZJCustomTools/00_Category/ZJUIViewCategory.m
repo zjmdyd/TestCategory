@@ -483,15 +483,22 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 }
 
 - (UIView *)fetchSubViewWithClassName:(NSString *)className {
+    UIView *mView;
+    
     for (UIView *view in self.subviews) {
+        NSLog(@"\n");
+        NSLog(@"view = %@", view);
         if ([view isKindOfClass:NSClassFromString(className)]) {
             return view;
         }else {
-            return [view fetchSubViewWithClassName:className];
+            mView = [view fetchSubViewWithClassName:className];
+            if (mView) {
+                return mView;
+            }
         }
     }
     
-    return nil;
+    return mView;
 }
 
 #pragma mark - supplementView
@@ -588,29 +595,53 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 @implementation UINavigationBar (ZJNavigationBar)
 
+/**
+ view.backgroundColor = backgroundColor;   // 背景色设置无效
+ NSLog(@"view.superclass = %@", view.superclass);  // UIView
+ NSLog(@"ssView.superclass1 = %@", ssView.superclass);   // _UIVisualEffectSubview --> UIView
+ NSLog(@"ssView.superclass2 = %@", ssView.superclass);    // _UIVisualEffectBackdropView --> _UIVisualEffectSubview
+ 
+ ssView.hidden = YES;    // [ssView removeFromSuperview];    移除不了, 只能隐藏
+ ssView.backgroundColor = [UIColor clearColor]; //  背景色透明设置无效
+
+ */
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     for (UIView *view in self.subviews) {
         if ([view isMemberOfClass:NSClassFromString(@"_UIBarBackground")]) {
+
             for (UIView *sView in view.subviews) {
                 if ([sView isMemberOfClass:NSClassFromString(@"UIVisualEffectView")]) {
+                    sView.backgroundColor = backgroundColor;
                     for (UIView *ssView in sView.subviews) {
                         if ([ssView isMemberOfClass:NSClassFromString(@"_UIVisualEffectSubview")]) {
-                            ssView.hidden = YES;
-                            // [ssView removeFromSuperview];    移除不了, 只能隐藏
+                            ssView.hidden = YES;    // [ssView removeFromSuperview];    移除不了, 只能隐藏
                         }else {
-                            ssView.backgroundColor = backgroundColor;
+                            ssView.hidden = YES;    //  背景色透明设置无效
                         }
                     }
                 }
             }
-        }else {
-            // _UINavigationBarContentView
         }
     }
 }
 
+- (void)setHiddenSeparateLine:(BOOL)hidden {
+    UIView *view = [self fetchSubViewWithClassName:@"UIImageView"];
+    if (view) view.hidden = hidden;
+}
+
+
+/**
+ 修改不成功,坑爹的苹果
+ NSLog(@"superclass = %@", btn.superclass); --> UIButton
+ */
+- (void)setBackBarButtonItemTitle:(NSString *)title {
+    UIButton *btn = (UIButton *)[self fetchSubViewWithClassName:@"_UIModernBarButton"];
+    [btn setTitle:title forState:UIControlStateNormal];
+}
 
 @end
+
 
 #pragma mark - UIGestureRecognizer
 

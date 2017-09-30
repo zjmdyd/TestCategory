@@ -25,10 +25,18 @@
 }
 
 - (void)initSetting {
-    NSArray *titles = @[@"NSObject", @"UIKit", @"Fondation", @"Controller", @"Other"];
-    NSArray *image = @[@"ic_shouye_72x72", @"ic_dangan_72x72", @"ic_faxian_72x72", @"ic_wode_72x72", @"ic_faxian_72x72"];
-    NSArray *selectImage = @[@"ic_shouye_blue_72x72", @"ic_dangan_blue_72x72", @"ic_faxian_blue_72x72", @"ic_wode_blue_72x72", @"ic_faxian_blue_72x72"];
-    NSArray *nibNames = @[@"ZJNSObjectTableViewController", @"ZJUIKitTableViewController", @"ZJFondationTableViewController", @"ZJControllerTableViewController", @"ZJOtherTableViewController"];
+    NSArray *titles = @[
+                        @"Basic", @"AV", @"Fondation", @"Controller", @"Other"
+                        ];
+    NSArray *image = @[
+                       @"ic_shouye_72x72", @"ic_dangan_72x72", @"ic_faxian_72x72", @"ic_wode_72x72", @"ic_faxian_72x72"
+                       ];
+    NSArray *selectImage = @[
+                             @"ic_shouye_blue_72x72", @"ic_dangan_blue_72x72", @"ic_faxian_blue_72x72", @"ic_wode_blue_72x72", @"ic_faxian_blue_72x72"
+                             ];
+    NSArray *nibNames = @[
+                          @"ZJBasicTableViewController", @"ZJAVTableViewController", @"ZJOtherTableViewController", @"ZJOtherTableViewController", @"ZJOtherTableViewController"
+                          ];
     
     NSMutableArray *ary = [NSMutableArray array];
     for (int i = 0; i < nibNames.count; i++) {
@@ -44,10 +52,11 @@
         vc.tabBarItem.image = [[UIImage imageNamed:image[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         vc.tabBarItem.selectedImage = [[UIImage imageNamed:selectImage[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromHex(0x0EC6DC)} forState:UIControlStateSelected];
+        navi.delegate = self;
         [ary addObject:navi];
     }
 
-    self.viewControllers = [ary copy];    
+    self.viewControllers = [ary copy];
 }
 
 - (UIButton *)foregroundBtn {
@@ -79,7 +88,11 @@
 
 #pragma mark - UINavigationControllerDelegate
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    _foregroundBtn.hidden = navigationController.viewControllers.count > 1;
+//}
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     _foregroundBtn.hidden = navigationController.viewControllers.count > 1;
 }
 

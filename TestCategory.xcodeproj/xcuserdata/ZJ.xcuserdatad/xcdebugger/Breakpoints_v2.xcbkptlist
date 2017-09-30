@@ -19,22 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestCategory/Class/Demo/01_UIKit/ZJUIKitTableViewController.m"
-            timestampString = "528368063.311082"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TestCategory/Class/Demo/04_Other/ZJOtherTableViewController.m"
             timestampString = "528371840.299962"
             startingColumnNumber = "9223372036854775807"
@@ -67,13 +51,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestCategory/Class/Demo/05_&#x4e13;&#x9898;/02_Navigation/ZJTestNavigationBarViewController.m"
-            timestampString = "528377042.585603"
+            filePath = "TestCategory/Class/Demo/05_&#x4e13;&#x9898;/02_Navigation/ZJTestTranslucentViewController.m"
+            timestampString = "528449680.839199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-nextEvent:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestCategory/Class/02_AV/ZJAVTableViewController.m"
+            timestampString = "528457647.987479"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestCategory/Class/ZJCustomTools/00_Category/ZJControllerCategory.m"
+            timestampString = "528456941.815577"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-createVCWithName:title:isGroupTableVC:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
