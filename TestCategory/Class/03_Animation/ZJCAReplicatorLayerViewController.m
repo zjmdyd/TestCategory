@@ -8,6 +8,7 @@
 
 #import "ZJCAReplicatorLayerViewController.h"
 #import "UIViewExt.h"
+#import "ZJUIViewCategory.h"
 
 @interface ZJCAReplicatorLayerViewController ()<CAAnimationDelegate, CALayerDelegate> {
     CABasicAnimation *_moveAnimation;
@@ -20,7 +21,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIView *replicatorLayerView;
-@property (weak, nonatomic) IBOutlet UIView *rightItemView;
+@property (strong, nonatomic)  UIView *rightItemView;
 
 @property (weak, nonatomic) IBOutlet UISlider *instanceDelaySlider;
 
@@ -38,12 +39,20 @@ static NSString *FADEANIMATION = @"fadeAnimation";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initSettiing];
     [self createVolumBars];
 //    [self activityIndicator];
+}
+
+- (void)initSettiing {
+    self.rightItemView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    [self.rightItemView addTapGestureWithDelegate:nil target:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barbuttonWithCustomView:self.rightItemView];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification) name:@"enterForeground" object:nil];
 }
 
-- (IBAction)tap:(UITapGestureRecognizer *)sender {
+- (void)tapAction:(UITapGestureRecognizer *)sender {
     if (_barLayer.animationKeys.count) {
         [_barLayer removeAnimationForKey:VOLUMBARANIMATION];
     }else {
@@ -61,6 +70,8 @@ static NSString *FADEANIMATION = @"fadeAnimation";
     replicatorLayer.instanceCount = 3;      // The number of copies to create
     replicatorLayer.instanceDelay = 0.33;   // instanceDelay is the temporal offset between each copy that the replicator layer renders
     replicatorLayer.masksToBounds = YES;
+    
+    // 复制图层在被创建时产生的和上一个复制图层的位移
     replicatorLayer.instanceTransform = CATransform3DMakeTranslation(15.0, 0.0, 0.0);   //  偏移
     [self.rightItemView.layer addSublayer:replicatorLayer];
     

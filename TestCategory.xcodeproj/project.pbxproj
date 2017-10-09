@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3807CE3F1F8B619200836319 /* ZJAnimationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3807CE3E1F8B619200836319 /* ZJAnimationTableViewController.m */; };
+		3807CE431F8B621800836319 /* ZJCAReplicatorLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3807CE411F8B621700836319 /* ZJCAReplicatorLayerViewController.xib */; };
+		3807CE441F8B621800836319 /* ZJCAReplicatorLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3807CE421F8B621700836319 /* ZJCAReplicatorLayerViewController.m */; };
 		382C4F951F04FA2B00AE3576 /* ZJTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382C4F931F04FA2B00AE3576 /* ZJTabBarViewController.m */; };
 		3834AA4B1F7F81C1007EB464 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 3834A9EF1F7F81C0007EB464 /* File */; };
 		3834AA4D1F7F81C1007EB464 /* ZJTestApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3834A9F31F7F81C0007EB464 /* ZJTestApplicationViewController.m */; };
@@ -65,7 +68,6 @@
 		385D73471F7F9A7900573142 /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 385D73301F7F9A7900573142 /* song.mp3 */; };
 		385D73481F7F9A7900573142 /* ZJAudioToolboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385D73321F7F9A7900573142 /* ZJAudioToolboxTableViewController.m */; };
 		385D73491F7F9A7900573142 /* ZJAVAudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385D73341F7F9A7900573142 /* ZJAVAudioPlayerViewController.m */; };
-		385D734A1F7F9A7900573142 /* ZJAVAudioPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385D73351F7F9A7900573142 /* ZJAVAudioPlayerViewController.xib */; };
 		385D734B1F7F9A7900573142 /* ZJAVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385D73371F7F9A7900573142 /* ZJAVPlayerViewController.m */; };
 		385D734C1F7F9A7900573142 /* ZJAVPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385D73381F7F9A7900573142 /* ZJAVPlayerViewController.xib */; };
 		385D734D1F7F9A7900573142 /* ZJAVTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385D733A1F7F9A7900573142 /* ZJAVTableViewController.m */; };
@@ -130,8 +132,6 @@
 		3881196A1F0CDE1500C24A89 /* ZJSearchDeviceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388119591F0CDE1500C24A89 /* ZJSearchDeviceTableViewController.m */; };
 		3881196B1F0CDE1500C24A89 /* ZJTestBluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3881195B1F0CDE1500C24A89 /* ZJTestBluetoothViewController.m */; };
 		3881196C1F0CDE1500C24A89 /* ZJTestBluetoothViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3881195C1F0CDE1500C24A89 /* ZJTestBluetoothViewController.xib */; };
-		3881196D1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3881195F1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.m */; };
-		3881196E1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388119601F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.xib */; };
 		388119711F0CE03400C24A89 /* ZJTopicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388119701F0CE03400C24A89 /* ZJTopicTableViewController.m */; };
 		389C5FA01F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 389C5F9D1F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.xib */; };
 		389C5FA11F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 389C5F9E1F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.m */; };
@@ -155,6 +155,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3807CE3D1F8B619200836319 /* ZJAnimationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJAnimationTableViewController.h; sourceTree = "<group>"; };
+		3807CE3E1F8B619200836319 /* ZJAnimationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJAnimationTableViewController.m; sourceTree = "<group>"; };
+		3807CE401F8B621700836319 /* ZJCAReplicatorLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCAReplicatorLayerViewController.h; sourceTree = "<group>"; };
+		3807CE411F8B621700836319 /* ZJCAReplicatorLayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJCAReplicatorLayerViewController.xib; sourceTree = "<group>"; };
+		3807CE421F8B621700836319 /* ZJCAReplicatorLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCAReplicatorLayerViewController.m; sourceTree = "<group>"; };
 		382C4F931F04FA2B00AE3576 /* ZJTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTabBarViewController.m; sourceTree = "<group>"; };
 		382C4F941F04FA2B00AE3576 /* ZJTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTabBarViewController.h; sourceTree = "<group>"; };
 		3834A9EF1F7F81C0007EB464 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
@@ -255,7 +260,6 @@
 		385D73321F7F9A7900573142 /* ZJAudioToolboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAudioToolboxTableViewController.m; sourceTree = "<group>"; };
 		385D73331F7F9A7900573142 /* ZJAVAudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAVAudioPlayerViewController.h; sourceTree = "<group>"; };
 		385D73341F7F9A7900573142 /* ZJAVAudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAVAudioPlayerViewController.m; sourceTree = "<group>"; };
-		385D73351F7F9A7900573142 /* ZJAVAudioPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJAVAudioPlayerViewController.xib; sourceTree = "<group>"; };
 		385D73361F7F9A7900573142 /* ZJAVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAVPlayerViewController.h; sourceTree = "<group>"; };
 		385D73371F7F9A7900573142 /* ZJAVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAVPlayerViewController.m; sourceTree = "<group>"; };
 		385D73381F7F9A7900573142 /* ZJAVPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJAVPlayerViewController.xib; sourceTree = "<group>"; };
@@ -380,9 +384,6 @@
 		3881195A1F0CDE1500C24A89 /* ZJTestBluetoothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTestBluetoothViewController.h; sourceTree = "<group>"; };
 		3881195B1F0CDE1500C24A89 /* ZJTestBluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTestBluetoothViewController.m; sourceTree = "<group>"; };
 		3881195C1F0CDE1500C24A89 /* ZJTestBluetoothViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJTestBluetoothViewController.xib; sourceTree = "<group>"; };
-		3881195E1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCAReplicatorLayerViewController.h; sourceTree = "<group>"; };
-		3881195F1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCAReplicatorLayerViewController.m; sourceTree = "<group>"; };
-		388119601F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJCAReplicatorLayerViewController.xib; sourceTree = "<group>"; };
 		3881196F1F0CE03400C24A89 /* ZJTopicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTopicTableViewController.h; sourceTree = "<group>"; };
 		388119701F0CE03400C24A89 /* ZJTopicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTopicTableViewController.m; sourceTree = "<group>"; };
 		389C5F9D1F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJIconTitleNormalCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -415,6 +416,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3807CE3C1F8B616300836319 /* 03_Animation */ = {
+			isa = PBXGroup;
+			children = (
+				3807CE3D1F8B619200836319 /* ZJAnimationTableViewController.h */,
+				3807CE3E1F8B619200836319 /* ZJAnimationTableViewController.m */,
+				3807CE401F8B621700836319 /* ZJCAReplicatorLayerViewController.h */,
+				3807CE421F8B621700836319 /* ZJCAReplicatorLayerViewController.m */,
+				3807CE411F8B621700836319 /* ZJCAReplicatorLayerViewController.xib */,
+			);
+			path = 03_Animation;
+			sourceTree = "<group>";
+		};
 		3834A9EE1F7F81C0007EB464 /* 00_NSObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,7 +614,6 @@
 				385D73321F7F9A7900573142 /* ZJAudioToolboxTableViewController.m */,
 				385D73331F7F9A7900573142 /* ZJAVAudioPlayerViewController.h */,
 				385D73341F7F9A7900573142 /* ZJAVAudioPlayerViewController.m */,
-				385D73351F7F9A7900573142 /* ZJAVAudioPlayerViewController.xib */,
 				385D73361F7F9A7900573142 /* ZJAVPlayerViewController.h */,
 				385D73371F7F9A7900573142 /* ZJAVPlayerViewController.m */,
 				385D73381F7F9A7900573142 /* ZJAVPlayerViewController.xib */,
@@ -635,6 +647,7 @@
 			children = (
 				38835D181F7F7FAA00721F8D /* 01_Basic */,
 				385D73241F7F9A7900573142 /* 02_AV */,
+				3807CE3C1F8B616300836319 /* 03_Animation */,
 				3834AAF31F7F8DC1007EB464 /* 04_Other */,
 				386152191E9F7B7A00341BCB /* Demo */,
 				3861513F1E9F6AB700341BCB /* Base */,
@@ -960,7 +973,6 @@
 				3881196F1F0CE03400C24A89 /* ZJTopicTableViewController.h */,
 				388119701F0CE03400C24A89 /* ZJTopicTableViewController.m */,
 				388119571F0CDE1500C24A89 /* 03_BLE */,
-				3881195D1F0CDE1500C24A89 /* 04_CAAnimation */,
 			);
 			path = "05_专题";
 			sourceTree = "<group>";
@@ -975,16 +987,6 @@
 				3881195C1F0CDE1500C24A89 /* ZJTestBluetoothViewController.xib */,
 			);
 			path = 03_BLE;
-			sourceTree = "<group>";
-		};
-		3881195D1F0CDE1500C24A89 /* 04_CAAnimation */ = {
-			isa = PBXGroup;
-			children = (
-				3881195E1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.h */,
-				3881195F1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.m */,
-				388119601F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.xib */,
-			);
-			path = 04_CAAnimation;
 			sourceTree = "<group>";
 		};
 		38835D181F7F7FAA00721F8D /* 01_Basic */ = {
@@ -1084,6 +1086,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = X69A28X2L6;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					387033FF1DFAC37900426DA3 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1126,7 +1133,6 @@
 				386151FB1E9F6BB300341BCB /* ZJSelectSexTableViewCell.xib in Resources */,
 				385D73501F7F9A7900573142 /* ZJRecorderViewController.xib in Resources */,
 				3834AAFD1F7F8DC1007EB464 /* TestWrite.txt in Resources */,
-				385D734A1F7F9A7900573142 /* ZJAVAudioPlayerViewController.xib in Resources */,
 				3834AAFB1F7F8DC1007EB464 /* note in Resources */,
 				387033FA1DFAC37900426DA3 /* LaunchScreen.storyboard in Resources */,
 				386151FF1E9F6BB300341BCB /* ZJTitleTextFieldTableViewCell.xib in Resources */,
@@ -1141,7 +1147,6 @@
 				385D734C1F7F9A7900573142 /* ZJAVPlayerViewController.xib in Resources */,
 				3834AAFA1F7F8DC1007EB464 /* InfoPlist in Resources */,
 				385D73461F7F9A7900573142 /* gezaifei.mp4 in Resources */,
-				3881196E1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.xib in Resources */,
 				385D73471F7F9A7900573142 /* song.mp3 in Resources */,
 				386151F31E9F6BB300341BCB /* ZJIconTitleHorizontalCollectionViewCell.xib in Resources */,
 				3834AAFC1F7F8DC1007EB464 /* note.plist in Resources */,
@@ -1151,6 +1156,7 @@
 				389C5FA01F09DF5800921EA8 /* ZJIconTitleNormalCollectionViewCell.xib in Resources */,
 				386151F11E9F6BB300341BCB /* ZJCollectionTableViewCell.xib in Resources */,
 				3834AAD41F7F89B7007EB464 /* ZJNSThreadViewController.xib in Resources */,
+				3807CE431F8B621800836319 /* ZJCAReplicatorLayerViewController.xib in Resources */,
 				3834AA8B1F7F8534007EB464 /* ZJTestTranslucentViewController.xib in Resources */,
 				3834AA781F7F81C1007EB464 /* ZJTestViewController.xib in Resources */,
 				386152011E9F6BB300341BCB /* HYErrorView.xib in Resources */,
@@ -1187,7 +1193,6 @@
 				386152151E9F6BB300341BCB /* ZJNavigationController.m in Sources */,
 				387033E91DFAC37900426DA3 /* main.m in Sources */,
 				3834AA701F7F81C1007EB464 /* HYTestContentTableViewController.m in Sources */,
-				3881196D1F0CDE1500C24A89 /* ZJCAReplicatorLayerViewController.m in Sources */,
 				386152001E9F6BB300341BCB /* HYErrorView.m in Sources */,
 				3881196A1F0CDE1500C24A89 /* ZJSearchDeviceTableViewController.m in Sources */,
 				3834AA501F7F81C1007EB464 /* ZJTestNumberViewController.m in Sources */,
@@ -1232,6 +1237,7 @@
 				3834AA711F7F81C1007EB464 /* HYTestManualViewController.m in Sources */,
 				386151F41E9F6BB300341BCB /* ZJIconTitleVerticalCollectionViewCell.m in Sources */,
 				386152181E9F6BB300341BCB /* ZJBLEDeviceManager.m in Sources */,
+				3807CE3F1F8B619200836319 /* ZJAnimationTableViewController.m in Sources */,
 				385D73481F7F9A7900573142 /* ZJAudioToolboxTableViewController.m in Sources */,
 				3834AA521F7F81C1007EB464 /* ZJProgressViewController.m in Sources */,
 				3861520B1E9F6BB300341BCB /* ZJPickerView.m in Sources */,
@@ -1246,6 +1252,7 @@
 				385D734B1F7F9A7900573142 /* ZJAVPlayerViewController.m in Sources */,
 				3834AA791F7F81C1007EB464 /* ZJTestWebViewController.m in Sources */,
 				3834AA531F7F81C1007EB464 /* ZJSearchingViewController.m in Sources */,
+				3807CE441F8B621800836319 /* ZJCAReplicatorLayerViewController.m in Sources */,
 				3861520F1E9F6BB300341BCB /* ZJQRView.m in Sources */,
 				3861520E1E9F6BB300341BCB /* ZJQRCodeViewController.m in Sources */,
 				386151DB1E9F6BB300341BCB /* ZJIconSubTitleObject.m in Sources */,

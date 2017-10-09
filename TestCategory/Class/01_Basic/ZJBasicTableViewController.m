@@ -7,6 +7,7 @@
 //
 
 #import "ZJBasicTableViewController.h"
+#import "ZJFondationCategory.h"
 #import "ZJControllerCategory.h"
 
 @interface ZJBasicTableViewController ()<UITableViewDataSource, UITableViewDelegate> {
@@ -80,8 +81,13 @@
     return cell;
 }
 
-- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return _sectionTitles[section];
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30)];
+    label.text = [NSString stringWithFormat:@"     %@", _sectionTitles[section]];
+    label.textColor = [UIColor lightGrayColor];
+    label.font = [UIFont systemFontOfSize:15];
+    
+    return label;
 }
 
 #pragma mark - UITableViewDelegate
@@ -93,6 +99,10 @@
     UIViewController *vc = [self createVCWithName:name title:name  isGroupTableVC:YES];
     vc.hidesBottomBarWhenPushed = YES;
     [self showViewController:vc sender:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
 }
 
 - (void)didReceiveMemoryWarning {

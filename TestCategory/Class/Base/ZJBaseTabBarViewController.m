@@ -26,7 +26,7 @@
 
 - (void)initSetting {
     NSArray *titles = @[
-                        @"Basic", @"AV", @"Fondation", @"Controller", @"Other"
+                        @"Basic", @"AV", @"Animation", @"Controller", @"Other"
                         ];
     NSArray *image = @[
                        @"ic_shouye_72x72", @"ic_dangan_72x72", @"ic_faxian_72x72", @"ic_wode_72x72", @"ic_faxian_72x72"
@@ -35,7 +35,7 @@
                              @"ic_shouye_blue_72x72", @"ic_dangan_blue_72x72", @"ic_faxian_blue_72x72", @"ic_wode_blue_72x72", @"ic_faxian_blue_72x72"
                              ];
     NSArray *nibNames = @[
-                          @"ZJBasicTableViewController", @"ZJAVTableViewController", @"ZJOtherTableViewController", @"ZJOtherTableViewController", @"ZJOtherTableViewController"
+                          @"ZJBasicTableViewController", @"ZJAVTableViewController", @"ZJAnimationTableViewController", @"ZJOtherTableViewController", @"ZJOtherTableViewController"
                           ];
     
     NSMutableArray *ary = [NSMutableArray array];

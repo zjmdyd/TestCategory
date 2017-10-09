@@ -60,6 +60,11 @@
 - (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent;
 
 /**
+ 文字缩进 颜色
+ */
+- (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent color:(UIColor *)color;
+
+/**
  行间距
  */
 - (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace;

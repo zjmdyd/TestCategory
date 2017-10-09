@@ -1,21 +1,21 @@
 //
-//  ZJAVTableViewController.m
+//  ZJAnimationTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 30/09/2017.
+//  Created by ZJ on 09/10/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJAVTableViewController.h"
+#import "ZJAnimationTableViewController.h"
 #import "ZJControllerCategory.h"
 
-@interface ZJAVTableViewController () {
+@interface ZJAnimationTableViewController () {
     NSArray *_vcNames;
 }
 
 @end
 
-@implementation ZJAVTableViewController
+@implementation ZJAnimationTableViewController
 
 
 - (void)viewDidLoad {
@@ -26,12 +26,12 @@
 }
 
 - (void)initSettiing {
-    
+
 }
 
 - (void)initAry {
     _vcNames = @[
-                 @"ZJAudioToolboxTableViewController", @"ZJAVAudioPlayerViewController", @"ZJAVPlayerViewController", @"ZJRecorderViewController", @"ZJAVCaptureSessionTableViewController"
+                 @"ZJCAReplicatorLayerViewController",
                  ];
 }
 

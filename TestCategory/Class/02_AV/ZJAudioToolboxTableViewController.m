@@ -83,34 +83,6 @@ NSString *kAudioPath = @"/System/Library/Audio/UISounds/";
         [UIApplication playSystemSoundWithName:_files[indexPath.row]];
     }
 }
-//
-//- (void)playSystemVibrate {
-//    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);    // 系统声音设置里面的振动要开启才起作用
-//}
-//
-//- (void)playSoundWithResourceName:(NSString *)resourceName type:(NSString *)type {
-//    NSString *path = [[NSBundle mainBundle] pathForResource:resourceName ofType:type];
-//    if (path) {
-//        [self playWithUrl:[NSURL fileURLWithPath:path]];
-//    }
-//}
-//
-//- (void)playSystemSoundWithName:(NSString *)name {
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kAudioPath, name]];
-//    [self playWithUrl:url];
-//}
-//
-//- (void)playWithUrl:(NSURL *)url {
-//    if (url) {
-//        SystemSoundID soundID;
-//        OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundID);
-//        if (error == kAudioServicesNoError) {
-//            AudioServicesPlayAlertSound(soundID);
-//        }else {
-//            NSLog(@"Failed to create sound");
-//        }
-//    }
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

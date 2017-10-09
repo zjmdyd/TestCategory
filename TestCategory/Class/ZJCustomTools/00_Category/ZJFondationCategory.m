@@ -129,6 +129,20 @@
 }
 
 /**
+ 文字缩进 颜色
+ */
+- (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent color:(UIColor *)color {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSParagraphStyle *style = [NSParagraphStyle styleWithHeadIndent:headIndent];
+    
+    NSRange range = NSMakeRange(0, str.length);
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    [str addAttribute:NSForegroundColorAttributeName value:color range:range];
+
+    return str;
+}
+
+/**
  行间距
  */
 - (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace {

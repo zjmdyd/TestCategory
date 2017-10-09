@@ -54,7 +54,7 @@ NSString *AVPath = @"http://183.60.197.32/5/n/w/c/q/nwcqvlmfyhutxwhnjnmemyfvlfie
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *path; // = [[NSBundle mainBundle] pathForResource:@"gezaifei" ofType:@"mp4"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"gezaifei" ofType:@"mp4"];
     NSURL *url;
     if (path) {
         url = [NSURL fileURLWithPath:path];     // 本地视频
@@ -193,9 +193,9 @@ NSString *AVPath = @"http://183.60.197.32/5/n/w/c/q/nwcqvlmfyhutxwhnjnmemyfvlfie
     [self.player seekToTime:kCMTimeZero];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.navigationController.navigationBar.hidden = !self.navigationController.navigationBar.isHidden;
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    self.navigationController.navigationBar.hidden = !self.navigationController.navigationBar.isHidden;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
