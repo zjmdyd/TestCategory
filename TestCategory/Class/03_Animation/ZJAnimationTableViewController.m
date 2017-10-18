@@ -15,6 +15,8 @@
 
 @end
 
+#define MAXX(A,B)  A > B ? A : B
+
 @implementation ZJAnimationTableViewController
 
 

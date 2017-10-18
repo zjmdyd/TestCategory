@@ -486,15 +486,10 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     UIView *mView;
     
     for (UIView *view in self.subviews) {
-        NSLog(@"\n");
-        NSLog(@"view = %@", view);
         if ([view isKindOfClass:NSClassFromString(className)]) {
             return view;
         }else {
-            mView = [view fetchSubViewWithClassName:className];
-            if (mView) {
-                return mView;
-            }
+            return [view fetchSubViewWithClassName:className];
         }
     }
     
@@ -603,7 +598,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
  
  ssView.hidden = YES;    // [ssView removeFromSuperview];    移除不了, 只能隐藏
  ssView.backgroundColor = [UIColor clearColor]; //  背景色透明设置无效
-
  */
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     for (UIView *view in self.subviews) {

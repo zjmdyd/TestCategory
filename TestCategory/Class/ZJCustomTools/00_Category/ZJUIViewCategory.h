@@ -202,8 +202,8 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
  */
 + (UIView *)supplementViewWithText:(NSString *)text;
 + (UIView *)supplementViewWithText:(NSString *)text supplementViewBgColor:(UIColor *)color;
-
 /**
+ 
  带属性文本
  @return 文本背景色
  */
@@ -223,6 +223,8 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 
 @end
 
+
+#pragma mark - UINavigationBar
 
 @interface UINavigationBar (ZJNavigationBar)
 

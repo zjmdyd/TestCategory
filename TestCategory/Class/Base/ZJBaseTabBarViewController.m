@@ -35,7 +35,8 @@
                              @"ic_shouye_blue_72x72", @"ic_dangan_blue_72x72", @"ic_faxian_blue_72x72", @"ic_wode_blue_72x72", @"ic_faxian_blue_72x72"
                              ];
     NSArray *nibNames = @[
-                          @"ZJBasicTableViewController", @"ZJAVTableViewController", @"ZJAnimationTableViewController", @"ZJOtherTableViewController", @"ZJOtherTableViewController"
+                          @"ZJBasicTableViewController", @"ZJAVTableViewController", @"ZJAnimationTableViewController",
+                          @"ZJOtherTableViewController", @"ZJOtherTableViewController"
                           ];
     
     NSMutableArray *ary = [NSMutableArray array];
@@ -59,6 +60,12 @@
     self.viewControllers = [ary copy];
 }
 
+- (void)btnEvent:(UIButton *)sender {
+    UIViewController *vc = [self createVCWithName:@"ZJTopicTableViewController" title:sender.currentTitle isGroupTableVC:YES];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.selectedViewController pushViewController:vc animated:YES];
+}
+
 - (UIButton *)foregroundBtn {
     if (!_foregroundBtn) {
         _foregroundBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -72,12 +79,6 @@
     return _foregroundBtn;
 }
 
-- (void)btnEvent:(UIButton *)sender {
-    UIViewController *vc = [self createVCWithName:@"ZJTopicTableViewController" title:sender.currentTitle isGroupTableVC:YES];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.selectedViewController pushViewController:vc animated:YES];
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -87,10 +88,6 @@
 }
 
 #pragma mark - UINavigationControllerDelegate
-
-//- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-//    _foregroundBtn.hidden = navigationController.viewControllers.count > 1;
-//}
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     _foregroundBtn.hidden = navigationController.viewControllers.count > 1;

@@ -77,6 +77,11 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 + (void)playSystemSoundWithName:(NSString *)name;
 
 /**
+ 根据地址播放音频
+ */
++ (void)playWithUrl:(NSURL *)url;
+
+/**
  *  播放用户提供的音频文件
  *
  *  @param srcName 文件名

@@ -59,7 +59,7 @@
 }
 
 - (UIViewController *)createVCWithName:(NSString *)name isGroupTableVC:(BOOL)isGroup {
-    return [self createVCWithName:name title:nil];
+    return [self createVCWithName:name title:nil isGroupTableVC:isGroup];
 }
 
 - (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title {

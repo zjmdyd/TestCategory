@@ -9,6 +9,7 @@
 #import "ZJAudioToolboxTableViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "ZJNSObjectCategory.h"
+#import "ZJViewHeaderFile.h"
 
 @interface ZJAudioToolboxTableViewController ()<UITableViewDataSource, UITableViewDelegate> {
     NSArray *_files, *_sectionTitles, *_cellTitles;
@@ -17,7 +18,8 @@
 @end
 
 NSString *TitleCell = @"cell";
-NSString *kAudioPath = @"/System/Library/Audio/UISounds/";
+NSString *kAudioPath1 = @"/System/Library/Audio/UISounds/";
+NSString *kAudioPath2 = @"/System/Library/Sounds/";
 
 @implementation ZJAudioToolboxTableViewController
 
@@ -29,12 +31,19 @@ NSString *kAudioPath = @"/System/Library/Audio/UISounds/";
 }
 
 - (void)initAry {
-    _files =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:kAudioPath error:nil];
+    NSString *path = kIsAboveiOS11 ? kAudioPath2 : kAudioPath1;
+    _files =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
     _cellTitles = @[
                     @[@"Vibrate"],
                     @[@"alert_message"],
-                    _files
+                    _files?:@"为空"
                     ];
+    
+    NSString *basePath = @"/System/Library/";
+    NSArray *ary = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
+    for (NSString *str in ary) {
+        NSLog(@"subFiles-->%@ = %@", str, [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSString stringWithFormat:@"/System/Library/%@", str] error:nil]);
+    }
 }
 
 - (void)initSettiing {
@@ -80,7 +89,8 @@ NSString *kAudioPath = @"/System/Library/Audio/UISounds/";
     }else if (indexPath.section == 1) {     // 用户音频
         [UIApplication playSoundWithSrcName:@"alert_message" type:@"wav"];
     }else {                                 // 系统音频
-        [UIApplication playSystemSoundWithName:_files[indexPath.row]];
+        NSString *basePath = kIsAboveiOS11 ? kAudioPath2 : kAudioPath1;
+        [UIApplication playWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", basePath, _files[indexPath.row]]]];
     }
 }
 

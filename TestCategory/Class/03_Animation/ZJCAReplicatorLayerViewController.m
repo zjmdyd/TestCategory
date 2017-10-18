@@ -64,7 +64,7 @@ static NSString *FADEANIMATION = @"fadeAnimation";
 - (void)createVolumBars {
     CAReplicatorLayer *replicatorLayer = [CAReplicatorLayer layer];
     replicatorLayer.frame = self.rightItemView.bounds;
-    /*
+    /**
      确切地说，position是layer中的anchorPoint点在superLayer中的位置坐标。因此可以说, position点是相对suerLayer的，anchorPoint点是相对layer的，两者是相对不同的坐标空间的一个重合点。
      再来看看position的原始定义:The layer’s position in its superlayer’s coordinate space。 中文可以理解成为position是layer相对superLayer坐标空间的位置，很显然，这里的位置是根据anchorPoint来确定的.
      */
@@ -138,7 +138,7 @@ static NSString *FADEANIMATION = @"fadeAnimation";
     _instanceLayer.opacity = 0.0;
     [_instanceLayer addAnimation:_fadeAnimation forKey:FADEANIMATION];
     
-    /*
+    /**
      创建一个CAReplicatorLayer实例，设框架为someView边界。
      设复制图层数instanceCount和绘制延迟，设图层为2D（preservesDepth = false），实例颜色为白色。
      为陆续的实例复件设置RGB颜色偏差值（默认为0，即所有复件保持颜色不变），不过这里实例初始颜色为白色，即RGB都为1.0，所以偏差值设红色为0，绿色和蓝色为相同负数会使其逐渐现出红色，alpha透明度偏差值的变化也与此类似，针对陆续的实例复件。

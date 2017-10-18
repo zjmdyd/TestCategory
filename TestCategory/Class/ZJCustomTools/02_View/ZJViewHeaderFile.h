@@ -17,6 +17,8 @@
 
 #define kIsAboveI5 (kScreenW > 320)     // 是否是iPhone5以上的手机
 #define kIsIplus (kScreenW > 375)       // 是否是plus系列
+#define kIsAboveiOS11 [UIDevice currentDevice].systemVersion.integerValue >= 11
+#define IS_iPhoneX ([UIScreen mainScreen].bounds.size.width == 375 && [UIScreen mainScreen].bounds.size.height == 812)
 
 #define SeparateHeight 16
 
