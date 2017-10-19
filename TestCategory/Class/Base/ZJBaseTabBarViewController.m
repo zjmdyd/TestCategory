@@ -26,17 +26,17 @@
 
 - (void)initSetting {
     NSArray *titles = @[
-                        @"Basic", @"AV", @"Animation", @"Controller", @"Other"
+                        @"Basic", @"Collect", @"AV", @"Animation", @"Other"
                         ];
     NSArray *image = @[
-                       @"ic_shouye_72x72", @"ic_dangan_72x72", @"ic_faxian_72x72", @"ic_wode_72x72", @"ic_faxian_72x72"
+                       @"ic_shouye_72x72", @"ic_wode_72x72", @"ic_dangan_72x72", @"ic_faxian_72x72", @"ic_faxian_72x72"
                        ];
     NSArray *selectImage = @[
-                             @"ic_shouye_blue_72x72", @"ic_dangan_blue_72x72", @"ic_faxian_blue_72x72", @"ic_wode_blue_72x72", @"ic_faxian_blue_72x72"
+                             @"ic_shouye_blue_72x72", @"ic_wode_blue_72x72", @"ic_dangan_blue_72x72", @"ic_faxian_blue_72x72", @"ic_faxian_blue_72x72"
                              ];
     NSArray *nibNames = @[
-                          @"ZJBasicTableViewController", @"ZJAVTableViewController", @"ZJAnimationTableViewController",
-                          @"ZJOtherTableViewController", @"ZJOtherTableViewController"
+                          @"ZJBasicTableViewController", @"ZJCollectTableViewController", @"ZJAVTableViewController",
+                          @"ZJAnimationTableViewController", @"ZJOtherTableViewController"
                           ];
     
     NSMutableArray *ary = [NSMutableArray array];

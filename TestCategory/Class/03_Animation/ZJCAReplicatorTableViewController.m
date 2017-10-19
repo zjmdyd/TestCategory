@@ -1,22 +1,21 @@
 //
-//  ZJAnimationTableViewController.m
+//  ZJCAReplicatorTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 09/10/2017.
+//  Created by ZJ on 18/10/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJAnimationTableViewController.h"
+#import "ZJCAReplicatorTableViewController.h"
 #import "ZJControllerCategory.h"
 
-@interface ZJAnimationTableViewController () {
+@interface ZJCAReplicatorTableViewController () {
     NSArray *_vcNames;
 }
 
 @end
 
-@implementation ZJAnimationTableViewController
-
+@implementation ZJCAReplicatorTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,14 +24,12 @@
     [self initSettiing];
 }
 
-- (void)initSettiing {
-
+- (void)initAry {
+    _vcNames = @[@"ZJRotationReplicatorViewController", @"ZJScaleReplicatorViewController"];
 }
 
-- (void)initAry {
-    _vcNames = @[
-                 @"ZJCAReplicatorTableViewController",
-                 ];
+- (void)initSettiing {
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -56,9 +53,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *name = _vcNames[indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name isGroupTableVC:YES];
-    vc.hidesBottomBarWhenPushed = YES;
+    UIViewController *vc = [self createVCWithName:_vcNames[indexPath.row] title:_vcNames[indexPath.row]];
     [self showViewController:vc sender:nil];
 }
 

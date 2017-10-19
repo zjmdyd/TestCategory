@@ -1,0 +1,17 @@
+#ifdef DEBUG
+UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"debug" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+[alert show];
+#else
+UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"release" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+[alert show];
+#endif
+
+
+1. Time Profile: 每个线程占用占用CPU时间，注意多线程
+2.Allocations : 内存分配，注意缓存 容易出现第二类泄露
+3.LeakS : retain多次(被多个对象保持, 创建该对象(A对象)的的对象(PA)已经dealloc，但还被有指针指向对象A，产生野指针, 例如 : 在当前类调用其他类的方法来创建临时的UIAlertView)
+
+第一个是真正的内存泄漏，一个对象尚未被释放，但是不再被引用的了。因此，存储器不能被重新使用。
+第二类泄漏是比较麻烦一些。这就是所谓的“无界内存增长”。这发生在内存继续分配，并永远不会有机会被释放。
+
+添加了一个Open Developer Tool : Hardware IO Tools for Xcode ----> Network Link Conditioner

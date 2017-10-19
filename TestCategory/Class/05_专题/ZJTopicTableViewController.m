@@ -1,22 +1,21 @@
 //
-//  ZJAnimationTableViewController.m
+//  ZJTopicTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 09/10/2017.
+//  Created by ZJ on 05/07/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJAnimationTableViewController.h"
-#import "ZJControllerCategory.h"
+#import "ZJTopicTableViewController.h"
+#import "ZJCategoryHeaderFile.h"
 
-@interface ZJAnimationTableViewController () {
-    NSArray *_vcNames;
+@interface ZJTopicTableViewController () {
+    NSArray *_sectionTitles, *_vcNames;
 }
 
 @end
 
-@implementation ZJAnimationTableViewController
-
+@implementation ZJTopicTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,30 +24,48 @@
     [self initSettiing];
 }
 
-- (void)initSettiing {
-
+- (void)initAry {
+    _sectionTitles = @[
+                @"BLE"
+                ];
+    _vcNames = @[
+                 @[
+                     @"ZJSearchDeviceTableViewController", @"ZJTestBluetoothViewController"
+                     ],
+                 ];
 }
 
-- (void)initAry {
-    _vcNames = @[
-                 @"ZJCAReplicatorTableViewController",
-                 ];
+- (void)initSettiing {
+    
 }
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _sectionTitles.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _vcNames.count;
+    return [_vcNames[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
     }
-    cell.textLabel.text = _vcNames[indexPath.row];
+    cell.textLabel.text = _vcNames[indexPath.section][indexPath.row];
     
     return cell;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30)];
+    label.text = [NSString stringWithFormat:@"     %@", _sectionTitles[section]];
+    label.textColor = [UIColor lightGrayColor];
+    label.font = [UIFont systemFontOfSize:15];
+    
+    return label;
 }
 
 #pragma mark - UITableViewDelegate
@@ -56,10 +73,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *name = _vcNames[indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name isGroupTableVC:YES];
+    NSString *name = _vcNames[indexPath.section][indexPath.row];
+    UIViewController *vc = [self createVCWithName:name title:name  isGroupTableVC:YES];
     vc.hidesBottomBarWhenPushed = YES;
     [self showViewController:vc sender:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
 }
 
 - (void)didReceiveMemoryWarning {
