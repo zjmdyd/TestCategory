@@ -1,21 +1,21 @@
 //
-//  ZJCollectTableViewController.m
+//  ZJDemoTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 18/10/2017.
+//  Created by ZJ on 19/10/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJCollectTableViewController.h"
+#import "ZJDemoTableViewController.h"
 #import "ZJControllerCategory.h"
 
-@interface ZJCollectTableViewController () {
-    NSArray *_sectionTitles, *_vcNames;
+@interface ZJDemoTableViewController () {
+    NSArray *_vcNames;
 }
 
 @end
 
-@implementation ZJCollectTableViewController
+@implementation ZJDemoTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,31 +29,13 @@
 }
 
 - (void)initAry {
-    _sectionTitles = @[@"Navigation", @"Category", @"Notify", @"AutoLayout"];
-    _vcNames = @[
-                 @[
-                     @"ZJTestBackBarButtonItemViewController", @"ZJTestNavigationBarViewController", @"ZJTestNavigationItemViewController", @"ZJTestTranslucentViewController"
-                     ],
-                 @[
-                     @"ZJTestCategoryViewController"
-                     ],
-                 @[
-                     @"ZJLocalNotificationViewController"
-                     ],
-                 @[
-                     @"ZJAutoLayoutViewController"
-                     ],
-                 ];
+    _vcNames = @[@"ZJClockDemoViewController", @"ZJPaletteViewController"];
 }
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _sectionTitles.count;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_vcNames[section] count];
+    return _vcNames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -61,18 +43,9 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = _vcNames[indexPath.section][indexPath.row];
+    cell.textLabel.text = _vcNames[indexPath.row];
     
     return cell;
-}
-
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30)];
-    label.text = [NSString stringWithFormat:@"     %@", _sectionTitles[section]];
-    label.textColor = [UIColor lightGrayColor];
-    label.font = [UIFont systemFontOfSize:15];
-    
-    return label;
 }
 
 #pragma mark - UITableViewDelegate
@@ -80,19 +53,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *name = _vcNames[indexPath.section][indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name  isGroupTableVC:YES];
+    NSString *name = _vcNames[indexPath.row];
+    UIViewController *vc = [self createVCWithName:name title:name isGroupTableVC:YES];
     vc.hidesBottomBarWhenPushed = YES;
     [self showViewController:vc sender:nil];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
 
 /*
 // Override to support editing the table view.

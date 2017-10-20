@@ -1,21 +1,22 @@
 //
-//  ZJTopicTableViewController.m
+//  ZJAnimationTableViewController.m
 //  TestCategory
 //
-//  Created by ZJ on 05/07/2017.
+//  Created by ZJ on 09/10/2017.
 //  Copyright © 2017 ZJ. All rights reserved.
 //
 
-#import "ZJTopicTableViewController.h"
-#import "ZJCategoryHeaderFile.h"
+#import "ZJAnimationTableViewController.h"
+#import "ZJControllerCategory.h"
 
-@interface ZJTopicTableViewController () {
+@interface ZJAnimationTableViewController () {
     NSArray *_sectionTitles, *_vcNames;
 }
 
 @end
 
-@implementation ZJTopicTableViewController
+@implementation ZJAnimationTableViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,36 +25,24 @@
     [self initSettiing];
 }
 
-- (void)initAry {
-    _sectionTitles = @[@"RunTime", @"NSPredicate", @"DataStore", @"fileManage", @"Thread", @"BLE", @"AV"];
-    _vcNames = @[
-                 @[
-                     @"ZJRuntimeViewController"
-                   ],
-                 @[
-                     @"ZJNSPredicateViewController"
-                     ],
-                 @[
-                     @"ZJCoreDataViewController", @"ZJNSKeyedArchiverViewController"
-                     ],
-                 @[
-                     @"ZJRuntimeViewController"
-                     ],
-                 @[
-                     @"ZJNSThreadViewController", @"ZJNSOperationViewController", @"ZJNSOperationDownLoaderDemoVC", @"ZJNSLockViewController",
-                     @"ZJNSRunLoopViewController"
-                     ],
-                 @[
-                     @"ZJSearchDeviceTableViewController", @"ZJTestBluetoothViewController"
-                     ],
-                 @[
-                     @"ZJAudioToolboxTableViewController", @"ZJAVAudioPlayerViewController", @"ZJAVPlayerViewController", @"ZJRecorderViewController", @"ZJAVCaptureSessionTableViewController"
-                     ]
-                 ];
+- (void)initSettiing {
+
 }
 
-- (void)initSettiing {
-    
+- (void)initAry {
+    _sectionTitles = @[@"Basic", @"Animation", @"DynamicAnimator"];
+
+    _vcNames = @[
+                 @[
+                     @"ZJAnchorPointViewController", @"ZJCALayerFirstViewController", @"ZJCATransform3DTypeTableViewController", @"ZJFrameBoundsViewController"
+                     ],
+                 @[
+                     @"ZJCAReplicatorTableViewController", @"ZJUIViewAnimationViewController"
+                   ],
+                 @[
+                     @"ZJUIAttachmentBehaviorViewController", @"ZJUIGravityBehaviorViewController"
+                     ],
+                 ];
 }
 
 #pragma mark - UITableViewDataSource
@@ -67,22 +56,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SystemTableViewCell];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableViewCell];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.textLabel.text = _vcNames[indexPath.section][indexPath.row];
     
     return cell;
 }
 
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30)];
-    label.text = [NSString stringWithFormat:@"     %@", _sectionTitles[section]];
-    label.textColor = [UIColor lightGrayColor];
-    label.font = [UIFont systemFontOfSize:15];
-    
-    return label;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return _sectionTitles[section];
 }
 
 #pragma mark - UITableViewDelegate
@@ -91,13 +75,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSString *name = _vcNames[indexPath.section][indexPath.row];
-    UIViewController *vc = [self createVCWithName:name title:name  isGroupTableVC:YES];
+    UIViewController *vc = [self createVCWithName:name title:name isGroupTableVC:YES];
     vc.hidesBottomBarWhenPushed = YES;
     [self showViewController:vc sender:nil];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
 }
 
 - (void)didReceiveMemoryWarning {

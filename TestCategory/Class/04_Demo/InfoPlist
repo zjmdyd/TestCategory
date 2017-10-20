@@ -1,0 +1,16 @@
+1. http访问限制设置:
+在Info.plist中添加NSAppTransportSecurity类型Dictionary。
+在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
+
+2.状态栏设置:
+View controller-based status bar appearance = NO
+
+
+
+@property (nonatomic, assign, readwrite) id delegate;
+声明一个delegate为strong类型，那么即便delegate指向的对象销毁了，delegate中依然会保存之前对象的地址,即delegate成为了一个野指针，
+而使用weak，则不会有上述问题，当delegate指向的对象销毁后，delegate = nil
+
+
+国际化
+http://www.jianshu.com/p/f8edd7b7a217

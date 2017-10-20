@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _appDelegate = [UIApplication sharedApplication].delegate;
+    _appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     Person *p = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:_appDelegate.persistentContainer.viewContext];
     p.name = @"Martin";
