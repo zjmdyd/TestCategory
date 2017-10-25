@@ -29,7 +29,7 @@
 }
 
 - (void)initAry {
-    _vcNames = @[@"ZJClockDemoViewController", @"ZJPaletteViewController"];
+    _vcNames = @[@"ZJClockDemoViewController", @"ZJPaletteViewController", @"ZJWriteViewController", @"ZJFlipAnimationViewController"];
 }
 
 #pragma mark - UITableViewDataSource

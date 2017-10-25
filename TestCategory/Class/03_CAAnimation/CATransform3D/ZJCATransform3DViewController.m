@@ -23,7 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     [self initSetting];
 }
 
@@ -37,7 +42,7 @@
                 view.alpha = 0.5;
             }
         }else {
-
+            
 #ifdef ChangeAnchorPoint
             frame.origin.x -= frame.size.width / 2;
             frame.origin.y -= frame.size.height / 2;
@@ -128,7 +133,7 @@
         }
     }
     /*
-        缩放、旋转bounds不会发生改变,frame会改变
+     缩放、旋转bounds不会发生改变,frame会改变
      */
     
     _temptTransform3D = self.frontView.layer.transform;
@@ -161,7 +166,7 @@ CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
 
 /*
  if (i == 0) {
-
+ 
  }else if (i == 1) {
  view.layer.transform = CATransform3DMakeTranslation(50, 50, 20);
  }else if (i == 2) {
@@ -171,9 +176,9 @@ CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
  sy：Y轴缩放。
  sz：整体比例变换时，也就是m11（sx）== m22（sy）时，若m33（sz）>1，图形整体缩小，若0<1，图形整体放大，若m33（sz）<0，发生关于原点的对称等比变换。
  
-}else if (i == 3) {
-    view.layer.transform = CATransform3DMakeRotation(M_PI/6, 0, 1, 0);
-}
+ }else if (i == 3) {
+ view.layer.transform = CATransform3DMakeRotation(M_PI/6, 0, 1, 0);
+ }
  */
 
 /*
@@ -182,20 +187,20 @@ CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
  注意:仿射矩阵并不代表点得坐标，只是代表了一个转换关系，是一个转换矩阵而已
  struct CATransform3D
  {
-    CGFloat m11, m12, m13, m14;
-    CGFloat m21, m22, m23, m24;
-    CGFloat m31, m32, m33, m34;
-    CGFloat m41, m42, m43, m44;
+ CGFloat m11, m12, m13, m14;
+ CGFloat m21, m22, m23, m24;
+ CGFloat m31, m32, m33, m34;
+ CGFloat m41, m42, m43, m44;
  };
  
  一个视图的原始transform = CGAffineTransformIdentity : [1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1]
  
  struct CATransform3D
  {
-    CGFloat m11（x缩放）, m12（y切变）, m13（旋转）, m14（）;
-    CGFloat m21（x切变）, m22（y缩放）, m23（）, m24（）;
-    CGFloat m31（旋转）, m32（）, m33（）, m34（透视效果，要操作的这个对象要有旋转的角度，否则没有效果。正直/负值都有意义）;
-    CGFloat m41（x平移）, m42（y平移）, m43（z平移）, m44（）;
+ CGFloat m11（x缩放）, m12（y切变）, m13（旋转）, m14（）;
+ CGFloat m21（x切变）, m22（y缩放）, m23（）, m24（）;
+ CGFloat m31（旋转）, m32（）, m33（）, m34（透视效果，要操作的这个对象要有旋转的角度，否则没有效果。正直/负值都有意义）;
+ CGFloat m41（x平移）, m42（y平移）, m43（z平移）, m44（）;
  };
  __          __
  |  1  0  0  0|
@@ -210,13 +215,14 @@ CATransform3D CATransform3DPerspect(CATransform3D t, CGPoint center, float disZ)
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
+

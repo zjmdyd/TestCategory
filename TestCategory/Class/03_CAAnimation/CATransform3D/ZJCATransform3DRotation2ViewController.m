@@ -7,6 +7,7 @@
 //
 
 #import "ZJCATransform3DRotation2ViewController.h"
+#import "ZJUIViewCategory.h"
 #import "UIViewExt.h"
 
 @interface ZJCATransform3DRotation2ViewController () {
@@ -29,8 +30,9 @@
 
 - (void)initSetting {
     for (int i = 0; i < 2; i++) {
-        CGRect frame = CGRectMake((self.view.width - 220 ) / 2, 84, 220, 220);
+        CGRect frame = CGRectMake(0, 84, 220, 220);
         UIView *view = [[UIView alloc] initWithFrame:frame];
+        view.center = CGPointMake(kScreenW/2, view.center.y);
         if (i == 0) {
             view.backgroundColor = [UIColor redColor];
             view.alpha = 0.5;

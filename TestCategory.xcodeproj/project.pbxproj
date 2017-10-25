@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		382FE6231F9F49500045939E /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE6151F9F49500045939E /* bg1.png */; };
+		382FE6241F9F49500045939E /* bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE6161F9F49500045939E /* bg2.png */; };
+		382FE6251F9F49500045939E /* bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE6171F9F49500045939E /* bg3.png */; };
+		382FE6261F9F49500045939E /* bg4.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE6181F9F49500045939E /* bg4.png */; };
+		382FE6271F9F49500045939E /* bg5.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE6191F9F49500045939E /* bg5.png */; };
+		382FE6281F9F49500045939E /* bg6.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE61A1F9F49500045939E /* bg6.png */; };
+		382FE6291F9F49500045939E /* fg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE61B1F9F49500045939E /* fg1.png */; };
+		382FE62A1F9F49500045939E /* fg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE61C1F9F49500045939E /* fg2.png */; };
+		382FE62B1F9F49500045939E /* fg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE61D1F9F49500045939E /* fg3.png */; };
+		382FE62C1F9F49500045939E /* fg4.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE61E1F9F49500045939E /* fg4.png */; };
+		382FE62D1F9F49500045939E /* fg5.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE61F1F9F49500045939E /* fg5.png */; };
+		382FE62E1F9F49500045939E /* fg6.png in Resources */ = {isa = PBXBuildFile; fileRef = 382FE6201F9F49500045939E /* fg6.png */; };
+		382FE62F1F9F49500045939E /* ZJFlipAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382FE6221F9F49500045939E /* ZJFlipAnimationViewController.m */; };
 		386213FD1F9A039800FCC181 /* LaunchScreen_En.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386213FC1F9A039800FCC181 /* LaunchScreen_En.storyboard */; };
 		387033E91DFAC37900426DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 387033E81DFAC37900426DA3 /* main.m */; };
 		387033F51DFAC37900426DA3 /* TestCategory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 387033F31DFAC37900426DA3 /* TestCategory.xcdatamodeld */; };
@@ -195,6 +208,8 @@
 		38822C601F98A78500E8943F /* ZJFrameBoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38822C541F98A78500E8943F /* ZJFrameBoundsViewController.m */; };
 		38822C611F98A78500E8943F /* baby.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 38822C561F98A78500E8943F /* baby.jpg */; };
 		38822C621F98A78500E8943F /* ZJCALayerFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38822C581F98A78500E8943F /* ZJCALayerFirstViewController.m */; };
+		389AB9561F9F33080083C38A /* ZJCATransform3DRotation2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 389AB9551F9F33080083C38A /* ZJCATransform3DRotation2ViewController.xib */; };
+		389AB9581F9F40130083C38A /* ZJCATransform3DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 389AB9571F9F40130083C38A /* ZJCATransform3DViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +230,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		382FE6151F9F49500045939E /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg1.png; sourceTree = "<group>"; };
+		382FE6161F9F49500045939E /* bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg2.png; sourceTree = "<group>"; };
+		382FE6171F9F49500045939E /* bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg3.png; sourceTree = "<group>"; };
+		382FE6181F9F49500045939E /* bg4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg4.png; sourceTree = "<group>"; };
+		382FE6191F9F49500045939E /* bg5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg5.png; sourceTree = "<group>"; };
+		382FE61A1F9F49500045939E /* bg6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg6.png; sourceTree = "<group>"; };
+		382FE61B1F9F49500045939E /* fg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fg1.png; sourceTree = "<group>"; };
+		382FE61C1F9F49500045939E /* fg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fg2.png; sourceTree = "<group>"; };
+		382FE61D1F9F49500045939E /* fg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fg3.png; sourceTree = "<group>"; };
+		382FE61E1F9F49500045939E /* fg4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fg4.png; sourceTree = "<group>"; };
+		382FE61F1F9F49500045939E /* fg5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fg5.png; sourceTree = "<group>"; };
+		382FE6201F9F49500045939E /* fg6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fg6.png; sourceTree = "<group>"; };
+		382FE6211F9F49500045939E /* ZJFlipAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJFlipAnimationViewController.h; sourceTree = "<group>"; };
+		382FE6221F9F49500045939E /* ZJFlipAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJFlipAnimationViewController.m; sourceTree = "<group>"; };
 		386213FB1F9A02D300FCC181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		386213FC1F9A039800FCC181 /* LaunchScreen_En.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen_En.storyboard; sourceTree = "<group>"; };
 		387033E41DFAC37900426DA3 /* TestCategory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCategory.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -554,6 +583,10 @@
 		38822C561F98A78500E8943F /* baby.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = baby.jpg; sourceTree = "<group>"; };
 		38822C571F98A78500E8943F /* ZJCALayerFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCALayerFirstViewController.h; sourceTree = "<group>"; };
 		38822C581F98A78500E8943F /* ZJCALayerFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCALayerFirstViewController.m; sourceTree = "<group>"; };
+		3888EDAC1F9DCCFD00D89434 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		389AB9541F9F247E0083C38A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		389AB9551F9F33080083C38A /* ZJCATransform3DRotation2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZJCATransform3DRotation2ViewController.xib; sourceTree = "<group>"; };
+		389AB9571F9F40130083C38A /* ZJCATransform3DViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZJCATransform3DViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,6 +614,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		382FE6131F9F49500045939E /* 04_FlipAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				382FE6141F9F49500045939E /* image */,
+				382FE6211F9F49500045939E /* ZJFlipAnimationViewController.h */,
+				382FE6221F9F49500045939E /* ZJFlipAnimationViewController.m */,
+			);
+			path = 04_FlipAnimation;
+			sourceTree = "<group>";
+		};
+		382FE6141F9F49500045939E /* image */ = {
+			isa = PBXGroup;
+			children = (
+				382FE6151F9F49500045939E /* bg1.png */,
+				382FE6161F9F49500045939E /* bg2.png */,
+				382FE6171F9F49500045939E /* bg3.png */,
+				382FE6181F9F49500045939E /* bg4.png */,
+				382FE6191F9F49500045939E /* bg5.png */,
+				382FE61A1F9F49500045939E /* bg6.png */,
+				382FE61B1F9F49500045939E /* fg1.png */,
+				382FE61C1F9F49500045939E /* fg2.png */,
+				382FE61D1F9F49500045939E /* fg3.png */,
+				382FE61E1F9F49500045939E /* fg4.png */,
+				382FE61F1F9F49500045939E /* fg5.png */,
+				382FE6201F9F49500045939E /* fg6.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
 		387033DB1DFAC37900426DA3 = {
 			isa = PBXGroup;
 			children = (
@@ -1364,6 +1426,7 @@
 				38822C1F1F98A39700E8943F /* 01_clockDemo */,
 				38822C241F98A39700E8943F /* 02_palette */,
 				38822C3B1F98A3F200E8943F /* 03_Writing */,
+				382FE6131F9F49500045939E /* 04_FlipAnimation */,
 				38822C281F98A39700E8943F /* InfoPlist */,
 				38822C291F98A39700E8943F /* note */,
 				38822C2A1F98A39700E8943F /* note.plist */,
@@ -1421,14 +1484,16 @@
 		38822C471F98A78400E8943F /* CATransform3D */ = {
 			isa = PBXGroup;
 			children = (
-				38822C481F98A78400E8943F /* ZJCATransform3DPerspectViewController.h */,
-				38822C491F98A78400E8943F /* ZJCATransform3DPerspectViewController.m */,
-				38822C4A1F98A78400E8943F /* ZJCATransform3DRotation2ViewController.h */,
-				38822C4B1F98A78400E8943F /* ZJCATransform3DRotation2ViewController.m */,
 				38822C4C1F98A78400E8943F /* ZJCATransform3DTypeTableViewController.h */,
 				38822C4D1F98A78400E8943F /* ZJCATransform3DTypeTableViewController.m */,
+				38822C4A1F98A78400E8943F /* ZJCATransform3DRotation2ViewController.h */,
+				38822C4B1F98A78400E8943F /* ZJCATransform3DRotation2ViewController.m */,
+				389AB9551F9F33080083C38A /* ZJCATransform3DRotation2ViewController.xib */,
 				38822C4E1F98A78400E8943F /* ZJCATransform3DViewController.h */,
 				38822C4F1F98A78400E8943F /* ZJCATransform3DViewController.m */,
+				389AB9571F9F40130083C38A /* ZJCATransform3DViewController.xib */,
+				38822C481F98A78400E8943F /* ZJCATransform3DPerspectViewController.h */,
+				38822C491F98A78400E8943F /* ZJCATransform3DPerspectViewController.m */,
 			);
 			path = CATransform3D;
 			sourceTree = "<group>";
@@ -1570,15 +1635,20 @@
 				38822C321F98A39700E8943F /* ZJClockDemoViewController.xib in Resources */,
 				38822C351F98A39700E8943F /* InfoPlist in Resources */,
 				38822BBB1F98A27B00E8943F /* ZJNSThreadViewController.xib in Resources */,
+				382FE6261F9F49500045939E /* bg4.png in Resources */,
 				38822BE01F98A27B00E8943F /* ZJIconTitleHorizontalCollectionViewCell.xib in Resources */,
 				38822C431F98A46900E8943F /* ZJWriteViewController.xib in Resources */,
 				387033FA1DFAC37900426DA3 /* LaunchScreen.storyboard in Resources */,
 				38822BB41F98A27B00E8943F /* ZJNSOperationDownLoaderDemoVC.xib in Resources */,
 				387033F71DFAC37900426DA3 /* Assets.xcassets in Resources */,
+				382FE6291F9F49500045939E /* fg1.png in Resources */,
 				38822B6A1F98A27B00E8943F /* ZJTestCollectionViewController.xib in Resources */,
+				382FE6231F9F49500045939E /* bg1.png in Resources */,
 				38822BDD1F98A27B00E8943F /* ZJCollectionTableViewCell.xib in Resources */,
+				382FE62D1F9F49500045939E /* fg5.png in Resources */,
 				38822BE61F98A27B00E8943F /* ZJImageTextFieldTableViewCell.xib in Resources */,
 				38822C5E1F98A78500E8943F /* 1434511542665314.jpg in Resources */,
+				382FE62C1F9F49500045939E /* fg4.png in Resources */,
 				38822BC41F98A27B00E8943F /* ZJVideoViewController.xib in Resources */,
 				38822C101F98A30C00E8943F /* 251933285905256.jpg in Resources */,
 				38822C371F98A39700E8943F /* note.plist in Resources */,
@@ -1586,12 +1656,15 @@
 				38822C611F98A78500E8943F /* baby.jpg in Resources */,
 				38822BCA1F98A27B00E8943F /* ZJAVPlayerViewController.xib in Resources */,
 				38822C141F98A30C00E8943F /* 1.jpg in Resources */,
+				389AB9561F9F33080083C38A /* ZJCATransform3DRotation2ViewController.xib in Resources */,
 				38822BEC1F98A27B00E8943F /* ZJTitleTextFieldTableViewCell.xib in Resources */,
 				38822B7D1F98A27B00E8943F /* ZJTestAlertViewController.xib in Resources */,
 				38822BC51F98A27B00E8943F /* gezaifei.mp4 in Resources */,
 				38822BAB1F98A27B00E8943F /* 1.png in Resources */,
 				38822B801F98A27B00E8943F /* ZJTestViewController.xib in Resources */,
+				382FE62B1F9F49500045939E /* fg3.png in Resources */,
 				38822C381F98A39700E8943F /* TestWrite.txt in Resources */,
+				389AB9581F9F40130083C38A /* ZJCATransform3DViewController.xib in Resources */,
 				38822B971F98A27B00E8943F /* ZJUIViewAnimationViewController.xib in Resources */,
 				38822B651F98A27B00E8943F /* File in Resources */,
 				38822C111F98A30C00E8943F /* 251948306213713.png in Resources */,
@@ -1601,14 +1674,20 @@
 				38822C301F98A39700E8943F /* clock.jpg in Resources */,
 				38822BEA1F98A27B00E8943F /* ZJSwipeTableViewCell.xib in Resources */,
 				38822BE21F98A27B00E8943F /* ZJIconTitleNormalCollectionViewCell.xib in Resources */,
+				382FE62A1F9F49500045939E /* fg2.png in Resources */,
+				382FE62E1F9F49500045939E /* fg6.png in Resources */,
 				38822BC61F98A27B00E8943F /* song.mp3 in Resources */,
 				38822B871F98A27B00E8943F /* ZJTestTranslucentViewController.xib in Resources */,
 				38822BCE1F98A27B00E8943F /* ZJRecorderViewController.xib in Resources */,
+				382FE6281F9F49500045939E /* bg6.png in Resources */,
 				38822BEE1F98A27B00E8943F /* HYErrorView.xib in Resources */,
 				38822C361F98A39700E8943F /* note in Resources */,
 				38822B791F98A27B00E8943F /* HYTestAutoRotationViewController.xib in Resources */,
+				382FE6251F9F49500045939E /* bg3.png in Resources */,
+				382FE6271F9F49500045939E /* bg5.png in Resources */,
 				38822B7B1F98A27B00E8943F /* HYTestManualViewController.xib in Resources */,
 				38822BBF1F98A27B00E8943F /* alert_message.wav in Resources */,
+				382FE6241F9F49500045939E /* bg2.png in Resources */,
 				38822BF81F98A27B00E8943F /* qrcode_scanline_barcode@2x.png in Resources */,
 				38822BE81F98A27B00E8943F /* ZJSelectSexTableViewCell.xib in Resources */,
 				38822B941F98A27B00E8943F /* ZJRotationReplicatorViewController.xib in Resources */,
@@ -1718,6 +1797,7 @@
 				38822BB61F98A27B00E8943F /* ZJOperation.m in Sources */,
 				38822BA71F98A27B00E8943F /* Person.m in Sources */,
 				38822BA61F98A27B00E8943F /* ColorTransformer.m in Sources */,
+				382FE62F1F9F49500045939E /* ZJFlipAnimationViewController.m in Sources */,
 				387033E91DFAC37900426DA3 /* main.m in Sources */,
 				38822BC01F98A27B00E8943F /* ZJAVCaptureSessionTableViewController.m in Sources */,
 				38822B8D1F98A27B00E8943F /* ZJCAGraphicsTableViewController.m in Sources */,
@@ -1816,6 +1896,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				386213FB1F9A02D300FCC181 /* Base */,
+				3888EDAC1F9DCCFD00D89434 /* zh-Hans */,
+				389AB9541F9F247E0083C38A /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1827,6 +1909,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1881,6 +1964,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

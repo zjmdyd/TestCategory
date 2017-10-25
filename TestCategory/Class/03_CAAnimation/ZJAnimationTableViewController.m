@@ -34,7 +34,7 @@
 
     _vcNames = @[
                  @[
-                     @"ZJAnchorPointViewController", @"ZJCALayerFirstViewController", @"ZJCATransform3DTypeTableViewController", @"ZJFrameBoundsViewController"
+                     @"ZJFrameBoundsViewController", @"ZJAnchorPointViewController", @"ZJCALayerFirstViewController", @"ZJCATransform3DTypeTableViewController", 
                      ],
                  @[
                      @"ZJCAReplicatorTableViewController", @"ZJUIViewAnimationViewController"

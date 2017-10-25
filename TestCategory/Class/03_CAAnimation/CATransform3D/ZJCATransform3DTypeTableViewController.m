@@ -8,9 +8,10 @@
 
 #import "ZJCATransform3DTypeTableViewController.h"
 #import "ZJCATransform3DViewController.h"
+#import "ZJControllerCategory.h"
 
 @interface ZJCATransform3DTypeTableViewController () {
-    NSArray *_titles;
+    NSArray *_titles, *_vcNames;
 }
 
 @end
@@ -22,8 +23,16 @@ static NSString *CELLID = @"cellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initAry];
+    [self initSettiing];
+}
+
+- (void)initAry {
     _titles = @[@"平移", @"缩放", @"正交投影", @"旋转1", @"旋转2"];
-    
+    _vcNames = @[@"ZJCATransform3DViewController", @"ZJCATransform3DRotation2ViewController"];
+}
+
+- (void)initSettiing {
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELLID];
 }
@@ -33,7 +42,6 @@ static NSString *CELLID = @"cellID";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _titles.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELLID forIndexPath:indexPath];
@@ -45,17 +53,19 @@ static NSString *CELLID = @"cellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < _titles.count - 1) {
-        [self performSegueWithIdentifier:@"transform3D" sender:indexPath];
-    }else {
-        [self performSegueWithIdentifier:@"transform3DRotation2" sender:nil];
+    NSString *vcName = _vcNames[indexPath.row/4];
+    UIViewController *vc = [self createVCWithName:vcName title:_titles[indexPath.row]];
+    if ([vc isKindOfClass:NSClassFromString(_vcNames[0])]) {
+        ((ZJCATransform3DViewController *)vc).transformType = indexPath.row;
     }
+    [self showViewController:vc sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+/*
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -67,6 +77,6 @@ static NSString *CELLID = @"cellID";
         vc.title = _titles[indexPath.row];
     }
 }
-
+*/
 
 @end

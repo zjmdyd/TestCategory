@@ -35,7 +35,7 @@
                              @"ic_shouye_blue_72x72", @"ic_wode_blue_72x72", @"ic_dangan_blue_72x72", @"ic_faxian_blue_72x72", @"ic_faxian_blue_72x72"
                              ];
     NSArray *nibNames = @[
-                          @"ZJBasicTableViewController", @"ZJCollectTableViewController", @"ZJAVTableViewController",
+                          @"ZJBasicTableViewController", @"ZJCollectTableViewController", @"ZJCAGraphicsTableViewController",
                           @"ZJAnimationTableViewController", @"ZJDemoTableViewController"
                           ];
     

@@ -53,14 +53,13 @@
                 将自己宽高均匀拉伸(上下左右均匀拉伸)
      
             frame定义了一个相对父视图的一个框架（容器），bounds则是真实显示区域。如果，bounds比frame小了，可以放到框架（容器）里。
-            如果bounds比frame大，感觉frame被“撑大”了。bounds比frame宽大了50，高大了200像素，那么四条边平衡一下，宽溢出“25”像素，高溢出100像素。
+            如果bounds比frame大，感觉frame被“撑大”了。bounds比frame宽大了50，高大了200像素，那么四条边平衡一下，宽溢出“25”像素，高溢出100像素。所以y轴和blueView相同
      
         bounds的有以下两个特点：
      
         1. 它可以修改自己坐标系的原点位置，进而影想到“子view”的显示位置。这个作用更像是移动原点的意思。
      
         2. bounds，它可以改变的frame。如果bounds比frame大。那么frame也会跟着变大。这个作用更像边界和大小的意思。
-     
      */
     
     _subView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 300)];
@@ -71,12 +70,12 @@
         CGRect frame = _subView.frame;
         frame.origin.x = 100;
         _subView.frame = frame;
-        
+
     } completion:^(BOOL finished) {
         NSLog(@"\nredView.frame = %@\nredView.bounds = %@", NSStringFromCGRect(redView.frame), NSStringFromCGRect(redView.bounds));
         [_timer invalidate];
     }];
-    
+
    _timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(showFrame) userInfo:nil repeats:YES];
 }
 
