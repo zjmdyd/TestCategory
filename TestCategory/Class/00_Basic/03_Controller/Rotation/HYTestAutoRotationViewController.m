@@ -19,6 +19,25 @@
     
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self share];
+}
+
+- (void)share {
+    //分享的标题
+    NSString *textToShare = @"哈哈哈";
+    //分享的图片
+    UIImage *imageToShare = [UIImage imageNamed:@"aa"];
+    //分享的url
+    NSURL *urlToShare = [NSURL URLWithString:@"http://www.baidu.com"];
+    //在这里呢 如果想分享图片 就把图片添加进去  文字什么的通上
+    NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    //不出现在活动项目
+    activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypeSaveToCameraRoll];
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
+
 - (IBAction)exitEvent:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
