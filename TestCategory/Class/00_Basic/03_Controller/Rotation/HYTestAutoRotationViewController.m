@@ -48,17 +48,17 @@
 #pragma mark - 横屏
 
 // 支持屏幕旋转方向
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {  // 2 4
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
 }
 
 // 自动旋转
-- (BOOL)shouldAutorotate {
+- (BOOL)shouldAutorotate {  // 3
     return NO;
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationLandscapeRight;
+    return UIInterfaceOrientationLandscapeRight;    // 1
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,6 +69,8 @@
     if ([UIApplication sharedApplication].isStatusBarHidden) {
         [UIApplication sharedApplication].statusBarHidden = NO;
     }
+    
+    [self.view setNeedsDisplay];
 }
 
 - (void)didReceiveMemoryWarning {
