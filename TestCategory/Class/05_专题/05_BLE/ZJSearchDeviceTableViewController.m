@@ -32,12 +32,15 @@
     self.title = @"设备列表";
     
     [ZJBLEDeviceManager shareManagerDidUpdateStateHandle:^(ZJDeviceManagerState state) {
-        
+        NSLog(@"state = %lu", (unsigned long)state);
+        if (state == ZJDeviceManagerStatePoweredOn) {
+            [self searchDevice];
+        }
     }];
 }
 
 - (void)searchDevice {
-    [[ZJBLEDeviceManager shareManager] scanDeviceWithServiceUUIDs:nil prefix:nil completion:^(id obj) {
+    [[ZJBLEDeviceManager shareManager] scanDeviceWithServiceUUIDs:nil prefix:@"BeneCheck" completion:^(id obj) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
@@ -51,7 +54,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    NSLog(@"%s", __func__);
     if (section == 0) {
         return [ZJBLEDeviceManager shareManager].discoveredBLEDevices.count;
     }else {
@@ -95,17 +97,11 @@
             [self.tableView reloadData];
         });
         if (connected) {
-            [device discoverServices:nil completion:^(CBCharacteristic *obj, NSError *error) {
-                
-            }];
+//            [device discoverServices:nil completion:^(CBCharacteristic *obj, NSError *error) {
+//
+//            }];
         }
     }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
- 
-    [self searchDevice];
 }
 
 - (void)didReceiveMemoryWarning {

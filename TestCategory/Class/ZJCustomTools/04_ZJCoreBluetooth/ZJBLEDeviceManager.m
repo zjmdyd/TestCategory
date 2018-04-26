@@ -23,6 +23,27 @@
 
 @end
 
+@interface NSMutableArray (ZJPeripheralAry)
+
+- (ZJBLEDevice *)deviceWithPeripheral:(CBPeripheral *)peripheral;
+
+@end
+
+@implementation NSMutableArray (ZJPeripheralAry)
+
+- (ZJBLEDevice *)deviceWithPeripheral:(CBPeripheral *)peripheral {
+    for (int i = 0; i < self.count; i++) {
+        ZJBLEDevice *dv = self[i];
+        if ([dv.peripheral isEqual:peripheral]) {
+            return dv;
+        }
+    }
+    
+    return nil;
+}
+
+@end
+
 @interface ZJBLEDeviceManager ()<CBCentralManagerDelegate> {
     NSArray *_searchServiceUUIDs;
     NSString *_prefix;
@@ -30,7 +51,7 @@
 
 @property (nonatomic, strong) CBCentralManager *centralManager;
 @property (nonatomic, strong) BLERefreshStateCompletionHandle stateCompletion;
-@property (nonatomic, strong) BLERefreshCompletionHandle scanCompletion;
+@property (nonatomic, strong) BLEScanCompletionHandle scanCompletion;
 @property (nonatomic, strong) BLEConnectCompletionHandle connectCompletion;
 @property (nonatomic, strong) BLEConnectCompletionHandle disConnectCompletion;
 
@@ -71,15 +92,19 @@ static ZJBLEDeviceManager *_manager = nil;
 + (instancetype)shareManagerDidUpdateStateHandle:(BLERefreshStateCompletionHandle)completion {
     if (!_manager) {
         _manager = [ZJBLEDeviceManager shareManager];
-        _manager.stateCompletion = completion;
-    }else {         // 手动刷新状态
-        [_manager centralManagerDidUpdateState:_manager.centralManager];
     }
+    _manager.stateCompletion = completion;
     
     return _manager;
 }
 
-- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BLERefreshCompletionHandle)completion {
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BLEScanCompletionHandle)completion {
+    [self scanDeviceWithServiceUUIDs:uuids prefix:nil completion:completion];
+}
+
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids prefix:(NSString *)prefix completion:(BLEScanCompletionHandle)completion {
+    _prefix = prefix;
+    
     _searchServiceUUIDs = uuids;
     /**
      *  本类自动scan传过来的回调都是nil,当不为nil时(在外部类中调用scan方法),应该更新扫描的回调
@@ -87,20 +112,15 @@ static ZJBLEDeviceManager *_manager = nil;
     if (completion) {
         self.scanCompletion = completion;
     }
-
+    
     if (_discoveredBLEDevices.count) {
-        _discoveredBLEDevices = @[];
+        _discoveredBLEDevices = nil;
         if (self.scanCompletion) {
-            self.scanCompletion(nil);
+            self.scanCompletion(_discoveredBLEDevices);
         }
     }
     
     [self.centralManager scanForPeripheralsWithServices:uuids options:nil];
-}
-
-- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids prefix:(NSString *)prefix completion:(BLERefreshCompletionHandle)completion {
-    _prefix = prefix;
-    [self scanDeviceWithServiceUUIDs:uuids completion:completion];
 }
 
 - (void)connectBLEDevices:(NSArray<ZJBLEDevice *> *)devices completion:(BLEConnectCompletionHandle)completion {
@@ -128,9 +148,9 @@ static ZJBLEDeviceManager *_manager = nil;
         self.stateCompletion((ZJDeviceManagerState)central.state);
     }
     
-    if (self.automScan) {
-        [central scanForPeripheralsWithServices:_searchServiceUUIDs options:nil];
-    }
+//    if (self.automScan) {
+//        [central scanForPeripheralsWithServices:_searchServiceUUIDs options:nil];
+//    }
 }
 
 /**
@@ -142,16 +162,13 @@ static ZJBLEDeviceManager *_manager = nil;
     }
     NSLog(@"发现设备--->%@, %@", advertisementData, peripheral.identifier.UUIDString);
     NSMutableArray *ary = [NSMutableArray arrayWithArray:self.discoveredBLEDevices];
-    for (int i = 0; i < ary.count; i++) {
-        ZJBLEDevice *device = ary[i];
-        if ([device.peripheral isEqual:peripheral]) {
-            [ary removeObject:device];
-            break;
-        }
+    ZJBLEDevice *device = [ary deviceWithPeripheral:peripheral];
+    if (device) {
+        [ary removeObject:device];
     }
 
-    ZJBLEDevice *device = [[ZJBLEDevice alloc] initWithPeripheral:peripheral RSSI:RSSI];
-    [ary addObject:device];
+    ZJBLEDevice *dv = [[ZJBLEDevice alloc] initWithPeripheral:peripheral RSSI:RSSI];
+    [ary addObject:dv];
     _discoveredBLEDevices = [ary copy];
     
     /**
@@ -170,21 +187,16 @@ static ZJBLEDeviceManager *_manager = nil;
     NSMutableArray *discoverAry = [NSMutableArray arrayWithArray:self.discoveredBLEDevices];
     NSMutableArray *connAry = [NSMutableArray arrayWithArray:self.connectedBLEDevices];
     
-    ZJBLEDevice *device;
-    for (int i = 0; i < discoverAry.count; i++) {
-        device = discoverAry[i];
-        if ([device.peripheral isEqual:peripheral]) {
-            [connAry addObject:device];
-            [discoverAry removeObject:device];
-            
-            break;
-        }
-    }
-    _discoveredBLEDevices = [discoverAry copy];
-    _connectedBLEDevices = [connAry copy];
-
+    ZJBLEDevice *device = [discoverAry deviceWithPeripheral:peripheral];
     if (device) {
-        self.connectCompletion(device, YES, nil);
+        [connAry addObject:device];
+        [discoverAry removeObject:device];
+        _discoveredBLEDevices = [discoverAry copy];
+        _connectedBLEDevices = [connAry copy];
+        
+        if (self.connectCompletion) {
+            self.connectCompletion(device, YES, nil);
+        }
     }
 }
 
@@ -195,35 +207,32 @@ static ZJBLEDeviceManager *_manager = nil;
     NSLog(@"%s, error = %@", __func__, error);
     NSMutableArray *connAry = [NSMutableArray arrayWithArray:self.connectedBLEDevices];
     
-    ZJBLEDevice *device;
-    for (int i = 0; i < connAry.count; i++) {
-        device = connAry[i];
-        if ([device.peripheral isEqual:peripheral]) {
-            [connAry removeObject:device];
-            break;
+    ZJBLEDevice *device = [connAry deviceWithPeripheral:peripheral];
+    if (device) {
+        [connAry removeObject:device];
+        _connectedBLEDevices = [connAry copy];
+        
+        /**
+         *  当有disconnectCompletion就用disconnectCompletion回调, 否则用connectionCompletion回调
+         */
+        if (self.disConnectCompletion) {
+            self.disConnectCompletion(device, NO, error);
+        }else if (self.connectCompletion) {
+            self.connectCompletion(device, NO, error);
         }
     }
-    _connectedBLEDevices = [connAry copy];
     
-    if (self.isAutomScan) {
-        [self scanDeviceWithServiceUUIDs:_searchServiceUUIDs completion:nil];
-    }
-    
-    /**
-     *  当有disconnectCompletion就用disconnectCompletion回调, 否则用connectionCompletion回调
-     */
-    if (self.disConnectCompletion) {
-        self.disConnectCompletion(device, NO, error);
-    }else if (self.connectCompletion) {
-        self.connectCompletion(device, NO, error);
-    }
+//    if (self.isAutomScan) {
+//        [self scanDeviceWithServiceUUIDs:_searchServiceUUIDs completion:nil];
+//    }
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"%s, error = %@", __func__, error);
-    ZJBLEDevice *device = [[ZJBLEDevice alloc] initWithPeripheral:peripheral];
-    if (self.connectCompletion) {
-        self.connectCompletion(device, NO, error);
+    NSMutableArray *discoverAry = [NSMutableArray arrayWithArray:self.discoveredBLEDevices];
+    ZJBLEDevice *device = [discoverAry deviceWithPeripheral:peripheral];
+    if (device && self.connectCompletion) {
+        self.connectCompletion(device, YES, nil);
     }
 }
 
@@ -240,7 +249,7 @@ static ZJBLEDeviceManager *_manager = nil;
 }
 
 - (void)reset {
-    _discoveredBLEDevices = @[];
+    _discoveredBLEDevices = nil;
     self.scanCompletion = nil;
     self.stateCompletion = nil;
     self.disConnectCompletion = nil;

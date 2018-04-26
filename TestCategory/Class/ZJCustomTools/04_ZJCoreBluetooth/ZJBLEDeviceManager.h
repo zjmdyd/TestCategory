@@ -24,14 +24,14 @@ typedef NS_ENUM(NSUInteger, ZJDeviceManagerState) {
 @class ZJBLEDevice;
 
 /**
- *  状态
+ *  状态回调
  */
 typedef void(^BLERefreshStateCompletionHandle)(ZJDeviceManagerState state);
 
 /**
  *  回调方法里面主要执行刷新界面的代码
  */
-typedef void(^BLERefreshCompletionHandle)(id obj);
+typedef void(^BLEScanCompletionHandle)(id obj);
 
 /**
  *  连接操作回调
@@ -72,9 +72,9 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, BOOL connected, N
  *  @param uuids      搜索包含服务特定服务uuid的设备
  *  @param completion 搜索结果的回调
  */
-- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BLERefreshCompletionHandle)completion;
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BLEScanCompletionHandle)completion;
 
-- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids prefix:(NSString *)prefix completion:(BLERefreshCompletionHandle)completion;
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids prefix:(NSString *)prefix completion:(BLEScanCompletionHandle)completion;
 
 /**
  *  连接设备
