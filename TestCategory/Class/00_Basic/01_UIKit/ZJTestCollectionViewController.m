@@ -9,6 +9,7 @@
 #import "ZJTestCollectionViewController.h"
 #import "ZJViewHeaderFile.h"
 #import "ZJCategoryHeaderFile.h"
+#import "UITextView+Placeholder.h"
 
 @interface ZJTestCollectionViewController () <UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 
@@ -34,7 +35,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ZJIconTitleVerticalCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:IconTitleVerticalCollectionCell forIndexPath:indexPath];
-    cell.placeholder = @"ic_shebei_212x212";
+    cell.iconPlaceholder = @"ic_shebei_212x212";
     cell.iconPath = @"ic_shebei_212x212";
     cell.text = [NSString stringWithFormat:@"item%zd", indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
@@ -52,7 +53,6 @@
     ZJCollectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CollectionTableViewCell];
     cell.titles = @[@"item1", @"item2"];
     cell.iconPaths = @[@"ic_shebei_212x212", @"ic_shebei_212x212"];
-    cell.numberItemOfColum = 2;
     
     return cell;
 }

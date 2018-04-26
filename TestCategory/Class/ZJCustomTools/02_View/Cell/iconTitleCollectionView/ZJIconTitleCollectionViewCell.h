@@ -10,11 +10,16 @@
 
 @interface ZJIconTitleCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, copy) NSString *iconPath;
+
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, strong) UIColor *textColor;
 
-@property (nonatomic, copy) NSString *attrText;
-@property (nonatomic, copy) NSString *iconPath;
-@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, copy) NSString *iconPlaceholder;
+
+@property (nonatomic, strong) UIFont *font;
+@property (nonatomic, assign) NSTextAlignment textAlignment;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, assign) CGFloat iconWidth;
 
 @end

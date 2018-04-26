@@ -268,7 +268,6 @@
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = MAXFLOAT;
     [self.frontLineLayer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
-    
 }
 
 - (void)drawRect:(CGRect)rect {

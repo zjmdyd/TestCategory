@@ -12,10 +12,10 @@
 
 @property (nonatomic, getter=isSelect) BOOL select;
 
-@property (nonatomic, strong) UIImage *selectImg;
-@property (nonatomic, strong) UIImage *unSelectImg;
-
 @property (nonatomic, copy) NSString *selectImgName;
 @property (nonatomic, copy) NSString *unSelectImgName;
+
+@property (nonatomic, strong) UIImage *selectImg;
+@property (nonatomic, strong) UIImage *unSelectImg;
 
 @end

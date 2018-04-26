@@ -14,8 +14,9 @@
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) NSArray *objects;
 
+@property (nonatomic, assign) BOOL needRefresh;
 @property (nonatomic, strong) NSDictionary *accessoryInfo;
 
-- (void)appendObjects:(NSArray *)objects;
+- (void)appendObjects:(ZJPageSizeObjectInfo *)obj;
 
 @end

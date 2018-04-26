@@ -82,7 +82,13 @@
 - (void)testCustomArchiver {
     ZJLover *lover = [[ZJLover alloc] init];
     lover.name = @"aa";
-    lover.age = 12;
+    lover.age = 11;
+    
+    ZJLover *lover2 = [[ZJLover alloc] init];
+    lover2.name = @"bb";
+    lover2.age = 22;
+    
+    NSArray *ary = @[lover, lover2];
     
     /*
      归档:把对象---> data
@@ -92,13 +98,13 @@
     //2.创建归档对象
     NSKeyedArchiver *arch = [[NSKeyedArchiver alloc]initForWritingWithMutableData:md];
     //3.开始编码
-    [arch encodeObject:lover forKey:@"lover"];
+    [arch encodeObject:ary forKey:@"lover"];
     //4.完成编码
     [arch finishEncoding];
     
     NSError *error;
-    BOOL isSuccess = [md writeToFile:@"/Users/yuntu/Desktop/custom" options:NSDataWritingAtomic error:&error];
-    if (isSuccess) {        // 在模拟器会成功, 真机写入不成功, why???
+    BOOL isSuccess = [md writeToFile:@"/Users/ZJ/Desktop/custom" options:NSDataWritingAtomic error:&error];
+    if (isSuccess) {        // 在模拟器会成功
         NSLog(@"归档成功");
     }else {
         NSLog(@"归档失败 error = %@", error);
@@ -107,12 +113,19 @@
     /*
      反归档:把Data-->对象
      */
-    NSData *data = [NSData dataWithContentsOfFile:@"/Users/yuntu/Desktop/custom"];
+    NSData *data = [NSData dataWithContentsOfFile:@"/Users/ZJ/Desktop/custom"];
     //1.创建反归档对象
-    NSKeyedUnarchiver *unArch = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+    NSKeyedUnarchiver *unArch = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     //2.解码:把对象解出来
-    ZJLover *newLover = [unArch decodeObjectForKey:@"lover"];
-    NSLog(@"name = %@, age = %ld", newLover.name, (long)newLover.age);
+    
+    NSArray *deAry = [unArch decodeObjectForKey:@"lover"];
+    NSLog(@"deAry = %@", deAry);
+    for (ZJLover *lv in deAry) {
+        NSLog(@"name = %@, age = %ld", lv.name, (long)lv.age);
+    }
+    
+//    ZJLover *newLover = [unArch decodeObjectForKey:@"lover"];
+//    NSLog(@"name = %@, age = %ld", newLover.name, (long)newLover.age);
 }
 
 - (void)testCoreDataArchiver {

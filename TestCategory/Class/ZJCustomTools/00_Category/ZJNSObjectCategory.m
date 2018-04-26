@@ -15,6 +15,8 @@
 #import <sys/stat.h>
 #import <AudioToolbox/AudioToolbox.h>
 
+
+
 @implementation ZJNSObjectCategory
 
 @end
@@ -113,6 +115,7 @@
 }
 
 - (NSString *)jsonString {
+    if (self == nil) return nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:self options:0 error:nil];
     NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
@@ -275,9 +278,26 @@
         }else if (type == SystemServiceTypeOfMessage) {         // 信息
             str = [NSString stringWithFormat:@"sms:%@", phone];
         }
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:str]]) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        }else {
+            [self showAlertViewWithTitle:@"设备不支持此功能!" msg:@"" buttonTitle:nil];
+        }
     }else {
         [self showAlertViewWithTitle:@"电话号码为空!" msg:@"" buttonTitle:nil];
+    }
+}
+
++ (void)openAPPStoreWithURL:(NSString *)urlString {
+    NSURL *url = [NSURL URLWithString:urlString];
+    if (@available(iOS 10.0, *)) {
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"open_success = %d", success);
+        }];
+    } else {
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
     }
 }
 

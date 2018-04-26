@@ -43,7 +43,7 @@
 - (void)testIndexSet {
     NSMutableArray *ary = [NSMutableArray array];
     for (int i = 0; i < 10; i++) {
-        [ary addObject:[NSString stringWithFormat:@"a%zd", i]];
+        [ary addObject:[NSString stringWithFormat:@"a%d", i]];
     }
     NSArray *ary2 = [ary objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 5)]];
     NSLog(@"ary2 = %@", ary2);

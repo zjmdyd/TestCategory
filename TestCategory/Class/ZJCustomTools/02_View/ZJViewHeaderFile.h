@@ -31,36 +31,37 @@
 
 #endif
 
-#import "HYErrorView.h"
 #import "ZJFooterView.h"
+#import "ZJWrapView.h"
+#import "ZJAboutView.h"
 #import "ZJPicker.h"
+#import "ZJSelectButton.h"
+#import "ZJSexView.h"
+
 #import "ZJProgressView.h"
+#import "HYErrorView.h"
 #import "ZJQRCodeView.h"
 #import "ZJRoundImageView.h"
 #import "ZJSearchingView.h"
 #import "ZJScrollView.h"
-#import "ZJSelectButton.h"
+
 #import "ZJStarLevelView.h"
 
+#import "ZJLoginFooterView.h"
+#import "ZJRegisterView.h"
+#import "ZJDoubleButonView.h"
 
 ///* TableViewCell */
-#import "ZJCollectionTableViewCell.h"
-#import "ZJImageTextFieldTableViewCell.h"
+#import "ZJInput.h"
+
 #import "ZJSelectSexTableViewCell.h"
-#import "ZJTitleTextFieldTableViewCell.h"
+#import "ZJIconSubTitleTableViewCell.h"
 
-static NSString *const CollectionTableViewCell = @"ZJCollectionTableViewCell";
-static NSString *const ImageTextFieldTabViewCell = @"ZJImageTextFieldTableViewCell";
+static NSString *const IconSubTitleTableViewCell = @"ZJIconSubTitleTableViewCell";
 static NSString *const SelectSexTableViewCell = @"ZJSelectSexTableViewCell";
-static NSString *const TitleTextFieldTableViewCell = @"ZJTitleTextFieldTableViewCell";
-
+static NSString *const SubTitleTableViewCell = @"ZJSubTitleTableViewCell";
 
 ///* CollectionViewCell */
-#import "ZJIconTitleNormalCollectionViewCell.h"
-#import "ZJIconTitleHorizontalCollectionViewCell.h"
-#import "ZJIconTitleVerticalCollectionViewCell.h"
+#import "ZJIconTitleCollect.h"
 
-static NSString *const IconTitleCollectionViewCell = @"ZJIconTitleNormalCollectionViewCell";
-static NSString *const IconTitleVerticalCollectionCell = @"ZJIconTitleVerticalCollectionViewCell";
-static NSString *const IconTitleHorizontalCollectionCell = @"ZJIconTitleHorizontalCollectionViewCell";
 

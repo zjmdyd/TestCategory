@@ -181,7 +181,7 @@ CA_AVAILABLE_STARTING (10.12, 10.0, 10.0, 3.0) {
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    NSLog(@"%s, flag = %zd", __func__, flag);
+    NSLog(@"%s, flag = %z", __func__, flag);
 }
 
 - (CGRect)getAdjustInstanceLayerFrame:(CGFloat)value {

@@ -17,4 +17,5 @@
 #import "ZJPageSizeObjectInfo.h"
 #import "ZJStandarValueObj.h"
 #import "ZJTimeValueObject.h"
+#import "ZJValueObject.h"
 

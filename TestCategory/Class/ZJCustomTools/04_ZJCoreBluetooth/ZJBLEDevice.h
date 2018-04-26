@@ -9,7 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
+typedef NS_ENUM(NSInteger, ReadDataType) {
+    ReadDataTypeOfGL,       // 血糖
+    ReadDataTypeOfUA,       // 尿酸
+    ReadDataTypeOfBF,       // 血脂
+    ReadDataTypeOfBP,       // 血压
+    ReadDataTypeOfTZ,       // 体脂
+    ReadDataTypeOfBFCardio, // 卡迪克血脂
+};
+
 typedef void(^DeviceDiscoverServiceCompletionHandle)(CBCharacteristic *obj, NSError *error);
+typedef void(^DeviceUpdateValueCompletionHandle)(BOOL success, id value, NSError *error);
 
 @interface ZJBLEDevice : NSObject
 
@@ -37,5 +47,7 @@ typedef void(^DeviceDiscoverServiceCompletionHandle)(CBCharacteristic *obj, NSEr
 @property (nonatomic, strong, readonly) NSArray *services;
 
 - (void)discoverServices:(NSArray<CBUUID *> *)serviceUUIDs completion:(DeviceDiscoverServiceCompletionHandle)completion;
+
+- (void)readValueWithType:(ReadDataType)type completion:(DeviceUpdateValueCompletionHandle)completion;
 
 @end

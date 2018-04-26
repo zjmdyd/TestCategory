@@ -31,11 +31,14 @@
  */
 + (instancetype)footerViewWithTitle:(NSString *)title frame:(CGRect)frame superView:(UIView *)superView delegate:(id<ZJFooterViewDelegate>)delegate;
 
-//@property (nonatomic, strong) UIColor *titleColor;
 @property (nonatomic, copy  ) NSString *title;
 @property (nonatomic, strong) UIColor *tintColor;
 @property (nonatomic, strong) UIColor *buttonBgColor;
 @property (nonatomic, strong) UIColor *boardColor;
+
+/**
+ 默认为YES
+ */
 @property (nonatomic, assign) BOOL needCornerRadius;
 
 @end

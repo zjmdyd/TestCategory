@@ -87,7 +87,7 @@ static const NSInteger TicketCount = 10;
         [NSThread sleepForTimeInterval:.1];
         
         self.sellCount++;
-        NSLog(@"%@卖票结束, 卖了%zd张还剩%zd张", name, self.sellCount, TicketCount - self.sellCount);
+        NSLog(@"%@卖票结束, 卖了%d张还剩%zd张", name, self.sellCount, TicketCount - self.sellCount);
         
         [self.lock unlock];
     }

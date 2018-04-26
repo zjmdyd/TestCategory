@@ -55,11 +55,18 @@
  *  半透明遮罩层
  */
 + (UIColor *)maskViewColor;
++ (UIColor *)maskViewAlphaColor;
 
 /**
  *  粉红色
  */
 + (UIColor *)pinkColor;
+
++ (UIColor *)mainColor;
+
++ (UIColor *)assiColor1;
+
++ (UIColor *)assiColor2;
 
 @end
 
@@ -105,15 +112,20 @@
  */
 @interface UIImageView (ZJImageView)
 
+- (void)setImageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName;
++ (UIImageView *)createIVWithFrame:(CGRect)frame iconPath:(NSString *)path placehold:(NSString *)placehold;
+
 - (void)setupQRCodeWithContent:(NSString *)content;
 
-- (void)setImageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName;
 
 @end
 
 #pragma mark - UILabel
 
 @interface UILabel (ZJLabel)
+
++ (UILabel *)createLabelWithFrame:(CGRect)frame arrtText:(NSAttributedString *)text background:(UIColor *)color;
++ (UILabel *)createLabelWithFrame:(CGRect)frame arrtText:(NSAttributedString *)text background:(UIColor *)color needCorner:(BOOL)need;
 
 /**
  *  根据文本内容适配Label高度
@@ -194,6 +206,11 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 - (UIView *)subViewWithTag:(NSInteger)tag;
 - (UIView *)fetchSubViewWithClassName:(NSString *)className;
 
++ (UIView *)createNibViewWithNibName:(NSString *)name frame:(CGRect)frame;
++ (UIView *)createNibViewWithNibName:(NSString *)name frame:(CGRect)frame needWrap:(BOOL)need;
+
++ (UIView *)createTitleIVWithFrame:(CGRect)frame iconPath:(NSString *)path placehold:(NSString *)placehold title:(NSString *)title;
+
 #pragma mark - supplementView
 
 /**
@@ -212,14 +229,36 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 
 #pragma mark - iconBadge
 
+- (void)removeIconBadge;
 - (void)addIconBadgeWithText:(NSString *)text;
 - (void)addIconBadgeWithText:(NSString *)text bgColor:(UIColor *)color;
 
 - (void)addIconBadgeWithAttributeText:(NSAttributedString *)text;
 - (void)addIconBadgeWithAttributeText:(NSAttributedString *)text bgColor:(UIColor *)color;
+- (UILabel *)createLableWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame;
+- (UILabel *)accessoryViewWithText:(id)text bgColor:(UIColor *)color frame:(CGRect)frame;
 
 - (void)addIconBadgeWithImage:(UIImage *)image;
 - (void)addIconBadgeWithImage:(UIImage *)image bgColor:(UIColor *)color;
+
+// 第几象限
+typedef NS_ENUM(NSInteger, QuadrantTouchType) {
+    QuadrantTouchTypeOfFirst,   
+    QuadrantTouchTypeOfSecond,
+    QuadrantTouchTypeOfThird,
+    QuadrantTouchTypeOfFourth,
+};
+
+/*
+ 环形区域分隔的份数:2等分/4等分
+ */
+typedef NS_ENUM(NSInteger, AnnularSeparateType) {
+    AnnularSeparateTypeOfHalf,
+    AnnularSeparateTypeOfQuarter,
+};
+
+- (QuadrantTouchType)quadrantOfTouchPoint:(CGPoint)point separateType:(AnnularSeparateType)type;
+- (BOOL)touchPointInTheAnnular:(CGPoint)point annularWidth:(CGFloat)annularWidth;
 
 @end
 
@@ -247,5 +286,12 @@ typedef NS_ENUM(NSInteger, Direction) {
 @interface UIGestureRecognizer (ZJGestureRecognizer)
 
 + (Direction)direction:(CGPoint)startPoint endPoint:(CGPoint)endPoint;
+
+@end
+
+
+#pragma mark - UISearchBar
+
+@interface UISearchBar (ZJSearchBar)
 
 @end

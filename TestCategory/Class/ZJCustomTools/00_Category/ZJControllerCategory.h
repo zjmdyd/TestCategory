@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, TransitionDerection) {
 
 @interface UIViewController (ZJViewController)
 
+- (UIViewController *)preControllerWithIndex:(NSInteger)index;
 /**
  *  根据控制器名字创建控制器
  */

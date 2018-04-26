@@ -7,17 +7,14 @@
 //
 
 #import "ZJSelectSexTableViewCell.h"
-#import "ZJSelectButton.h"
+#import "ZJSexView.h"
 
-@interface ZJSelectSexTableViewCell () {
-    BOOL _isFirstLoad;
-}
+@interface ZJSelectSexTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIView *selectSexView;
-@property (nonatomic, strong) NSArray *sexButtons;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *titleLabels;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;   // 默认为性别
+@property (strong, nonatomic) IBOutletCollection(ZJSexView) NSArray *sexViews;
 
 @end
 
@@ -26,100 +23,102 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.titleLabel.text = @"性别";
-    self.accessoryType = UITableViewCellAccessoryNone;
+    [self updateUI];
 }
 
-- (IBAction)selectSexAction:(ZJSelectButton *)sender {
-    sender.select = YES;
+- (void)selectSexEvent:(UIButton *)sender {
+    self.selectIndex = sender.superview.tag;
+    [self updateUI];
     
-    for (ZJSelectButton *btn in self.sexButtons) {
-        if (![btn isEqual:sender]) {
-            btn.select = NO;
-            break;
-        }
-    }
-    
-    if ([self.delegate respondsToSelector:@selector(ZJSelectSexTableViewCell:didClickButtonAtIndex:)]) {
-        [self.delegate ZJSelectSexTableViewCell:self didClickButtonAtIndex:sender.tag];
+    if ([self.delegate respondsToSelector:@selector(selectSexTableViewCell:didClickButtonAtIndex:)]) {
+        [self.delegate selectSexTableViewCell:self didClickButtonAtIndex:sender.superview.tag];
     }
 }
 
 #pragma mark - setter
 
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    
+    self.titleLabel.text = _title;
+}
+
+- (void)setSexTitles:(NSArray *)sexTitles {
+    _sexTitles = sexTitles;
+    
+    for (int i = 0; i < _sexTitles.count; i++) {
+        if (i < self.sexViews.count) {
+            ZJSexView *sv = self.sexViews[i];
+            sv.title = _sexTitles[i];
+        }
+    }
+}
+
 - (void)setDelegate:(id<HYSelectSexDelegate>)delegate {
     _delegate = delegate;
     
-    self.selectSexView.userInteractionEnabled = !(_delegate==nil);
+    self.selectSexView.userInteractionEnabled = _delegate!=nil;
 }
 
 - (void)setSelectImgNames:(NSArray *)selectImgNames {
     _selectImgNames = selectImgNames;
-    
-    if (selectImgNames.count > 0 && _selectImgNames.count == self.sexButtons.count) {
-        for (ZJSelectButton *btn in self.sexButtons) {
-            btn.selectImg = [UIImage imageNamed:_selectImgNames[btn.tag]];
+
+    for (int i = 0; i < _selectImgNames.count; i++) {
+        if (i < self.sexViews.count) {
+            ZJSexView *sv = self.sexViews[i];
+            sv.selectImg = [UIImage imageNamed:_selectImgNames[i]];
         }
     }
 }
 
 - (void)setUnselectImgNames:(NSArray *)unselectImgNames {
     _unselectImgNames = unselectImgNames;
-    
-    if (_unselectImgNames.count > 0 && _unselectImgNames.count == self.sexButtons.count) {
-        for (ZJSelectButton *btn in self.sexButtons) {
-            btn.unSelectImg = [UIImage imageNamed:_unselectImgNames[btn.tag]];
+
+    for (int i = 0; i < _unselectImgNames.count; i++) {
+        if (i < self.sexViews.count) {
+            ZJSexView *sv = self.sexViews[i];
+            sv.unSelectImg = [UIImage imageNamed:_unselectImgNames[i]];
         }
     }
 }
 
-- (void)setSelectIndex:(NSInteger)selectIndex {
-    if (selectIndex<0 || selectIndex > 1) {
-        selectIndex = 0;
-    }
-    _selectIndex = selectIndex;
+- (void)setSelectTitleColors:(NSArray *)selectTitleColors {
+    _selectTitleColors = selectTitleColors;
     
-    for (ZJSelectButton *btn in self.sexButtons) {
-        if (btn.tag == selectIndex) {
-            btn.select = YES;
-        }else {
-            btn.select = NO;
+    for (int i = 0; i < _selectTitleColors.count; i++) {
+        if (i < self.sexViews.count) {
+            ZJSexView *sv = self.sexViews[i];
+            sv.selectTitleColor = _selectTitleColors[i];
         }
     }
 }
 
-- (void)setTitles:(NSArray *)titles {
-    _titles = titles;
+- (void)setUnselectTitleColors:(NSArray *)unselectTitleColors {
+    _unselectTitleColors = unselectTitleColors;
     
-    if (_titles.count >= self.titleLabels.count) {
-        for (UILabel *btn in self.titleLabels) {
-            btn.text = _titles[btn.tag];
-            btn.textColor = [UIColor groupTableViewBackgroundColor];
+    for (int i = 0; i < _unselectTitleColors.count; i++) {
+        if (i < self.sexViews.count) {
+            ZJSexView *sv = self.sexViews[i];
+            sv.selectTitleColor = _unselectTitleColors[i];
         }
     }
 }
 
-#pragma mark - getter
-
-- (NSArray *)sexButtons {
-    if (!_sexButtons) {
-        NSMutableArray *ary = [NSMutableArray array];        
-        for (UIView *view in self.selectSexView.subviews) {
-            if ([view isMemberOfClass:[ZJSelectButton class]]) {
-                [ary addObject:view];
-            }
-        }
-        _sexButtons = [ary mutableCopy];
+- (void)updateUI {
+    for (ZJSexView *sv in self.sexViews) {
+        sv.select = self.selectIndex == sv.tag;
     }
-    
-    return _sexButtons;
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.selectSexView.userInteractionEnabled = NO;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    for (ZJSexView *sv in self.sexViews) {
+        sv.target = self;
+        sv.title = @[@"男", @"女"][sv.tag];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

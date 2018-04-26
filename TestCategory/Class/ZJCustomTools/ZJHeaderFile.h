@@ -17,6 +17,3 @@
 #import "ZJViewHeaderFile.h"
 #import "ZJControllerHeaderFile.h"
 #import "ZJBLETool.h"
-
-#define DefaultErrorMsg @"请求出错"
-#define DefaultNetworkWarning @"网络已断开连接"

@@ -16,3 +16,6 @@
 #import "ZJWebViewController.h"
 #import "ZJTextViewController.h"
 #import "ZJTabBarViewController.h"
+#import "ZJTableViewController.h"
+#import "ZJNormalTableViewController.h"
+#import "ZJNormalViewController.h"

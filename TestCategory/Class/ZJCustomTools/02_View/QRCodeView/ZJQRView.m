@@ -46,6 +46,9 @@
     
     //闪光灯
     if ([device hasFlash] && [device hasTorch]) {
+        AVCapturePhotoSettings *set = [AVCapturePhotoSettings photoSettings];
+        set.flashMode = AVCaptureFlashModeAuto;
+        
         [device lockForConfiguration:nil];
         [device setFlashMode:AVCaptureFlashModeAuto];
         [device setTorchMode:AVCaptureTorchModeAuto];

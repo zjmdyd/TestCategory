@@ -10,7 +10,7 @@
 
 @interface ZJStandarValueObj : NSObject
 
-@property (nonatomic, strong) NSNumber *higherValue;
-@property (nonatomic, strong) NSNumber *lowerValue; 
+@property (nonatomic, strong) NSString *higherValue;
+@property (nonatomic, strong) NSString *lowerValue;
 
 @end

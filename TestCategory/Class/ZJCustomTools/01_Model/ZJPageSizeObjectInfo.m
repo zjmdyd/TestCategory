@@ -18,10 +18,10 @@
     return self;
 }
 
-- (void)appendObjects:(NSArray *)objects {
+- (void)appendObjects:(ZJPageSizeObjectInfo *)obj {
     NSMutableArray *array = [NSMutableArray arrayWithArray:self.objects];
+    [array addObjectsFromArray:obj.objects];
     
-    [array addObjectsFromArray:objects];
     self.objects = [array mutableCopy];
 }
 

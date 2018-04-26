@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HYDefaultViewController">
+            <connections>
+                <outlet property="mentionView" destination="UMc-2j-2hy" id="YCa-yf-sF1"/>
+                <outlet property="scrollView" destination="n6H-Ep-nu5" id="Oqu-0S-iRl"/>
+                <outlet property="titleLabel" destination="uZm-Ow-Uxt" id="mVo-mD-QUL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6H-Ep-nu5">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMc-2j-2hy">
+                            <rect key="frame" x="107" y="233" width="160" height="200"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_jijiangshangxian_256x256" translatesAutoresizingMaskIntoConstraints="NO" id="crd-Lv-BGg">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="crd-Lv-BGg" secondAttribute="height" multiplier="1:1" id="FJW-oL-QQV"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="即将上线，敬请期待" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZm-Ow-Uxt">
+                                    <rect key="frame" x="2" y="168" width="156" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="UMc-2j-2hy" secondAttribute="height" multiplier="4:5" id="1Ba-px-Gsh"/>
+                                <constraint firstItem="crd-Lv-BGg" firstAttribute="leading" secondItem="UMc-2j-2hy" secondAttribute="leading" id="4Bt-ks-3yv"/>
+                                <constraint firstAttribute="height" constant="200" id="8Bh-U3-GCW"/>
+                                <constraint firstItem="uZm-Ow-Uxt" firstAttribute="top" secondItem="crd-Lv-BGg" secondAttribute="bottom" constant="8" id="Acg-0i-46K"/>
+                                <constraint firstAttribute="trailing" secondItem="crd-Lv-BGg" secondAttribute="trailing" id="Dne-oD-4Q0"/>
+                                <constraint firstItem="crd-Lv-BGg" firstAttribute="top" secondItem="UMc-2j-2hy" secondAttribute="top" id="ffM-eq-SIW"/>
+                                <constraint firstItem="uZm-Ow-Uxt" firstAttribute="centerX" secondItem="UMc-2j-2hy" secondAttribute="centerX" id="jE1-9k-0W3"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="UMc-2j-2hy" firstAttribute="centerX" secondItem="n6H-Ep-nu5" secondAttribute="centerX" id="HvM-XK-FHC"/>
+                        <constraint firstItem="UMc-2j-2hy" firstAttribute="centerY" secondItem="n6H-Ep-nu5" secondAttribute="centerY" id="Ohh-ST-BPh"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="n6H-Ep-nu5" secondAttribute="bottom" id="CJW-iD-D7Y"/>
+                <constraint firstAttribute="bottom" secondItem="n6H-Ep-nu5" secondAttribute="bottom" id="M6p-Fg-Uuw"/>
+                <constraint firstItem="n6H-Ep-nu5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NQG-DO-FdT"/>
+                <constraint firstAttribute="trailing" secondItem="n6H-Ep-nu5" secondAttribute="trailing" id="bEP-OA-nkE"/>
+                <constraint firstItem="n6H-Ep-nu5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hZz-O1-KCh"/>
+            </constraints>
+            <point key="canvasLocation" x="-289" y="-328"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_jijiangshangxian_256x256" width="128" height="128"/>
+    </resources>
+</document>

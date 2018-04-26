@@ -54,6 +54,11 @@
 
 @implementation UIViewController (ZJViewController)
 
+- (UIViewController *)preControllerWithIndex:(NSInteger)index {
+    NSArray *ary = self.navigationController.viewControllers;
+    return ary[ary.count - (index + 1)];
+}
+
 - (UIViewController *)createVCWithName:(NSString *)name {
     return [self createVCWithName:name title:nil];
 }

@@ -32,7 +32,6 @@
 @implementation ZJFooterView
 
 @synthesize buttonBgColor = _buttonBgColor;
-@synthesize title = _title;
 
 #pragma mark - init
 
@@ -80,9 +79,10 @@
     self.button = [UIButton buttonWithType:UIButtonTypeSystem];
     CGFloat left = DefaultMargin*2;
     self.button.frame = CGRectMake(left, DefaultMargin, self.frame.size.width - left*2, self.frame.size.height - DefaultMargin*2);
+    self.needCornerRadius = YES;
     self.button.layer.masksToBounds = YES;
     self.button.titleLabel.font = [UIFont systemFontOfSize:17];
-    [self.button setTitle:self.title forState:UIControlStateNormal];
+    [self.button setTintColor:[UIColor whiteColor]];
     [self.button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.button];
 }
@@ -125,13 +125,6 @@
 }
 
 #pragma mark - getter
-
-- (NSString *)title {
-    if (!_title) {
-        _title = @"保存";
-    }
-    return _title;
-}
 
 + (CGRect)defaultFrame {
     return CGRectMake(0, 0, kScreenW, kButtonHeight);

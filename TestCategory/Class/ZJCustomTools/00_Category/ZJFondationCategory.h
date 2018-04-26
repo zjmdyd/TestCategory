@@ -36,6 +36,9 @@
  汉字转拼音
  */
 - (NSString *)pinYin;
+- (NSDictionary *)jsonStringToDic;
++ (NSString *)timestampString;
+- (BOOL)isOnlinePic;
 
 #pragma mark - 属性字符串
 
@@ -70,6 +73,11 @@
 - (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace;
 
 /**
+ 加下划线
+ */
+- (NSAttributedString *)attrWithUnderLine;
+
+/**
  行间距 对齐
  */
 - (NSAttributedString *)attrWithLineSpace:(CGFloat)lineSpace textAlignment:(NSTextAlignment)alignment;
@@ -93,6 +101,11 @@
  文字颜色、字体、对齐
  */
 - (NSAttributedString *)attrWithForegroundColor:(UIColor *)color font:(UIFont *)font textAlignment:(NSTextAlignment)alignment;
+
+/**
+ 文字颜色、背景色、对齐
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color background:(UIColor *)bgColor textAlignment:(NSTextAlignment)alignment;
 
 #pragma mark - 为指定的字符串添加属性
 
@@ -173,6 +186,7 @@
 
 - (BOOL)isPureInt;
 - (BOOL)isPureFloat;
+- (BOOL)hasNumber;
 
 @end
 
@@ -208,6 +222,10 @@
  *  多维数组的mutableCopy
  */
 - (NSArray *)multiDimensionalArrayMutableCopy;
++ (NSArray *)multiArrayWithEmptyValue:(NSArray *)array;
+
+- (NSString *)joinToStringWithSeparateString:(NSString *)str;
+- (NSString *)joinToStringWithSeparateString:(NSString *)str endIndex:(NSInteger)endIndex;
 
 @end
 
@@ -220,6 +238,7 @@
  用某个特定的对象初始化数组
  */
 + (NSMutableArray *)arrayWithObject:(id)obj count:(NSInteger)count;
++ (NSMutableArray *)arrayWithEmptyValueCount:(NSInteger)count;
 
 /**
  *  向子数组中添加元素
@@ -237,6 +256,7 @@
 
 - (BOOL)containsKey:(NSString *)key;
 - (BOOL)containsKeyCaseInsensitive:(NSString *)key;
+- (NSString *)httpParamsString;
 
 /**
  十六进制字典
@@ -309,6 +329,9 @@
  *  @1 --> 周日
  */
 + (NSString *)gregorianWeekdayToChinese:(id)weekday;
+
+- (NSDate *)firsDaytOfWeek;
+- (NSDate *)lastDaytOfWeek;
 
 @end
 

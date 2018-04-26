@@ -19,6 +19,13 @@
 
 @end
 
+#ifndef kScreenW
+
+#define kScreenW    ([UIScreen mainScreen].bounds.size.width)
+#define kScreenH    ([UIScreen mainScreen].bounds.size.height)
+
+#endif
+
 @implementation ZJPickerView
 
 @synthesize bottomViewBackgroundColor = _bottomViewBackgroundColor;
@@ -214,6 +221,11 @@
 #pragma mark - touchEvent
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *th = touches.anyObject;
+    CGPoint point = [th locationInView:self];
+    if (point.y > kScreenH-PickerViewHeight) {
+        return;
+    }
     if (self.touchEnable) {
         self.hidden = YES;
     }

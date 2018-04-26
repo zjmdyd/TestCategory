@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdf-Qc-J6W">
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dBd-eX-LyI">
-                        <rect key="frame" x="66" y="11" width="246" height="21"/>
+                        <rect key="frame" x="66" y="11" width="238" height="21"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
@@ -38,8 +38,9 @@
                 <constraints>
                     <constraint firstItem="dBd-eX-LyI" firstAttribute="leading" secondItem="bdf-Qc-J6W" secondAttribute="trailing" constant="8" id="DkI-Y2-jc1"/>
                     <constraint firstItem="bdf-Qc-J6W" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JOD-ub-2Ua"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="bdf-Qc-J6W" secondAttribute="leading" constant="-8" id="KkW-XP-xZ7"/>
-                    <constraint firstItem="dBd-eX-LyI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="riU-JT-E5L"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="bdf-Qc-J6W" secondAttribute="leading" id="KkW-XP-xZ7"/>
+                    <constraint firstItem="dBd-eX-LyI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="N2T-3r-ZW7"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="dBd-eX-LyI" secondAttribute="bottom" constant="1" id="Z0X-zx-XBg"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dBd-eX-LyI" secondAttribute="trailing" id="vRV-bt-5QN"/>
                 </constraints>
             </tableViewCellContentView>
@@ -47,7 +48,7 @@
                 <outlet property="textField" destination="dBd-eX-LyI" id="xdG-nB-etA"/>
                 <outlet property="titleLabel" destination="bdf-Qc-J6W" id="DoD-gj-TY7"/>
             </connections>
-            <point key="canvasLocation" x="-22" y="-53"/>
+            <point key="canvasLocation" x="-23" y="-76"/>
         </tableViewCell>
     </objects>
 </document>

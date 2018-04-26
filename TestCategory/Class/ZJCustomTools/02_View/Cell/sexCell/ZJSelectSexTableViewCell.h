@@ -12,7 +12,7 @@
 
 @protocol HYSelectSexDelegate <NSObject>
 
-- (void)ZJSelectSexTableViewCell:(ZJSelectSexTableViewCell *)cell didClickButtonAtIndex:(NSInteger)buttonIndex;
+- (void)selectSexTableViewCell:(ZJSelectSexTableViewCell *)cell didClickButtonAtIndex:(NSInteger)buttonIndex;
 
 @end
 
@@ -20,7 +20,10 @@
 
 @property (nonatomic, strong) NSArray *selectImgNames;
 @property (nonatomic, strong) NSArray *unselectImgNames;
-@property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) NSArray *selectTitleColors;
+@property (nonatomic, strong) NSArray *unselectTitleColors;
+@property (nonatomic, strong) NSArray *sexTitles;  // 默认为: 男、女
+@property (nonatomic, copy) NSString *title;
 
 @property (nonatomic, weak) id <HYSelectSexDelegate>delegate;
 @property (nonatomic, assign) NSInteger selectIndex;

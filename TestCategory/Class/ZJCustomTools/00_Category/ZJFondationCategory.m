@@ -84,6 +84,34 @@
     return mutableString;
 }
 
+
+- (NSDictionary *)jsonStringToDic {
+    if (self == nil) return nil;
+    
+    NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&error];
+    if(error) {
+        NSLog(@"json解析失败：%@",error);
+        return nil;
+    }
+    return dic;
+}
+
++ (NSString *)timestampString {
+    return @((NSInteger)[[NSDate date] timeIntervalSince1970]).stringValue;
+}
+
+- (BOOL)isOnlinePic {
+    if ([self hasPrefix:@"http:"] || [self hasPrefix:@"https:"]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 #pragma mark - 属性字符串 1
 
 /**
@@ -129,6 +157,16 @@
 }
 
 /**
+ 下划线
+ */
+- (NSAttributedString *)attrWithUnderLine {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    NSRange strRange = {0,[str length]};
+    [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:strRange];
+    return str;
+}
+
+/**
  文字缩进 颜色
  */
 - (NSAttributedString *)attrWithFirstLineHeadIndent:(CGFloat)headIndent color:(UIColor *)color {
@@ -138,7 +176,7 @@
     NSRange range = NSMakeRange(0, str.length);
     [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
     [str addAttribute:NSForegroundColorAttributeName value:color range:range];
-
+    
     return str;
 }
 
@@ -228,6 +266,22 @@
     return [str copy];
 }
 
+/**
+ 文字颜色、背景色、对齐
+ */
+- (NSAttributedString *)attrWithForegroundColor:(UIColor *)color background:(UIColor *)bgColor textAlignment:(NSTextAlignment)alignment {
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:self];
+    
+    NSRange range = NSMakeRange(0, str.length);
+    [str addAttribute:NSForegroundColorAttributeName value:color range:range];
+    [str addAttribute:NSBackgroundColorAttributeName value:bgColor range:range];
+    
+    NSParagraphStyle *style = [NSParagraphStyle styleWithTextAlignment:alignment];
+    [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
+    
+    return [str copy];
+}
+
 #pragma mark - 属性字符串 2
 
 - (NSAttributedString *)attributedWithRange:(NSRange)range attr:(NSDictionary *)attr {
@@ -301,7 +355,7 @@
 
 - (NSString *)fillTimeString {
     NSString *str = [self fillZeroStringOfDigitCount:1];
-    return [NSString stringWithFormat:@"%zd:00", str];
+    return [NSString stringWithFormat:@"%@:00", str];
 }
 
 #pragma mark - 翻转字符串
@@ -427,6 +481,16 @@
     return [scan scanFloat:&val] && [scan isAtEnd];
 }
 
+- (BOOL)hasNumber {
+    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:@"[0-9]" options:NSRegularExpressionCaseInsensitive error:nil];
+    
+    //符合数字条件的有几个字节
+    NSUInteger count = [reg numberOfMatchesInString:self
+                                            options:NSMatchingReportProgress
+                                              range:NSMakeRange(0, self.length)];
+    return count > 0;
+}
+
 @end
 
 
@@ -528,6 +592,34 @@
     return [array mutableCopy];
 }
 
++ (NSArray *)multiArrayWithEmptyValue:(NSArray *)array {
+    NSMutableArray *ary = [NSMutableArray array];
+    for (int i = 0; i < array.count; i++) {
+        NSMutableArray *sAry = [NSMutableArray arrayWithEmptyValueCount:[array[i] count]];
+        [ary addObject:sAry];
+    }
+    
+    return ary;
+}
+
+- (NSString *)joinToStringWithSeparateString:(NSString *)str {
+    return [self joinToStringWithSeparateString:str endIndex:self.count];
+}
+
+- (NSString *)joinToStringWithSeparateString:(NSString *)str endIndex:(NSInteger)endIndex {
+    if (![self isKindOfClass:[NSArray class]]) return @"";
+    
+    NSMutableString *string = [NSMutableString string];
+    for (int i = 0; i < endIndex; i++) {
+        if (i < endIndex - 1) {
+            [string appendString:[NSString stringWithFormat:@"%@%@", self[i], str]];
+        }else {
+            [string appendString:self[i]];
+        }
+    }
+    return string;
+}
+
 @end
 
 
@@ -539,6 +631,15 @@
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0; i < count; i++) {
         [array addObject:obj?:@""];
+    }
+    
+    return array;
+}
+
++ (NSMutableArray *)arrayWithEmptyValueCount:(NSInteger)count {
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        [array addObject:@""];
     }
     
     return array;
@@ -593,6 +694,21 @@
     }
     
     return NO;
+}
+
+- (NSString *)httpParamsString {
+    NSMutableString *str = [NSMutableString string];
+    NSArray *keys = self.allKeys;
+    for (int i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i < self.allKeys.count-1) {
+            [str appendString:[NSString stringWithFormat:@"%@=%@&", key, self[key]]];
+        }else {
+            [str appendString:[NSString stringWithFormat:@"%@=%@", key, self[key]]];
+        }
+    }
+    
+    return str.copy;
 }
 
 + (NSDictionary *)HexDictionary {
@@ -705,6 +821,61 @@
     }
     
     return @"参数错误";
+}
+
+- (NSDate *)firsDaytOfWeek {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit
+                                         fromDate:self];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    // 得到几号
+    NSInteger day = [comp day];
+    
+    // 计算当前日期和这周的星期一和星期天差的天数
+    long firstDiff;
+    if (weekDay == 1) {
+        firstDiff = -6;
+    }else{
+        firstDiff =  - (weekDay-2);
+    }
+    
+    // 在当前日期(去掉了时分秒)基础上加上差的天数
+    NSDateComponents *firstDayComp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+    [firstDayComp setDay:day + firstDiff];
+    NSDate *firstDayOfWeek = [calendar dateFromComponents:firstDayComp];
+    
+    return firstDayOfWeek;
+}
+
+- (NSDate *)lastDaytOfWeek {
+    NSDate *now = [NSDate dateWithDaySpan:3 sinceDate:[NSDate date]];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit
+                                         fromDate:now];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    // 得到几号
+    NSInteger day = [comp day];
+    
+    // 计算当前日期和这周的星期一和星期天差的天数
+    long lastDiff;
+    if (weekDay == 1) {
+        lastDiff = 1;
+    }else{
+        lastDiff = 9 - weekDay;
+    }
+    
+    // 在当前日期(去掉了时分秒)基础上加上差的天数
+    NSDateComponents *lastDayComp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
+    [lastDayComp setDay:day + lastDiff];
+    NSDate *lastDayOfWeek = [calendar dateFromComponents:lastDayComp];
+    
+    return lastDayOfWeek;
 }
 
 @end

@@ -87,7 +87,7 @@
     NSString *name = _vcNames[indexPath.section][indexPath.row];
     UIViewController *vc = [self createVCWithName:name title:name  isGroupTableVC:YES];
     vc.hidesBottomBarWhenPushed = YES;
-    if (indexPath.section == 3) {
+    if (indexPath.section == 3 && indexPath.row == 0) {
         [self showDetailViewController:vc sender:nil];
     }else {
         [self showViewController:vc sender:nil];

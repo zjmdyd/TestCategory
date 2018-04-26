@@ -23,7 +23,7 @@
     }
     
     NSLog(@"%@", [ary componentsJoinedByString:@", "]);
-    NSLog(@"%zd", [ary containsObject:@0]);
+    NSLog(@"%d", [ary containsObject:@0]);
 }
 
 - (void)didReceiveMemoryWarning {

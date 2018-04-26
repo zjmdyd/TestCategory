@@ -121,7 +121,7 @@
             iv.image = [UIImage imageNamed:name];
         }
         iv.tag = i;
-        iv.contentMode = UIViewContentModeScaleAspectFit;
+        iv.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:iv];
         [self.subviews addObject:iv];
     }

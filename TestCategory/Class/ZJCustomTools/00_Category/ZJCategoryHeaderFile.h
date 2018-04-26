@@ -16,6 +16,6 @@
 #import "ZJFondationCategory.h"
 #import "ZJUIViewCategory.h"
 #import "ZJControllerCategory.h"
-
+#import "UITextView+Placeholder.h"
 #import "UIViewExt.h"
 

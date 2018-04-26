@@ -102,6 +102,7 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 
 + (void)openSystemSettingWithType:(SystemSettingType)type;
 + (void)systemServiceWithPhone:(NSString *)phone type:(SystemServiceType)type;
++ (void)openAPPStoreWithURL:(NSString *)urlString;
 
 #pragma mark - App info
 

@@ -23,7 +23,8 @@
 }
 
 - (IBAction)popEvent:(UIButton *)sender {
-    [self.navigationController popViewControllerFromDirection:TransitionDerectionOfBottom];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popViewControllerFromDirection:TransitionDerectionOfBottom];
 }
 
 - (void)didReceiveMemoryWarning {
