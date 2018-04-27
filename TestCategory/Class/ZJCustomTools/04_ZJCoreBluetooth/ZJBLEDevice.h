@@ -9,7 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
-typedef void(^DiscoverServiceCompletionHandle)(CBService *sev, NSError *error);
+/**
+ *  处理服务和特征的状态
+ */
+typedef NS_ENUM(NSUInteger, ZJDeviceDiscoverType) {
+    ZJDeviceDiscoverTypeOfServices = 0,
+    ZJDeviceDiscoverTypeOfCharacteristics,
+    ZJDeviceDiscoverTypeOfDealCharacteristic,  // 处理特征 设置notify
+};
+
+typedef void(^DiscoverServiceCompletionHandle)(id obj, ZJDeviceDiscoverType type, NSError *error);
 typedef void(^UpdateValueCompletionHandle)(BOOL success, id value, NSError *error);
 
 @interface ZJBLEDevice : NSObject
@@ -36,7 +45,24 @@ typedef void(^UpdateValueCompletionHandle)(BOOL success, id value, NSError *erro
 @property (nonatomic, copy, readonly) NSString *identify;
 @property (nonatomic, strong, readonly) NSNumber *RSSI;
 @property (nonatomic, strong, readonly) NSArray *services;
+@property (nonatomic, strong) DiscoverServiceCompletionHandle discoverServiceCompletion;
+@property (nonatomic, strong) UpdateValueCompletionHandle updateValueCompletion;
 
 - (void)discoverServices:(NSArray<CBUUID *> *)serviceUUIDs completion:(DiscoverServiceCompletionHandle)completion;
+- (void)discoverCharacteristics:(NSArray<CBUUID *> *)characteristicUUIDs forService:(CBService *)service;
+
+@end
+
+@interface CBCharacteristic (ZJCBCharacteristic)
+
+- (BOOL)isEqualUUID:(NSString *)uuid;
+
+@end
+
+@implementation CBCharacteristic (ZJCBCharacteristic)
+
+- (BOOL)isEqualUUID:(NSString *)uuid {
+    return [self.UUID.UUIDString isEqualToString:uuid];
+}
 
 @end

@@ -93,8 +93,18 @@
     ZJBLEDevice *device = self.manager.discoveredBLEDevices[indexPath.row];
     [self.manager connectBLEDevices:@[device] completion:^(ZJBLEDevice *device, ZJDeviceManagerConnectState state, NSError *error) {
         if (state == ZJDeviceManagerConnectStateConnected) {
-            [device discoverServices:@[[CBUUID UUIDWithString:GLSEVUUID]] completion:^(CBService *sev, NSError *error) {
-                
+            [device discoverServices:@[[CBUUID UUIDWithString:SEVICEUUID]] completion:^(id obj, ZJDeviceDiscoverType type, NSError *error) {
+                if (type == ZJDeviceDiscoverTypeOfServices) {
+                    if ([obj isKindOfClass:[NSArray class]]) {
+                        [device discoverCharacteristics:@[[CBUUID UUIDWithString:CHARACTERISTICUUID1], [CBUUID UUIDWithString:CHARACTERISTICUUID2]] forService:obj[0]];
+                    }
+                }else if (type == ZJDeviceDiscoverTypeOfCharacteristics) {
+                    
+                }else if (type == ZJDeviceDiscoverTypeOfDealCharacteristic) {   // 处理完特征可以开始发送指令
+                    [device readValueWithType:ReadDataTypeOfGL completion:^(BOOL success, id value, NSError *error) {
+                        
+                    }];
+                }
             }];
         }else if (state == ZJDeviceManagerConnectStateConnectFail) {
             [self.manager rescan];

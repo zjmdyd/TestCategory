@@ -18,11 +18,60 @@
 
 @implementation ZJBasicTableViewController
 
+- (long)valueWithLongBytes:(Byte *)bytes len:(unsigned short)len {
+    int byteVal[len];
+    long value = 0;
+    for (int j = 0; j < len; j++) {
+        int a = (bytes[j] & 0xff) << ((len-1-j)*8);    // byteLen个字节int型数据每个字节的值
+        
+        byteVal[j] = a;
+    }
+    for (int j = 0; j < len; j++) {
+        value |= byteVal[j];
+    }
+    
+    return value;
+}
+
+- (int)valueWithIntBytes:(Byte *)bytes len:(unsigned short)len {
+    int byteVal[len];
+    int value = 0;
+    for (int j = 0; j < len; j++) {
+        int a = (bytes[j] & 0xff) << ((len-1-j)*8);    // byteLen个字节int型数据每个字节的值
+        
+        byteVal[j] = a;
+    }
+    for (int j = 0; j < len; j++) {
+        value |= byteVal[j];
+    }
+    
+    return value;
+}
+
+- (int)valueWithBytes:(Byte *)bytes len:(unsigned short)len {
+    int byteVal[len];
+    int value = 0;
+    for (int j = 0; j < len; j++) {
+        int a = (bytes[j] & 0xff) << ((len-1-j)*8);    // byteLen个字节int型数据每个字节的值
+        
+        byteVal[j] = a;
+    }
+    for (int j = 0; j < len; j++) {
+        value |= byteVal[j];
+    }
+    
+    return value;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self initAry];
     [self initSettiing];
+    Byte bytes[] = {0x11, 0x22};
+    int value = [self valueWithIntBytes:bytes len:sizeof(bytes) / sizeof(Byte)];
+    
+    NSLog(@"value = %d, %lu", value, sizeof(bytes) / sizeof(Byte));
 }
 
 - (void)initAry {

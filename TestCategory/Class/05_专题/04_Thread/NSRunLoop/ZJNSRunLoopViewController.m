@@ -105,7 +105,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:path]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSLog(@"加载完成");
-        _isLoading = NO;
+        self->_isLoading = NO;
     }];
 }
 

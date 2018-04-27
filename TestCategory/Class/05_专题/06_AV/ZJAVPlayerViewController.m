@@ -151,7 +151,7 @@ NSString *AVPath = @"http://183.60.197.32/5/n/w/c/q/nwcqvlmfyhutxwhnjnmemyfvlfie
     _playbackTimeObserver = [self.playerView.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:NULL usingBlock:^(CMTime time) {
         CGFloat currentSecond = playerItem.currentTime.value / playerItem.currentTime.timescale;// 计算当前在第几秒
         self.slider.value = currentSecond;
-        self.timeLabel.text = [NSString stringWithFormat:@"%@\n%@", [self convertTime:currentSecond], _totalTime];
+        self.timeLabel.text = [NSString stringWithFormat:@"%@\n%@", [self convertTime:currentSecond], self->_totalTime];
     }];
 }
 

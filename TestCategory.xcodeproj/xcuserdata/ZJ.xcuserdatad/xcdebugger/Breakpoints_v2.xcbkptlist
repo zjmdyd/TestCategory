@@ -83,13 +83,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestCategory/Class/ZJCustomTools/04_ZJCoreBluetooth/ZJBLEDeviceManager.m"
-            timestampString = "546508469.470992"
+            filePath = "TestCategory/Class/00_Basic/ZJBasicTableViewController.m"
+            timestampString = "546517930.049446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-handleConnectTimeOutTimer:"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "-valueWithBytes:len:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestCategory/Class/00_Basic/ZJBasicTableViewController.m"
+            timestampString = "546517930.049798"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

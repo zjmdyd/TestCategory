@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		380273A920930DF70020836A /* ZJBLEDevice+ZJTestBLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 380273A820930DF70020836A /* ZJBLEDevice+ZJTestBLE.m */; };
+		380273AC209327040020836A /* ZJByteData.c in Sources */ = {isa = PBXBuildFile; fileRef = 380273AA209327030020836A /* ZJByteData.c */; };
 		3820EB222091B92100DAE510 /* ZJNormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820EA852091B92100DAE510 /* ZJNormalViewController.m */; };
 		3820EB602091B92100DAE510 /* ZJBLEDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820EB0C2091B92100DAE510 /* ZJBLEDevice.m */; };
 		3820EB612091B92100DAE510 /* ZJBLEDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820EB0F2091B92100DAE510 /* ZJBLEDeviceManager.m */; };
@@ -256,6 +257,8 @@
 /* Begin PBXFileReference section */
 		380273A720930DF70020836A /* ZJBLEDevice+ZJTestBLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZJBLEDevice+ZJTestBLE.h"; sourceTree = "<group>"; };
 		380273A820930DF70020836A /* ZJBLEDevice+ZJTestBLE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ZJBLEDevice+ZJTestBLE.m"; sourceTree = "<group>"; };
+		380273AA209327030020836A /* ZJByteData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ZJByteData.c; sourceTree = "<group>"; };
+		380273AB209327040020836A /* ZJByteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJByteData.h; sourceTree = "<group>"; };
 		3820EA852091B92100DAE510 /* ZJNormalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNormalViewController.m; sourceTree = "<group>"; };
 		3820EA862091B92100DAE510 /* ZJNormalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNormalViewController.h; sourceTree = "<group>"; };
 		3820EB0B2091B92100DAE510 /* ZJBLEDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBLEDeviceManager.h; sourceTree = "<group>"; };
@@ -737,6 +740,8 @@
 		3820EB0A2091B92100DAE510 /* 04_ZJCoreBluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				380273AA209327030020836A /* ZJByteData.c */,
+				380273AB209327040020836A /* ZJByteData.h */,
 				3820EB0D2091B92100DAE510 /* ZJBLETool.h */,
 				3820EB0E2091B92100DAE510 /* ZJBLEDevice.h */,
 				3820EB0C2091B92100DAE510 /* ZJBLEDevice.m */,
@@ -1764,7 +1769,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ZJ;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = ZJ;
 				TargetAttributes = {
 					387033E31DFAC37900426DA3 = {
@@ -1960,6 +1965,7 @@
 				3820EC252091B9F700DAE510 /* ZJRegisterView.m in Sources */,
 				38822BA81F98A27B00E8943F /* ZJCoreDataViewController.m in Sources */,
 				3820EC192091B9F700DAE510 /* ZJIconTitleVerticalCollectionViewCell.m in Sources */,
+				380273AC209327040020836A /* ZJByteData.c in Sources */,
 				38822BBC1F98A27B00E8943F /* ZJSearchDeviceTableViewController.m in Sources */,
 				38822B831F98A27B00E8943F /* ZJTestBackBarButtonItemViewController.m in Sources */,
 				38822BA41F98A27B00E8943F /* ZJNSPredicateViewController.m in Sources */,
@@ -2125,6 +2131,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2132,6 +2139,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -2180,6 +2188,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2187,6 +2196,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

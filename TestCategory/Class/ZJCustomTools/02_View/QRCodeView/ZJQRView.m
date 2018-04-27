@@ -167,7 +167,7 @@
     
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:2 animations:^{
-        _lineView.frame = end;
+        self->_lineView.frame = end;
     } completion:^(BOOL finished) {
         [weakSelf loopDrawLine];
     }];

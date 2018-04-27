@@ -8,10 +8,18 @@
 
 #import "ZJBLEDevice.h"
 
-static NSString *GLSEVUUID = @"1000";
+typedef NS_ENUM(NSInteger, ReadDataType) {
+    ReadDataTypeOfGL,       // 血糖
+    ReadDataTypeOfUA,       // 尿酸
+};
+
+static NSString *SEVICEUUID = @"1000";
+
+static NSString *CHARACTERISTICUUID1 = @"2A18";
+static NSString *CHARACTERISTICUUID2 = @"1002";
 
 @interface ZJBLEDevice (ZJTestBLE)
 
-//- (void)discoverCharacteristics;
+- (void)readValueWithType:(ReadDataType)type completion:(UpdateValueCompletionHandle)completion;
 
 @end

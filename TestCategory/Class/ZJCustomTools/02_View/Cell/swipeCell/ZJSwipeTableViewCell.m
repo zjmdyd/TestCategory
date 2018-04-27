@@ -77,7 +77,7 @@
         [UIView animateWithDuration:0.25 animations:^{
             self.bgView.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
-            self.deleteBtn.hidden = _hiddenDeleteBtn;
+            self.deleteBtn.hidden = self->_hiddenDeleteBtn;
         }];
     }else {
         self.deleteBtn.hidden = _hiddenDeleteBtn;

@@ -67,13 +67,13 @@
     [redView addSubview:_subView];
     
     [UIView animateWithDuration:5 animations:^{
-        CGRect frame = _subView.frame;
+        CGRect frame = self->_subView.frame;
         frame.origin.x = 100;
-        _subView.frame = frame;
+        self->_subView.frame = frame;
 
     } completion:^(BOOL finished) {
         NSLog(@"\nredView.frame = %@\nredView.bounds = %@", NSStringFromCGRect(redView.frame), NSStringFromCGRect(redView.bounds));
-        [_timer invalidate];
+        [self->_timer invalidate];
     }];
 
    _timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(showFrame) userInfo:nil repeats:YES];

@@ -29,7 +29,7 @@
         多线程保证时间的精确性
      */
     dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        _asyncTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(output) userInfo:nil repeats:YES];
+        self->_asyncTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(output) userInfo:nil repeats:YES];
     });
     
     self.numLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 200, 150, 50)];

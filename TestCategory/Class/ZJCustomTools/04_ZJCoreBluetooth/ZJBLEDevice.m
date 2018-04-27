@@ -10,12 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "ZJFondationCategory.h"
 
-@interface ZJBLEDevice () <CBPeripheralDelegate> {
-    NSMutableData *_data;
-}
-
-@property (nonatomic, strong) DiscoverServiceCompletionHandle discoverServiceCompletion;
-@property (nonatomic, strong) UpdateValueCompletionHandle valueCompletion;
+@interface ZJBLEDevice () <CBPeripheralDelegate>
 
 @property (nonatomic, strong) CBCharacteristic *normalCharacteristic;
 @property (nonatomic, strong) CBCharacteristic *writeCharacteristic;
@@ -55,11 +50,30 @@
     [self.peripheral discoverServices:serviceUUIDs];
 }
 
+- (void)discoverCharacteristics:(NSArray<CBUUID *> *)characteristicUUIDs forService:(CBService *)service {
+    [self.peripheral discoverCharacteristics:characteristicUUIDs forService:service];
+}
+
 #pragma mark - CBPeripheralDelegate
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error {
     NSLog(@"-->services = %@", peripheral.services);
     _services = peripheral.services;
+    
+    if (self.discoverServiceCompletion) {
+        self.discoverServiceCompletion(_services, ZJDeviceDiscoverTypeOfServices, error);
+    }
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+    NSLog(@"%s, %@", __func__, error);
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
+    NSLog(@"%s, %@", __func__, characteristic);
+    if (self.discoverServiceCompletion) {
+        self.discoverServiceCompletion(characteristic, ZJDeviceDiscoverTypeOfDealCharacteristic, error);
+    }
 }
 
 @end

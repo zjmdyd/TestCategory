@@ -12,5 +12,6 @@
 
 #endif /* ZJBLETool_h */
 
+#include "ZJByteData.h"
 #import "ZJBLEDeviceManager.h"
 #import "ZJBLEDevice.h"
