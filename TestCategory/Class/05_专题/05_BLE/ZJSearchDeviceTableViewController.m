@@ -10,8 +10,11 @@
 #import "ZJViewHeaderFile.h"
 #import "ZJCategoryHeaderFile.h"
 #import "ZJBLETool.h"
+#import "ZJBLEDevice+ZJTestBLE.h"
 
 @interface ZJSearchDeviceTableViewController ()
+
+@property (nonatomic, strong) ZJBLEDeviceManager *manager;
 
 @end
 
@@ -30,13 +33,9 @@
 
 - (void)initSettiing {
     self.title = @"设备列表";
+    self.manager = [ZJBLEDeviceManager shareManager];
     
-    [ZJBLEDeviceManager shareManagerDidUpdateStateHandle:^(ZJDeviceManagerState state) {
-        NSLog(@"state = %lu", (unsigned long)state);
-        if (state == ZJDeviceManagerStatePoweredOn) {
-            [self searchDevice];
-        }
-    }];
+    [self searchDevice];
 }
 
 - (void)searchDevice {
@@ -91,16 +90,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    ZJBLEDevice *device = [ZJBLEDeviceManager shareManager].discoveredBLEDevices[indexPath.row];
-    [[ZJBLEDeviceManager shareManager] connectBLEDevices:@[device] completion:^(ZJBLEDevice *device, BOOL connected, NSError *error) {
+    ZJBLEDevice *device = self.manager.discoveredBLEDevices[indexPath.row];
+    [self.manager connectBLEDevices:@[device] completion:^(ZJBLEDevice *device, ZJDeviceManagerConnectState state, NSError *error) {
+        if (state == ZJDeviceManagerConnectStateConnected) {
+            [device discoverServices:@[[CBUUID UUIDWithString:GLSEVUUID]] completion:^(CBService *sev, NSError *error) {
+                
+            }];
+        }else if (state == ZJDeviceManagerConnectStateConnectFail) {
+            [self.manager rescan];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
-        if (connected) {
-//            [device discoverServices:nil completion:^(CBCharacteristic *obj, NSError *error) {
-//
-//            }];
-        }
     }];
 }
 

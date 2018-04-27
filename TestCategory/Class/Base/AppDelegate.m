@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ZJBaseTabBarViewController.h"
+#import "ZJBLETool.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +25,10 @@
     
     ZJBaseTabBarViewController *vc = [ZJBaseTabBarViewController new];
     self.window.rootViewController = vc;
+    
+    [ZJBLEDeviceManager shareManagerDidUpdateStateHandle:^(ZJDeviceManagerState state) {
+        NSLog(@"state = %lu", (unsigned long)state);
+    }];
     
     return YES;
 }

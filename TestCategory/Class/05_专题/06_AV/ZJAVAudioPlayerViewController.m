@@ -43,7 +43,7 @@
 #pragma mark - AVAudioPlayerDelegate
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    NSLog(@"finish  : %zd", flag);
+    NSLog(@"finish  : %d", flag);
 }
 
 - (UIButton *)button {

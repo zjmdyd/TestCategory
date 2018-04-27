@@ -21,6 +21,15 @@ typedef NS_ENUM(NSUInteger, ZJDeviceManagerState) {
     ZJDeviceManagerStatePoweredOn,
 };
 
+/**
+ *  连接的状态
+ */
+typedef NS_ENUM(NSUInteger, ZJDeviceManagerConnectState) {
+    ZJDeviceManagerConnectStateDisconnect = 0,
+    ZJDeviceManagerConnectStateConnected,
+    ZJDeviceManagerConnectStateConnectFail,
+};
+
 @class ZJBLEDevice;
 
 /**
@@ -36,7 +45,7 @@ typedef void(^BLEScanCompletionHandle)(id obj);
 /**
  *  连接操作回调
  */
-typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, BOOL connected, NSError *error);
+typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, ZJDeviceManagerConnectState state, NSError *error);
 
 @interface ZJBLEDeviceManager : NSObject
 
@@ -51,11 +60,7 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, BOOL connected, N
 @property (nonatomic, strong, readonly) NSArray *connectedBLEDevices;
 
 @property(nonatomic, readonly) ZJDeviceManagerState state;
-
-/**
- *  设备断开之后是否自动执行搜索,默认为YES
- */
-@property (nonatomic, getter=isAutomScan) BOOL automScan;
+@property (nonatomic, assign) NSTimeInterval connectTimeOut;
 
 /**
  *  获取单例manager

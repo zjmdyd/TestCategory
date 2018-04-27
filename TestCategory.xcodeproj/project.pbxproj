@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380273A920930DF70020836A /* ZJBLEDevice+ZJTestBLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 380273A820930DF70020836A /* ZJBLEDevice+ZJTestBLE.m */; };
 		3820EB222091B92100DAE510 /* ZJNormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820EA852091B92100DAE510 /* ZJNormalViewController.m */; };
 		3820EB602091B92100DAE510 /* ZJBLEDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820EB0C2091B92100DAE510 /* ZJBLEDevice.m */; };
 		3820EB612091B92100DAE510 /* ZJBLEDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820EB0F2091B92100DAE510 /* ZJBLEDeviceManager.m */; };
@@ -253,6 +254,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		380273A720930DF70020836A /* ZJBLEDevice+ZJTestBLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZJBLEDevice+ZJTestBLE.h"; sourceTree = "<group>"; };
+		380273A820930DF70020836A /* ZJBLEDevice+ZJTestBLE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ZJBLEDevice+ZJTestBLE.m"; sourceTree = "<group>"; };
 		3820EA852091B92100DAE510 /* ZJNormalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNormalViewController.m; sourceTree = "<group>"; };
 		3820EA862091B92100DAE510 /* ZJNormalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNormalViewController.h; sourceTree = "<group>"; };
 		3820EB0B2091B92100DAE510 /* ZJBLEDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBLEDeviceManager.h; sourceTree = "<group>"; };
@@ -1491,6 +1494,8 @@
 			children = (
 				38822ACB1F98A27B00E8943F /* ZJSearchDeviceTableViewController.h */,
 				38822ACC1F98A27B00E8943F /* ZJSearchDeviceTableViewController.m */,
+				380273A720930DF70020836A /* ZJBLEDevice+ZJTestBLE.h */,
+				380273A820930DF70020836A /* ZJBLEDevice+ZJTestBLE.m */,
 				38822ACD1F98A27B00E8943F /* ZJTestBluetoothViewController.h */,
 				38822ACE1F98A27B00E8943F /* ZJTestBluetoothViewController.m */,
 				38822ACF1F98A27B00E8943F /* ZJTestBluetoothViewController.xib */,
@@ -2001,6 +2006,7 @@
 				382FE62F1F9F49500045939E /* ZJFlipAnimationViewController.m in Sources */,
 				387033E91DFAC37900426DA3 /* main.m in Sources */,
 				3820EC412091BA2000DAE510 /* ZJWebViewController.m in Sources */,
+				380273A920930DF70020836A /* ZJBLEDevice+ZJTestBLE.m in Sources */,
 				38822BC01F98A27B00E8943F /* ZJAVCaptureSessionTableViewController.m in Sources */,
 				38822B8D1F98A27B00E8943F /* ZJCAGraphicsTableViewController.m in Sources */,
 				3820EC1D2091B9F700DAE510 /* ZJSelectSexTableViewCell.m in Sources */,

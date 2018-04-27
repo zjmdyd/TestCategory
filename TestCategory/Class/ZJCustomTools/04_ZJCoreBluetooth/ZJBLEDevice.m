@@ -55,36 +55,11 @@
     [self.peripheral discoverServices:serviceUUIDs];
 }
 
-- (void)writeWithData:(NSData *)data type:(CBCharacteristicWriteType)type {
-    if (self.writeCharacteristic) {
-        [self.peripheral writeValue:data forCharacteristic:self.writeCharacteristic type:type];
-    }
-}
-
 #pragma mark - CBPeripheralDelegate
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error {
     NSLog(@"-->services = %@", peripheral.services);
     _services = peripheral.services;
-}
-
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
-    NSLog(@"-->characteristics = %@", service.characteristics);
-    
-}
-
-- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSLog(@"%s, %@", __func__, error);
-}
-
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
-    NSLog(@"%s", __func__);
-    NSLog(@"%@", characteristic);
-    NSLog(@"value = %@, len = %lu", characteristic.value, characteristic.value.length);
-}
-
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
-    NSLog(@"%s, %@", __func__, characteristic);
 }
 
 @end
