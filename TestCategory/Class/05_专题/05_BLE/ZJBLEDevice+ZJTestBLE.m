@@ -7,6 +7,7 @@
 //
 
 #import "ZJBLEDevice+ZJTestBLE.h"
+#include "ZJByteData.h"
 
 @implementation ZJBLEDevice (ZJTestBLE)
 
@@ -51,16 +52,15 @@
         
         // 值
         float idxValues[3] = {18.0, 16.81, 38.66};
-//        short value1 = [data valueWithIdx1:17 idx2:18];
-//        CGFloat value = value1 / idxValues[self.readDataType];
-//        
-//        NSLog(@"%d, %f", value1, value);
-//        if (self.valueCompletion) {
-//            if (self.readDataType == ReadDataTypeOfUA) {
-//                value = value * 0.1;
-//            }
-//            self.valueCompletion(YES, @(value), str, error);
-//        }
+        Byte bytes2[] = {bytes[18], bytes[17]};
+        
+        int value1 = valueWithIntBytes(bytes2, sizeof(bytes2)/sizeof(Byte));
+        float value = value1 / idxValues[0];
+        
+        NSLog(@"%d, %f", value1, value);
+        if (self.updateValueCompletion) {
+            self.updateValueCompletion(YES, @(value), error);
+        }
     }
 }
 

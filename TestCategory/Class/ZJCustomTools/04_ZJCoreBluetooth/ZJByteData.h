@@ -10,7 +10,9 @@
 #define ZJByteData_h
 
 #include <stdio.h>
-
+#include <MacTypes.h>
 #endif /* ZJByteData_h */
 
 extern uint16_t bitReverse(uint16_t us_DataIn);
+extern int valueWithIntBytes(Byte * bytes, uint16_t len);
+extern long valueWithLongBytes(Byte * bytes, uint16_t len);

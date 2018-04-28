@@ -54,6 +54,11 @@
     [self.peripheral discoverCharacteristics:characteristicUUIDs forService:service];
 }
 
+- (void)writeDataWithBytes:(Byte *)bytes length:(NSUInteger)len characteristic:(CBCharacteristic *)ct type:(CBCharacteristicWriteType)type {
+    NSData *data = [NSData dataWithBytes:bytes length:len];
+    [self.peripheral writeValue:data forCharacteristic:ct type:type];
+}
+
 #pragma mark - CBPeripheralDelegate
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error {
@@ -74,6 +79,14 @@
     if (self.discoverServiceCompletion) {
         self.discoverServiceCompletion(characteristic, ZJDeviceDiscoverTypeOfDealCharacteristic, error);
     }
+}
+
+@end
+
+@implementation CBCharacteristic (ZJCBCharacteristic)
+
+- (BOOL)isEqualUUID:(NSString *)uuid {
+    return [self.UUID.UUIDString isEqualToString:uuid];
 }
 
 @end

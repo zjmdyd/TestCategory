@@ -50,19 +50,12 @@ typedef void(^UpdateValueCompletionHandle)(BOOL success, id value, NSError *erro
 
 - (void)discoverServices:(NSArray<CBUUID *> *)serviceUUIDs completion:(DiscoverServiceCompletionHandle)completion;
 - (void)discoverCharacteristics:(NSArray<CBUUID *> *)characteristicUUIDs forService:(CBService *)service;
+- (void)writeDataWithBytes:(Byte *)bytes length:(NSUInteger)len characteristic:(CBCharacteristic *)ct type:(CBCharacteristicWriteType)type;
 
 @end
 
 @interface CBCharacteristic (ZJCBCharacteristic)
 
 - (BOOL)isEqualUUID:(NSString *)uuid;
-
-@end
-
-@implementation CBCharacteristic (ZJCBCharacteristic)
-
-- (BOOL)isEqualUUID:(NSString *)uuid {
-    return [self.UUID.UUIDString isEqualToString:uuid];
-}
 
 @end
