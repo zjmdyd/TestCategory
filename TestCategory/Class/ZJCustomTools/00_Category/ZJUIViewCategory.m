@@ -54,7 +54,7 @@
 }
 
 + (UIColor *)mainColor {
-    return kRGB16(0x124b81, 1);
+    return kRGB16(0xfa557a, 1);
 }
 
 + (UIColor *)assiColor1 {

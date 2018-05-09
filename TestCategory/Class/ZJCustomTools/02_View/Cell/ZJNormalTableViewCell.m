@@ -49,6 +49,7 @@
 
 - (void)setIVCornerRadius:(CGFloat)needCornerRadius {
     self.imageView.layer.cornerRadius = needCornerRadius;
+    self.imageView.layer.masksToBounds = YES;
 }
 
 - (void)awakeFromNib {

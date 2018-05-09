@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, TransitionDerection) {
  *  @param images 数组元素个数最多为2
  */
 - (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images;
-
+- (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images bageIndex:(NSInteger)index;
 
 #pragma mark - MentionView
 

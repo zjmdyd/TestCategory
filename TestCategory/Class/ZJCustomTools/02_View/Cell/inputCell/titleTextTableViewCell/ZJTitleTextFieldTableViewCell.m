@@ -47,6 +47,12 @@
     self.titleLabel.text = _title;
 }
 
+- (void)setTitleColor:(UIColor *)titleColor {
+    _titleColor = titleColor;
+    
+    self.titleLabel.textColor = _titleColor;
+}
+
 - (void)setText:(NSString *)text {
     _text = text;
     

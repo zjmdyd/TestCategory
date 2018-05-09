@@ -117,7 +117,7 @@
     
     self.iconIV.image = [UIImage imageNamed:_imgName];
     
-    self.iconWidthConstraint.constant = 25;
+    self.iconWidthConstraint.constant = 30;
     self.textFieldLeadingConstraint.constant = DefaultMargin;
 }
 

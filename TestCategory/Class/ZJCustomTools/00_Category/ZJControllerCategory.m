@@ -8,6 +8,7 @@
 
 #import "ZJControllerCategory.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "ZJUIViewCategory.h"
 
 @implementation ZJControllerCategory
 
@@ -126,7 +127,11 @@
     return [array copy];
 }
 
-- (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images {
+- (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images {    
+    return [self barButtonItemWithCustomViewWithImageNames:images bageIndex:-1];
+}
+
+- (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images bageIndex:(NSInteger)index {
     SEL s = NSSelectorFromString(barItemAction);
     
     CGFloat width = 30;
@@ -140,6 +145,10 @@
         [btn setImage:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [btn addTarget:self action:s forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:btn];
+        
+        if (i == index) {
+            [btn addIconBadgeWithText:@"" bgColor:[UIColor redColor]];
+        }
     }
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:view];
     

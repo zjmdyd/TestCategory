@@ -12,7 +12,7 @@
 
 @interface ZJIconSubTitleTableViewCell()
 
-@property (weak, nonatomic) IBOutlet ZJRoundImageView *iconIV;
+@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *accessoryTextLabel;
@@ -20,18 +20,33 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconLeftWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLeftConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *badgeLabel;
 
 @end
 
 @implementation ZJIconSubTitleTableViewCell
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (self.imgName) {
+        if ([self.imgName hasPrefix:@"http:"] || [self.imgName hasPrefix:@"assets-library:"]) {
+#ifdef SDWebImage
+            [self.iconIV sd_setImageWithURL:[NSURL URLWithString:self.imgName] placeholderImage:[UIImage imageNamed:self.iconPlaceholder] options:SDWebImageRefreshCached];
+#else
+            self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imgName]]];
+#endif
+        }else {
+            self.iconIV.image = [UIImage imageNamed:self.imgName] ?: [UIImage imageNamed:self.iconPlaceholder];
+        }
+    }
+}
+
 #pragma mark - setter
 
 - (void)setImgName:(NSString *)imgName {
     _imgName = imgName;
-    
-    [self.iconIV setImageWithPath:_imgName placeholdName:@"ic_tixing_152x152"];
-    
+        
     self.iconWidthConstraint.constant = 60;
     self.titleLeftConstraint.constant = DefaultMargin;
 }
@@ -75,9 +90,12 @@
 - (void)setRead:(BOOL)read {
     _read = read;
     if (!_read) {
-        [self.iconIV addIconBadgeWithText:@"" bgColor:[UIColor redColor]];
+        self.badgeLabel.hidden = NO;
+        self.badgeLabel.backgroundColor = [UIColor redColor];
+        self.badgeLabel.layer.cornerRadius = 5;
+        self.badgeLabel.layer.masksToBounds = YES;
     }else {
-        [self.iconIV removeIconBadge];
+        self.badgeLabel.hidden = YES;
     }
 }
 
@@ -91,6 +109,16 @@
     _needTitleLeftMargin = needTitleLeftMargin;
     
     self.titleLeftConstraint.constant = _needTitleLeftMargin ? DefaultMargin : FLT_EPSILON;
+}
+
+- (void)setNeedCornerRadius:(BOOL)needCornerRadius {
+    _needCornerRadius = needCornerRadius;
+    
+    if (_needCornerRadius) {
+        self.iconIV.layer.cornerRadius = 30;
+        self.iconIV.layer.masksToBounds = YES;
+//        self.iconIV.clipsToBounds = YES;
+    }
 }
 
 - (void)awakeFromNib {

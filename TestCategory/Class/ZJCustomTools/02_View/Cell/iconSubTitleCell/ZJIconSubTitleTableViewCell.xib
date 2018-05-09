@@ -44,13 +44,25 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRD-hg-5uo">
+                        <rect key="frame" x="66" y="9" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="0cK-ka-DhU"/>
+                            <constraint firstAttribute="width" secondItem="BRD-hg-5uo" secondAttribute="height" multiplier="1:1" id="JhP-5R-eG4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wtJ-Ys-rBg" firstAttribute="top" secondItem="8Q4-Nl-iqb" secondAttribute="bottom" constant="2" id="0PU-mD-9QC"/>
                     <constraint firstAttribute="trailing" secondItem="csQ-JP-1KR" secondAttribute="trailing" constant="8" id="Ctb-3n-olr"/>
                     <constraint firstItem="qln-qN-Dpn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="DAF-nZ-nT4"/>
                     <constraint firstItem="8Q4-Nl-iqb" firstAttribute="leading" secondItem="qln-qN-Dpn" secondAttribute="trailing" constant="8" id="LDu-o8-ktS"/>
+                    <constraint firstItem="BRD-hg-5uo" firstAttribute="trailing" secondItem="qln-qN-Dpn" secondAttribute="trailing" id="O8m-cj-haV"/>
                     <constraint firstItem="8Q4-Nl-iqb" firstAttribute="centerY" secondItem="qln-qN-Dpn" secondAttribute="centerY" constant="-11" id="QWh-RD-KOa"/>
+                    <constraint firstItem="BRD-hg-5uo" firstAttribute="top" secondItem="qln-qN-Dpn" secondAttribute="top" id="agQ-vs-KRd"/>
                     <constraint firstItem="csQ-JP-1KR" firstAttribute="centerY" secondItem="8Q4-Nl-iqb" secondAttribute="centerY" id="bcs-yl-K6z"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wtJ-Ys-rBg" secondAttribute="trailing" id="dOW-mm-eVK"/>
                     <constraint firstItem="wtJ-Ys-rBg" firstAttribute="leading" secondItem="8Q4-Nl-iqb" secondAttribute="leading" id="x6J-gV-K4l"/>
@@ -59,6 +71,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="accessoryTextLabel" destination="csQ-JP-1KR" id="NtM-sK-7Ko"/>
+                <outlet property="badgeLabel" destination="BRD-hg-5uo" id="sfB-fh-KVp"/>
                 <outlet property="iconIV" destination="qln-qN-Dpn" id="ayO-qq-Tl6"/>
                 <outlet property="iconLeftWidthConstraint" destination="DAF-nZ-nT4" id="N7d-1f-S7z"/>
                 <outlet property="iconWidthConstraint" destination="GHF-3c-mUc" id="Dxn-Eh-eA1"/>
@@ -66,7 +79,7 @@
                 <outlet property="titleLabel" destination="8Q4-Nl-iqb" id="jUM-ZK-Qxp"/>
                 <outlet property="titleLeftConstraint" destination="LDu-o8-ktS" id="gWx-T3-aXg"/>
             </connections>
-            <point key="canvasLocation" x="-6" y="-110"/>
+            <point key="canvasLocation" x="-186" y="-111"/>
         </tableViewCell>
     </objects>
 </document>

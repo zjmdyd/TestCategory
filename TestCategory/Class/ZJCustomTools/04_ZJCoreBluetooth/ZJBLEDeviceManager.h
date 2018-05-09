@@ -49,6 +49,8 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, ZJDeviceManagerCo
 
 @interface ZJBLEDeviceManager : NSObject
 
+@property (nonatomic, strong, readonly) CBCentralManager *centralManager;
+
 /**
  *  已发现的BLE设备
  */
@@ -58,6 +60,11 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, ZJDeviceManagerCo
  *  已连接的BLE设备
  */
 @property (nonatomic, strong, readonly) NSArray *connectedBLEDevices;
+
+/**
+ 系统已连接的设备
+ */
+@property (nonatomic, strong) NSMutableArray *retrieveBLEDevices;
 
 @property(nonatomic, readonly) ZJDeviceManagerState state;
 @property (nonatomic, assign) NSTimeInterval connectTimeOut;
@@ -96,6 +103,8 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, ZJDeviceManagerCo
  *  @param completion 断开连接后的回调
  */
 - (void)cancelBLEDevicesConnection:(NSArray<ZJBLEDevice *> *)devices completion:(BLEConnectCompletionHandle)completion;
+
+- (void)retrieveConnectedPeripheralsWithServices:(NSArray<CBUUID *> *)serviceUUIDs;
 
 /**
  *  重新扫描

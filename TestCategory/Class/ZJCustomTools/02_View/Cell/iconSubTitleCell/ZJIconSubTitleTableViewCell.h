@@ -11,6 +11,7 @@
 @interface ZJIconSubTitleTableViewCell : ZJNormalTableViewCell
 
 @property (nonatomic, copy) NSString *imgName;
+@property (nonatomic, copy) NSString *iconPlaceholder;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subTitle;
 @property (nonatomic, copy) NSString *accessoryText;
@@ -28,5 +29,6 @@
  icon左边距，默认为16
  */
 @property (nonatomic, assign) CGFloat iconLeftMargin;
+@property (nonatomic, assign) BOOL needCornerRadius;
 
 @end

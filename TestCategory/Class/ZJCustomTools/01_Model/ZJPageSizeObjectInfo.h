@@ -16,6 +16,7 @@
 
 @property (nonatomic, assign) BOOL needRefresh;
 @property (nonatomic, strong) NSDictionary *accessoryInfo;
+@property (nonatomic, assign) NSInteger otherIndex;
 
 - (void)appendObjects:(ZJPageSizeObjectInfo *)obj;
 

@@ -10,4 +10,19 @@
 
 @implementation ZJIconTitleCollectionViewCell
 
+- (void)setContentBgColor:(UIColor *)contentBgColor {
+    _contentBgColor = contentBgColor;
+    
+    self.contentView.backgroundColor = _contentBgColor;
+    self.backgroundColor = [UIColor clearColor];
+}
+
+- (void)setNeedCorner:(BOOL)needCorner {
+    _needCorner = needCorner;
+    if (needCorner) {
+        self.contentView.layer.cornerRadius = 10;
+        self.contentView.layer.masksToBounds = YES;
+    }
+}
+
 @end

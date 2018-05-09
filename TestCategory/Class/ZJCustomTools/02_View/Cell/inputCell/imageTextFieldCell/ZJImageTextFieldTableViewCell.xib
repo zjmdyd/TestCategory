@@ -33,7 +33,6 @@
                         <rect key="frame" x="252" y="9" width="60" height="26"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="A4p-36-e1t"/>
-                            <constraint firstAttribute="height" constant="26" id="kyc-0T-fhz"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="验证码"/>
@@ -44,16 +43,17 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="abL-eH-8nK">
                         <rect key="frame" x="16" y="7" width="30.5" height="29.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30.5" id="PVW-vD-Bbr"/>
+                            <constraint firstAttribute="width" constant="30.5" id="PVW-vD-Bbr"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uEM-uQ-nZg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4Zo-f4-tCZ"/>
                     <constraint firstItem="3Hp-xr-N2D" firstAttribute="leading" secondItem="abL-eH-8nK" secondAttribute="trailing" constant="8" id="5Nv-6X-90D"/>
+                    <constraint firstItem="uEM-uQ-nZg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="7BC-zg-1Oy"/>
                     <constraint firstItem="abL-eH-8nK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="CiX-Dw-L6U"/>
                     <constraint firstItem="abL-eH-8nK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="hbI-dE-urF"/>
                     <constraint firstItem="3Hp-xr-N2D" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="iDT-k2-F6b"/>
+                    <constraint firstAttribute="bottom" secondItem="uEM-uQ-nZg" secondAttribute="bottom" constant="8.5" id="jKy-Be-5cN"/>
                     <constraint firstItem="uEM-uQ-nZg" firstAttribute="leading" secondItem="3Hp-xr-N2D" secondAttribute="trailing" priority="750" constant="4" id="lcJ-BC-VZO"/>
                     <constraint firstAttribute="trailing" secondItem="uEM-uQ-nZg" secondAttribute="trailing" constant="8" id="tOC-m5-hBC"/>
                     <constraint firstAttribute="bottom" secondItem="abL-eH-8nK" secondAttribute="bottom" constant="7" id="yTW-nJ-zdv"/>
@@ -68,7 +68,7 @@
                 <outlet property="verifyButton" destination="uEM-uQ-nZg" id="UNT-NU-7z0"/>
                 <outlet property="verifyWidthConstraint" destination="A4p-36-e1t" id="Op1-Zk-3se"/>
             </connections>
-            <point key="canvasLocation" x="-2565" y="-1001"/>
+            <point key="canvasLocation" x="-2735" y="-992"/>
         </tableViewCell>
     </objects>
 </document>

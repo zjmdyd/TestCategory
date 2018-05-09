@@ -20,6 +20,7 @@
  */
 @property (nonatomic, assign) BOOL hiddenBottomBarWhenPushed;
 @property (nonatomic, assign) BOOL hiddenBackBarButtonItemTitle;
+@property (nonatomic, assign) BOOL needChangeExtendedLayout;
 
 @property (nonatomic, strong) UIColor *navigationBarBgColor;
 @property (nonatomic, strong) UIColor *navigationBarTintColor;

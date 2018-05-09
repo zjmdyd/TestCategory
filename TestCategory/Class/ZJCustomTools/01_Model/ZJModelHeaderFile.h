@@ -18,4 +18,4 @@
 #import "ZJStandarValueObj.h"
 #import "ZJTimeValueObject.h"
 #import "ZJValueObject.h"
-
+#import "ZJLocalizableController.h"

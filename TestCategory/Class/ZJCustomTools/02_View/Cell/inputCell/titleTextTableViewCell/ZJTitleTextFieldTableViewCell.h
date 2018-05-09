@@ -11,5 +11,6 @@
 @interface ZJTitleTextFieldTableViewCell : ZJInputTableViewCell
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, strong) UIColor *titleColor;
 
 @end

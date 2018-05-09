@@ -11,7 +11,8 @@
 @interface ZJRegisterView()
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
-@property (weak, nonatomic) IBOutlet UIButton *articleButton;
+@property (weak, nonatomic) IBOutlet UIButton *termsIconBtn;
+@property (weak, nonatomic) IBOutlet UIButton *termsButton;
 
 @end
 
@@ -23,10 +24,22 @@
     [self.button setTitle:_title forState:UIControlStateNormal];
 }
 
+- (void)setImgName:(NSString *)imgName {
+    _imgName = imgName;
+
+    [self.termsIconBtn setImage:[UIImage imageNamed:_imgName] forState:UIControlStateNormal];
+}
+
 - (void)setTitleColor:(UIColor *)titleColor {
     _titleColor = titleColor;
     
     [self.button setTitleColor:_titleColor forState:UIControlStateNormal];
+}
+
+- (void)setTermsColor:(UIColor *)termsColor {
+    _termsColor = termsColor;
+    
+    self.termsButton.tintColor = _termsColor;
 }
 
 - (void)setBgColor:(UIColor *)bgColor {

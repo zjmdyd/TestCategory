@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,35 +26,67 @@
                         <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="1wO-Wf-niu"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vo1-Pn-nyq">
-                    <rect key="frame" x="203" y="77" width="92" height="30"/>
-                    <state key="normal" title="《服务协议》">
-                        <color key="titleColor" red="0.69904893310000005" green="0.94696478080000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击下一步,即代表您已经同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHd-fq-L9F">
-                    <rect key="frame" x="17" y="83.5" width="190" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lv-ec-cQL">
+                    <rect key="frame" x="3" y="77" width="315" height="30"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2z-NV-1ut">
+                            <rect key="frame" x="0.0" y="2.5" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="82T-1G-mSL"/>
+                                <constraint firstAttribute="height" constant="25" id="wnK-VA-Wh7"/>
+                            </constraints>
+                            <state key="normal" image="ic_xuanze_gray_48x48"/>
+                            <connections>
+                                <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZYv-yf-bpx"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已阅读并接受" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJH-pH-npt">
+                            <rect key="frame" x="27" y="7" width="80" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTz-ul-zsY">
+                            <rect key="frame" x="107" y="0.0" width="92" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="《用户协议》"/>
+                            <connections>
+                                <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="fZi-4N-pbv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="J2z-NV-1ut" firstAttribute="leading" secondItem="2lv-ec-cQL" secondAttribute="leading" id="DQf-4v-lt6"/>
+                        <constraint firstItem="TTz-ul-zsY" firstAttribute="centerY" secondItem="2lv-ec-cQL" secondAttribute="centerY" id="IBp-He-eAs"/>
+                        <constraint firstItem="XJH-pH-npt" firstAttribute="leading" secondItem="J2z-NV-1ut" secondAttribute="trailing" constant="2" id="UDW-ET-Zu2"/>
+                        <constraint firstAttribute="height" constant="30" id="WI4-kp-cAS"/>
+                        <constraint firstItem="J2z-NV-1ut" firstAttribute="centerY" secondItem="2lv-ec-cQL" secondAttribute="centerY" id="jT8-Wp-f73"/>
+                        <constraint firstItem="XJH-pH-npt" firstAttribute="centerY" secondItem="2lv-ec-cQL" secondAttribute="centerY" id="tmo-fe-t2t"/>
+                        <constraint firstItem="TTz-ul-zsY" firstAttribute="leading" secondItem="XJH-pH-npt" secondAttribute="trailing" id="uUw-TA-yHU"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Vo1-Pn-nyq" firstAttribute="leading" secondItem="WHd-fq-L9F" secondAttribute="trailing" constant="-4" id="7PL-Kh-aHs"/>
+                <constraint firstItem="2lv-ec-cQL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="3" id="8Nz-nl-ill"/>
                 <constraint firstAttribute="trailing" secondItem="6m2-0o-gaY" secondAttribute="trailing" constant="25" id="Lde-Wp-kkQ"/>
+                <constraint firstItem="2lv-ec-cQL" firstAttribute="top" secondItem="6m2-0o-gaY" secondAttribute="bottom" constant="8" id="OT2-Vc-jwu"/>
                 <constraint firstItem="6m2-0o-gaY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="PEU-q7-ZFj"/>
-                <constraint firstItem="Vo1-Pn-nyq" firstAttribute="trailing" secondItem="6m2-0o-gaY" secondAttribute="trailing" id="PwD-i7-j4t"/>
-                <constraint firstItem="Vo1-Pn-nyq" firstAttribute="top" secondItem="6m2-0o-gaY" secondAttribute="bottom" constant="8" id="U7t-bA-IN4"/>
-                <constraint firstItem="WHd-fq-L9F" firstAttribute="centerY" secondItem="Vo1-Pn-nyq" secondAttribute="centerY" id="Ynp-gW-std"/>
+                <constraint firstAttribute="trailing" secondItem="2lv-ec-cQL" secondAttribute="trailing" constant="2" id="THN-yS-kmH"/>
                 <constraint firstItem="6m2-0o-gaY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="Z9M-Re-v2c"/>
+                <constraint firstAttribute="bottom" secondItem="2lv-ec-cQL" secondAttribute="bottom" constant="13" id="ldV-27-NYa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="articleButton" destination="Vo1-Pn-nyq" id="FrA-MH-29Q"/>
                 <outlet property="button" destination="6m2-0o-gaY" id="KAv-VX-OAN"/>
+                <outlet property="termsButton" destination="TTz-ul-zsY" id="stT-SS-aBy"/>
+                <outlet property="termsIconBtn" destination="J2z-NV-1ut" id="0fp-oq-Mzk"/>
             </connections>
-            <point key="canvasLocation" x="-48" y="54"/>
+            <point key="canvasLocation" x="-226" y="67"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_xuanze_gray_48x48" width="24" height="24"/>
+    </resources>
 </document>

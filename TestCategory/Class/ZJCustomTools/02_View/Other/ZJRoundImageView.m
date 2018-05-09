@@ -14,6 +14,7 @@
     [super layoutSubviews];
     
     self.layer.masksToBounds = YES;
+    self.clipsToBounds = YES;
     self.contentMode = UIViewContentModeScaleAspectFill;
     
     self.layer.cornerRadius = self.needCorneradius ? self.frame.size.width/2 : 0;

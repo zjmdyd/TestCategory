@@ -8,7 +8,7 @@
 
 #import "ZJTableViewController.h"
 
-@interface ZJTableViewController ()
+@interface ZJTableViewController ()<UIScrollViewDelegate>
 
 @end
 
@@ -23,15 +23,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    if (@available(iOS 11.0, *)) {
-        self.tableView.estimatedSectionHeaderHeight = 0;
-        self.tableView.estimatedSectionFooterHeight = 0;
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
+    self.enablePopGesture = YES;
+    self.needChangeExtendedLayout = YES;
     
-#ifdef DZNEmptyDataSetSource
+#ifdef DZNEmptyData
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     
@@ -41,6 +36,28 @@
 
 #ifdef MJRefreshNormal
 
+- (void)setNeedChangeExtendedLayout:(BOOL)needChangeExtendedLayout {
+    _needChangeExtendedLayout = needChangeExtendedLayout;
+    
+    if (_needChangeExtendedLayout) {
+        if (@available(iOS 11.0, *)) {
+            self.tableView.estimatedSectionHeaderHeight = 0;
+            self.tableView.estimatedSectionFooterHeight = 0;
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
+    }else {
+        if (@available(iOS 11.0, *)) {
+            self.tableView.estimatedSectionHeaderHeight = 0;
+            self.tableView.estimatedSectionFooterHeight = 0;
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = YES;
+        }
+    }
+}
+
 - (void)setNeedMJHeaderRefresh:(BOOL)needMJHeaderRefresh {
     _needMJHeaderRefresh = needMJHeaderRefresh;
     
@@ -48,6 +65,7 @@
         self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self mjRefreshEventWithType:RefreshEventTypeOfHeader];
         }];
+        self.tableView.mj_header.automaticallyChangeAlpha = YES;
     }else {
         self.tableView.mj_header = nil;
     }
@@ -56,7 +74,7 @@
 - (void)setNeedMJFooterRefresh:(BOOL)needMJFooterRefresh {
     _needMJFooterRefresh = needMJFooterRefresh;
     
-    if (_needMJFooterRefresh) {
+    if (_needMJFooterRefresh && !self.tableView.mj_footer) {
         self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             [self mjRefreshEventWithType:RefreshEventTypeOfFooter];
         }];
@@ -83,6 +101,10 @@
 #pragma maek - DZNEmptyDataSetSource
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    if (self.attrEmptyMessage) {
+        return self.attrEmptyMessage;
+    }
+    
     NSString *str = self.emptyMessage ?: @"暂无内容";
     return [[NSAttributedString alloc] initWithString:str attributes:@{
                                                                        NSFontAttributeName : [UIFont systemFontOfSize:19]
@@ -106,6 +128,20 @@
         UITableViewHeaderFooterView *fView = ((UITableViewHeaderFooterView *)view);
         fView.textLabel.font = [UIFont systemFontOfSize:15];
     }
+}
+
+#pragma mark -
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = self.enablePopGesture;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {

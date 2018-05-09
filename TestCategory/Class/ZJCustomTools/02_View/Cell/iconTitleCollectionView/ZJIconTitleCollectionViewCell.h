@@ -14,6 +14,7 @@
 
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *contentBgColor;
 
 @property (nonatomic, copy) NSString *iconPlaceholder;
 
@@ -21,5 +22,6 @@
 @property (nonatomic, assign) NSTextAlignment textAlignment;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @property (nonatomic, assign) CGFloat iconWidth;
+@property (nonatomic, assign) BOOL needCorner;
 
 @end

@@ -23,6 +23,7 @@
     self.navigationBarTranslucent = NO;
     self.hiddenBottomBarWhenPushed = YES;
     self.hiddenBackBarButtonItemTitle = YES;
+    self.needChangeExtendedLayout = YES;
     self.navigationBar.shadowImage = [UIImage new];
 
     self.delegate = self;
@@ -69,9 +70,12 @@
  *  此方法会在viewDidLoad之后调用
  */
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    if([viewController respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        viewController.edgesForExtendedLayout = UIRectEdgeNone;
+    if (self.needChangeExtendedLayout) {
+        if([viewController respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+            viewController.edgesForExtendedLayout = UIRectEdgeNone;
+        }
     }
+
     if (!self.hiddenBackBarButtonItemTitle) return;
     
     NSArray *viewControllerArray = self.viewControllers;

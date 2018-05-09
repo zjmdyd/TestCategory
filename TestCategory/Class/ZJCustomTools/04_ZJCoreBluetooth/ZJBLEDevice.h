@@ -45,6 +45,10 @@ typedef void(^UpdateValueCompletionHandle)(BOOL success, id value, NSError *erro
 @property (nonatomic, copy, readonly) NSString *identify;
 @property (nonatomic, strong, readonly) NSNumber *RSSI;
 @property (nonatomic, strong, readonly) NSArray *services;
+@property (nonatomic, assign, readonly) NSString *hardVersion;
+@property (nonatomic, assign, readonly) NSString *softerVersion;
+@property (nonatomic, assign, readonly) NSInteger hardIntVersion;
+@property (nonatomic, assign, readonly) NSInteger softerIntVersion;
 @property (nonatomic, strong) DiscoverServiceCompletionHandle discoverServiceCompletion;
 @property (nonatomic, strong) UpdateValueCompletionHandle updateValueCompletion;
 
