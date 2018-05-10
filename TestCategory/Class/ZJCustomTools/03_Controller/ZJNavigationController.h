@@ -25,6 +25,7 @@
 @property (nonatomic, strong) UIColor *navigationBarBgColor;
 @property (nonatomic, strong) UIColor *navigationBarTintColor;
 @property (nonatomic, strong) UIColor *navigationBarShadowColor;
+@property (nonatomic, strong) UIColor *navigationBarTitleColor;
 
 @property (nonatomic, strong) UIImage *navigationBarBgImage;
 

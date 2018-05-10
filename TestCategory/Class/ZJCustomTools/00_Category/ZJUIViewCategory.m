@@ -559,7 +559,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
         if ([view isKindOfClass:NSClassFromString(className)]) {
             return view;
         }else {
-            return [view fetchSubViewWithClassName:className];
+            [view fetchSubViewWithClassName:className];
         }
     }
     

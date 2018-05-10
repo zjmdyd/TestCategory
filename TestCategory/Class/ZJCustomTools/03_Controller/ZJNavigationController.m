@@ -59,6 +59,18 @@
     [self.navigationBar setBackgroundImage:_navigationBarBgImage forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
+- (void)setNavigationBarTitleColor:(UIColor *)navigationBarTitleColor {
+    _navigationBarTitleColor = navigationBarTitleColor;
+    
+    UIView *contentView = (UIView *)[self.navigationBar fetchSubViewWithClassName:@"_UINavigationBarContentView"];
+    if (contentView) {
+        UILabel *label = (UILabel *)[contentView fetchSubViewWithClassName:@"UILabel"];
+        if (label) {
+            label.textColor = _navigationBarTitleColor;
+        }
+    }
+}
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (self.hiddenBottomBarWhenPushed) {
         viewController.hidesBottomBarWhenPushed = YES;
