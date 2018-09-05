@@ -61,7 +61,7 @@
     
     if ([iconName hasPrefix:@"http:"] || [iconName hasPrefix:@"https:"]) {
 #ifdef ZJSDWebImage
-        [self.btn sd_setBackgroundImageWithURL:[NSURL URLWithString:iconName] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:self.placeholdIconPath]];
+        [self.btn sd_setBackgroundImageWithURL:[NSURL URLWithString:_iconName] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:self.placeholdIconPath]];
 #else
         [self.btn setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_iconName]]] forState:UIControlStateNormal];
 #endif

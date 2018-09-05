@@ -74,10 +74,8 @@ typedef NS_ENUM(NSInteger, ZJCollectionCellType) {
 @property(nullable, nonatomic,strong) UIColor *pageIndicatorTintColor;
 @property(nullable, nonatomic,strong) UIColor *currentPageIndicatorTintColor;
 
-@property (nonatomic, strong) NSArray *iconPlaceholders;
 @property (nonatomic, copy) NSString *iconPlaceholder;
 @property (nonatomic, copy) NSString *textPlaceholder;
-@property (nonatomic, copy) NSString *headerTitle;
 
 @property (nonatomic, assign) BOOL hiddenPageControl;
 

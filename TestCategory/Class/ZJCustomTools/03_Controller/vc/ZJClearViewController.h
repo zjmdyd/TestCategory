@@ -6,8 +6,8 @@
 //  Copyright © 2018 HY. All rights reserved.
 //
 
-#import "ZJTranslucentViewController.h"
+#import "ZJTransllucentViewController.h"
 
-@interface ZJClearViewController : ZJTranslucentViewController
+@interface ZJClearViewController : ZJTransllucentViewController
 
 @end

@@ -101,6 +101,8 @@
 
 - (void)setupQRCodeWithContent:(NSString *)content;
 
+- (void)needCornerRadius:(BOOL)need width:(CGFloat)width;
+
 @end
 
 #pragma mark - UILabel
@@ -178,8 +180,6 @@ static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 #pragma mark - UIView
 
 @interface UIView (ZJUIView)
-
-- (void)needCornerRadius:(BOOL)need width:(CGFloat)width;
 
 /**
  *  添加tap手势

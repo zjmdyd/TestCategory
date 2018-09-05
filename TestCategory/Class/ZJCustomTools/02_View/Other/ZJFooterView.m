@@ -109,7 +109,7 @@
 
 - (void)setNeedCornerRadius:(BOOL)needCornerRadius {
     _needCornerRadius = needCornerRadius;
-
+    
     self.button.layer.cornerRadius = _needCornerRadius ? DefaultMargin : FLT_EPSILON;
 }
 

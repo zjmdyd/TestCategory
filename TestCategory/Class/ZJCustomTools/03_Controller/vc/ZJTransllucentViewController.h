@@ -1,5 +1,5 @@
 //
-//  ZJTranslucentViewController.h
+//  ZJTransllucentViewController.h
 //  AoShiTong
 //
 //  Created by ZJ on 2018/8/2.
@@ -8,6 +8,6 @@
 
 #import "ZJNormalViewController.h"
 
-@interface ZJTranslucentViewController : ZJNormalViewController
+@interface ZJTransllucentViewController : ZJNormalViewController
 
 @end

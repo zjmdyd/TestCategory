@@ -31,7 +31,7 @@
 #import "ZJRefreshNoTransChoosePhotoTableViewController.h"
 
 #import "ZJNormalViewController.h"
-#import "ZJTranslucentViewController.h"
+#import "ZJTransllucentViewController.h"
 #import "ZJNoTranslentViewController.h"
 #import "ZJClearViewController.h"
 #import "ZJNormalCollectionViewController.h"

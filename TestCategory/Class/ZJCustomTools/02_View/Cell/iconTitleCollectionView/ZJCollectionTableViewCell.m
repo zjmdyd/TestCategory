@@ -9,7 +9,7 @@
 #import "ZJCollectionTableViewCell.h"
 #import "ZJIconTitleCollectionViewCell.h"
 #import "ZJIconTitleNormalCollectionViewCell.h"
-//#import "ZJDefine.h"
+#import "ZJDefine.h"
 
 @interface ZJCollectionTableViewCell ()<UICollectionViewDataSource, UICollectionViewDelegate, ZJIconTitleNormalCollectionViewCellDelegate>
 
@@ -19,23 +19,18 @@
 @property (nonatomic, copy  ) NSString *cellID;
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *marginConstraints;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet UILabel *headerTitleLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerTitleTopConstraint;
 
 @end
 
 @implementation ZJCollectionTableViewCell
 
-- (void)setHeaderTitle:(NSString *)headerTitle {
-    _headerTitle = headerTitle;
-    
-    self.headerTitleLabel.text = _headerTitle;
-    self.headerTitleTopConstraint.constant = _headerTitle.length ? 8 : 0;
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
 
+#ifdef MainColor
+    self.pageControl.currentPageIndicatorTintColor = [UIColor mainColor];
+    self.pageControl.pageIndicatorTintColor = [UIColor groupTableViewBackgroundColor];
+#endif
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     for (NSString *cellID in self.cellIDs) {
         [self.collectionView registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellWithReuseIdentifier:cellID];
@@ -58,7 +53,7 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat count = scrollView.contentOffset.x / [UIScreen mainScreen].bounds.size.width + 0.05;
+    CGFloat count = scrollView.contentOffset.x / kScreenW + 0.05;
     self.pageControl.currentPage = count;
 }
 
@@ -173,9 +168,7 @@
         cell.iconPath = self.iconPaths[indexPath.row];
         [cell setNeedsLayout];
     }
-    if (self.iconPlaceholders) {
-        cell.iconPlaceholder = self.iconPlaceholders[indexPath.row];
-    }else if (self.iconPlaceholder) {
+    if (self.iconPlaceholder) {
         cell.iconPlaceholder = self.iconPlaceholder;
     }
     if ([self.dataSource respondsToSelector:@selector(collectionTableViewCell:backgroundColorAtIndexPath:)]) {

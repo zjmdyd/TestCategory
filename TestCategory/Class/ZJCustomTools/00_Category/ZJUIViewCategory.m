@@ -47,11 +47,11 @@
 }
 
 + (UIColor *)mainColor {
-    return kRGB16(0x00c871, 1);
+    return kRGB16(0xcb1d22, 1);
 }
 
 + (UIColor *)assiColor1 {
-    return kRGB16(0xff0000, 1);
+    return kRGB16(0xff9800, 1);
 }
 
 + (UIColor *)assiColor2 {
@@ -316,6 +316,15 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     return resized;
 }
 
+- (void)needCornerRadius:(BOOL)need width:(CGFloat)width {
+    if (need) {
+        self.layer.cornerRadius = width;
+        self.layer.masksToBounds = YES;
+    }else {
+        self.layer.cornerRadius = 0;
+    }
+}
+
 @end
 
 
@@ -554,15 +563,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 #define  tapAction @"tapAction:"
 
 @implementation UIView (ZJUIView)
-
-- (void)needCornerRadius:(BOOL)need width:(CGFloat)width {
-    if (need) {
-        self.layer.cornerRadius = width;
-        self.layer.masksToBounds = YES;
-    }else {
-        self.layer.cornerRadius = 0;
-    }
-}
 
 - (void)addTapGestureWithDelegate:(id <UIGestureRecognizerDelegate>)delegate target:(id)target {
     SEL s = NSSelectorFromString(tapAction);

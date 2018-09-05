@@ -1,35 +1,22 @@
 //
-//  ZJChoosePhotoTableViewController.m
+//  ZJChoosePhotoTableViewController+ZJChoosePhoto.m
 //  WeiMing
 //
 //  Created by Zengjian on 2018/3/13.
 //  Copyright © 2018年 HY. All rights reserved.
 //
 
-#import "ZJChoosePhotoTableViewController.h"
+#import "ZJChoosePhotoTableViewController+ZJChoosePhoto.h"
 
-@interface ZJChoosePhotoTableViewController ()
-#if (defined ZJMMPopupView) && (defined ZJVPImageCropper) && (defined ZJMWPhotoBrowser)
-<VPImageCropperDelegate, MWPhotoBrowserDelegate>
-#endif
-
-@end
-
-@implementation ZJChoosePhotoTableViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
+@implementation ZJChoosePhotoTableViewController (ZJChoosePhoto)
 
 #pragma mark - 头像
 
 - (void)chooseImageIsAddNew:(BOOL)isAdd completion:(ChoosePhotoCompletion)cmpt {
     self.compeletion = cmpt;
-    
-#ifdef ZJMMPopupView
     __weak typeof(self) weakSelf = self;
     
+#ifdef ZJMMPopupView
     MMPopupItemHandler block = ^(NSInteger index) {
         switch (index) {
             case 0:
@@ -87,9 +74,7 @@
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         if (!portraitImg) {
-#ifdef ShowProgress
             ShowProgressView(@"此张照片格式不符合,请重新选择", 2.0, MBProgressHUDModeText); return;
-#endif
         }
         // present the cropper view controller
 #ifdef ZJVPImageCropper
@@ -180,53 +165,5 @@
     self.currentIdx = index;
     [self browserThePhoto];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
