@@ -8,6 +8,18 @@
 
 #import "ZJChoosePhotoTableViewController.h"
 
+#ifdef ZJMMPopupView
+#import <MMPopupView/MMSheetView.h>
+#endif
+
+#ifdef ZJVPImageCropper
+#import "VPImageCropperViewController.h"
+#endif
+
+#ifdef ZJMWPhotoBrowser
+#import "MWPhotoBrowser.h"
+#endif
+
 @interface ZJChoosePhotoTableViewController ()
 #if (defined ZJMMPopupView) && (defined ZJVPImageCropper) && (defined ZJMWPhotoBrowser)
 <VPImageCropperDelegate, MWPhotoBrowserDelegate>

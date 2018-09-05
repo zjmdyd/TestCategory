@@ -10,18 +10,6 @@
 
 typedef void(^ChoosePhotoCompletion)(BOOL success, NSString *path);
 
-#ifdef ZJMMPopupView
-#import <MMPopupView/MMSheetView.h>
-#endif
-
-#ifdef ZJVPImageCropper
-#import "VPImageCropperViewController.h"
-#endif
-
-#ifdef ZJMWPhotoBrowser
-#import "MWPhotoBrowser.h"
-#endif
-
 @interface ZJChoosePhotoTableViewController : ZJNormalTableViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, assign) NSInteger currentIdx;

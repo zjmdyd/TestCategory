@@ -153,6 +153,15 @@
     self.needChangeContentInsetAdjust = !translucent;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+ #ifdef ZJNaviCtrl
+    if (((ZJNavigationController *)self.navigationController).navigationBar.isTranslucent) {
+        [self setTranslucent:NO];
+    }
+#endif
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

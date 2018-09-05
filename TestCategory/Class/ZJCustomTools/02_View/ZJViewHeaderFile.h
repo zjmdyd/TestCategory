@@ -14,6 +14,7 @@
 #import "ZJAboutView.h"
 #import "ZJPicker.h"
 #import "ZJSelectButton.h"
+#import "ZJCornerButton.h"
 #import "ZJSelectLabel.h"
 #import "ZJSexView.h"
 

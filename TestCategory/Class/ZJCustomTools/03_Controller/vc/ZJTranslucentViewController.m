@@ -1,18 +1,18 @@
 //
-//  ZJTransllucentViewController.m
+//  ZJTranslucentViewController.m
 //  AoShiTong
 //
 //  Created by ZJ on 2018/8/2.
 //  Copyright © 2018 HY. All rights reserved.
 //
 
-#import "ZJTransllucentViewController.h"
+#import "ZJTranslucentViewController.h"
 
-@interface ZJTransllucentViewController ()
+@interface ZJTranslucentViewController ()
 
 @end
 
-@implementation ZJTransllucentViewController
+@implementation ZJTranslucentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
