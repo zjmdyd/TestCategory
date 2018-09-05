@@ -8,25 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#ifndef kScreenW
-
-#define kScreenW    ([UIScreen mainScreen].bounds.size.width)
-#define kScreenH    ([UIScreen mainScreen].bounds.size.height)
-
-#endif
-
-#define kNaviH    44
-#define kNaviBottoom    64
-
-#ifndef DefaultMargin
-
-#define DefaultMargin 8     // 默认边距
-
-#endif
-
-#define UIColorFromHex(s)  [UIColor colorWithRed:(((s&0xFF0000) >> 16))/255.0 green:(((s&0x00FF00) >> 8))/255.0 blue:(s&0x0000FF)/255.0 alpha:1.0]
-#define UIColorFromHexAlpha(s, a)  [UIColor colorWithRed:(((s&0xFF0000) >> 16))/255.0 green:(((s&0x00FF00) >> 8))/255.0 blue:(s&0x0000FF)/255.0 alpha:a]
-
 @interface ZJUIViewCategory : NSObject
 
 @end
@@ -68,6 +49,7 @@
 
 + (UIColor *)assiColor2;
 
++ (UIColor *)assiColor3;
 @end
 
 
@@ -75,7 +57,8 @@
 
 @interface UIImage (ZJImage)
 
-+ (UIImage *)imageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName size:(CGSize)size opaque:(BOOL)opaque;
++ (UIImage *)imageWithPath:(NSString *)path size:(CGSize)size opaque:(BOOL)opaque;
++ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placeholdName size:(CGSize)size opaque:(BOOL)opaque;
 
 /**
  *  根据颜色获取UIImage
@@ -112,20 +95,20 @@
  */
 @interface UIImageView (ZJImageView)
 
-- (void)setImageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName;
-+ (UIImageView *)createIVWithFrame:(CGRect)frame iconPath:(NSString *)path placehold:(NSString *)placehold;
++ (UIImageView *)createIVWithFrame:(CGRect)frame path:(NSString *)path;
++ (UIImageView *)createIVWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold;
+- (void)setImageWithPath:(NSString *)path placehold:(NSString *)placehold;
 
 - (void)setupQRCodeWithContent:(NSString *)content;
-
 
 @end
 
 #pragma mark - UILabel
 
-@interface UILabel (ZJLabel)
+@interface UILabel (ZJSelectLabel)
 
-+ (UILabel *)createLabelWithFrame:(CGRect)frame arrtText:(NSAttributedString *)text background:(UIColor *)color;
-+ (UILabel *)createLabelWithFrame:(CGRect)frame arrtText:(NSAttributedString *)text background:(UIColor *)color needCorner:(BOOL)need;
++ (UILabel *)createLabelWithFrame:(CGRect)frame text:(id)text background:(UIColor *)color;
++ (UILabel *)createLabelWithFrame:(CGRect)frame text:(id)text background:(UIColor *)color needCorner:(BOOL)need;
 
 /**
  *  根据文本内容适配Label高度
@@ -161,12 +144,14 @@
 - (void)registerCellWithSysIDs:(NSArray *)sysIDs;
 - (void)registerCellWithNibIDs:(NSArray *)nibIDs;
 - (void)registerCellWithNibIDs:(NSArray *)nibIDs sysIDs:(NSArray *)sysIDs;
+- (void)registerNibs:(NSArray *)nibIDs forSupplementaryViewOfKind:(NSString *)kind;
 
 @end
 
 #pragma mark - UITableView
 
 static NSString *const SystemTableViewCell = @"UITableViewCell";
+static NSString *const SystemNormalTableViewCell = @"ZJNormalTableViewCell";
 
 @interface UITableView (ZJTableView)
 
@@ -194,6 +179,8 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 
 @interface UIView (ZJUIView)
 
+- (void)needCornerRadius:(BOOL)need width:(CGFloat)width;
+
 /**
  *  添加tap手势
  *
@@ -205,11 +192,10 @@ static NSString *const SystemTableViewCell = @"UITableViewCell";
 + (UIView *)maskViewWithFrame:(CGRect)frame;
 - (UIView *)subViewWithTag:(NSInteger)tag;
 - (UIView *)fetchSubViewWithClassName:(NSString *)className;
+- (UIView *)fetchSuperViewWithClassName:(NSString *)className;
 
-+ (UIView *)createNibViewWithNibName:(NSString *)name frame:(CGRect)frame;
-+ (UIView *)createNibViewWithNibName:(NSString *)name frame:(CGRect)frame needWrap:(BOOL)need;
-
-+ (UIView *)createTitleIVWithFrame:(CGRect)frame iconPath:(NSString *)path placehold:(NSString *)placehold title:(NSString *)title;
+// 左文字右图片
++ (UIView *)createTitleIVWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold title:(NSString *)title;
 
 #pragma mark - supplementView
 
@@ -293,5 +279,7 @@ typedef NS_ENUM(NSInteger, Direction) {
 #pragma mark - UISearchBar
 
 @interface UISearchBar (ZJSearchBar)
+
+- (void)setCancelBtnTitleColor:(UIColor *)color;
 
 @end

@@ -64,7 +64,7 @@
                 <outletCollection property="sexViews" destination="PZX-DV-0L9" id="U2M-PM-ept"/>
                 <outletCollection property="sexViews" destination="VmP-te-sYz" id="WsY-5E-I88"/>
             </connections>
-            <point key="canvasLocation" x="-85" y="-128"/>
+            <point key="canvasLocation" x="-255" y="-124"/>
         </tableViewCell>
     </objects>
 </document>

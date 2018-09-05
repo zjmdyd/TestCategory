@@ -21,35 +21,24 @@ typedef NS_ENUM(NSUInteger, ZJDeviceManagerState) {
     ZJDeviceManagerStatePoweredOn,
 };
 
-/**
- *  连接的状态
- */
-typedef NS_ENUM(NSUInteger, ZJDeviceManagerConnectState) {
-    ZJDeviceManagerConnectStateDisconnect = 0,
-    ZJDeviceManagerConnectStateConnected,
-    ZJDeviceManagerConnectStateConnectFail,
-};
-
 @class ZJBLEDevice;
 
 /**
- *  状态回调
+ *  状态
  */
 typedef void(^BLERefreshStateCompletionHandle)(ZJDeviceManagerState state);
 
 /**
  *  回调方法里面主要执行刷新界面的代码
  */
-typedef void(^BLEScanCompletionHandle)(id obj);
+typedef void(^BLERefreshCompletionHandle)(id obj);
 
 /**
  *  连接操作回调
  */
-typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, ZJDeviceManagerConnectState state, NSError *error);
+typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, BOOL connected, NSError *error);
 
 @interface ZJBLEDeviceManager : NSObject
-
-@property (nonatomic, strong, readonly) CBCentralManager *centralManager;
 
 /**
  *  已发现的BLE设备
@@ -61,13 +50,13 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, ZJDeviceManagerCo
  */
 @property (nonatomic, strong, readonly) NSArray *connectedBLEDevices;
 
-/**
- 系统已连接的设备
- */
-@property (nonatomic, strong) NSMutableArray *retrieveBLEDevices;
-
 @property(nonatomic, readonly) ZJDeviceManagerState state;
-@property (nonatomic, assign) NSTimeInterval connectTimeOut;
+
+/**
+ *  设备断开之后是否自动执行搜索,默认为YES
+ */
+@property (nonatomic, getter=isAutomScan) BOOL automScan;
+@property (nonatomic, copy) NSString *accessPrefix;
 
 /**
  *  获取单例manager
@@ -84,9 +73,9 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, ZJDeviceManagerCo
  *  @param uuids      搜索包含服务特定服务uuid的设备
  *  @param completion 搜索结果的回调
  */
-- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BLEScanCompletionHandle)completion;
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids completion:(BLERefreshCompletionHandle)completion;
 
-- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids prefix:(NSString *)prefix completion:(BLEScanCompletionHandle)completion;
+- (void)scanDeviceWithServiceUUIDs:(NSArray<CBUUID *> *)uuids prefix:(NSString *)prefix completion:(BLERefreshCompletionHandle)completion;
 
 /**
  *  连接设备
@@ -103,8 +92,6 @@ typedef void(^BLEConnectCompletionHandle)(ZJBLEDevice *device, ZJDeviceManagerCo
  *  @param completion 断开连接后的回调
  */
 - (void)cancelBLEDevicesConnection:(NSArray<ZJBLEDevice *> *)devices completion:(BLEConnectCompletionHandle)completion;
-
-- (void)retrieveConnectedPeripheralsWithServices:(NSArray<CBUUID *> *)serviceUUIDs;
 
 /**
  *  重新扫描

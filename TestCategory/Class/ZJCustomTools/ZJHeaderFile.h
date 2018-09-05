@@ -9,11 +9,15 @@
 #ifndef ZJHeaderFile_h
 #define ZJHeaderFile_h
 
-
-#endif /* ZJHeaderFile_h */
-
+#import "ZJDefine.h"
 #import "ZJCategoryHeaderFile.h"
 #import "ZJModelHeaderFile.h"
 #import "ZJViewHeaderFile.h"
 #import "ZJControllerHeaderFile.h"
-#import "ZJBLETool.h"
+//#import "ZJBLETool.h"
+#include "ZJByteData.h"
+#import "ZJNetRequestHeaderFile.h"
+
+#endif /* ZJHeaderFile_h */
+
+

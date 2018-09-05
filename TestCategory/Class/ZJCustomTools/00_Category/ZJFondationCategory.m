@@ -8,6 +8,10 @@
 
 #import "ZJFondationCategory.h"
 
+// 方法弃用警告
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 @implementation ZJFondationCategory
 
 @end
@@ -62,6 +66,19 @@
 
 @implementation NSString (ZJString)
 
+- (NSString *)birthDayStringWithSeparate:(NSString *)separate {
+    if (self.length < 8) return @"";
+    
+    NSString *separateString = separate;
+    if (separateString.length) {
+        separateString = @"-";
+    }
+    NSString *year = [self substringToIndex:4];
+    NSString *month = [self substringWithRange:NSMakeRange(4, 2)];
+    NSString *day = [self substringFromIndex:6];
+    return [NSString stringWithFormat:@"%@%@%@%@%@", year, separateString, month, separateString ,day];
+}
+
 + (NSString *)stringWithFileName:(NSString *)name {
     NSError *error;
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:name];
@@ -72,10 +89,6 @@
     return string;
 }
 
-+ (NSArray *)sexStrings {
-    return @[@"男", @"女"];
-}
-
 - (NSString *)pinYin {
     NSMutableString *mutableString = [NSMutableString stringWithString:self];
     CFStringTransform((CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, false);
@@ -83,7 +96,6 @@
     
     return mutableString;
 }
-
 
 - (NSDictionary *)jsonStringToDic {
     if (self == nil) return nil;
@@ -100,8 +112,45 @@
     return dic;
 }
 
-+ (NSString *)timestampString {
-    return @((NSInteger)[[NSDate date] timeIntervalSince1970]).stringValue;
+- (NSString *)checkSysConflictKey {
+    NSArray *sysKeys = @[@"operator"];
+    for (NSString *key in sysKeys) {
+        if ([self isEqualToString:key]) {
+            return [NSString stringWithFormat:@"i_%@", self];
+        }
+    }
+    
+    return self;
+}
+
+#pragma 字符串编码
+
+- (NSString *)URLEncodedString {
+    NSString *unencodedString = self;
+    if (!unencodedString) return nil;
+    
+    NSString *encodedString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)unencodedString,
+                                                              NULL,
+                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                              kCFStringEncodingUTF8));
+    
+    return encodedString;
+}
+
+/**
+ *  URLDecode
+ */
+- (NSString *)URLDecodedString {
+    NSString *encodedString = self;
+    if (!encodedString) return nil;
+    
+    NSString *decodedString  = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL,
+                                                                                                                     (__bridge CFStringRef)encodedString,
+                                                                                                                     CFSTR(""),
+                                                                                                                     CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    return decodedString;
 }
 
 - (BOOL)isOnlinePic {
@@ -110,6 +159,25 @@
     }
     
     return NO;
+}
+
+- (NSString *)pathWithParam:(id)param {
+    return [NSString stringWithFormat:@"%@/%@", self, param];
+}
+
+// 去除标签的方法
+- (NSString *)filterHTML {
+    NSString *html = self;
+    NSScanner * scanner = [NSScanner scannerWithString:html];
+    NSString * text = nil;
+    while([scanner isAtEnd] == NO) {
+        [scanner scanUpToString:@"<" intoString:nil];
+        [scanner scanUpToString:@">" intoString:&text];
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
+        //去除空格
+        html = [html stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
+    return html;
 }
 
 #pragma mark - 属性字符串 1
@@ -491,6 +559,78 @@
     return count > 0;
 }
 
+//手机号正则
+- (BOOL)isValidPhone {
+    NSString * MOBIL = @"^1(3[0-9]|4[579]|5[0-35-9]|7[01356]|8[0-9]|9[0-9])\\d{8}$";
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBIL];
+    if ([regextestmobile evaluateWithObject:self]) {
+        return YES;
+    }
+    return NO;
+}
+
+//身份证号正则
+- (BOOL)isValidID {
+    //长度不为18的都排除掉
+    if (self.length != 18) return NO;
+    
+    //校验格式
+    NSString *regex2 = @"^(^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$)|(^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])((\\d{4})|\\d{3}[Xx])$)$";
+    NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex2];
+    BOOL flag = [identityCardPredicate evaluateWithObject:self];
+    
+    if (!flag) {
+        return flag;    // 格式错误
+    }else {
+        //格式正确在判断是否合法
+        
+        //将前17位加权因子保存在数组里
+        NSArray * idCardWiArray = @[@"7", @"9", @"10", @"5", @"8", @"4", @"2", @"1", @"6", @"3", @"7", @"9", @"10", @"5", @"8", @"4", @"2"];
+        
+        //这是除以11后，可能产生的11位余数、验证码，也保存成数组
+        NSArray * idCardYArray = @[@"1", @"0", @"10", @"9", @"8", @"7", @"6", @"5", @"4", @"3", @"2"];
+        
+        //用来保存前17位各自乖以加权因子后的总和
+        NSInteger idCardWiSum = 0;
+        for(int i = 0;i < 17;i++)
+        {
+            NSInteger subStrIndex = [[self substringWithRange:NSMakeRange(i, 1)] integerValue];
+            NSInteger idCardWiIndex = [[idCardWiArray objectAtIndex:i] integerValue];
+            
+            idCardWiSum+= subStrIndex * idCardWiIndex;
+            
+        }
+        
+        //计算出校验码所在数组的位置
+        NSInteger idCardMod=idCardWiSum%11;
+        
+        //得到最后一位身份证号码
+        NSString * idCardLast= [self substringWithRange:NSMakeRange(17, 1)];
+        
+        //如果等于2，则说明校验码是10，身份证号码最后一位应该是X
+        if(idCardMod==2)
+        {
+            if([idCardLast isEqualToString:@"X"]||[idCardLast isEqualToString:@"x"])
+            {
+                return YES;
+            }else
+            {
+                return NO;
+            }
+        }else{
+            //用计算出的验证码与最后一位身份证号码匹配，如果一致，说明通过，否则是无效的身份证号码
+            if([idCardLast isEqualToString: [idCardYArray objectAtIndex:idCardMod]])
+            {
+                return YES;
+            }
+            else
+            {
+                return NO;
+            }
+        }
+    }
+}
+
 @end
 
 
@@ -512,6 +652,206 @@
 #pragma mark - NSArray
 
 @implementation NSArray (ZJNSArray)
+
++ (NSInteger)sexIndexWithName:(NSString *)name {
+    NSArray *sexs = [self sexStrings];
+    for (int i = 0; i < sexs.count; i++) {
+        NSString *str = sexs[i];
+        if ([str isEqualToString:name]) {
+            return i;
+        }
+    }
+    
+    return 0;
+}
+
++ (NSArray *)sexStrings {
+    return @[@"男", @"女"];
+}
+
++ (NSInteger)nationIndexWithName:(NSString *)name {
+    NSArray *nations = [self nationArray];
+    for (NSDictionary *dic in nations) {
+        if ([dic[@"value"] isEqualToString:name]) {
+            return [dic[@"key"] integerValue];
+        }
+    }
+    
+    return 1;
+}
+
++ (NSArray *)nationArray {
+    return @[
+             @{
+                 @"key": @"1", @"value": @"汉族"
+                 },
+             @{
+                 @"key": @"2", @"value": @"蒙古族"
+                 },
+             @{
+                 @"key": @"3", @"value": @"回族"
+                 },
+             @{
+                 @"key": @"4", @"value": @"藏族"
+                 },
+             @{
+                 @"key": @"5", @"value": @"维吾尔族"
+                 },
+             @{
+                 @"key": @"6", @"value": @"苗族"
+                 },
+             @{
+                 @"key": @"7", @"value": @"彝族"
+                 },
+             @{
+                 @"key": @"8", @"value": @"壮族"
+                 },
+             @{
+                 @"key": @"9", @"value": @"布依族"
+                 },
+             @{
+                 @"key": @"10", @"value": @"朝鲜族"
+                 },
+             @{
+                 @"key": @"11", @"value": @"满族"
+                 },
+             @{
+                 @"key": @"12", @"value": @"侗族"
+                 },
+             @{
+                 @"key": @"13", @"value": @"瑶族"
+                 },
+             @{
+                 @"key": @"14", @"value": @"白族"
+                 },
+             @{
+                 @"key": @"15", @"value": @"土家族"
+                 },
+             @{
+                 @"key": @"16", @"value": @"哈尼族"
+                 },
+             @{
+                 @"key": @"17", @"value": @"哈萨克族"
+                 },
+             @{
+                 @"key": @"18", @"value": @"傣族"
+                 },
+             @{
+                 @"key": @"19", @"value": @"黎族"
+                 },
+             @{
+                 @"key": @"20", @"value": @"傈僳族"
+                 },
+             @{
+                 @"key": @"21", @"value": @"佤族"
+                 },
+             @{
+                 @"key": @"22", @"value": @"畲族"
+                 },
+             @{
+                 @"key": @"23", @"value": @"高山族"
+                 },
+             @{
+                 @"key": @"24", @"value": @"拉祜族"
+                 },
+             @{
+                 @"key": @"25", @"value": @"水族"
+                 },
+             @{
+                 @"key": @"26", @"value": @"东乡族"
+                 },
+             @{
+                 @"key": @"27", @"value": @"纳西族"
+                 },
+             @{
+                 @"key": @"28", @"value": @"景颇族"
+                 },
+             @{
+                 @"key": @"29", @"value": @"柯尔克孜族"
+                 },
+             @{
+                 @"key": @"30", @"value": @"土族"
+                 },
+             @{
+                 @"key": @"31", @"value": @"达斡尔族"
+                 },
+             @{
+                 @"key": @"32", @"value": @"仫佬族"
+                 },
+             @{
+                 @"key": @"33", @"value": @"羌族"
+                 },
+             @{
+                 @"key": @"34", @"value": @"布朗族"
+                 },
+             @{
+                 @"key": @"35", @"value": @"撒拉族"
+                 },
+             @{
+                 @"key": @"36", @"value": @"毛难族"
+                 },
+             @{
+                 @"key": @"37", @"value": @"仡佬族"
+                 },
+             @{
+                 @"key": @"38", @"value": @"锡伯族"
+                 },
+             @{
+                 @"key": @"39", @"value": @"阿昌族"
+                 },
+             @{
+                 @"key": @"40", @"value": @"普米族"
+                 },
+             @{
+                 @"key": @"41", @"value": @"塔吉克族"
+                 },
+             @{
+                 @"key": @"42", @"value": @"怒族"
+                 },
+             @{
+                 @"key": @"43", @"value": @"乌孜别克族"
+                 },
+             @{
+                 @"key": @"44", @"value": @"俄罗斯族"
+                 },
+             @{
+                 @"key": @"45", @"value": @"鄂温克族"
+                 },
+             @{
+                 @"key": @"46", @"value": @"崩龙族"
+                 },
+             @{
+                 @"key": @"47", @"value": @"保安族"
+                 },
+             @{
+                 @"key": @"48", @"value": @"裕固族"
+                 },
+             @{
+                 @"key": @"49", @"value": @"京族"
+                 },
+             @{
+                 @"key": @"50", @"value": @"塔塔尔族"
+                 },
+             @{
+                 @"key": @"51", @"value": @"独龙族"
+                 },
+             @{
+                 @"key": @"52", @"value": @"鄂伦春族"
+                 },
+             @{
+                 @"key": @"53", @"value": @"赫哲族"
+                 },
+             @{
+                 @"key": @"54", @"value": @"门巴族"
+                 },
+             @{
+                 @"key": @"55", @"value": @"珞巴族"
+                 },
+             @{
+                 @"key": @"56", @"value": @"基诺族"
+                 }
+             ];
+}
 
 #pragma mark - 处理数据
 
@@ -620,6 +960,21 @@
     return string;
 }
 
+- (NSString *)joinToStringWithSeparateString:(NSString *)str indexs:(NSArray *)indexs beganIdx:(NSInteger)index {
+    if (![self isKindOfClass:[NSArray class]]) return @"";
+    
+    NSMutableString *string = [NSMutableString string];
+    for (int i = 0; i < indexs.count; i++) {
+        NSInteger idx = [indexs[i] integerValue];
+        if (i < indexs.count - 1) {
+            [string appendString:[NSString stringWithFormat:@"%@%@", self[idx-index], str]];
+        }else {
+            [string appendString:self[idx-index]];
+        }
+    }
+    return string;
+}
+
 @end
 
 
@@ -669,12 +1024,41 @@
     [self replaceObjectAtIndex:indexPath.row withObject:dic];
 }
 
+- (NSString *)stringValueFormIndex:(NSInteger)index {
+    NSMutableString *str = @"".mutableCopy;
+    for (NSInteger i = index; i < self.count; i++) {
+        [str appendString:self[i]];
+    }
+    
+    return str;
+}
+
 @end
 
 
 #pragma mark - NSDictionary
 
 @implementation NSDictionary (ZJDictionary)
+
+- (NSDictionary *)noNullDic {
+    NSMutableDictionary *dic = self.mutableCopy;
+    
+    for (NSString *key in dic.allKeys) {
+        if ([dic[key] isKindOfClass:[NSNull class]]) {
+            dic[key] = @"";
+        }
+    }
+    return dic;
+}
+
+- (void)jsonToModel:(id)obj {
+    for (NSString *key in self.allKeys) {
+        NSString *key0 = [key checkSysConflictKey];
+        if ([[obj objectProperties] containString:key0]) {
+            [obj setValue:self[key] forKey:key0];
+        }
+    }
+}
 
 - (BOOL)containsKey:(NSString *)key {
     for (NSString *str in self.allKeys) {
@@ -744,7 +1128,18 @@
 }
 
 - (NSString *)timestampString {
-    return @((NSInteger)[[NSDate date] timeIntervalSince1970]).stringValue;
+    return @((NSInteger)[self timeIntervalSince1970]).stringValue;
+}
+
++ (NSString *)todayTimestampString {
+    return [[NSDate date] timestampString];
+}
+
+- (NSTimeInterval)timestampSpanWithOther:(NSDate *)date {
+    NSTimeInterval time1 = [self timeIntervalSince1970];
+    NSTimeInterval time2 = [date timeIntervalSince1970];
+    
+    return time1 - time2;
 }
 
 #pragma mark - 年龄
@@ -823,7 +1218,22 @@
     return @"参数错误";
 }
 
-- (NSDate *)firsDaytOfWeek {
+- (NSInteger)weekDayIndex {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit
+                                         fromDate:self];
+    
+    // 得到星期几
+    // 1(星期天) 2(星期一) 3(星期二) 4(星期三) 5(星期四) 6(星期五) 7(星期六)
+    NSInteger weekDay = [comp weekday];
+    if (weekDay == 1) {
+        return 7;
+    }else {
+        return weekDay - 1;
+    }
+}
+
+- (NSDate *)firsDateOfWeek {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *comp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit
                                          fromDate:self];
@@ -850,7 +1260,7 @@
     return firstDayOfWeek;
 }
 
-- (NSDate *)lastDaytOfWeek {
+- (NSDate *)lastDateOfWeek {
     NSDate *now = [NSDate dateWithDaySpan:3 sinceDate:[NSDate date]];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *comp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit

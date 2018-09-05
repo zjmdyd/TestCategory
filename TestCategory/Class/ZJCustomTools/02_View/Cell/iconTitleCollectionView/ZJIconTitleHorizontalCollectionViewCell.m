@@ -10,9 +10,7 @@
 
 @interface ZJIconTitleHorizontalCollectionViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 
 @end
 
@@ -20,47 +18,34 @@
 
 @synthesize text = _text;
 @synthesize textColor = _textColor;
-@synthesize textAlignment = _textAlignment;
-@synthesize iconWidth = _iconWidth;
+@synthesize iconPath = _iconPath;
+
+- (void)setText:(NSString *)text {
+    _text = text;
+    
+    [self.btn setTitle:_text forState:UIControlStateNormal];
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    
+    [self.btn setTitleColor:_textColor forState:UIControlStateNormal];
+}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     if (self.iconPath) {
         if ([self.iconPath hasPrefix:@"http:"] || [self.iconPath hasPrefix:@"assets-library:"]) {
-#ifdef SDWebImage
-            [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.iconPath] placeholderImage:[UIImage imageNamed:self.iconPlaceholder] options:SDWebImageRefreshCached];
+#ifdef ZJSDWebImage
+            [self.btn sd_setImageWithURL:[NSURL URLWithString:_iconPath] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:self.iconPlaceholder]];
 #else
-            self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.iconPath]]];
+            [self.btn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_iconPath]]] forState:UIControlStateNormal];
 #endif
         }else {
-            self.imageView.image = [UIImage imageNamed:self.iconPath] ?: [UIImage imageNamed:self.iconPlaceholder];
-        }
+            UIImage *image = [UIImage imageNamed:_iconPath] ?: [UIImage imageNamed:self.iconPlaceholder];
+            [self.btn setImage:image forState:UIControlStateNormal];        }
     }
-}
-
-- (void)setText:(NSString *)text {
-    _text = text;
-    
-    self.textLabel.text = _text?:@"";
-}
-
-- (void)setTextColor:(UIColor *)textColor {
-    _textColor = textColor;
-    
-    self.textLabel.textColor = _textColor;
-}
-
-- (void)setTextAlignment:(NSTextAlignment)textAlignment {
-    _textAlignment = textAlignment;
-    
-    self.textLabel.textAlignment = _textAlignment;
-}
-
-- (void)setIconWidth:(CGFloat)iconWidth {
-    _iconWidth = iconWidth;
-    
-    self.widthConstraint.constant = _iconWidth;
 }
 
 - (void)awakeFromNib {

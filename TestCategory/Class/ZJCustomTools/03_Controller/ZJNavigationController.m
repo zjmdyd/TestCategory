@@ -7,9 +7,33 @@
 //
 
 #import "ZJNavigationController.h"
-#import "ZJUIViewCategory.h"
 
 @interface ZJNavigationController ()
+
+@end
+
+@implementation UIImage(NaviColor)
+
++ (UIImage *)imageWithColor:(UIColor *)color {
+    return [self createImageWithColor:color frame:CGRectMake(0.0f, 0.0f, 1.0f, 1.0f)];
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color frame:(CGRect)frame {
+    return [self createImageWithColor:color frame:frame];
+}
+
++ (UIImage *)createImageWithColor:(UIColor *)color frame:(CGRect)frame {
+    UIGraphicsBeginImageContext(frame.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, frame);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
 
 @end
 
@@ -21,9 +45,9 @@
     [super viewDidLoad];
 
     self.navigationBarTranslucent = NO;
+    self.needChangeExtendedLayout = YES;
     self.hiddenBottomBarWhenPushed = YES;
     self.hiddenBackBarButtonItemTitle = YES;
-    self.needChangeExtendedLayout = YES;
     self.navigationBar.shadowImage = [UIImage new];
 
     self.delegate = self;
@@ -59,18 +83,6 @@
     [self.navigationBar setBackgroundImage:_navigationBarBgImage forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
-- (void)setNavigationBarTitleColor:(UIColor *)navigationBarTitleColor {
-    _navigationBarTitleColor = navigationBarTitleColor;
-    
-    UIView *contentView = (UIView *)[self.navigationBar fetchSubViewWithClassName:@"_UINavigationBarContentView"];
-    if (contentView) {
-        UILabel *label = (UILabel *)[contentView fetchSubViewWithClassName:@"UILabel"];
-        if (label) {
-            label.textColor = _navigationBarTitleColor;
-        }
-    }
-}
-
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (self.hiddenBottomBarWhenPushed) {
         viewController.hidesBottomBarWhenPushed = YES;
@@ -87,7 +99,6 @@
             viewController.edgesForExtendedLayout = UIRectEdgeNone;
         }
     }
-
     if (!self.hiddenBackBarButtonItemTitle) return;
     
     NSArray *viewControllerArray = self.viewControllers;

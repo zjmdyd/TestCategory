@@ -45,6 +45,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+#ifdef MainColor
+    [self.regButton setTitleColor:[UIColor mainColor] forState:UIControlStateNormal];
+#endif
     self.button.layer.cornerRadius = 8.0;
 }
 

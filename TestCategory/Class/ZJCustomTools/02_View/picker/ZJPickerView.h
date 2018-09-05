@@ -44,6 +44,7 @@
 @property (nonatomic, weak) id <ZJPickerViewDelegate> delegate;
 
 @property(nonatomic, readonly) NSInteger numberOfComponents;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 /**
  *  底部的topView

@@ -7,13 +7,27 @@
 //
 
 #import "ZJNormalTableViewCell.h"
-#import "UIViewExt.h"
+#import "ZJDefine.h"
 
-#ifndef DefaultMargin
+@implementation UIView(FitFrameView)
 
-#define DefaultMargin 8     // 默认边距
+- (CGFloat) left {
+    return self.frame.origin.x;
+}
 
-#endif
+- (void) setLeft: (CGFloat) newleft {
+    CGRect newframe = self.frame;
+    newframe.origin.x = newleft;
+    self.frame = newframe;
+}
+
+- (void) setHeight: (CGFloat) newheight {
+    CGRect newframe = self.frame;
+    newframe.size.height = newheight;
+    self.frame = newframe;
+}
+
+@end
 
 @implementation ZJNormalTableViewCell
 
@@ -49,7 +63,13 @@
 
 - (void)setIVCornerRadius:(CGFloat)needCornerRadius {
     self.imageView.layer.cornerRadius = needCornerRadius;
-    self.imageView.layer.masksToBounds = YES;
+}
+
+- (void)fitTextFont:(UIFont *)font {
+    if (font) {
+        self.textLabel.font = font;
+        self.detailTextLabel.font = font;
+    }
 }
 
 - (void)awakeFromNib {

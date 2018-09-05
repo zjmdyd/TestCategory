@@ -37,9 +37,4 @@ typedef void(^CompletionHandle)(BOOL finish);
 
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated completion:(CompletionHandle)completion;
 
-/**
- 使用XIB时更新子视图
- */
-- (void)updateUIWithBounds:(CGRect)bounds;
-
 @end

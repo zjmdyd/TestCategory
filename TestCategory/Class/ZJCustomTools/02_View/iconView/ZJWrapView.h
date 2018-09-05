@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UIView *wrapView;
 
++ (UIView *)createNibViewWithNibName:(NSString *)name frame:(CGRect)frame needWrap:(BOOL)need;
+
 @end

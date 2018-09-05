@@ -34,18 +34,15 @@ typedef NS_ENUM(NSInteger, TransitionDerection) {
 
 @interface UIViewController (ZJViewController)
 
+#pragma mark - 系统分享
+
+- (void)systemShareWithIcon:(NSString *)icon path:(NSString *)path;
+
 - (UIViewController *)preControllerWithIndex:(NSInteger)index;
-/**
- *  根据控制器名字创建控制器
- */
-- (UIViewController *)createVCWithName:(NSString *)name;
-- (UIViewController *)createVCWithName:(NSString *)name isGroupTableVC:(BOOL)isGroup;
-- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title;
-- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title isGroupTableVC:(BOOL)isGroup;
 
 #pragma mark - UIBarButtonItem
 
-- (UIBarButtonItem *)barbuttonWithTitle:(NSString *)type;
+- (UIBarButtonItem *)barbuttonWithTitle:(NSString *)title;
 - (UIBarButtonItem *)barButtonWithImageName:(NSString *)imgName;
 - (UIBarButtonItem *)barbuttonWithSystemType:(UIBarButtonSystemItem)type;
 
@@ -60,7 +57,8 @@ typedef NS_ENUM(NSInteger, TransitionDerection) {
  *  @param images 数组元素个数最多为2
  */
 - (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images;
-- (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images bageIndex:(NSInteger)index;
+
+- (void)popToVCWithName:(NSString *)name;
 
 #pragma mark - MentionView
 

@@ -40,5 +40,6 @@
  默认为YES
  */
 @property (nonatomic, assign) BOOL needCornerRadius;
+@property (nonatomic, assign) BOOL enableEvent;
 
 @end

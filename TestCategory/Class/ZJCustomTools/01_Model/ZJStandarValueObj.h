@@ -6,9 +6,9 @@
 //  Copyright © 2016 ZJ. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ZJValueObject.h"
 
-@interface ZJStandarValueObj : NSObject
+@interface ZJStandarValueObj : ZJValueObject
 
 @property (nonatomic, strong) NSString *higherValue;
 @property (nonatomic, strong) NSString *lowerValue;

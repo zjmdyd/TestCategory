@@ -19,6 +19,17 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)notiRefreshEvent:(NSNotification *)noti {
+    self.needRefresh = YES;
+}
+
+- (void)setTranslucent:(BOOL)translucent {
+#ifdef ZJNaviCtrl
+    ((ZJNavigationController *)self.navigationController).needChangeExtendedLayout = !translucent;
+    ((ZJNavigationController *)self.navigationController).navigationBarTranslucent = translucent;
+#endif
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

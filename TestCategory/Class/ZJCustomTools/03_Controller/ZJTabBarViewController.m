@@ -7,8 +7,7 @@
 //
 
 #import "ZJTabBarViewController.h"
-#import "UIViewExt.h"
-#import "ZJUIViewCategory.h"
+#import "ZJDefine.h"
 
 @interface ZJTabBarViewController ()<UIScrollViewDelegate> {
     NSMutableArray *_titles, *_scrButtons;
@@ -25,11 +24,46 @@
 
 @end
 
-#define kToolBarH 44
-#define kLineOffsetX 8
-#define kTabBarHeight 49
-#define kNaviBarHeight 44
-#define kStatusBarH 20
+@implementation UILabel(FitSizeLabel)
+
++ (CGSize)fitSizeWithMargin:(CGFloat)margin text:(NSString *)text font:(UIFont *)font {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.text = text;
+    if (font) label.font = font;
+        label.numberOfLines = 0;
+        
+        if (margin < 0) {
+            margin = DefaultMargin;
+        }
+    CGFloat width = kScreenW - 2*margin;
+    CGSize size = [label sizeThatFits:CGSizeMake(width, MAXFLOAT)];
+    
+    return size;
+}
+
+@end
+
+@implementation UIView(FitFrameView)
+
+- (CGFloat) left
+{
+    return self.frame.origin.x;
+}
+
+- (void) setLeft: (CGFloat) newleft {
+    CGRect newframe = self.frame;
+    newframe.origin.x = newleft;
+    self.frame = newframe;
+}
+
+- (void) setHeight: (CGFloat) newheight
+{
+    CGRect newframe = self.frame;
+    newframe.size.height = newheight;
+    self.frame = newframe;
+}
+
+@end
 
 @implementation ZJTabBarViewController
 
@@ -60,7 +94,7 @@
 }
 
 - (void)initSetting {
-    self.view.height = _height;
+//    self.view.height = _height;
     self.view.backgroundColor = [UIColor whiteColor];
     _selectEnable = YES;
     
@@ -78,9 +112,9 @@
 - (void)createScrollView {
     [self.view addSubview:self.topScrollView];
     [self.topScrollView addSubview:self.lineView];
-    self.offsetX = kStatusBarH;
+    self.offsetX = 0;//kStatusBarH;
 
-    _mainViewH = self.view.height - self.offsetX - self.topScrollView.height;
+    _mainViewH = self.view.frame.size.height - self.offsetX - self.topScrollView.frame.size.height;
     if (self.hidesBottomBarWhenPushed == NO) {
         _mainViewH -= kTabBarHeight;
     }
@@ -99,13 +133,13 @@
         [btn setTitle:vc.title forState:UIControlStateNormal];
         [_scrButtons addObject:btn];
         
-        CGFloat width = [UILabel fitSizeWithMargin:0 text:vc.title font:[UIFont systemFontOfSize:14]].width+kLineOffsetX*2;
-        btn.frame = CGRectMake(totalWidth, 0, width, self.topScrollView.height);
+        CGFloat width = [UILabel fitSizeWithMargin:0 text:vc.title font:[UIFont systemFontOfSize:14]].width+DefaultMargin*2;
+        btn.frame = CGRectMake(totalWidth, 0, width, self.topScrollView.frame.size.height);
         totalWidth += width;
         
         if (i == 0) {
             _currentVC = vc;
-            self.lineView.frame = CGRectMake(btn.left+kLineOffsetX, self.topScrollView.height - 3.0f, btn.width  - kLineOffsetX*2, 2);
+            self.lineView.frame = CGRectMake(btn.frame.origin.x+DefaultMargin, self.topScrollView.frame.size.height - 3.0f, btn.frame.size.width  - DefaultMargin*2, 2);
             [btn setTitleColor:self.currentTitleColor forState:UIControlStateNormal];
         }else {
             [btn setTitleColor:self.titleColor forState:UIControlStateNormal];
@@ -113,14 +147,14 @@
         [btn addTarget:self action:@selector(btnEvent:) forControlEvents:UIControlEventTouchUpInside];
         [self.topScrollView addSubview:btn];
         
-        vc.view.frame = CGRectMake(i*kScreenW, 0, kScreenW, self.mainScrollView.height);
+        vc.view.frame = CGRectMake(i*kScreenW, 0, kScreenW, self.mainScrollView.frame.size.height);
         [self.mainScrollView addSubview:vc.view];
     }
     if (totalWidth < kScreenW) {
         CGFloat offset = (kScreenW - totalWidth) / (_viewControllers.count+1);
         for (UIButton *btn in _scrButtons) {
             btn.left += offset*(btn.tag+1);
-            if (btn.tag == 0) _lineView.left = btn.left+kLineOffsetX;
+            if (btn.tag == 0) _lineView.left = btn.frame.origin.x+DefaultMargin;
         }
     }
     self.topScrollView.contentSize = CGSizeMake(totalWidth, 0);
@@ -154,8 +188,8 @@
 }
 
 - (void)adjustTopScrollViewContentOffset:(UIButton *)sender {
-    if (sender.left + sender.width > self.topScrollView.width) {
-        CGFloat offsetX = sender.left + sender.width - self.topScrollView.width;
+    if (sender.frame.origin.x + sender.frame.size.width > self.topScrollView.frame.size.width) {
+        CGFloat offsetX = sender.frame.origin.x + sender.frame.size.width - self.topScrollView.frame.size.width;
         if (sender.tag < _viewControllers.count - 1) offsetX += 40;
         [self.topScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
     }else {
@@ -165,7 +199,7 @@
 
 - (void)selectButtonItem:(UIButton *)sender {
     [UIView animateWithDuration:.2 animations:^{
-        self.lineView.frame = CGRectMake(sender.left + kLineOffsetX, self.lineView.top, sender.width - kLineOffsetX*2, self.lineView.height);
+        self.lineView.frame = CGRectMake(sender.frame.origin.x + DefaultMargin, self.lineView.frame.origin.y, sender.frame.size.width - DefaultMargin*2, self.lineView.frame.size.height);
     } completion:^(BOOL finished) {
         [self changeButtonTitleColor:sender];
     }];
@@ -239,7 +273,7 @@
 - (UIScrollView *)topScrollView {
     if (!_topScrollView) {
         
-        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.hiddenNavigationBar ? self.offsetX : 0, kScreenW, kToolBarH)];
+        _topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.hiddenNavigationBar ? self.offsetX : 0, kScreenW, kNaviBarHeight)];
         _topScrollView.directionalLockEnabled = YES;
         _topScrollView.showsHorizontalScrollIndicator = NO;
         _topScrollView.backgroundColor = self.topViewBgColor;
@@ -259,7 +293,7 @@
 
 - (UIScrollView *)mainScrollView {
     if (!_mainScrollView) {
-        _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, _topScrollView.bottom, kScreenW, _mainViewH)];
+        _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, _topScrollView.frame.origin.y + _topScrollView.frame.size.height, kScreenW, _mainViewH)];
         _mainScrollView.pagingEnabled = YES;
         _mainScrollView.delegate = self;
         _mainScrollView.showsHorizontalScrollIndicator = NO;

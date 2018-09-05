@@ -9,9 +9,6 @@
 #ifndef ZJInput_h
 #define ZJInput_h
 
-
-#endif /* ZJInput_h */
-
 #import "ZJImageTextFieldTableViewCell.h"
 #import "ZJTitleTextFieldTableViewCell.h"
 #import "ZJTextViewTableViewCell.h"
@@ -19,3 +16,7 @@
 static NSString *const ImageTextFieldTabViewCell = @"ZJImageTextFieldTableViewCell";
 static NSString *const TitleTextFieldTableViewCell = @"ZJTitleTextFieldTableViewCell";
 static NSString *const TextViewTableViewCell = @"ZJTextViewTableViewCell";
+
+#endif /* ZJInput_h */
+
+

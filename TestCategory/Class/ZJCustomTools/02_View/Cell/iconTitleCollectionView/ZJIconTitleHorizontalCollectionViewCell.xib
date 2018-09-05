@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,36 +19,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f3x-RO-yev" customClass="ZJRoundImageView">
-                        <rect key="frame" x="128" y="8" width="64" height="64"/>
+                    <button opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8BR-hw-B5G">
+                        <rect key="frame" x="40" y="10" width="120" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="64" id="Tgq-Om-gfr"/>
-                            <constraint firstAttribute="width" secondItem="f3x-RO-yev" secondAttribute="height" multiplier="1:1" id="zn1-yy-0I1"/>
+                            <constraint firstAttribute="height" constant="60" id="QE4-LT-Tv5"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIY-xP-Dz5">
-                        <rect key="frame" x="8" y="30" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="尿酸" image="ic_xuezhi_114x114">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="WIY-xP-Dz5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="AB0-Jm-wTq"/>
-                <constraint firstItem="f3x-RO-yev" firstAttribute="centerY" secondItem="WIY-xP-Dz5" secondAttribute="centerY" id="Io9-Z9-av9"/>
-                <constraint firstItem="WIY-xP-Dz5" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="K2B-0B-kO7"/>
-                <constraint firstAttribute="trailing" secondItem="f3x-RO-yev" secondAttribute="trailing" constant="8" id="Ril-VH-exe"/>
-                <constraint firstItem="f3x-RO-yev" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WIY-xP-Dz5" secondAttribute="trailing" constant="2" id="njV-Fb-yDk"/>
+                <constraint firstItem="8BR-hw-B5G" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="9cG-Ag-Yns"/>
+                <constraint firstItem="8BR-hw-B5G" firstAttribute="width" secondItem="8BR-hw-B5G" secondAttribute="height" multiplier="2:1" id="AQm-XR-IKn"/>
+                <constraint firstItem="8BR-hw-B5G" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="scN-Js-6IJ"/>
             </constraints>
             <size key="customSize" width="210" height="91"/>
             <connections>
-                <outlet property="imageView" destination="f3x-RO-yev" id="kMX-eQ-iEn"/>
-                <outlet property="textLabel" destination="WIY-xP-Dz5" id="Lek-ib-ns5"/>
-                <outlet property="widthConstraint" destination="Tgq-Om-gfr" id="SSA-WU-ChE"/>
+                <outlet property="btn" destination="8BR-hw-B5G" id="Y7D-I4-pgw"/>
             </connections>
-            <point key="canvasLocation" x="-2046" y="-81"/>
+            <point key="canvasLocation" x="-1856" y="-75"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_xuezhi_114x114" width="57" height="57"/>
+    </resources>
 </document>

@@ -9,17 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
-/**
- *  处理服务和特征的状态
- */
-typedef NS_ENUM(NSUInteger, ZJDeviceDiscoverType) {
-    ZJDeviceDiscoverTypeOfServices = 0,
-    ZJDeviceDiscoverTypeOfCharacteristics,
-    ZJDeviceDiscoverTypeOfDealCharacteristic,  // 处理特征 设置notify
+typedef NS_ENUM(NSInteger, ReadDataType) {
+    ReadDataTypeOfGL,       // 血糖
+    ReadDataTypeOfUA,       // 尿酸
+    ReadDataTypeOfBF,       // 血脂
+    ReadDataTypeOfBP,       // 血压
+    ReadDataTypeOfTZ,       // 体脂
+    ReadDataTypeOfBFCardio, // 卡迪克血脂
 };
 
-typedef void(^DiscoverServiceCompletionHandle)(id obj, ZJDeviceDiscoverType type, NSError *error);
-typedef void(^UpdateValueCompletionHandle)(BOOL success, id value, NSError *error);
+typedef void(^DeviceDiscoverServiceCompletionHandle)(CBCharacteristic *obj, NSError *error);
+typedef void(^DeviceUpdateValueCompletionHandle)(BOOL success, id value, NSString *time, NSError *error);
 
 @interface ZJBLEDevice : NSObject
 
@@ -45,21 +45,15 @@ typedef void(^UpdateValueCompletionHandle)(BOOL success, id value, NSError *erro
 @property (nonatomic, copy, readonly) NSString *identify;
 @property (nonatomic, strong, readonly) NSNumber *RSSI;
 @property (nonatomic, strong, readonly) NSArray *services;
-@property (nonatomic, assign, readonly) NSString *hardVersion;
-@property (nonatomic, assign, readonly) NSString *softerVersion;
-@property (nonatomic, assign, readonly) NSInteger hardIntVersion;
-@property (nonatomic, assign, readonly) NSInteger softerIntVersion;
-@property (nonatomic, strong) DiscoverServiceCompletionHandle discoverServiceCompletion;
-@property (nonatomic, strong) UpdateValueCompletionHandle updateValueCompletion;
+@property (nonatomic, strong) NSData *kCBAdvDataManufacturerData;
+@property (nonatomic, assign) BOOL isSecreat;   // 是否是私有协议
+@property (nonatomic, assign) BOOL isSecreat2;   // 是否是私有协议2
+@property (nonatomic, assign) BOOL hasRegister;
+@property (nonatomic, strong) NSData *manufacturerData;
+@property (nonatomic, assign) Byte *deviceID;
 
-- (void)discoverServices:(NSArray<CBUUID *> *)serviceUUIDs completion:(DiscoverServiceCompletionHandle)completion;
-- (void)discoverCharacteristics:(NSArray<CBUUID *> *)characteristicUUIDs forService:(CBService *)service;
-- (void)writeDataWithBytes:(Byte *)bytes length:(NSUInteger)len characteristic:(CBCharacteristic *)ct type:(CBCharacteristicWriteType)type;
+- (void)discoverServices:(NSArray<CBUUID *> *)serviceUUIDs completion:(DeviceDiscoverServiceCompletionHandle)completion;
 
-@end
-
-@interface CBCharacteristic (ZJCBCharacteristic)
-
-- (BOOL)isEqualUUID:(NSString *)uuid;
+- (void)readValueWithType:(ReadDataType)type completion:(DeviceUpdateValueCompletionHandle)completion;
 
 @end

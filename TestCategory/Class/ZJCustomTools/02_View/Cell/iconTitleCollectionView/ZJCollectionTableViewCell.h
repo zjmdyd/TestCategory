@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *const CollectionTableViewCell = @"ZJCollectionTableViewCell";
+static NSString *const IconTitleNormalCollectionViewCell = @"ZJIconTitleNormalCollectionViewCell";
+static NSString *const IconTitleVerticalCollectionCell = @"ZJIconTitleVerticalCollectionViewCell";
+static NSString *const IconTitleHorizontalCollectionCell = @"ZJIconTitleHorizontalCollectionViewCell";
+static NSString *const IconTitleHorizontalCollectionCell1 = @"ZJIconTitleHorizontalCollectionViewCell1";
+
 @class ZJCollectionTableViewCell;
 
 @protocol ZJCollectionTableViewCellDataSource <NSObject>
@@ -42,7 +48,8 @@
 typedef NS_ENUM(NSInteger, ZJCollectionCellType) {
     ZJCollectionCellTypeOfNormalIconTitle,
     ZJCollectionCellTypeOfIconTitleVertical,
-    ZJCollectionCellTypeOfIconTitleHorizontal
+    ZJCollectionCellTypeOfIconTitleHorizontal,
+    ZJCollectionCellTypeOfIconTitleHorizontal1,
 };
 
 @interface ZJCollectionTableViewCell : UITableViewCell
@@ -54,8 +61,8 @@ typedef NS_ENUM(NSInteger, ZJCollectionCellType) {
 @property (nonatomic, weak) id <ZJCollectionTableViewCellDelegate> delegate;
 
 @property (nonatomic, assign) CGSize itemSize;
-@property (nonatomic, assign) CGFloat minimumLineSpacing;       // 默认为10
-@property (nonatomic, assign) CGFloat minimumInteritemSpacing;  // 默认为10
+@property (nonatomic, assign) CGFloat minimumLineSpacing;       // 默认为0
+@property (nonatomic, assign) CGFloat minimumInteritemSpacing;  // 默认为0
 @property (nonatomic, assign) UIEdgeInsets sectionInset;
 @property (nonatomic, assign) CGFloat margin;
 @property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;
@@ -64,9 +71,15 @@ typedef NS_ENUM(NSInteger, ZJCollectionCellType) {
 @property (nonatomic, assign) BOOL selectEnabled;
 
 @property (nonatomic, strong) UIColor *contentBgColor;
+@property(nullable, nonatomic,strong) UIColor *pageIndicatorTintColor;
+@property(nullable, nonatomic,strong) UIColor *currentPageIndicatorTintColor;
+
+@property (nonatomic, strong) NSArray *iconPlaceholders;
 @property (nonatomic, copy) NSString *iconPlaceholder;
 @property (nonatomic, copy) NSString *textPlaceholder;
-@property (nonatomic, assign) NSTextAlignment textAlignment;
+@property (nonatomic, copy) NSString *headerTitle;
+
+@property (nonatomic, assign) BOOL hiddenPageControl;
 
 - (void)reload;
 

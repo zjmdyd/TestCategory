@@ -9,8 +9,9 @@
 #ifndef ZJQRCodeView_h
 #define ZJQRCodeView_h
 
+#import "ZJQRView.h"
+#import "ZJQRCodeViewController.h"
 
 #endif /* ZJQRCodeView_h */
 
-#import "ZJQRView.h"
-#import "ZJQRCodeViewController.h"
+

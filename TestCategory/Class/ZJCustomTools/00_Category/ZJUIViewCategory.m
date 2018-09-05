@@ -7,18 +7,11 @@
 //
 
 #import "ZJUIViewCategory.h"
-#import "ZJFondationCategory.h"
-#import "ZJRoundImageView.h"
-#import "ZJWrapView.h"
-#import "UIViewExt.h"
-
-#define kRGBA(r, g, b, a)       [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:(a)]
-#define kRGB16(value,a)         [UIColor colorWithRed:((float)((value & 0xFF0000) >> 16))/255.0 green:((float)((value & 0xFF00) >> 8))/255.0 blue:((float)(value & 0xFF))/255.0 alpha:a]
+#import "ZJDefine.h"
 
 @implementation ZJUIViewCategory
 
 @end
-
 
 #pragma mark - UIBarButtonItem
 
@@ -54,15 +47,19 @@
 }
 
 + (UIColor *)mainColor {
-    return kRGB16(0xfa557a, 1);
+    return kRGB16(0x00c871, 1);
 }
 
 + (UIColor *)assiColor1 {
-    return kRGB16(0xfdbd34, 1);
+    return kRGB16(0xff0000, 1);
 }
 
 + (UIColor *)assiColor2 {
-    return kRGB16(0xfffef1, 1);
+    return kRGB16(0x0ec600, 1);
+}
+
++ (UIColor *)assiColor3 {
+    return kRGB16(0xB3CA81, 1);
 }
 
 @end
@@ -72,7 +69,11 @@
 
 @implementation UIImage (ZJImage)
 
-+ (UIImage *)imageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName size:(CGSize)size opaque:(BOOL)opaque {
++ (UIImage *)imageWithPath:(NSString *)path size:(CGSize)size opaque:(BOOL)opaque {    
+    return [UIImage imageWithPath:path placehold:@"" size:size opaque:opaque];
+}
+
++ (UIImage *)imageWithPath:(NSString *)path placehold:(NSString *)placeholdName size:(CGSize)size opaque:(BOOL)opaque {
     UIImage *icon;
     if ([path hasPrefix:@"http:"]) {
         icon = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
@@ -237,26 +238,36 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 @implementation UIImageView (ZJImageView)
 
-+ (UIImageView *)createIVWithFrame:(CGRect)frame iconPath:(NSString *)path placehold:(NSString *)placehold {
-    ZJRoundImageView *iv = [[ZJRoundImageView alloc] initWithFrame:frame];
-    [iv setImageWithPath:path placeholdName:placehold];
++ (UIImageView *)createIVWithFrame:(CGRect)frame path:(NSString *)path {
+    return [self createIVWithFrame:frame path:path placehold:path];
+}
+
++ (UIImageView *)createIVWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold {
+    UIImageView *iv = [[UIImageView alloc] initWithFrame:frame];
+    iv.clipsToBounds = YES;
+    iv.contentMode = UIViewContentModeScaleAspectFill;
+    [iv setImageWithPath:path placehold:placehold];
     
     return iv;
 }
 
-- (void)setImageWithPath:(NSString *)path placeholdName:(NSString *)placeholdName {
-    if (path.length == 0) {
-        path = placeholdName;
+- (void)setImageWithPath:(NSString *)path placehold:(NSString *)placehold {
+    if (!placehold.length) {
+        placehold = @"";
     }
-    if ([path isOnlinePic]) {
+    if (!path.length) {
+        path = placehold;
+    }
+    
+    if ([path hasPrefix:@"http:"] || [path hasPrefix:@"https:"]) {
         
-#ifdef SDWebImage
-        [self sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:placeholdName] options:SDWebImageRefreshCached];
+#ifdef ZJSDWebImage
+        [self sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:placehold] options:SDWebImageRefreshCached];
 #else
         self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:path]]];
 #endif
     }else {
-        self.image = [UIImage imageNamed:path]?:[UIImage imageNamed:placeholdName];
+        self.image = [UIImage imageNamed:path];
     }
 }
 
@@ -310,15 +321,19 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 #pragma mark - UILabel
 
-@implementation UILabel (ZJLabel)
+@implementation UILabel (ZJSelectLabel)
 
-+ (UILabel *)createLabelWithFrame:(CGRect)frame arrtText:(NSAttributedString *)text background:(UIColor *)color {
-    return [UILabel createLabelWithFrame:frame arrtText:text background:color needCorner:NO];
++ (UILabel *)createLabelWithFrame:(CGRect)frame text:(id)text background:(UIColor *)color {
+    return [UILabel createLabelWithFrame:frame text:text background:color needCorner:NO];
 }
 
-+ (UILabel *)createLabelWithFrame:(CGRect)frame arrtText:(NSAttributedString *)text background:(UIColor *)color needCorner:(BOOL)need {
++ (UILabel *)createLabelWithFrame:(CGRect)frame text:(id)text background:(UIColor *)color needCorner:(BOOL)need {
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.attributedText = text;
+    if ([text isKindOfClass:[NSAttributedString class]]) {
+        label.attributedText = text;
+    }else {
+        label.text = text;
+    }
     label.backgroundColor = color;
     if (need) {
         label.layer.cornerRadius = label.frame.size.width / 2.0;
@@ -421,6 +436,13 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
     [self registerCellWithSysIDs:sysIDs];
 }
 
+- (void)registerNibs:(NSArray *)nibIDs forSupplementaryViewOfKind:(NSString *)kind {
+    for (int i = 0; i < nibIDs.count; i++) {
+        NSString *cellID = nibIDs[i];
+        [self registerNib:[UINib nibWithNibName:cellID bundle:nil] forSupplementaryViewOfKind:kind withReuseIdentifier:cellID];
+    }
+}
+
 @end
 
 
@@ -503,7 +525,11 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 //    NSLog(@"self= %@", self);
 //    NSLog(@"super= %@", [super class]);
 //    NSLog(@"nextResponder= %@", [self nextResponder]);
-    [super touchesBegan:touches withEvent:event];
+    UITouch *th = touches.allObjects.firstObject;
+//    NSLog(@"%@, super = %@", th.view, [super class]);
+    if (![th.view isMemberOfClass:[UIView class]]) {
+        [super touchesBegan:touches withEvent:event];
+    }
     //  [[self nextResponder] touchesBegan:touches withEvent:event];
     
 //    if ([self.nextResponder isKindOfClass:NSClassFromString(@"UITableViewCellContentView")]) {
@@ -521,11 +547,22 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
 
 @end
 
+#pragma mark - UISearchBar
+
 #pragma mark - UIView
 
 #define  tapAction @"tapAction:"
 
 @implementation UIView (ZJUIView)
+
+- (void)needCornerRadius:(BOOL)need width:(CGFloat)width {
+    if (need) {
+        self.layer.cornerRadius = width;
+        self.layer.masksToBounds = YES;
+    }else {
+        self.layer.cornerRadius = 0;
+    }
+}
 
 - (void)addTapGestureWithDelegate:(id <UIGestureRecognizerDelegate>)delegate target:(id)target {
     SEL s = NSSelectorFromString(tapAction);
@@ -559,41 +596,34 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
         if ([view isKindOfClass:NSClassFromString(className)]) {
             return view;
         }else {
-            [view fetchSubViewWithClassName:className];
+            return [view fetchSubViewWithClassName:className];
         }
     }
     
     return mView;
 }
 
-
-+ (UIView *)createNibViewWithNibName:(NSString *)name frame:(CGRect)frame {
-    return [self createNibViewWithNibName:name frame:frame needWrap:NO];
-}
-
-+ (UIView *)createNibViewWithNibName:(NSString *)name frame:(CGRect)frame needWrap:(BOOL)need {
-    UIView *view = [[NSBundle mainBundle] loadNibNamed:name owner:nil options:nil].firstObject;
-    
-    if (need) {
-        ZJWrapView *wrapView;
-        wrapView = [[ZJWrapView alloc] initWithFrame:frame];
-        view.frame = wrapView.bounds;
-        wrapView.wrapView = view;
-        [wrapView addSubview:view];
-        return wrapView;
-    }else {
-        view.frame = frame;
+- (UIView *)fetchSuperViewWithClassName:(NSString *)className {
+    if (self.superview) {
+        if ([self.superview isKindOfClass:NSClassFromString(className)]) {
+            return self.superview;
+        }else {
+            return [self.superview fetchSuperViewWithClassName:className];
+        }
     }
-    return view;
+    
+    return nil;
 }
 
-+ (UIView *)createTitleIVWithFrame:(CGRect)frame iconPath:(NSString *)path placehold:(NSString *)placehold title:(NSString *)title {
-    UIView *view = [[UIView alloc] initWithFrame:frame]; // CGRectMake(0, 0, 150, 30)
++ (UIView *)createTitleIVWithFrame:(CGRect)frame path:(NSString *)path placehold:(NSString *)placehold title:(NSString *)title {
+    UIView *view = [[UIView alloc] initWithFrame:frame];
 
-    ZJRoundImageView *iv = (ZJRoundImageView *)[ZJRoundImageView createIVWithFrame:CGRectMake(0, 0, view.height, view.height) iconPath:path placehold:placehold];
+    CGFloat height = view.frame.size.height, width = view.frame.size.width;
+    
+    UIImageView *iv = [UIImageView createIVWithFrame:frame path:path placehold:placehold];
     [view addSubview:iv];
 
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(iv.right+4, 2.5, view.width-iv.width-4, view.height-5)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(iv.frame.origin.x + iv.frame.size.width+4, 2.5, width-iv.frame.size.width-4, height-5)];
     label.text = title;
     label.textColor = [UIColor whiteColor];
     [view addSubview:label];
@@ -888,6 +918,15 @@ void ProviderReleaseData (void *info, const void *data, size_t size) {
                 ((UIImageView *)sView).image = [UIImage imageWithColor:[UIColor groupTableViewBackgroundColor]];
                 break;
             }
+        }
+    }
+}
+
+- (void)setCancelBtnTitleColor:(UIColor *)color {
+    for(UIView *view in  [[[self subviews] objectAtIndex:0] subviews]) {
+        if([view isKindOfClass:[NSClassFromString(@"UINavigationButton") class]]) {
+            UIButton *btn =(UIButton *)view;
+            btn.tintColor = color;
         }
     }
 }

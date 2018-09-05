@@ -8,7 +8,7 @@
 
 #import "ZJControllerCategory.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import "ZJUIViewCategory.h"
+#import "ZJDefine.h"
 
 @implementation ZJControllerCategory
 
@@ -39,53 +39,42 @@
 
 @end
 
-#ifndef DefaultMargin
-
-#define DefaultMargin 8     // 默认边距
-
-#endif
-
-#ifndef DefaultDuration
-
-#define DefaultDuration 0.5
-
-#endif
 
 #define  barItemAction @"barItemAction:"
 
 @implementation UIViewController (ZJViewController)
 
+#pragma mark - 系统分享
+
+- (void)systemShareWithIcon:(NSString *)icon path:(NSString *)path {
+    //分享的标题
+    NSString *textToShare = [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
+    //分享的图片
+    UIImage *imageToShare = [UIImage imageNamed:icon];
+    //分享的url
+    NSURL *urlToShare = [NSURL URLWithString:path];
+    //在这里呢 如果想分享图片 就把图片添加进去  文字什么的通上
+    NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    //不出现在活动项目
+    activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll];
+    [self presentViewController:activityVC animated:YES completion:nil];
+    // 分享之后的回调
+    activityVC.completionWithItemsHandler = ^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+        if (completed) {
+            NSLog(@"completed");
+            //分享 成功
+        } else  {
+            NSLog(@"cancled");
+            //分享 取消
+        }
+        NSLog(@"activityError = %@", activityError);
+    };
+}
+
 - (UIViewController *)preControllerWithIndex:(NSInteger)index {
     NSArray *ary = self.navigationController.viewControllers;
     return ary[ary.count - (index + 1)];
-}
-
-- (UIViewController *)createVCWithName:(NSString *)name {
-    return [self createVCWithName:name title:nil];
-}
-
-- (UIViewController *)createVCWithName:(NSString *)name isGroupTableVC:(BOOL)isGroup {
-    return [self createVCWithName:name title:nil isGroupTableVC:isGroup];
-}
-
-- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title {
-    return [self createVCWithName:name title:title isGroupTableVC:NO];
-}
-
-- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title isGroupTableVC:(BOOL)isGroup {
-    UIViewController *vc = [NSClassFromString(name) alloc];
-    if ([vc isKindOfClass:[UITableViewController class]]) {
-        vc = [((UITableViewController *)vc) initWithStyle:isGroup ? UITableViewStyleGrouped : UITableViewStylePlain];
-    }else {
-        vc = [vc init];
-        vc.view.backgroundColor = [UIColor whiteColor];
-    }
-    
-    if ([vc isKindOfClass:[UIViewController class]]) {
-        vc.title = title;
-    }
-    
-    return vc;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -94,9 +83,9 @@
 
 #pragma mark - UIBarButtonItem
 
-- (UIBarButtonItem *)barbuttonWithTitle:(NSString *)type {
+- (UIBarButtonItem *)barbuttonWithTitle:(NSString *)title {
     SEL s = NSSelectorFromString(barItemAction);
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:type style:UIBarButtonItemStylePlain target:self action:s];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:s];
     
     return item;
 }
@@ -127,11 +116,7 @@
     return [array copy];
 }
 
-- (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images {    
-    return [self barButtonItemWithCustomViewWithImageNames:images bageIndex:-1];
-}
-
-- (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images bageIndex:(NSInteger)index {
+- (UIBarButtonItem *)barButtonItemWithCustomViewWithImageNames:(NSArray *)images {
     SEL s = NSSelectorFromString(barItemAction);
     
     CGFloat width = 30;
@@ -145,14 +130,19 @@
         [btn setImage:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [btn addTarget:self action:s forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:btn];
-        
-        if (i == index) {
-            [btn addIconBadgeWithText:@"" bgColor:[UIColor redColor]];
-        }
     }
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:view];
     
     return item;
+}
+
+- (void)popToVCWithName:(NSString *)name {
+    for (UIViewController *vc in self.navigationController.viewControllers) {
+        if ([vc isKindOfClass:NSClassFromString(name)]) {
+            [self.navigationController popToViewController:vc animated:YES];
+            break;
+        }
+    }
 }
 
 #pragma mark - MentionView
@@ -244,7 +234,7 @@
     if (hidden) {
         if (view.isHidden == NO) {
             if (animated) {
-                [UIView animateWithDuration:DefaultDuration animations:^{
+                [UIView animateWithDuration:DefaultAnimationDuration animations:^{
                     view.alpha = 0.0;
                 } completion:^(BOOL finished) {
                     view.hidden = hidden;
@@ -258,7 +248,7 @@
         if (view.isHidden) {
             view.hidden = hidden;
             if (animated) {
-                [UIView animateWithDuration:DefaultDuration animations:^{
+                [UIView animateWithDuration:DefaultAnimationDuration animations:^{
                     view.alpha = 1.0;
                 }];
             }else {

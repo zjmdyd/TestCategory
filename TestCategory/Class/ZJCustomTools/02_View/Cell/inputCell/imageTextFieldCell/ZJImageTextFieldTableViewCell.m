@@ -7,6 +7,7 @@
 //
 
 #import "ZJImageTextFieldTableViewCell.h"
+#import "ZJDefine.h"
 
 @interface ZJImageTextFieldTableViewCell ()<UITextFieldDelegate> {
     NSInteger _countDown;
@@ -22,12 +23,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textFieldLeadingConstraint;
 
 @end
-
-#ifndef DefaultMargin
-
-#define DefaultMargin 8     // 默认边距
-
-#endif
 
 @implementation ZJImageTextFieldTableViewCell
 
@@ -52,6 +47,9 @@
             self.textField.placeholder = self.placehold;
         }
     }
+    
+    self.backgroundView.frame = CGRectMake(60, 0, kScreenW-120, 50);
+    self.selectedBackgroundView.frame = CGRectMake(60, 0, kScreenW-120, 50);
 }
 
 - (void)awakeFromNib {
@@ -117,7 +115,7 @@
     
     self.iconIV.image = [UIImage imageNamed:_imgName];
     
-    self.iconWidthConstraint.constant = 30;
+    self.iconWidthConstraint.constant = 25;
     self.textFieldLeadingConstraint.constant = DefaultMargin;
 }
 

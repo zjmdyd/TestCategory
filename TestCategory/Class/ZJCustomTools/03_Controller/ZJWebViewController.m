@@ -8,6 +8,7 @@
 
 #import "ZJWebViewController.h"
 #import <WebKit/WebKit.h>
+#import "ZJDefine.h"
 
 @interface ZJWebViewController ()<UIWebViewDelegate>
 
@@ -16,8 +17,6 @@
 @end
 
 @implementation ZJWebViewController
-
-#define DefaultTimeoutInterval 10
 
 @synthesize webView = _webView;
 
@@ -40,7 +39,7 @@
 - (void)initSetting {
     if (!self.title.length) {
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-        self.title = infoDictionary[@"CFBundleName"]?:@"";
+        self.title = infoDictionary[@"CFBundleName"] ?: @"";
     }
 }
 
@@ -53,7 +52,7 @@
     if (self.address.length == 0) return;
     
     if ([self.address hasPrefix:@"http:"] || [self.address hasPrefix:@"https:"]) {
-#ifdef HiddenProgressView
+#ifdef HiddenProgress
         HiddenProgressView(NO, @"请稍后...", NO);
 #endif
         self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timeoutInterval target:self selector:@selector(stopLoad) userInfo:nil repeats:NO];
@@ -87,7 +86,7 @@
 //当网页视图结束加载一个请求之后，得到通知。
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"%s", __func__);
-#ifdef HiddenProgressView
+#ifdef HiddenProgress
     HiddenProgressView(YES, @"请稍后...", NO);
 #endif
     if ([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
@@ -97,10 +96,10 @@
 
 //当在请求加载中发生错误时，得到通知。会提供一个NSSError对象，以标识所发生错误类型。
 - (void)webView:(UIWebView *)webView DidFailLoadWithError:(NSError*)error {
-#ifdef HiddenProgressView
+#ifdef HiddenProgress
     HiddenProgressView(YES, @"加载失败", NO);
 #endif
-    NSLog(@"%s", __func__);
+    NSLog(@"%s, error = %@", __func__, error);
     if ([self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)]) {
         [self.delegate webView:webView didFailLoadWithError:error];
     }
@@ -110,8 +109,8 @@
     if ([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
         return [self.delegate webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
     }
-//    NSString *requestString = [[request URL] absoluteString];                   // 获取请求的绝对路径.
-//    NSLog(@"requestString-->%@", requestString);
+    NSString *requestString = [[request URL] absoluteString];                   // 获取请求的绝对路径.
+    NSLog(@"requestString-->%@", requestString);
     
     return YES;
 }
@@ -144,13 +143,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

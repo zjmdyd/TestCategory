@@ -7,7 +7,9 @@
 //
 
 #import "ZJCollectionTableViewCell.h"
-#import "ZJViewHeaderFile.h"
+#import "ZJIconTitleCollectionViewCell.h"
+#import "ZJIconTitleNormalCollectionViewCell.h"
+//#import "ZJDefine.h"
 
 @interface ZJCollectionTableViewCell ()<UICollectionViewDataSource, UICollectionViewDelegate, ZJIconTitleNormalCollectionViewCellDelegate>
 
@@ -16,25 +18,48 @@
 @property (nonatomic, strong) NSArray *cellIDs;
 @property (nonatomic, copy  ) NSString *cellID;
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *marginConstraints;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *headerTitleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerTitleTopConstraint;
 
 @end
 
-#ifndef kScreenW
-
-#define kScreenW    ([UIScreen mainScreen].bounds.size.width)
-#define kScreenH    ([UIScreen mainScreen].bounds.size.height)
-
-#endif
-
 @implementation ZJCollectionTableViewCell
+
+- (void)setHeaderTitle:(NSString *)headerTitle {
+    _headerTitle = headerTitle;
+    
+    self.headerTitleLabel.text = _headerTitle;
+    self.headerTitleTopConstraint.constant = _headerTitle.length ? 8 : 0;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).minimumLineSpacing = 10;
-    ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).minimumInteritemSpacing = 10;
-    [self.collectionView registerNib:[UINib nibWithNibName:self.cellID bundle:nil] forCellWithReuseIdentifier:self.cellID];
+    for (NSString *cellID in self.cellIDs) {
+        [self.collectionView registerNib:[UINib nibWithNibName:cellID bundle:nil] forCellWithReuseIdentifier:cellID];
+    }
+    self.collectionView.pagingEnabled = YES;
+}
+
+- (void)setCurrentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor {
+    _currentPageIndicatorTintColor = currentPageIndicatorTintColor;
+    
+    self.pageControl.currentPageIndicatorTintColor = _currentPageIndicatorTintColor;
+}
+
+- (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor {
+    _pageIndicatorTintColor = pageIndicatorTintColor;
+    
+    self.pageControl.pageIndicatorTintColor = _pageIndicatorTintColor;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat count = scrollView.contentOffset.x / [UIScreen mainScreen].bounds.size.width + 0.05;
+    self.pageControl.currentPage = count;
 }
 
 #pragma mark - setter
@@ -79,6 +104,7 @@
 
 - (void)setIconPaths:(NSArray<NSString *> *)iconPaths {
     _iconPaths = iconPaths;
+    self.pageControl.numberOfPages = _iconPaths.count;
     
     [self.collectionView reloadData];
 }
@@ -99,6 +125,12 @@
     _contentBgColor = contentBgColor;
 
     self.collectionView.backgroundColor = _contentBgColor;
+}
+
+- (void)setHiddenPageControl:(BOOL)hiddenPageControl {
+    _hiddenPageControl = hiddenPageControl;
+    
+    self.pageControl.hidden = _hiddenPageControl;
 }
 
 - (void)reload {
@@ -139,8 +171,11 @@
         cell.iconPath = [self.dataSource collectionTableViewCell:self iconPathAtIndexPath:indexPath];
     }else if (self.iconPaths.count) {
         cell.iconPath = self.iconPaths[indexPath.row];
+        [cell setNeedsLayout];
     }
-    if (self.iconPlaceholder) {
+    if (self.iconPlaceholders) {
+        cell.iconPlaceholder = self.iconPlaceholders[indexPath.row];
+    }else if (self.iconPlaceholder) {
         cell.iconPlaceholder = self.iconPlaceholder;
     }
     if ([self.dataSource respondsToSelector:@selector(collectionTableViewCell:backgroundColorAtIndexPath:)]) {
@@ -181,18 +216,27 @@
 
 - (NSArray *)cellIDs {
     if (!_cellIDs) {
-        _cellIDs = @[IconTitleNormalCollectionViewCell, IconTitleVerticalCollectionCell, IconTitleHorizontalCollectionCell];
+        _cellIDs = @[IconTitleNormalCollectionViewCell, IconTitleVerticalCollectionCell, IconTitleHorizontalCollectionCell, IconTitleHorizontalCollectionCell1];
     }
     
     return _cellIDs;
 }
 
 - (NSString *)cellID {
-    if (!_cellID) {
+//    if (!_cellID) {
         _cellID = self.cellIDs[self.cellType];
-    }
+//    }
     
     return _cellID;
+}
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    UIView *view = [super hitTest:point withEvent:event];
+    if ([view isKindOfClass:[UICollectionView class]]) {
+        return self;
+    }
+    
+    return view;
 }
 
 #pragma mark - ZJIconTitleNormalCollectionViewCell

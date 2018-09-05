@@ -6,13 +6,10 @@
 //  Copyright © 2016 ZJ. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ZJValueObject.h"
 
-@interface ZJTimeValueObject : NSObject
+@interface ZJTimeValueObject : ZJValueObject
 
-@property (nonatomic, copy  ) NSString *value;
 @property (nonatomic, strong) NSNumber *time;
-
-@property (nonatomic, getter=isSelect) BOOL select;
 
 @end

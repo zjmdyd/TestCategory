@@ -21,72 +21,56 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="b1m-oP-GIG"/>
                     </constraints>
-                    <state key="normal" title="下一步"/>
+                    <state key="normal" title="注册"/>
                     <connections>
                         <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="1wO-Wf-niu"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lv-ec-cQL">
-                    <rect key="frame" x="3" y="77" width="315" height="30"/>
-                    <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2z-NV-1ut">
-                            <rect key="frame" x="0.0" y="2.5" width="25" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="25" id="82T-1G-mSL"/>
-                                <constraint firstAttribute="height" constant="25" id="wnK-VA-Wh7"/>
-                            </constraints>
-                            <state key="normal" image="ic_xuanze_gray_48x48"/>
-                            <connections>
-                                <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZYv-yf-bpx"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已阅读并接受" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJH-pH-npt">
-                            <rect key="frame" x="27" y="7" width="80" height="16"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTz-ul-zsY">
-                            <rect key="frame" x="107" y="0.0" width="92" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="《用户协议》"/>
-                            <connections>
-                                <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="fZi-4N-pbv"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="J2z-NV-1ut" firstAttribute="leading" secondItem="2lv-ec-cQL" secondAttribute="leading" id="DQf-4v-lt6"/>
-                        <constraint firstItem="TTz-ul-zsY" firstAttribute="centerY" secondItem="2lv-ec-cQL" secondAttribute="centerY" id="IBp-He-eAs"/>
-                        <constraint firstItem="XJH-pH-npt" firstAttribute="leading" secondItem="J2z-NV-1ut" secondAttribute="trailing" constant="2" id="UDW-ET-Zu2"/>
-                        <constraint firstAttribute="height" constant="30" id="WI4-kp-cAS"/>
-                        <constraint firstItem="J2z-NV-1ut" firstAttribute="centerY" secondItem="2lv-ec-cQL" secondAttribute="centerY" id="jT8-Wp-f73"/>
-                        <constraint firstItem="XJH-pH-npt" firstAttribute="centerY" secondItem="2lv-ec-cQL" secondAttribute="centerY" id="tmo-fe-t2t"/>
-                        <constraint firstItem="TTz-ul-zsY" firstAttribute="leading" secondItem="XJH-pH-npt" secondAttribute="trailing" id="uUw-TA-yHU"/>
-                    </constraints>
-                </view>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vo1-Pn-nyq">
+                    <rect key="frame" x="185" y="77" width="92" height="30"/>
+                    <state key="normal" title="《用户协议》">
+                        <color key="titleColor" red="0.69904893310000005" green="0.94696478080000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="SeE-x3-0ol"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已经阅读并接受" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHd-fq-L9F">
+                    <rect key="frame" x="81.5" y="83" width="107.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zr4-2F-VZb" customClass="ZJSelectButton">
+                    <rect key="frame" x="55.5" y="83" width="18" height="18"/>
+                    <state key="normal" backgroundImage="ic_quan_white_36x36"/>
+                    <connections>
+                        <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="fnJ-3G-mId"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2lv-ec-cQL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="3" id="8Nz-nl-ill"/>
+                <constraint firstItem="WHd-fq-L9F" firstAttribute="leading" secondItem="Zr4-2F-VZb" secondAttribute="trailing" constant="8" id="0Gt-BE-KeM"/>
+                <constraint firstItem="Vo1-Pn-nyq" firstAttribute="leading" secondItem="WHd-fq-L9F" secondAttribute="trailing" constant="-4" id="7PL-Kh-aHs"/>
                 <constraint firstAttribute="trailing" secondItem="6m2-0o-gaY" secondAttribute="trailing" constant="25" id="Lde-Wp-kkQ"/>
-                <constraint firstItem="2lv-ec-cQL" firstAttribute="top" secondItem="6m2-0o-gaY" secondAttribute="bottom" constant="8" id="OT2-Vc-jwu"/>
                 <constraint firstItem="6m2-0o-gaY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="PEU-q7-ZFj"/>
-                <constraint firstAttribute="trailing" secondItem="2lv-ec-cQL" secondAttribute="trailing" constant="2" id="THN-yS-kmH"/>
+                <constraint firstItem="Vo1-Pn-nyq" firstAttribute="top" secondItem="6m2-0o-gaY" secondAttribute="bottom" constant="8" id="U7t-bA-IN4"/>
+                <constraint firstItem="WHd-fq-L9F" firstAttribute="centerY" secondItem="Vo1-Pn-nyq" secondAttribute="centerY" id="Ynp-gW-std"/>
                 <constraint firstItem="6m2-0o-gaY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="Z9M-Re-v2c"/>
-                <constraint firstAttribute="bottom" secondItem="2lv-ec-cQL" secondAttribute="bottom" constant="13" id="ldV-27-NYa"/>
+                <constraint firstItem="WHd-fq-L9F" firstAttribute="centerX" secondItem="6m2-0o-gaY" secondAttribute="centerX" constant="-25" id="dYC-aS-aaL"/>
+                <constraint firstItem="Zr4-2F-VZb" firstAttribute="centerY" secondItem="WHd-fq-L9F" secondAttribute="centerY" id="jGE-rB-WiY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="articleButton" destination="Vo1-Pn-nyq" id="FrA-MH-29Q"/>
                 <outlet property="button" destination="6m2-0o-gaY" id="KAv-VX-OAN"/>
-                <outlet property="termsButton" destination="TTz-ul-zsY" id="stT-SS-aBy"/>
-                <outlet property="termsIconBtn" destination="J2z-NV-1ut" id="0fp-oq-Mzk"/>
+                <outlet property="selectBtn" destination="Zr4-2F-VZb" id="8La-4R-uPe"/>
             </connections>
-            <point key="canvasLocation" x="-226" y="67"/>
+            <point key="canvasLocation" x="-413" y="2"/>
         </view>
     </objects>
     <resources>
-        <image name="ic_xuanze_gray_48x48" width="24" height="24"/>
+        <image name="ic_quan_white_36x36" width="18" height="18"/>
     </resources>
 </document>

@@ -8,6 +8,7 @@
 
 #import "ZJQRView.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ZJDefine.h"
 
 @interface ZJQRView ()<AVCaptureMetadataOutputObjectsDelegate>
 
@@ -27,13 +28,18 @@
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initView];
+    }
+    return self;
+}
+
 - (void)initView {
     UIImage *scanImage = [UIImage imageNamed:@"qrcode_scanline_barcode"];
-    CGFloat width = CGRectGetWidth(self.frame);
-    CGFloat height = CGRectGetHeight(self.frame);
-    
-    CGFloat scanW = 200;
-    CGRect scanFrame = CGRectMake(width/2.-100, height/2.-100, scanW, scanW);
+    CGFloat width = kScreenW-120;
+    CGRect scanFrame = CGRectMake(0, 0, width, width);
     _scanViewFrame = scanFrame;
     
     _scanView = [[UIImageView alloc]initWithImage:scanImage];
@@ -46,8 +52,12 @@
     
     //闪光灯
     if ([device hasFlash] && [device hasTorch]) {
-        AVCapturePhotoSettings *set = [AVCapturePhotoSettings photoSettings];
-        set.flashMode = AVCaptureFlashModeAuto;
+        if (@available(iOS 10.0, *)) {
+            AVCapturePhotoSettings *set = [AVCapturePhotoSettings photoSettings];
+            set.flashMode = AVCaptureFlashModeAuto;
+        } else {
+            // Fallback on earlier versions
+        }
         
         [device lockForConfiguration:nil];
         [device setFlashMode:AVCaptureFlashModeAuto];
@@ -97,7 +107,7 @@
     
     AVCaptureVideoPreviewLayer *layer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
     layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    layer.frame = self.bounds;
+    layer.frame = CGRectMake(0, 0, _scanView.frame.size.width, _scanView.frame.size.height);
     [self.layer insertSublayer:layer above:0];
     [self bringSubviewToFront:_scanView];
     [self setOverView];
@@ -167,13 +177,14 @@
     
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:2 animations:^{
-        self->_lineView.frame = end;
+        _lineView.frame = end;
     } completion:^(BOOL finished) {
         [weakSelf loopDrawLine];
     }];
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
+
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     if (metadataObjects.count > 0) {
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects firstObject];

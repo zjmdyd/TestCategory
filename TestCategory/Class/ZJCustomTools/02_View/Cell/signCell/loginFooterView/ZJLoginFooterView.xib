@@ -27,13 +27,15 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oD-3v-Nai">
-                    <rect key="frame" x="72.5" y="73" width="62" height="30"/>
-                    <state key="normal" title="注册账号"/>
+                    <rect key="frame" x="25" y="73" width="62" height="30"/>
+                    <state key="normal" title="注册账号">
+                        <color key="titleColor" red="0.79607843140000001" green="0.1137254902" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="buttonEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="VaG-lB-HC2"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkX-4S-e2J">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkX-4S-e2J">
                     <rect key="frame" x="159.5" y="76" width="1" height="25"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -45,8 +47,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BJ-eM-m0i">
-                    <rect key="frame" x="185.5" y="73" width="62" height="30"/>
-                    <state key="normal" title="忘记密码">
+                    <rect key="frame" x="226" y="73" width="69" height="30"/>
+                    <state key="normal" title="忘记密码?">
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -57,12 +59,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="iLx-RA-r1B" secondAttribute="trailing" constant="25" id="3lb-29-0ee"/>
-                <constraint firstItem="7BJ-eM-m0i" firstAttribute="leading" secondItem="wkX-4S-e2J" secondAttribute="trailing" constant="25" id="AXX-hi-CsL"/>
+                <constraint firstItem="8oD-3v-Nai" firstAttribute="leading" secondItem="iLx-RA-r1B" secondAttribute="leading" id="ICb-Qs-GX1"/>
                 <constraint firstItem="8oD-3v-Nai" firstAttribute="centerY" secondItem="wkX-4S-e2J" secondAttribute="centerY" id="IXY-mA-PSK"/>
                 <constraint firstItem="7BJ-eM-m0i" firstAttribute="centerY" secondItem="wkX-4S-e2J" secondAttribute="centerY" id="OcR-hf-tHc"/>
+                <constraint firstItem="7BJ-eM-m0i" firstAttribute="trailing" secondItem="iLx-RA-r1B" secondAttribute="trailing" id="Stj-3v-NJK"/>
                 <constraint firstItem="wkX-4S-e2J" firstAttribute="top" secondItem="iLx-RA-r1B" secondAttribute="bottom" constant="12" id="bJz-tF-5xU"/>
                 <constraint firstItem="iLx-RA-r1B" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-15" id="gEL-7n-7Uu"/>
-                <constraint firstItem="wkX-4S-e2J" firstAttribute="leading" secondItem="8oD-3v-Nai" secondAttribute="trailing" constant="25" id="ges-gY-brq"/>
                 <constraint firstItem="wkX-4S-e2J" firstAttribute="centerX" secondItem="iLx-RA-r1B" secondAttribute="centerX" id="oJs-tc-JnL"/>
                 <constraint firstItem="iLx-RA-r1B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="sqn-64-Wol"/>
             </constraints>
@@ -71,7 +73,7 @@
                 <outlet property="button" destination="iLx-RA-r1B" id="f5k-cE-jpz"/>
                 <outlet property="regButton" destination="8oD-3v-Nai" id="ECh-Dc-Gg6"/>
             </connections>
-            <point key="canvasLocation" x="-277" y="-71"/>
+            <point key="canvasLocation" x="-15" y="-56"/>
         </view>
     </objects>
 </document>

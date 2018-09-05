@@ -8,6 +8,40 @@
 
 #import "ZJTopEdgeTitleView.h"
 
+@implementation UIView(FitFrameView)
+
+- (CGFloat) top {
+    return self.frame.origin.y;
+}
+
+- (void) setTop: (CGFloat) newtop {
+    CGRect newframe = self.frame;
+    newframe.origin.y = newtop;
+    self.frame = newframe;
+}
+
+- (CGSize) size {
+    return self.frame.size;
+}
+
+- (void) setSize: (CGSize) aSize {
+    CGRect newframe = self.frame;
+    newframe.size = aSize;
+    self.frame = newframe;
+}
+
+- (CGFloat) height {
+    return self.frame.size.height;
+}
+
+- (void) setHeight: (CGFloat) newheight {
+    CGRect newframe = self.frame;
+    newframe.size.height = newheight;
+    self.frame = newframe;
+}
+
+@end
+
 @interface ZJTopEdgeTitleView ()
 
 @property (nonatomic, strong) UILabel *mentionLabel;
@@ -83,6 +117,7 @@
 - (void)setLeftTitle:(NSString *)leftTitle {
     _leftTitle = leftTitle;
     UIButton *btn = [self.subviews objectAtIndex:0];
+    btn.enabled = _leftTitle.length;
     [btn setTitle:_leftTitle forState:UIControlStateNormal];
 }
 
@@ -90,11 +125,30 @@
     _rightTitle = rightTitle;
     UIButton *btn = [self.subviews objectAtIndex:1];
     [btn setTitle:_rightTitle forState:UIControlStateNormal];
+    [btn setBackgroundImage:nil forState:UIControlStateNormal];
+}
+
+- (void)setRightButtonImgName:(NSString *)rightButtonImgName {
+    _rightButtonImgName = rightButtonImgName;
+    
+    UIButton *btn = [self.subviews objectAtIndex:1];
+    [btn setTitle:@"" forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:_rightButtonImgName] forState:UIControlStateNormal];
+    btn.contentMode = UIViewContentModeScaleAspectFit;
+    btn.size = CGSizeMake(44, 25);//16 9
+    //    btn.left -= 8;
+    btn.top += (40-btn.height) / 2;
 }
 
 - (void)setMentionTitle:(NSString *)mentionTitle {
     _mentionTitle = mentionTitle;
     self.mentionLabel.text = _mentionTitle;
+}
+
+- (void)setMentionAttrTitle:(NSAttributedString *)mentionAttrTitle {
+    _mentionAttrTitle = mentionAttrTitle;
+    
+    self.mentionLabel.attributedText = _mentionAttrTitle;
 }
 
 - (void)setLeftButtonTitleColor:(UIColor *)leftButtonTitleColor {

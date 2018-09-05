@@ -7,7 +7,6 @@
 //
 
 #import "ZJSexView.h"
-#import "UIViewExt.h"
 
 @interface ZJSexView ()
 
@@ -32,7 +31,7 @@
     self.btn.frame = CGRectMake(0, 0, 31, 31);
     [self addSubview:self.btn];
     
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(self.btn.right+4, self.btn.top+5, 18, 21)];
+    self.label = [[UILabel alloc] initWithFrame:CGRectMake(self.btn.frame.origin.x + self.btn.frame.size.width+4, self.btn.frame.origin.y+5, 18, 21)];
     self.label.text = @"男";
     [self addSubview:self.label];
 }
@@ -58,7 +57,7 @@
         if (self.selectTitleColor) {
             self.label.textColor = self.selectTitleColor;
         }
-    }else if(!_select) {
+    }else {
         if (self.unselectTitleColor) {
             self.label.textColor = self.unselectTitleColor;
         }else {

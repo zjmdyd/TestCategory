@@ -15,7 +15,9 @@
 #import <sys/stat.h>
 #import <AudioToolbox/AudioToolbox.h>
 
-
+// 方法弃用警告
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 @implementation ZJNSObjectCategory
 
@@ -122,6 +124,34 @@
     return str;
 }
 
+- (UIViewController *)createVCWithName:(NSString *)name {
+    return [self createVCWithName:name title:nil];
+}
+
+- (UIViewController *)createVCWithName:(NSString *)name isGroupTableVC:(BOOL)isGroup {
+    return [self createVCWithName:name title:nil isGroupTableVC:isGroup];
+}
+
+- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title {
+    return [self createVCWithName:name title:title isGroupTableVC:NO];
+}
+
+- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title isGroupTableVC:(BOOL)isGroup {
+    UIViewController *vc = [NSClassFromString(name) alloc];
+    if ([vc isKindOfClass:[UITableViewController class]]) {
+        vc = [((UITableViewController *)vc) initWithStyle:isGroup ? UITableViewStyleGrouped : UITableViewStylePlain];
+    }else {
+        vc = [vc init];
+        vc.view.backgroundColor = [UIColor whiteColor];
+    }
+    
+    if ([vc isKindOfClass:[UIViewController class]]) {
+        vc.title = title;
+    }
+    
+    return vc;
+}
+
 @end
 
 
@@ -179,6 +209,50 @@
     }
     
     return view;
+}
+
+- (void)synCooks {
+    NSMutableArray *cookieDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:@"cookieArray"];
+    
+    for (int i = 0; i < cookieDictionary.count; i++) {
+        NSMutableDictionary* cookieDictionary1 = [[NSUserDefaults standardUserDefaults] valueForKey:[cookieDictionary objectAtIndex:i]];
+        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieDictionary1];
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+    }
+}
+
+- (void)storeCooks {
+    NSMutableArray *cookieArray = [[NSMutableArray alloc] init];
+    for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+        [cookieArray addObject:cookie.name];
+        NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
+        [cookieProperties setObject:cookie.name forKey:NSHTTPCookieName];
+        [cookieProperties setObject:cookie.value forKey:NSHTTPCookieValue];
+        [cookieProperties setObject:cookie.domain forKey:NSHTTPCookieDomain];
+        [cookieProperties setObject:cookie.path forKey:NSHTTPCookiePath];
+        [cookieProperties setObject:[NSNumber numberWithUnsignedInteger:cookie.version] forKey:NSHTTPCookieVersion];
+        [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:cookieProperties forKey:cookie.name];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setValue:cookieArray forKey:@"cookieArray"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)removeCooks {
+    NSMutableArray *cookieDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:@"cookieArray"];
+    
+    for (int i = 0; i < cookieDictionary.count; i++) {
+        NSMutableDictionary* cookieDictionary1 = [[NSUserDefaults standardUserDefaults] valueForKey:[cookieDictionary objectAtIndex:i]];
+        NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieDictionary1];
+        if (cookie) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:cookie.name];
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"cookieArray"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - 系统声音
@@ -264,10 +338,8 @@
         
     }
 
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:root=%@", accessoryStr, ary[type]]];
-    if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url];
-    }
+    NSString *urlString = [NSString stringWithFormat:@"%@:root=%@", accessoryStr, ary[type]];
+    [self openURLWithURLString:urlString completionHandler:nil];
 }
 
 + (void)systemServiceWithPhone:(NSString *)phone type:(SystemServiceType)type {
@@ -278,25 +350,36 @@
         }else if (type == SystemServiceTypeOfMessage) {         // 信息
             str = [NSString stringWithFormat:@"sms:%@", phone];
         }
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:str]]) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-        }else {
-            [self showAlertViewWithTitle:@"设备不支持此功能!" msg:@"" buttonTitle:nil];
-        }
+
+        [self openURLWithURLString:str completionHandler:^(BOOL success) {
+            if (!success) {
+                [self showAlertViewWithTitle:@"设备不支持此功能!" msg:@"" buttonTitle:nil];
+            }
+        }];
     }else {
         [self showAlertViewWithTitle:@"电话号码为空!" msg:@"" buttonTitle:nil];
     }
 }
 
-+ (void)openAPPStoreWithURL:(NSString *)urlString {
++ (void)openURLWithURLString:(NSString *)urlString {
+    [self openURLWithURLString:urlString completionHandler:nil];
+}
+
++ (void)openURLWithURLString:(NSString *)urlString completionHandler:(void (^)(BOOL success))completion {
     NSURL *url = [NSURL URLWithString:urlString];
     if (@available(iOS 10.0, *)) {
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-            NSLog(@"open_success = %d", success);
+            if (completion) {
+                completion(success);
+            }
         }];
     } else {
         if ([[UIApplication sharedApplication] canOpenURL:url]) {
             [[UIApplication sharedApplication] openURL:url];
+        }else {
+            if (completion) {
+                completion(NO);
+            }
         }
     }
 }
@@ -323,11 +406,27 @@
     return [infoDictionary objectForKey:@"CFBundleVersion"];
 }
 
++ (NSString *)appBundleIdentifier {
+    NSDictionary *infoDictionary = [self appInfoDic];
+    return [infoDictionary objectForKey:@"CFBundleIdentifier"];
+}
+
 + (NSDictionary *)appInfoDic {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     return infoDictionary;
 }
 
++ (BOOL)isComBundleIdentifier {
+    return [[self appBundleIdentifier] hasPrefix:@"com"];
+}
+
++ (void)downloadAppWithAPPID:(NSString *)appID {
+    if (appID.length) {
+        [self openURLWithURLString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/id%@?mt=8", appID]];
+    }else {
+        [self showAlertViewWithTitle:@"APP信息出错" msg:@"" buttonTitle:@"确定"];
+    }
+}
 
 /**
  *  是否是简体中文

@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *leftTitle;
 @property (nonatomic, copy) NSString *rightTitle;
 @property (nonatomic, copy) NSString *mentionTitle;
+@property (nonatomic, copy) NSAttributedString *mentionAttrTitle;
 
 /**
  *  弹窗左边button的titleColor
@@ -29,6 +30,11 @@
  *  弹窗右边button的titleColor
  */
 @property (nonatomic, strong) UIColor *rightButtonTitleColor;
+
+/**
+ *  弹窗右边button的image
+ */
+@property (nonatomic, strong) NSString *rightButtonImgName;
 
 /**
  *  弹窗顶部中间提示框文字颜色

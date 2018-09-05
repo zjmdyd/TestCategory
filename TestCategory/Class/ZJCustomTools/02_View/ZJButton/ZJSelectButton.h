@@ -10,6 +10,8 @@
 
 @interface ZJSelectButton : UIButton
 
+- (instancetype)initWithFrame:(CGRect)frame selectImg:(NSString *)selectName unSelectImg:(NSString *)unselectName;
+
 @property (nonatomic, getter=isSelect) BOOL select;
 
 @property (nonatomic, copy) NSString *selectImgName;

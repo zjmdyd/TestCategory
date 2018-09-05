@@ -23,4 +23,6 @@
 @property (nonatomic, strong) NSIndexPath *indexPath;
 - (void)setIVCornerRadius:(CGFloat)needCornerRadius;
 
+- (void)fitTextFont:(UIFont *)font;
+
 @end

@@ -7,19 +7,7 @@
 //
 
 #import "ZJScrollView.h"
-
-#ifndef kScreenW
-
-#define kScreenW    ([UIScreen mainScreen].bounds.size.width)
-#define kScreenH    ([UIScreen mainScreen].bounds.size.height)
-
-#endif
-
-#ifndef DefaultMargin
-
-#define DefaultMargin 8     // 默认边距
-
-#endif
+#import "ZJDefine.h"
 
 @interface ZJScrollView ()<UIScrollViewDelegate>
 

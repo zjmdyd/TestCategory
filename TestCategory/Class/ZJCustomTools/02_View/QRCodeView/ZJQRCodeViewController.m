@@ -8,19 +8,13 @@
 
 #import "ZJQRCodeViewController.h"
 #import "ZJQRView.h"
+#import "ZJDefine.h"
 
 @interface ZJQRCodeViewController ()<QRViewDelegate>
 
 @property (nonatomic, strong) ZJQRCodeCompleteHandler handler;
 
 @end
-
-#ifndef kScreenW
-
-#define kScreenW    ([UIScreen mainScreen].bounds.size.width)
-#define kScreenH    ([UIScreen mainScreen].bounds.size.height)
-
-#endif
 
 @implementation ZJQRCodeViewController
 

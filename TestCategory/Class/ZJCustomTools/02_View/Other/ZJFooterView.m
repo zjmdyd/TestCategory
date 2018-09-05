@@ -7,25 +7,13 @@
 //
 
 #import "ZJFooterView.h"
+#import "ZJDefine.h"
 
 @interface ZJFooterView ()
 
 @property (nonatomic, strong) UIButton *button;
 
 @end
-
-#ifndef kScreenW
-
-#define kScreenW    ([UIScreen mainScreen].bounds.size.width)
-#define kScreenH    ([UIScreen mainScreen].bounds.size.height)
-
-#endif
-
-#ifndef DefaultMargin
-
-#define DefaultMargin 8     // 默认边距
-
-#endif
 
 #define kButtonHeight 56
 
@@ -80,6 +68,7 @@
     CGFloat left = DefaultMargin*2;
     self.button.frame = CGRectMake(left, DefaultMargin, self.frame.size.width - left*2, self.frame.size.height - DefaultMargin*2);
     self.needCornerRadius = YES;
+    self.enableEvent = YES;
     self.button.layer.masksToBounds = YES;
     self.button.titleLabel.font = [UIFont systemFontOfSize:17];
     [self.button setTintColor:[UIColor whiteColor]];
@@ -120,7 +109,7 @@
 
 - (void)setNeedCornerRadius:(BOOL)needCornerRadius {
     _needCornerRadius = needCornerRadius;
-    
+
     self.button.layer.cornerRadius = _needCornerRadius ? DefaultMargin : FLT_EPSILON;
 }
 

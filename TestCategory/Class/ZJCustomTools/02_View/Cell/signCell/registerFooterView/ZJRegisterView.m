@@ -7,12 +7,13 @@
 //
 
 #import "ZJRegisterView.h"
+#import "ZJSelectButton.h"
 
 @interface ZJRegisterView()
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
-@property (weak, nonatomic) IBOutlet UIButton *termsIconBtn;
-@property (weak, nonatomic) IBOutlet UIButton *termsButton;
+@property (weak, nonatomic) IBOutlet UIButton *articleButton;
+@property (weak, nonatomic) IBOutlet ZJSelectButton *selectBtn;
 
 @end
 
@@ -24,22 +25,10 @@
     [self.button setTitle:_title forState:UIControlStateNormal];
 }
 
-- (void)setImgName:(NSString *)imgName {
-    _imgName = imgName;
-
-    [self.termsIconBtn setImage:[UIImage imageNamed:_imgName] forState:UIControlStateNormal];
-}
-
 - (void)setTitleColor:(UIColor *)titleColor {
     _titleColor = titleColor;
     
     [self.button setTitleColor:_titleColor forState:UIControlStateNormal];
-}
-
-- (void)setTermsColor:(UIColor *)termsColor {
-    _termsColor = termsColor;
-    
-    self.termsButton.tintColor = _termsColor;
 }
 
 - (void)setBgColor:(UIColor *)bgColor {
@@ -51,12 +40,22 @@
 - (IBAction)buttonEvent:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(registerFooterView:didClickButtonAtIndex:)]) {
         [self.delegate registerFooterView:self didClickButtonAtIndex:sender.tag];
+        
+        if (sender.tag == 1) {
+            ZJSelectButton *btn = (ZJSelectButton *)sender;
+            btn.select = !btn.isSelect;
+        }
     }
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.selectBtn.selectImgName = @"ic_quan_red_36x36";
+    self.selectBtn.unSelectImgName = @"ic_quan_white_36x36";
+#ifdef MainColor
+    [self.articleButton setTitleColor:[UIColor mainColor] forState:UIControlStateNormal];
+#endif
     self.button.layer.cornerRadius = 8.0;
 }
 

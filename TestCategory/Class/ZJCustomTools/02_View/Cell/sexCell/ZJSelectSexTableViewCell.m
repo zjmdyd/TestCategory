@@ -99,20 +99,25 @@
     for (int i = 0; i < _unselectTitleColors.count; i++) {
         if (i < self.sexViews.count) {
             ZJSexView *sv = self.sexViews[i];
-            sv.selectTitleColor = _unselectTitleColors[i];
+            sv.unselectTitleColor = _unselectTitleColors[i];
         }
     }
 }
 
 - (void)updateUI {
     for (ZJSexView *sv in self.sexViews) {
-        sv.select = self.selectIndex == sv.tag;
+        if (self.selectIndex < 0) {
+            sv.select = NO;
+        }else {
+            sv.select = self.selectIndex == sv.tag;
+        }
     }
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.selectIndex = -1;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     for (ZJSexView *sv in self.sexViews) {

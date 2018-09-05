@@ -10,8 +10,12 @@
 
 @interface ZJValueObject : NSObject
 
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *value;
-@property (nonatomic, copy) NSNumber *status;
+
 @property (nonatomic, strong) NSNumber *objID;
+@property (nonatomic, strong) NSNumber *status;
+
+@property (nonatomic, getter=isSelect) BOOL select;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "ZJTextViewTableViewCell.h"
-#import "UITextView+Placeholder.h"
 
 @interface ZJTextViewTableViewCell() <UITextViewDelegate>
 
@@ -32,12 +31,12 @@
     [super layoutSubviews];
     
     if (self.placehold) {
+#ifdef textViewPlacehold
         self.textView.placeholder = self.placehold;
         if (self.placeholdColor) {
             self.textView.placeholderColor = self.placeholdColor;
-        }else {
-            
         }
+#endif
     }
 }
 

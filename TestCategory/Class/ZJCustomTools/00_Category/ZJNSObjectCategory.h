@@ -45,6 +45,14 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 - (NSString *)jsonString;
 
 /**
+ *  根据控制器名字创建控制器
+ */
+- (UIViewController *)createVCWithName:(NSString *)name;
+- (UIViewController *)createVCWithName:(NSString *)name isGroupTableVC:(BOOL)isGroup;
+- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title;
+- (UIViewController *)createVCWithName:(NSString *)name title:(NSString *)title isGroupTableVC:(BOOL)isGroup;
+
+/**
  ********************************************************
  *********************   系统    *************************
  ********************************************************
@@ -61,6 +69,11 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
  获取当前屏幕显示的viewcontroller
  */
 + (UIViewController *)currentVC;
+
+
+- (void)synCooks;
+- (void)storeCooks;
+- (void)removeCooks;
 
 #pragma mark - 声音
 
@@ -102,7 +115,8 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 
 + (void)openSystemSettingWithType:(SystemSettingType)type;
 + (void)systemServiceWithPhone:(NSString *)phone type:(SystemServiceType)type;
-+ (void)openAPPStoreWithURL:(NSString *)urlString;
++ (void)openURLWithURLString:(NSString *)urlString;
++ (void)openURLWithURLString:(NSString *)urlString completionHandler:(void (^)(BOOL success))completion;
 
 #pragma mark - App info
 
@@ -110,7 +124,9 @@ typedef NS_ENUM(NSInteger, SystemSettingType) {
 + (NSString *)appDisplayName;
 + (NSString *)appVersion;
 + (NSString *)appBuildVersion;
-
++ (NSString *)appBundleIdentifier;
++ (BOOL)isComBundleIdentifier;
++ (void)downloadAppWithAPPID:(NSString *)appID;
 
 /**
  简体中文判断

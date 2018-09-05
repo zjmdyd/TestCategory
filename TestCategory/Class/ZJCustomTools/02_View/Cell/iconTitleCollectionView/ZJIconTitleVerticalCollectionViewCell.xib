@@ -49,7 +49,7 @@
                 <outlet property="textLabel" destination="bdb-ia-RKR" id="2Na-2Z-AFD"/>
                 <outlet property="widthConstraint" destination="eDB-8V-hiZ" id="E98-vf-Oca"/>
             </connections>
-            <point key="canvasLocation" x="-1700" y="-551"/>
+            <point key="canvasLocation" x="-1745" y="-563"/>
         </collectionViewCell>
     </objects>
 </document>

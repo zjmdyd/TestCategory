@@ -94,18 +94,24 @@
 }
 
 - (void)setDate:(NSDate *)date animated:(BOOL)animated {
-    _date = date;
-    [self.datePicker setDate:date animated:animated];
+    _date = date?:[NSDate date];
+    [self.datePicker setDate:_date animated:animated];
 }
 
 - (void)setMinDate:(NSDate *)minDate {
     _minDate = minDate;
     self.datePicker.minimumDate = minDate;
+    
+    _maxDate = [NSDate distantFuture];
+    self.datePicker.maximumDate = _maxDate;
 }
 
 - (void)setMaxDate:(NSDate *)maxDate {
     _maxDate = maxDate;
     self.datePicker.maximumDate = maxDate;
+    
+    _minDate = [NSDate distantPast];
+    self.datePicker.minimumDate = _minDate;
 }
 
 - (void)setDatePickerMode:(UIDatePickerMode)datePickerMode {

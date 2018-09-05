@@ -19,13 +19,6 @@
 
 @end
 
-#ifndef kScreenW
-
-#define kScreenW    ([UIScreen mainScreen].bounds.size.width)
-#define kScreenH    ([UIScreen mainScreen].bounds.size.height)
-
-#endif
-
 @implementation ZJPickerView
 
 @synthesize bottomViewBackgroundColor = _bottomViewBackgroundColor;
@@ -115,6 +108,16 @@
 }
 
 #pragma mark - setter
+
+- (void)setDataSource:(id<ZJPickerViewDataSource>)dataSource {
+    _dataSource = dataSource;
+    
+    if (self.indexPath) self.indexPath = nil;
+    
+//    for (int i = 0; i < self.numberOfComponents; i++) {
+//        [self.pickerView selectRow:0 inComponent:i animated:NO];
+//    }
+}
 
 - (void)setBottomViewBackgroundColor:(UIColor *)bottomViewBackgroundColor {
     _bottomViewBackgroundColor = bottomViewBackgroundColor;
@@ -223,7 +226,7 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *th = touches.anyObject;
     CGPoint point = [th locationInView:self];
-    if (point.y > kScreenH-PickerViewHeight) {
+    if (point.y > [UIScreen mainScreen].bounds.size.height - PickerViewHeight) {
         return;
     }
     if (self.touchEnable) {

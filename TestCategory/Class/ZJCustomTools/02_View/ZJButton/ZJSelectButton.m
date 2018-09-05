@@ -10,19 +10,29 @@
 
 @implementation ZJSelectButton
 
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    if (self) {
-        self.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
-    }
-    return self;
-}
+//- (instancetype)initWithCoder:(NSCoder *)coder {
+//    self = [super initWithCoder:coder];
+//    if (self) {
+//        //self.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+//    }
+//    return self;
+//}
+//
+//- (instancetype)initWithFrame:(CGRect)frame {
+//    self = [super initWithFrame:frame];
+//    if (self) {
+////        self.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+//    }
+//    return self;
+//}
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame selectImg:(NSString *)selectName unSelectImg:(NSString *)unselectName {
     self = [super initWithFrame:frame];
     if (self) {
-        self.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+        self.selectImgName = selectName;
+        self.unSelectImgName = unselectName;
     }
+    
     return self;
 }
 

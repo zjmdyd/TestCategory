@@ -29,16 +29,25 @@
 @interface NSString (ZJString)
 
 + (NSString *)stringWithFileName:(NSString *)name;
-
-+ (NSArray *)sexStrings;
+- (NSString *)birthDayStringWithSeparate:(NSString *)separate;
 
 /**
  汉字转拼音
  */
 - (NSString *)pinYin;
 - (NSDictionary *)jsonStringToDic;
-+ (NSString *)timestampString;
+- (NSString *)checkSysConflictKey;
 - (BOOL)isOnlinePic;
+- (NSString *)pathWithParam:(id)param;
+- (NSString *)filterHTML;
+
+#pragma 字符串编码
+
+/**
+ URL编码
+ */
+- (NSString *)URLEncodedString;
+- (NSString *)URLDecodedString;
 
 #pragma mark - 属性字符串
 
@@ -187,6 +196,11 @@
 - (BOOL)isPureInt;
 - (BOOL)isPureFloat;
 - (BOOL)hasNumber;
+//手机号正则
+- (BOOL)isValidPhone;
+
+//身份证号正则
+- (BOOL)isValidID;
 
 @end
 
@@ -203,6 +217,11 @@
 #pragma mark - NSArray
 
 @interface NSArray (ZJNSArray)
+
++ (NSArray *)sexStrings;
++ (NSInteger)sexIndexWithName:(NSString *)name;
++ (NSArray *)nationArray;
++ (NSInteger)nationIndexWithName:(NSString *)name;
 
 #pragma mark - 处理数据
 
@@ -227,6 +246,8 @@
 - (NSString *)joinToStringWithSeparateString:(NSString *)str;
 - (NSString *)joinToStringWithSeparateString:(NSString *)str endIndex:(NSInteger)endIndex;
 
+- (NSString *)joinToStringWithSeparateString:(NSString *)str indexs:(NSArray *)indexs beganIdx:(NSInteger)index;
+
 @end
 
 
@@ -247,6 +268,8 @@
 
 - (void)replaceDicInfoAtIndex:(NSIndexPath *)indexPath value:(NSString *)value;
 
+- (NSString *)stringValueFormIndex:(NSInteger)index;
+
 @end
 
 
@@ -254,6 +277,8 @@
 
 @interface NSDictionary (ZJDictionary)
 
+- (NSDictionary *)noNullDic;
+- (void)jsonToModel:(id)obj;
 - (BOOL)containsKey:(NSString *)key;
 - (BOOL)containsKeyCaseInsensitive:(NSString *)key;
 - (NSString *)httpParamsString;
@@ -282,6 +307,8 @@
 - (BOOL)isEqualToDate:(NSDate *)date;
 
 - (NSString *)timestampString;
++ (NSString *)todayTimestampString;
+- (NSTimeInterval)timestampSpanWithOther:(NSDate *)date;
 
 #pragma mark - 年龄
 
@@ -330,8 +357,10 @@
  */
 + (NSString *)gregorianWeekdayToChinese:(id)weekday;
 
-- (NSDate *)firsDaytOfWeek;
-- (NSDate *)lastDaytOfWeek;
+- (NSDate *)firsDateOfWeek;
+- (NSDate *)lastDateOfWeek;
+
+- (NSInteger)weekDayIndex;
 
 @end
 

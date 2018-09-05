@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,33 +16,40 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="omL-7z-37s">
-                    <rect key="frame" x="137" y="90" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="omL-7z-37s" secondAttribute="height" multiplier="1:1" id="0hw-ca-FAq"/>
-                        <constraint firstAttribute="width" constant="100" id="Mc8-nm-y6u"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig6-PK-Abe">
-                    <rect key="frame" x="187" y="198" width="0.0" height="0.0"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig6-PK-Abe">
+                    <rect key="frame" x="20" y="198" width="335" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7Y-DS-dfu">
+                    <rect key="frame" x="137.5" y="90" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="A9w-Mm-ieP"/>
+                        <constraint firstAttribute="width" secondItem="Q7Y-DS-dfu" secondAttribute="height" multiplier="1:1" id="hY0-eB-2yT"/>
+                    </constraints>
+                    <connections>
+                        <action selector="btnEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="Kxt-Az-z23"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="omL-7z-37s" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0Ar-Ba-SLx"/>
-                <constraint firstItem="omL-7z-37s" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="Ubg-cS-Sjg"/>
-                <constraint firstItem="ig6-PK-Abe" firstAttribute="centerX" secondItem="omL-7z-37s" secondAttribute="centerX" id="V5G-Pk-H9D"/>
-                <constraint firstItem="ig6-PK-Abe" firstAttribute="top" secondItem="omL-7z-37s" secondAttribute="bottom" constant="8" id="uvp-2s-0s4"/>
+                <constraint firstItem="Q7Y-DS-dfu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="IKz-Ai-dIC"/>
+                <constraint firstItem="ig6-PK-Abe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Q2l-z6-3ct"/>
+                <constraint firstItem="Q7Y-DS-dfu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bns-2C-Jpx"/>
+                <constraint firstAttribute="trailing" secondItem="ig6-PK-Abe" secondAttribute="trailing" constant="20" id="sFR-zd-hJ7"/>
+                <constraint firstItem="ig6-PK-Abe" firstAttribute="top" secondItem="Q7Y-DS-dfu" secondAttribute="bottom" constant="8" id="zO6-eZ-T4L"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="iconIV" destination="omL-7z-37s" id="ysB-YR-g9G"/>
+                <outlet property="btn" destination="Q7Y-DS-dfu" id="lhv-U5-1Tz"/>
+                <outlet property="centerConstraint" destination="IKz-Ai-dIC" id="ANk-Kw-Dqg"/>
                 <outlet property="titleLabel" destination="ig6-PK-Abe" id="MJ7-Lg-edk"/>
+                <outlet property="titleTopConstraint" destination="zO6-eZ-T4L" id="UfE-NR-pna"/>
+                <outlet property="widthConstraint" destination="A9w-Mm-ieP" id="GZU-5Q-XRK"/>
             </connections>
-            <point key="canvasLocation" x="-97" y="-179"/>
+            <point key="canvasLocation" x="-1138" y="-531"/>
         </view>
     </objects>
 </document>
