@@ -932,6 +932,16 @@
     return [array mutableCopy];
 }
 
++ (NSArray *)multiArrayWithCount:(NSInteger)count {
+    NSMutableArray *ary = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        NSMutableArray *sAry = [NSMutableArray array];
+        [ary addObject:sAry];
+    }
+    
+    return ary;
+}
+
 + (NSArray *)multiArrayWithEmptyValue:(NSArray *)array {
     NSMutableArray *ary = [NSMutableArray array];
     for (int i = 0; i < array.count; i++) {

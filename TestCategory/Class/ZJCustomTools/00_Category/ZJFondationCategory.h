@@ -241,6 +241,7 @@
  *  多维数组的mutableCopy
  */
 - (NSArray *)multiDimensionalArrayMutableCopy;
++ (NSArray *)multiArrayWithCount:(NSInteger)count;
 + (NSArray *)multiArrayWithEmptyValue:(NSArray *)array;
 
 - (NSString *)joinToStringWithSeparateString:(NSString *)str;

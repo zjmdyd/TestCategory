@@ -33,5 +33,5 @@ static NSString *const kNetDomain = @"https://api.aoshitong.doorguard.hanyouapp.
 
 - (void)requestWithPath:(NSString *)path hasDomain:(BOOL)has params:(NSDictionary *)params requestType:(HTTPRequestType)type mentionText:(NSString *)text needShareParams:(BOOL)need  completion:(HTTPRequestCompletionHandle)completion;
 - (void)requestWithPath:(NSString *)path hasDomain:(BOOL)has params:(NSDictionary *)params requestType:(HTTPRequestType)type mentionText:(NSString *)text needShareParams:(BOOL)need isJsonFormData:(BOOL)isJsonFormData completion:(HTTPRequestCompletionHandle)completion;
-
+- (void)requestWithPath:(NSString *)path hasDomain:(BOOL)has params:(NSDictionary *)params requestType:(HTTPRequestType)type mentionText:(NSString *)text needShareParams:(BOOL)need isJsonFormData:(BOOL)isJsonFormData completion:(HTTPRequestCompletionHandle)completion;
 @end

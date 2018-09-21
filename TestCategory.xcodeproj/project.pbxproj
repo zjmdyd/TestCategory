@@ -1553,10 +1553,10 @@
 		38E53BCE213FB21600854FDA /* 04_ZJCoreBluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				38E53BCF213FB21600854FDA /* ZJBLEDeviceManager.h */,
-				38E53BD0213FB21600854FDA /* ZJBLEDevice.m */,
 				38E53BD1213FB21600854FDA /* ZJBLETool.h */,
 				38E53BD2213FB21600854FDA /* ZJBLEDevice.h */,
+				38E53BD0213FB21600854FDA /* ZJBLEDevice.m */,
+				38E53BCF213FB21600854FDA /* ZJBLEDeviceManager.h */,
 				38E53BD3213FB21600854FDA /* ZJBLEDeviceManager.m */,
 			);
 			path = 04_ZJCoreBluetooth;
