@@ -7,7 +7,7 @@
 //
 
 #import "ZJTestFileTableViewController.h"
-#import "ZJControllerCategory.h"
+#import "ZJNSObjectCategory.h"
 
 @interface ZJTestFileTableViewController () {
     NSArray *_vcNames;

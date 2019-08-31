@@ -10,6 +10,7 @@
 #import "ZJViewHeaderFile.h"
 #import "ZJCategoryHeaderFile.h"
 #import "UITextView+Placeholder.h"
+#import "ZJDefine.h"
 
 @interface ZJTestCollectionViewController () <UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 

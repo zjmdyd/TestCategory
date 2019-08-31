@@ -9,7 +9,7 @@
 #import "ZJRequestManager.h"
 #import "ZJHTTPRequest.h"
 #import "ZJParseManager.h"
-#import "AppDelegate+HYAppDelegate.h"
+//#import "AppDelegate+HYAppDelegate.h"
 
 @interface ZJRequestManager ()
 

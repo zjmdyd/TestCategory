@@ -9,7 +9,7 @@
 #import "ZJTestLabelViewController.h"
 #import "ZJUIViewCategory.h"
 #import "UIViewExt.h"
-
+#import "ZJDefine.h"
 @interface ZJTestLabelViewController ()
 
 @end

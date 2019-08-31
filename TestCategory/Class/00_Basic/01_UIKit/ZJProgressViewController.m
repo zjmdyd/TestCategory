@@ -8,6 +8,7 @@
 
 #import "ZJProgressViewController.h"
 #import "ZJViewHeaderFile.h"
+#import "ZJDefine.h"
 
 @interface ZJProgressViewController () {
     ZJProgressView *_huView;

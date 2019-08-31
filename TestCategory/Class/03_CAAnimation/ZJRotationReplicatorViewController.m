@@ -164,8 +164,7 @@ static NSString *FADEANIMATION = @"fadeAnimation";
  * to -drawLayer:InContext: such as `contentsFormat' and `opaque'. It will not
  * be called if the delegate implements -displayLayer. */
 
-- (void)layerWillDraw:(CALayer *)layer
-CA_AVAILABLE_STARTING (10.12, 10.0, 10.0, 3.0) {
+- (void)layerWillDraw:(CALayer *)layer {
     NSLog(@"%s", __func__);
 }
 /* Called by the default -layoutSublayers implementation before the layout

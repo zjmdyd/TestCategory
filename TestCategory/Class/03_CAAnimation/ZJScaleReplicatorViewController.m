@@ -8,6 +8,7 @@
 
 #import "ZJScaleReplicatorViewController.h"
 #import "ZJUIViewCategory.h"
+#import "ZJDefine.h"
 
 @interface ZJScaleReplicatorViewController () {
 //    UIView *_animationView;

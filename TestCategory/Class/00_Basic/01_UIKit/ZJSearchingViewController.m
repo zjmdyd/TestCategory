@@ -9,6 +9,7 @@
 #import "ZJSearchingViewController.h"
 #import "ZJUIViewCategory.h"
 #import "ZJSearchingView.h"
+#import "ZJDefine.h"
 
 @interface ZJSearchingViewController ()
 
